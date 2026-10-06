@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Builds the Operation Vengeance reconstruction (18 April 1943).
 
-Run from anywhere; writes missions/operation-vengeance/{operation.json,events.jsonl}.
-Fixed sites and anchor times are sourced; flight paths between anchors are
-reconstructions whose `bound_m` states the horizontal uncertainty.
+Run from anywhere; writes missions/operation-vengeance/{operation.json,events.jsonl} and
+the story in presentations/default.json. Fixed sites and anchor times are sourced; flight
+paths between anchors are reconstructions whose `bound_m` states the horizontal
+uncertainty.
 """
 import json
 import sys
@@ -14,54 +15,34 @@ import engagement  # noqa: E402
 import presentation  # noqa: E402
 import routes  # noqa: E402
 from track import Emitter  # noqa: E402
-from sites import (OP, L, DURATION, ENGAGED, BETTYS, ZEROS, P38S, YAMAMOTO, UGAKI,  # noqa: E402
+from sites import (OP, L, DURATION, BETTYS, ZEROS, YAMAMOTO, UGAKI,  # noqa: E402
                    CRASH_T1_323, DITCH_T1_326, entities, unix_ms)
 
 
-# (from, until, interval for followed/engaged aircraft, interval for the rest) in ms.
-# Intervals keep on-screen motion to a few pixels per update at each shot's zoom and speed.
-SAMPLING = [
-    ("07:24:30", "07:28:30", 500, 500),
-    ("07:28:30", "07:31:00", 2000, 2000),
-    ("07:31:00", "07:35:30", 1000, 1000),
-    ("07:35:30", "07:38:00", 1000, 2000),
-    ("07:38:00", "08:04:30", 2000, 10_000),
-    ("08:04:30", "08:08:30", 500, 10_000),
-    ("08:08:30", "09:28:00", 2000, 10_000),
-    ("09:28:00", "09:32:00", 1000, 1000),
-    ("09:32:00", "09:34:00", 500, 1000),
-    ("09:34:00", "09:35:40", 500, 2000),
-    ("09:35:40", "09:38:10", 200, 2000),
-    ("09:38:10", "09:39:40", 300, 2000),
-    ("09:39:40", "09:42:30", 500, 2000),
-    # Egress shot follows Mitchell at zoom 9.5; every P-38 in frame moves ~1 px per update.
-    ("09:42:30", "09:56:00", 1000, 10_000),
-    ("09:56:00", "10:05:00", 2000, 10_000),
+# Times at which `evidence_for` changes source; each source's fixes join only to its own.
+SOURCE_CHANGES = [L(t) for t in ("07:31:00", "08:08:30", "09:34:00", "09:42:30")]
+
+TOKYO = {"kind": "fixed", "seconds": 9 * 3600,
+         "source": "Imperial Japanese Navy records kept Tokyo time (UTC+9)"}
+RECONSTRUCTED = {"motion": "great_circle", "max_gap_ms": DURATION}
+SOURCES = [
+    {"id": "reconstruction-fighter-two-departure", "name": "P-38 departure reconstruction",
+     **RECONSTRUCTED},
+    {"id": "reconstruction-p38-route", "name": "P-38 route reconstruction", **RECONSTRUCTED},
+    {"id": "reconstruction-lakunai-departure", "name": "Lakunai departure reconstruction",
+     "zone": TOKYO, **RECONSTRUCTED},
+    {"id": "reconstruction-japanese-route", "name": "Japanese route reconstruction",
+     "zone": TOKYO, **RECONSTRUCTED},
+    {"id": "reconstruction-engagement", "name": "Engagement choreography", **RECONSTRUCTED},
+    {"id": "reconstruction-egress", "name": "Egress reconstruction", **RECONSTRUCTED},
+    {"id": "13th-fighter-command-report", "name": "13th Fighter Command interception report"},
+    {"id": "macr-599-609", "name": "Missing Air Crew Reports 599 and 609"},
+    {"id": "pacific-wrecks", "name": "Pacific Wrecks"},
+    {"id": "pacific-wrecks-2656", "name": "Pacific Wrecks: G4M1 2656 (T1-323)"},
+    {"id": "pacific-wrecks-t1-326", "name": "Pacific Wrecks: G4M1 T1-326"},
+    {"id": "yanagiya-interview", "name": "Yanagiya Kenji interview", "zone": TOKYO},
+    {"id": "ja-wikipedia-kaigun-ko-jiken", "name": "海軍甲事件 (ja.wikipedia)", "zone": TOKYO},
 ]
-FOLLOWED = {"MITCHELL", "MOORE", "MCLANAHAN", "T1-323 YAMAMOTO"}
-JAPANESE_DEPARTURE = ("08:04:30", "08:08:30")
-
-
-def step_for(entity, t):
-    """Sampling interval: dense only where the camera is close or following.
-
-    The Japanese formation shares one interval during transit so its members update
-    together while the camera follows T1-323; differing rates read as escorts creeping
-    back and snapping forward.
-    """
-    if (entity in BETTYS or entity in ZEROS) and L("08:08:30") <= t < L("09:32:00"):
-        return 3000
-    for start, until, close, other in SAMPLING:
-        if L(start) <= t < L(until):
-            dense = entity in FOLLOWED or (entity in ENGAGED and "09:32" <= start < "09:42:30")
-            if start >= "09:42:30":
-                dense = entity in P38S
-            if (start, until) == JAPANESE_DEPARTURE:
-                dense = entity in BETTYS or entity in ZEROS
-            if entity in ("HOLMES", "HINE") and "09:34:40" <= start < "09:37:40":
-                dense = False
-            return close if dense else other
-    return 10_000
 
 
 def evidence_for(entity, t):
@@ -81,28 +62,24 @@ def evidence_for(entity, t):
 
 
 def emit_track(em, entity, track, final_valid, until=None):
-    """Samples on a shared time grid so aircraft in one formation update in the same frame.
-    With `until`, the last fix stays valid to that time instead of sampling the end point."""
-    t = track.start
-    stop = min(track.end if until is None else until, DURATION)
-    while True:
-        step = step_for(entity, t)
-        nxt = min((t // step + 1) * step, stop) if t < stop else None
-        if until is not None and nxt == stop:
-            nxt = None
+    """One fix per waypoint; the App joins them along great circles, as the track is built.
+
+    Where the evidence source changes, the earlier source reports the position 1 ms
+    before, so neither source's path is extended by the other's. With `until`, the
+    track's last fix is 1 ms before that time and stays valid to it.
+    """
+    stop = min(track.end if until is None else until - 1, DURATION)
+    times = {w.at_ms for w in track.waypoints if track.start <= w.at_ms <= stop}
+    times |= {track.start, stop}
+    times |= {t for change in SOURCE_CHANGES if track.start < change <= stop
+              for t in (change - 1, change)}
+    times = sorted(times)
+    last = until if until is not None else final_valid
+    for t, nxt in zip(times, times[1:] + [None]):
         point, alt = track.at(t)
-        if nxt is not None:
-            # Hold one fix across stationary spans (parked or stopped aircraft).
-            following = [w for w in track.waypoints if w.at_ms > t]
-            if following and following[0].point == point and following[0].alt_m == alt:
-                nxt = min(following[0].at_ms, stop)
         source, bound = evidence_for(entity, t)
-        last = until if until is not None else final_valid
-        em.fix(source, entity, t, point, alt, bound, nxt if nxt is not None else last,
+        em.fix(source, entity, t, point, alt, bound, last if nxt is None else nxt,
                "reconstructed", [])
-        if nxt is None:
-            return
-        t = nxt
 
 
 REPORT_13FC = "13th-fighter-command-report"
@@ -132,7 +109,7 @@ def endings(em, tracks):
         if zero != "OKAZAKI":  # landed at Ballale; his final fix persists
             em.gap("reconstruction-engagement", zero, tracks[zero].end + 1, None,
                    "reconstructed", [])
-    em.note("yanagiya-interview", "TSUJINOUE", L("09:42:00"), L("09:52:00"),
+    em.note("yanagiya-interview", None, L("09:42:00"), L("09:52:00"),
             "Escort tracks end here. All six Zeros survived: Okazaki landed at Ballale with "
             "engine trouble, the rest at Buin; Yanagiya, last down, about 10:20.",
             "reported", [])
@@ -161,7 +138,7 @@ def main():
     em.write(out / "events.jsonl")
     op = {
         "format": "sokoly-operation",
-        "version": 3,
+        "version": 4,
         "id": OP,
         "name": "Operation Vengeance",
         "duration_ms": DURATION,
@@ -188,12 +165,16 @@ def main():
             },
         },
         "captured_availability": False,
+        "sources": SOURCES,
         "entities": entities(),
         "media_archive": None,
-        **presentation.operation_presentation(),
     }
     (out / "operation.json").write_text(json.dumps(op, indent=2, ensure_ascii=False) + "\n")
-    viewing = sum((c["end_ms"] - c["start_ms"]) / c["speed"] for c in op["playback_track"]) / 1000
+    story = presentation.document(OP)
+    (out / "presentations").mkdir(exist_ok=True)
+    (out / "presentations" / "default.json").write_text(
+        json.dumps(story, indent=2, ensure_ascii=False) + "\n")
+    viewing = sum((c["end_ms"] - c["start_ms"]) / c["speed"] for c in story["playback_track"]) / 1000
     print(f"{len(em.events)} events; P-38 route {p38_speed * 3.6:.0f} km/h, "
           f"Betty route {betty_kmh:.0f} km/h; viewing {viewing:.0f} s")
 

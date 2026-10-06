@@ -18,13 +18,18 @@ With Sokoly-App in the adjacent directory:
 
 Set `SOKOLY_APP_REPO` if the App checkout is elsewhere. `--at` takes operation seconds
 from 07:24:30. Regenerate the data with `python3 build/vengeance.py`; `python3 verify.py`
-checks camera and pacing coverage, which the App's loader does not enforce.
+checks camera and pacing coverage of `presentations/default.json`, which the App's loader
+does not enforce.
 
 ## Operation Vengeance: method
 
-Positions are `reconstructed` and each fix carries a horizontal `bound_m`. Wreck sites
-and annotations quoting sources are `reported`. `source.id` names the evidence for each
-event. Times follow the 13th Fighter Command report (Henderson Field time, UTC+11).
+Positions are `reconstructed` and each fix carries a horizontal `bound_m`. Fixes are
+written at the reconstructed track's waypoints only; each reconstruction source declares a
+great-circle motion model, so the App derives positions between them and marks them as
+derived. Wreck sites and annotations quoting sources are `reported`. `source.id` names the
+evidence for each event, and Japanese-side sources declare Tokyo time as their clock.
+Aircraft carry their pilots' names and belong to declared flights and sections, which the
+App draws as one symbol when they overlap. Times follow the 13th Fighter Command report (Henderson Field time, UTC+11).
 Japanese records use Tokyo time (UTC+9), which is two hours behind, and annotations quote them as such.
 The operation declares a fixed UTC+11 zone because tzdb's `Pacific/Bougainville` gives
 the Japanese occupation clock for 1943.

@@ -42,14 +42,14 @@ DECRYPT = "decrypt-ntf131755"
 MACR = "macr-599-609"
 REVIEW = "barber-v-widnall"
 
-# (entity, from, until, source, text)
+# (entity the note is about, or None for the whole operation; from, until, source, text)
 BRIEFINGS = [
-    ("MITCHELL", "07:24:30", "07:25:00", DECRYPT,
+    (None, "07:24:30", "07:25:00", DECRYPT,
      "14 April 1943 (Hawaii date): US Navy codebreakers read JN-25 message NTF131755. "
      "Admiral Yamamoto will fly Rabaul to Ballale on 18 April, departing 06:00 Tokyo time "
      "(08:00 here) with six fighters. Nimitz authorised the intercept on 17 April. "
      "Clock: Henderson Field time, UTC+11; Tokyo time is two hours behind."),
-    ("JACOBSON", "07:25:00", "07:27:20", REPORT,
+    (None, "07:25:00", "07:27:20", REPORT,
      "Wheels-up 07:25 from Fighter Two, Guadalcanal: 18 P-38Gs of the 339th, 12th and 70th "
      "Fighter Squadrons, each carrying a 165-gal and a 310-gal drop tank. "
      "Take-off order and runway heading are reconstructed."),
@@ -59,26 +59,26 @@ BRIEFINGS = [
     ("MOORE", "07:36:00", "07:45:00", "wikipedia-operation-vengeance",
      "Lt Joseph Moore's drop tanks will not feed; he turns back and Hine fills the fourth attack slot. Sixteen "
      "P-38s continue under radio silence, 10 to 30 ft above the sea."),
-    ("GOERKE", "07:45:00", "08:04:30", "reconstruction",
+    ("MITCHELL", "07:45:00", "08:04:30", "reconstruction",
      "Mitchell navigates by compass, clock and airspeed. Track reconstructed from the "
      "published 290° and 305° legs read as magnetic headings and Condon's 20 nmi island "
      "stand-off; it reproduces the reported 08:20 turn 180 mi west of Henderson and about "
      "435 mi at about 215 mph (the report implies about 200). Position bound ±20 km."),
-    ("MORISAKI", "08:04:30", "08:08:30", PW,
+    (YAMAMOTO, "08:04:30", "08:08:30", PW,
      "Lakunai, Rabaul, 06:05–06:10 Tokyo time: Yamamoto boards G4M1 T1-323 (FWO Takeo "
      "Kotani); Vice Admiral Ugaki follows in T1-326 (FPO2c Hiroshi Hayashi). Six A6M Zeros "
      "of the 204th Kōkūtai escort. The route south-east is a low-confidence reconstruction."),
-    ("SUGITA", "08:08:30", "08:30:00", REPORT,
+    (None, "08:08:30", "08:30:00", REPORT,
      "The bombers cruise at 6,500 ft; the Zeros fly 1,500 ft above and behind in two "
      "sections of three. Ceiling and visibility unlimited."),
-    ("KITTEL", "08:30:00", "08:52:00", "historynet-death-by-p38",
+    (None, "08:30:00", "08:52:00", "historynet-death-by-p38",
      "08:20 and 08:47: the P-38s turn north-west, then again abreast of Vella Lavella, "
      "keeping clear of Japanese lookouts on New Georgia and the Treasuries."),
-    ("WHITTAKER", "08:52:00", "09:18:00", "air-and-space-forces",
+    (None, "08:52:00", "09:18:00", "air-and-space-forces",
      "Mitchell's plan aims for 09:35, ten minutes before the expected landing at Ballale "
      "(09:45; the decrypt itself gives 08:00 Tokyo, i.e. 10:00 here). Both formations "
      "converge on Bougainville's south-west coast."),
-    ("AMES", "09:18:00", "09:34:00", "reconstruction",
+    (None, "09:18:00", "09:34:00", "reconstruction",
      "Final turn north-east toward the coast. Sources place it between 09:00 and 09:25; "
      "the reconstruction turns at 09:18, 56 mi out."),
     ("CANNING", "09:34:00", "09:35:40", REPORT,
@@ -108,11 +108,11 @@ BRIEFINGS = [
      "Zero, and Sugita (by his account) hits Hine's left engine. Hine is last seen with Zeros making passes — "
      "MACR 599: four miles north of Shortland; MACR 609: south of it, 09:40. He is never "
      "found. Yanagiya has dived to Buin to fire an alarm burst over the airfield."),
-    ("GRAEBNER", "09:42:30", "09:52:00", REPORT,
+    (None, "09:42:30", "09:52:00", REPORT,
      "Mitchell calls the flight home as Kahili's fighters raise dust taking off; the cover "
      "flight never fires. Claimed: three Bettys and three Zeros. Actual Japanese losses: "
      "two Bettys, no Zeros."),
-    ("STRATTON", "09:52:00", "10:05:00", REVIEW,
+    (None, "09:52:00", "10:05:00", REVIEW,
      "Holmes, nearly dry, lands in the Russell Islands escorted by Canning; the rest are back "
      "at Guadalcanal about 11:40. A Japanese army patrol under Lt Hamasuna finds the wreck on "
      "19 April; Japan announces Yamamoto's death on 21 May. Credit for T1-323 remains "
@@ -121,11 +121,11 @@ BRIEFINGS = [
 
 # Disputed occurrence windows: marked on the timeline, excluded from definite state.
 UNCERTAIN = [
-    ("ANGLIN", "09:36:00", "09:50:00", "ja-wikipedia-kaigun-ko-jiken",
+    (YAMAMOTO, "09:36:00", "09:50:00", "ja-wikipedia-kaigun-ko-jiken",
      "T1-323 down: US accounts 09:36–09:40, Japanese accounts 07:45–07:50 Tokyo (09:45–09:50)."),
-    ("SMITH", "09:38:00", "09:50:00", PW,
+    (UGAKI, "09:38:00", "09:50:00", PW,
      "T1-326 ditching: US accounts about 09:38–09:45; Japanese accounts as late as 07:50 Tokyo."),
-    ("LONG", "09:40:00", "09:42:00", MACR, "Hine last seen: MACR 609 gives 09:40."),
+    ("HINE", "09:40:00", "09:42:00", MACR, "Hine last seen: MACR 609 gives 09:40."),
 ]
 
 
@@ -217,8 +217,13 @@ def camera():
     ]
 
 
-def operation_presentation():
+def document(operation):
     return {
+        "format": "sokoly-presentation",
+        "version": 1,
+        "id": "default",
+        "name": "Operation Vengeance",
+        "operation": operation,
         "chapters": [{"title": t, "at_ms": L(at), "available_ms": L(at)} for t, at in CHAPTERS],
         "camera_track": camera(),
         "playback_track": [{"start_ms": L(a), "end_ms": L(b), "speed": s} for a, b, s in PACING],

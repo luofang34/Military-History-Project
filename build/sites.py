@@ -50,11 +50,43 @@ ZEROS = ZERO_1 + ZERO_2
 ENGAGED = set(KILLER + BETTYS + ZEROS)
 
 
+# Pilots' names follow the 13th Fighter Command roster and the Japanese escort accounts;
+# Japanese names are family name first.
+NAMES = {
+    "MITCHELL": "John W. Mitchell", "JACOBSON": "Julius Jacobson", "CANNING": "Douglas S. Canning",
+    "GOERKE": "Delton C. Goerke", "KITTEL": "Louis R. Kittel", "WHITTAKER": "Gordon Whittaker",
+    "AMES": "Roger J. Ames", "GRAEBNER": "Lawrence A. Graebner", "ANGLIN": "Everett H. Anglin",
+    "SMITH": "William E. Smith", "LONG": "Albert R. Long", "STRATTON": "Eldon E. Stratton",
+    "LANPHIER": "Thomas G. Lanphier Jr.", "BARBER": "Rex T. Barber", "HOLMES": "Besby F. Holmes",
+    "HINE": "Raymond K. Hine", "MOORE": "Joseph F. Moore", "MCLANAHAN": "James D. McLanahan",
+    YAMAMOTO: "T1-323 · Adm. Yamamoto Isoroku", UGAKI: "T1-326 · V.Adm. Ugaki Matome",
+    "MORISAKI": "Morisaki Takeshi", "TSUJINOUE": "Tsujinoue Toyomitsu", "SUGITA": "Sugita Shōichi",
+    "HIDAKA": "Hidaka Yoshimi", "OKAZAKI": "Okazaki", "YANAGIYA": "Yanagiya Kenji",
+}
+
+# Declared formations; members are drawn as one symbol when they overlap on screen.
+FORMATIONS = [
+    ("MITCHELL FLIGHT", "Mitchell's flight", FRIENDLY_FIGHTER, MITCHELL_FLIGHT),
+    ("KITTEL FLIGHT", "Kittel's flight", FRIENDLY_FIGHTER, KITTEL_FLIGHT),
+    ("ANGLIN FLIGHT", "Anglin's flight", FRIENDLY_FIGHTER, ANGLIN_FLIGHT),
+    # As briefed, before Moore and McLanahan dropped out and Holmes and Hine replaced them.
+    ("ATTACK SECTION", "Lanphier's attack section", FRIENDLY_FIGHTER, KILLER + ABORTS),
+    ("BETTYS", "705th Kōkūtai G4M1 pair", HOSTILE_BOMBER, BETTYS),
+    ("ZERO SECTION 1", "Morisaki's section", HOSTILE_FIGHTER, ZERO_1),
+    ("ZERO SECTION 2", "Hidaka's section", HOSTILE_FIGHTER, ZERO_2),
+]
+
+
 def entities():
-    rows = [(e, FRIENDLY_FIGHTER) for e in P38S]
-    rows += [(e, HOSTILE_BOMBER) for e in BETTYS]
-    rows += [(e, HOSTILE_FIGHTER) for e in ZEROS]
-    return [{"id": e, "sidc": s, "camera": False} for e, s in rows]
+    parent = {member: group for group, _, _, members in FORMATIONS for member in members}
+    rows = [(e, FRIENDLY_FIGHTER, "P-38G") for e in P38S]
+    rows += [(e, HOSTILE_BOMBER, "G4M1") for e in BETTYS]
+    rows += [(e, HOSTILE_FIGHTER, "A6M") for e in ZEROS]
+    out = [{"id": e, "sidc": s, "camera": False, "name": NAMES[e], "kind": k, "parent": parent[e]}
+           for e, s, k in rows]
+    out += [{"id": g, "sidc": s, "camera": False, "name": n, "kind": "formation",
+             "quantity": len(members)} for g, n, s, members in FORMATIONS]
+    return out
 
 
 def unix_ms():
