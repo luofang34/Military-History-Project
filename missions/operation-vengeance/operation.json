@@ -1,0 +1,788 @@
+{
+  "format": "sokoly-operation",
+  "version": 3,
+  "id": "operation-vengeance",
+  "name": "Operation Vengeance",
+  "duration_ms": 9630000,
+  "time_origin": "18 April 1943 07:24:30 Henderson Field time (UTC+11), the clock of the 13th Fighter Command interception report; Japanese records use Tokyo time (UTC+9)",
+  "time": {
+    "range": {
+      "start": 0,
+      "end": 9630000
+    },
+    "anchor": {
+      "at": 0,
+      "unix_ms": -842844930000,
+      "source": "13th Fighter Command 'Fighter Interception' report, 18 Apr 1943: take-off 0725, interception 0935 Henderson Field time",
+      "source_scale": "utc",
+      "uncertainty_ms": 60000,
+      "resolution_ms": 60000,
+      "original_calendar": "1943-04-18 Henderson Field time (UTC+11)"
+    },
+    "zone": {
+      "kind": "fixed",
+      "seconds": 39600,
+      "source": "US forces in the Solomons kept Henderson Field time (UTC+11); tzdb Pacific/Bougainville gives the Japanese occupation clock"
+    }
+  },
+  "captured_availability": false,
+  "entities": [
+    {
+      "id": "MITCHELL",
+      "sidc": "SFAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "JACOBSON",
+      "sidc": "SFAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "CANNING",
+      "sidc": "SFAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "GOERKE",
+      "sidc": "SFAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "KITTEL",
+      "sidc": "SFAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "WHITTAKER",
+      "sidc": "SFAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "AMES",
+      "sidc": "SFAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "GRAEBNER",
+      "sidc": "SFAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "ANGLIN",
+      "sidc": "SFAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "SMITH",
+      "sidc": "SFAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "LONG",
+      "sidc": "SFAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "STRATTON",
+      "sidc": "SFAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "LANPHIER",
+      "sidc": "SFAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "BARBER",
+      "sidc": "SFAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "HOLMES",
+      "sidc": "SFAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "HINE",
+      "sidc": "SFAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "MOORE",
+      "sidc": "SFAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "MCLANAHAN",
+      "sidc": "SFAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "T1-323 YAMAMOTO",
+      "sidc": "SHAPMFB--------",
+      "camera": false
+    },
+    {
+      "id": "T1-326 UGAKI",
+      "sidc": "SHAPMFB--------",
+      "camera": false
+    },
+    {
+      "id": "MORISAKI",
+      "sidc": "SHAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "TSUJINOUE",
+      "sidc": "SHAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "SUGITA",
+      "sidc": "SHAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "HIDAKA",
+      "sidc": "SHAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "OKAZAKI",
+      "sidc": "SHAPMFF--------",
+      "camera": false
+    },
+    {
+      "id": "YANAGIYA",
+      "sidc": "SHAPMFF--------",
+      "camera": false
+    }
+  ],
+  "media_archive": null,
+  "chapters": [
+    {
+      "title": "Decrypted itinerary",
+      "at_ms": 0,
+      "available_ms": 0
+    },
+    {
+      "title": "Take-off from Fighter Two",
+      "at_ms": 30000,
+      "available_ms": 30000
+    },
+    {
+      "title": "Moore turns back",
+      "at_ms": 690000,
+      "available_ms": 690000
+    },
+    {
+      "title": "Yamamoto departs Lakunai",
+      "at_ms": 2430000,
+      "available_ms": 2430000
+    },
+    {
+      "title": "Wave-top transit",
+      "at_ms": 2640000,
+      "available_ms": 2640000
+    },
+    {
+      "title": "Final leg to Bougainville",
+      "at_ms": 6810000,
+      "available_ms": 6810000
+    },
+    {
+      "title": "Bogeys, eleven o'clock high",
+      "at_ms": 7770000,
+      "available_ms": 7770000
+    },
+    {
+      "title": "Attack on T1-323",
+      "at_ms": 7870000,
+      "available_ms": 7870000
+    },
+    {
+      "title": "T1-326 off Moila Point",
+      "at_ms": 8020000,
+      "available_ms": 8020000
+    },
+    {
+      "title": "Hine missing",
+      "at_ms": 8110000,
+      "available_ms": 8110000
+    },
+    {
+      "title": "Egress",
+      "at_ms": 8280000,
+      "available_ms": 8280000
+    }
+  ],
+  "camera_track": [
+    {
+      "start_ms": 0,
+      "end_ms": 300,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -157.95,
+          "lat": 21.35
+        }
+      },
+      "zoom": 11.5,
+      "pitch": 35,
+      "bearing": 0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 300,
+      "end_ms": 2300,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -157.95,
+          "lat": 21.35
+        }
+      },
+      "zoom": 1.9,
+      "pitch": 0,
+      "bearing": 0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 2000
+    },
+    {
+      "start_ms": 2300,
+      "end_ms": 5500,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 162.0,
+          "lat": -8.0
+        }
+      },
+      "zoom": 1.7,
+      "pitch": 0,
+      "bearing": 0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 3200
+    },
+    {
+      "start_ms": 5500,
+      "end_ms": 7000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 159.8,
+          "lat": -9.3
+        }
+      },
+      "zoom": 6.0,
+      "pitch": 0,
+      "bearing": 0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 1500
+    },
+    {
+      "start_ms": 7000,
+      "end_ms": 10000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 160.012,
+          "lat": -9.4265
+        }
+      },
+      "zoom": 14.2,
+      "pitch": 45,
+      "bearing": 340,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 3000,
+      "focus": "MITCHELL"
+    },
+    {
+      "start_ms": 10000,
+      "end_ms": 30000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 160.012,
+          "lat": -9.4265
+        }
+      },
+      "zoom": 14.2,
+      "pitch": 45,
+      "bearing": 340,
+      "orbit_deg_s": -0.1,
+      "transition_ms": 0,
+      "focus": "MITCHELL"
+    },
+    {
+      "start_ms": 30000,
+      "end_ms": 160000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 160.012,
+          "lat": -9.4265
+        }
+      },
+      "zoom": 13.6,
+      "pitch": 50,
+      "bearing": 338.0,
+      "orbit_deg_s": -0.01,
+      "transition_ms": 8000,
+      "focus": "MITCHELL"
+    },
+    {
+      "start_ms": 160000,
+      "end_ms": 240000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 160.006,
+          "lat": -9.4265
+        }
+      },
+      "zoom": 14.4,
+      "pitch": 50,
+      "bearing": 330,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 6000,
+      "focus": "MCLANAHAN"
+    },
+    {
+      "start_ms": 240000,
+      "end_ms": 390000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 160.0,
+          "lat": -9.385
+        }
+      },
+      "zoom": 11.6,
+      "pitch": 35,
+      "bearing": 300,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 40000,
+      "focus": "LANPHIER"
+    },
+    {
+      "start_ms": 390000,
+      "end_ms": 660000,
+      "target": {
+        "kind": "entity",
+        "value": "MITCHELL"
+      },
+      "zoom": 10.4,
+      "pitch": 40,
+      "bearing": 280,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 40000,
+      "focus": "MITCHELL"
+    },
+    {
+      "start_ms": 660000,
+      "end_ms": 810000,
+      "target": {
+        "kind": "entity",
+        "value": "MOORE"
+      },
+      "zoom": 10.8,
+      "pitch": 40,
+      "bearing": 110,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 20000,
+      "focus": "MOORE"
+    },
+    {
+      "start_ms": 810000,
+      "end_ms": 2400000,
+      "target": {
+        "kind": "entity",
+        "value": "MITCHELL"
+      },
+      "zoom": 8.3,
+      "pitch": 25,
+      "bearing": 280,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 120000,
+      "focus": "MITCHELL"
+    },
+    {
+      "start_ms": 2400000,
+      "end_ms": 2520000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 152.183,
+          "lat": -4.217
+        }
+      },
+      "zoom": 13.8,
+      "pitch": 50,
+      "bearing": 150,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 0,
+      "focus": "MORISAKI"
+    },
+    {
+      "start_ms": 2520000,
+      "end_ms": 2640000,
+      "target": {
+        "kind": "entity",
+        "value": "T1-323 YAMAMOTO"
+      },
+      "zoom": 12.6,
+      "pitch": 45,
+      "bearing": 140,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 40000,
+      "focus": "T1-323 YAMAMOTO"
+    },
+    {
+      "start_ms": 2640000,
+      "end_ms": 3930000,
+      "target": {
+        "kind": "entity",
+        "value": "T1-323 YAMAMOTO"
+      },
+      "zoom": 8.6,
+      "pitch": 30,
+      "bearing": 130,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 180000,
+      "focus": "T1-323 YAMAMOTO"
+    },
+    {
+      "start_ms": 3930000,
+      "end_ms": 5250000,
+      "target": {
+        "kind": "entity",
+        "value": "MITCHELL"
+      },
+      "zoom": 8.5,
+      "pitch": 25,
+      "bearing": 300,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 0,
+      "focus": "MITCHELL"
+    },
+    {
+      "start_ms": 5250000,
+      "end_ms": 6210000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 156.3,
+          "lat": -7.6
+        }
+      },
+      "zoom": 6.4,
+      "pitch": 10,
+      "bearing": 0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 240000
+    },
+    {
+      "start_ms": 6210000,
+      "end_ms": 7050000,
+      "target": {
+        "kind": "entity",
+        "value": "MITCHELL"
+      },
+      "zoom": 8.8,
+      "pitch": 30,
+      "bearing": 330,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 180000,
+      "focus": "MITCHELL"
+    },
+    {
+      "start_ms": 7050000,
+      "end_ms": 7410000,
+      "target": {
+        "kind": "entity",
+        "value": "T1-323 YAMAMOTO"
+      },
+      "zoom": 9.6,
+      "pitch": 40,
+      "bearing": 130,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 0,
+      "focus": "T1-323 YAMAMOTO"
+    },
+    {
+      "start_ms": 7410000,
+      "end_ms": 7650000,
+      "target": {
+        "kind": "entity",
+        "value": "MITCHELL"
+      },
+      "zoom": 10.8,
+      "pitch": 50,
+      "bearing": 40,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 0,
+      "focus": "MITCHELL"
+    },
+    {
+      "start_ms": 7650000,
+      "end_ms": 7770000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 155.37,
+          "lat": -6.745
+        }
+      },
+      "zoom": 12.3,
+      "pitch": 50,
+      "bearing": 30,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 60000,
+      "focus": "CANNING"
+    },
+    {
+      "start_ms": 7770000,
+      "end_ms": 7870000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 155.39,
+          "lat": -6.76
+        }
+      },
+      "zoom": 12.6,
+      "pitch": 50,
+      "bearing": 30,
+      "orbit_deg_s": 0.12,
+      "transition_ms": 20000,
+      "focus": "CANNING"
+    },
+    {
+      "start_ms": 7870000,
+      "end_ms": 7930000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 155.432,
+          "lat": -6.765
+        }
+      },
+      "zoom": 13.6,
+      "pitch": 55,
+      "bearing": 50,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 10000,
+      "focus": "LANPHIER"
+    },
+    {
+      "start_ms": 7930000,
+      "end_ms": 8000000,
+      "target": {
+        "kind": "entity",
+        "value": "BARBER"
+      },
+      "zoom": 13.8,
+      "pitch": 55,
+      "bearing": 100,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 8000,
+      "focus": "BARBER"
+    },
+    {
+      "start_ms": 8000000,
+      "end_ms": 8020000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 155.55228,
+          "lat": -6.78608
+        }
+      },
+      "zoom": 14.2,
+      "pitch": 55,
+      "bearing": 110,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 6000,
+      "focus": "T1-323 YAMAMOTO"
+    },
+    {
+      "start_ms": 8020000,
+      "end_ms": 8090000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 155.555,
+          "lat": -6.853
+        }
+      },
+      "zoom": 13.6,
+      "pitch": 55,
+      "bearing": 80,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 8000,
+      "focus": "HOLMES"
+    },
+    {
+      "start_ms": 8090000,
+      "end_ms": 8110000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 155.57,
+          "lat": -6.853
+        }
+      },
+      "zoom": 13.8,
+      "pitch": 55,
+      "bearing": 80,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 6000,
+      "focus": "T1-326 UGAKI"
+    },
+    {
+      "start_ms": 8110000,
+      "end_ms": 8200000,
+      "target": {
+        "kind": "entity",
+        "value": "HINE"
+      },
+      "zoom": 12.4,
+      "pitch": 50,
+      "bearing": 95,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 10000,
+      "focus": "HINE"
+    },
+    {
+      "start_ms": 8200000,
+      "end_ms": 8280000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 155.77,
+          "lat": -6.905
+        }
+      },
+      "zoom": 12.2,
+      "pitch": 45,
+      "bearing": 95,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 10000,
+      "focus": "HINE"
+    },
+    {
+      "start_ms": 8280000,
+      "end_ms": 8850000,
+      "target": {
+        "kind": "entity",
+        "value": "MITCHELL"
+      },
+      "zoom": 9.5,
+      "pitch": 35,
+      "bearing": 150,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 120000,
+      "focus": "MITCHELL"
+    },
+    {
+      "start_ms": 8850000,
+      "end_ms": 9630000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 157.5,
+          "lat": -8.0
+        }
+      },
+      "zoom": 1.8,
+      "pitch": 0,
+      "bearing": 0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 600000
+    }
+  ],
+  "playback_track": [
+    {
+      "start_ms": 0,
+      "end_ms": 12000,
+      "speed": 1
+    },
+    {
+      "start_ms": 12000,
+      "end_ms": 30000,
+      "speed": 6
+    },
+    {
+      "start_ms": 30000,
+      "end_ms": 240000,
+      "speed": 20
+    },
+    {
+      "start_ms": 240000,
+      "end_ms": 390000,
+      "speed": 48
+    },
+    {
+      "start_ms": 390000,
+      "end_ms": 660000,
+      "speed": 64
+    },
+    {
+      "start_ms": 660000,
+      "end_ms": 810000,
+      "speed": 32
+    },
+    {
+      "start_ms": 810000,
+      "end_ms": 2400000,
+      "speed": 64
+    },
+    {
+      "start_ms": 2400000,
+      "end_ms": 2640000,
+      "speed": 24
+    },
+    {
+      "start_ms": 2640000,
+      "end_ms": 7410000,
+      "speed": 64
+    },
+    {
+      "start_ms": 7410000,
+      "end_ms": 7650000,
+      "speed": 32
+    },
+    {
+      "start_ms": 7650000,
+      "end_ms": 7770000,
+      "speed": 12
+    },
+    {
+      "start_ms": 7770000,
+      "end_ms": 7870000,
+      "speed": 6
+    },
+    {
+      "start_ms": 7870000,
+      "end_ms": 8020000,
+      "speed": 3
+    },
+    {
+      "start_ms": 8020000,
+      "end_ms": 8110000,
+      "speed": 3
+    },
+    {
+      "start_ms": 8110000,
+      "end_ms": 8280000,
+      "speed": 8
+    },
+    {
+      "start_ms": 8280000,
+      "end_ms": 9630000,
+      "speed": 64
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+#!/bin/sh
+set -eu
+repo=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+app=${SOKOLY_APP_REPO:-"$repo/../Sokoly-App"}
+mission=${1:-operation-vengeance}
+if [ "$#" -gt 0 ]; then shift; fi
+case "$mission" in
+  operation-vengeance) ;;
+  *) printf '%s\n' 'Use operation-vengeance' >&2; exit 2 ;;
+esac
+python3 "$repo/verify.py"
+cd "$app"
+exec cargo run --locked --release -p sokoly-app -- \
+  --no-save --settings-file target/examples/history/settings.json \
+  --operation "$repo/missions/$mission" --recorded-path "$@"
