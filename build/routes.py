@@ -144,7 +144,8 @@ def japanese_tracks():
         "HIDAKA": (750, -650), "OKAZAKI": (860, -740), "YANAGIYA": (640, -740),
     }
     runway_end = offset(LAKUNAI, 700, -900)
-    lead = Track().add(L("08:06:00"), offset(LAKUNAI, 0, 600), 0)
+    lead = Track().add(L("08:04:30"), offset(LAKUNAI, 0, 600), 0)
+    lead.add(L("08:06:00"), offset(LAKUNAI, 0, 600), 0)
     lead.add(L("08:06:35"), runway_end, 0)
     climb_out, landfall = JAPANESE_ROUTE[0], JAPANESE_ROUTE[1]
     cruise_from = destination(climb_out, bearing_deg(climb_out, landfall),
@@ -166,14 +167,17 @@ def japanese_tracks():
         return out
 
     tracks = {YAMAMOTO: lead}
-    ugaki = Track().add(L("08:06:40"), offset(LAKUNAI, -60, 600), 0)
+    ugaki = Track().add(L("08:04:30"), offset(LAKUNAI, -60, 600), 0)
+    ugaki.add(L("08:06:40"), offset(LAKUNAI, -60, 600), 0)
     ugaki.add(L("08:07:15"), offset(runway_end, -60, 0), 0)
     for wp in follower(-160, -120, 0, L("08:08:30")).waypoints:
         ugaki.add(wp.at_ms, wp.point, wp.alt_m)
     tracks[UGAKI] = ugaki
     for i, (entity, (right, ahead)) in enumerate(zero_slots.items()):
         rolling = L("08:05:00") + 10_000 * i
-        z = Track().add(rolling, offset(LAKUNAI, 40 * i, 600), 0)
+        z = Track().add(L("08:04:30"), offset(LAKUNAI, 40 * i, 600), 0)
+        if rolling > L("08:04:30"):
+            z.add(rolling, offset(LAKUNAI, 40 * i, 600), 0)
         z.add(rolling + 25_000, offset(runway_end, 40 * i, 0), 0)
         for wp in follower(right, ahead, ZERO_ABOVE_M, rolling + 150_000).waypoints:
             z.add(wp.at_ms, wp.point, wp.alt_m)

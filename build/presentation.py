@@ -56,13 +56,13 @@ BRIEFINGS = [
      "Lt James McLanahan blows a tyre on the take-off roll. Holmes takes his place in "
      "Lanphier's attack section."),
     ("MOORE", "07:36:00", "07:45:00", "wikipedia-operation-vengeance",
-     "Lt Joseph Moore's drop tanks will not feed; he turns back and Hine moves up. Sixteen "
+     "Lt Joseph Moore's drop tanks will not feed; he turns back and Hine fills the fourth attack slot. Sixteen "
      "P-38s continue under radio silence, 10 to 30 ft above the sea."),
     ("GOERKE", "07:45:00", "08:04:30", "reconstruction",
      "Mitchell navigates by compass, clock and airspeed. Track reconstructed from the "
      "published 290° and 305° legs read as magnetic headings and Condon's 20 nmi island "
      "stand-off; it reproduces the reported 08:20 turn 180 mi west of Henderson and about "
-     "435 mi at 200 mph. Position bound ±20 km."),
+     "435 mi at about 215 mph (the report implies about 200). Position bound ±20 km."),
     ("MORISAKI", "08:04:30", "08:08:30", PW,
      "Lakunai, Rabaul, 06:05–06:10 Tokyo time: Yamamoto boards G4M1 T1-323 (FWO Takeo "
      "Kotani); Vice Admiral Ugaki follows in T1-326 (FPO2c Hiroshi Hayashi). Six A6M Zeros "
@@ -72,7 +72,7 @@ BRIEFINGS = [
      "sections of three. Ceiling and visibility unlimited."),
     ("KITTEL", "08:30:00", "08:52:00", "historynet-death-by-p38",
      "08:20 and 08:47: the P-38s turn north-west, then again abreast of Vella Lavella, "
-     "keeping clear of Japanese coast-watchers on New Georgia and the Treasuries."),
+     "keeping clear of Japanese lookouts on New Georgia and the Treasuries."),
     ("WHITTAKER", "08:52:00", "09:18:00", "air-and-space-forces",
      "Mitchell's plan aims for 09:35, ten minutes before the expected landing at Ballale "
      "(09:45; the decrypt itself gives 08:00 Tokyo, i.e. 10:00 here). Both formations "
