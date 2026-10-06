@@ -163,6 +163,11 @@ class Emitter:
         return self._event(source, entity, at, at, valid_until, provenance, evidence,
                            {"kind": "position", "data": None})
 
+    def condition(self, source, entity, at, condition, provenance, evidence):
+        """A persistent MIL-STD-2525 condition report: fully_capable, damaged or destroyed."""
+        return self._event(source, entity, at, at, None, provenance, evidence,
+                           {"kind": "condition", "data": condition})
+
     def note(self, source, entity, at, until, text, provenance, evidence, occurrence=None):
         return self._event(source, entity, at, at, until, provenance, evidence,
                            {"kind": "annotation", "data": text}, occurrence)

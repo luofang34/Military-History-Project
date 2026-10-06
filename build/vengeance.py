@@ -92,6 +92,17 @@ def endings(em, tracks):
            "reported", [], reference="wreck")
     em.fix("pacific-wrecks-t1-326", UGAKI, L("09:39:20"), DITCH_T1_326, 0, 500.0, None,
            "reported", [], reference="ditching")
+    # Damage as reported: Barber's astern hits, Holmes's attack off Moila Point, debris
+    # from T1-326 holing Barber, and Hine trailing smoke (Pacific Wrecks, MACR 609).
+    for source, entity, at, condition in [
+        ("pacific-wrecks-2656", YAMAMOTO, "09:37:00", "damaged"),
+        ("pacific-wrecks-2656", YAMAMOTO, "09:38:00", "destroyed"),
+        ("pacific-wrecks-t1-326", UGAKI, "09:38:20", "damaged"),
+        ("pacific-wrecks-t1-326", UGAKI, "09:39:20", "destroyed"),
+        ("pacific-wrecks", "BARBER", "09:38:55", "damaged"),
+        ("macr-599-609", "HINE", "09:40:00", "damaged"),
+    ]:
+        em.condition(source, entity, L(at), condition, "reported", [])
     hine_end = tracks["HINE"].end
     em.gap("macr-599-609", "HINE", hine_end + 1, None, "reported", [])
     for zero in ZEROS:
