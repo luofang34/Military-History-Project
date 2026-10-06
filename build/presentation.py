@@ -86,26 +86,32 @@ BRIEFINGS = [
      "descending through 4,500 ft. Tanks drop and Mitchell's twelve climb toward 18,000 ft. "
      "Holmes's tanks hang; he and Hine turn out to sea to shake them."),
     ("LANPHIER", "09:35:40", "09:36:40", "wikipedia-operation-vengeance",
-     "The escort dives. Lanphier turns head-on into the Zeros; Barber banks hard behind the "
-     "bombers, which split — T1-323 for the jungle, T1-326 for the sea."),
+     "Three Zeros peel down in a string at Lanphier; he turns up into them firing and climbs "
+     "to 6,000 ft. Barber banks hard behind the bombers, which split — T1-323 for the "
+     "jungle, T1-326 for the sea."),
     ("BARBER", "09:36:40", "09:37:40", PW,
-     "Barber fires from directly astern of T1-323; its right engine and tail are hit. "
-     "Inspection of the wreck found only rear-quarter hits."),
+     "Barber fires from directly astern of T1-323 while Zeros make passes on him; its right "
+     "engine and tail are hit. Inspection of the wreck found only rear-quarter hits."),
     (YAMAMOTO, "09:38:00", "09:38:10", PW,
      "T1-323 crashes into the jungle inland of Moila Point (6°47.2'S 155°33.1'E). "
      "Admiral Yamamoto and all ten others aboard are killed."),
     ("HOLMES", "09:38:10", "09:39:20", PW,
-     "Off Moila Point Holmes and Hine catch T1-326 low over the water; Barber joins the attack "
-     "and is hit by its debris."),
+     "Holmes and Hine, back from shedding tanks, drive the Zeros off Barber, then catch "
+     "T1-326 low over the water off Moila Point; Barber joins and is hit by its debris. "
+     "Two Zeros chase Lanphier past Kahili at treetop height; he outruns them with two "
+     "7.7 mm hits in his tailplane."),
     (UGAKI, "09:39:20", "09:39:40", PW,
      "T1-326 ditches about 100 m off Moila Point. Ugaki, Hayashi and Captain Kitamura survive; "
      "11 of 14 aboard die."),
     ("HINE", "09:39:40", "09:42:30", MACR,
-     "Hine, one engine smoking with Zeros behind him, is last seen near Shortland — MACR 599: "
-     "four miles north, MACR 609: south of it, at 09:40. He is never found."),
+     "Past Ballale and Shortland the fighters clash again: Holmes and Barber each fire on a "
+     "Zero, and Sugita hits Hine's left engine. Hine is last seen with Zeros making passes — "
+     "MACR 599: four miles north of Shortland; MACR 609: south of it, 09:40. He is never "
+     "found. Yanagiya has dived to Buin to fire an alarm burst over the airfield."),
     ("GRAEBNER", "09:42:30", "09:52:00", REPORT,
-     "Mitchell turns the flight for home as Kahili's fighters raise dust taking off. "
-     "Claimed: three Bettys and three Zeros. Actual Japanese losses: two Bettys, no Zeros."),
+     "Mitchell calls the flight home as Kahili's fighters raise dust taking off; the cover "
+     "flight never fires. Claimed: three Bettys and three Zeros. Actual Japanese losses: "
+     "two Bettys, no Zeros."),
     ("STRATTON", "09:52:00", "10:05:00", REVIEW,
      "Holmes, nearly dry, lands in the Russell Islands escorted by Canning; the rest are back "
      "at Guadalcanal about 11:40. A Japanese army patrol under Lt Hamasuna finds the wreck on "

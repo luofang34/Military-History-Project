@@ -72,5 +72,6 @@ the Japanese occupation clock for 1943.
 - Air & Space Forces Magazine, "Magic and Lightning" and "The Man Who Shot Down Yamamoto" — https://www.airandspaceforces.com/article/0306yamamoto/, https://www.airandspaceforces.com/article/the-man-who-shot-down-yamamoto/
 - HistoryNet, "Death by P-38" — https://historynet.com/death-by-p-38/
 - Roger Ames via Warfare History Network — https://warfarehistorynetwork.com/article/killing-yamamoto-operation-vengeance-from-roger-ames-cockpit/
+- Kenji Yanagiya interview (Yoshimura, 1970s) and Shoichi Sugita account, via ja.wikipedia 柳谷謙治 / 杉田庄一
 - Barber v. Widnall, 78 F.3d 1419 (9th Cir. 1996) — https://law.resource.org/pub/us/case/reporter/F3/078/78.F3d.1419.93-36200.html
 - Coastlines used to check placements: Natural Earth 10 m; © OpenStreetMap contributors (ODbL). No map data is bundled.

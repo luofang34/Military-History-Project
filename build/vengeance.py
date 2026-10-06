@@ -105,6 +105,9 @@ def emit_track(em, entity, track, final_valid, until=None):
         t = nxt
 
 
+REPORT_13FC = "13th-fighter-command-report"
+
+
 def endings(em, tracks):
     """Known wreck sites persist; missing aircraft and untracked escorts become gaps."""
     em.fix("pacific-wrecks-2656", YAMAMOTO, L("09:38:00"), CRASH_T1_323, 0, 100.0, None,
@@ -119,15 +122,19 @@ def endings(em, tracks):
         ("pacific-wrecks-t1-326", UGAKI, "09:38:20", "damaged"),
         ("pacific-wrecks-t1-326", UGAKI, "09:39:20", "destroyed"),
         ("pacific-wrecks", "BARBER", "09:38:55", "damaged"),
+        (REPORT_13FC, "LANPHIER", "09:38:40", "damaged"),
         ("macr-599-609", "HINE", "09:40:00", "damaged"),
     ]:
         em.condition(source, entity, L(at), condition, "reported", [])
     hine_end = tracks["HINE"].end
     em.gap("macr-599-609", "HINE", hine_end + 1, None, "reported", [])
     for zero in ZEROS:
-        em.gap("reconstruction-engagement", zero, tracks[zero].end + 1, None, "reconstructed", [])
-    em.note("wikipedia-operation-vengeance", "TSUJINOUE", L("09:42:00"), L("09:52:00"),
-            "Escort tracks end here. No Zero was lost; one damaged fighter was repaired at Buin.",
+        if zero != "OKAZAKI":  # landed at Ballale; his final fix persists
+            em.gap("reconstruction-engagement", zero, tracks[zero].end + 1, None,
+                   "reconstructed", [])
+    em.note("yanagiya-interview", "TSUJINOUE", L("09:42:00"), L("09:52:00"),
+            "Escort tracks end here. All six Zeros survived: Okazaki landed at Ballale with "
+            "engine trouble, the rest at Buin; Yanagiya, last down, about 10:20.",
             "reported", [])
     return hine_end
 
@@ -140,7 +147,7 @@ def main():
     tracks.update(japanese)
     engagement.engagement(tracks, lead)
     em = Emitter(OP)
-    open_ended = {"MCLANAHAN", "MOORE"}
+    open_ended = {"MCLANAHAN", "MOORE", "OKAZAKI"}
     for entity, track in tracks.items():
         final = None if entity in open_ended else track.end + 1
         if track.end >= DURATION:
