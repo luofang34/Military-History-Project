@@ -86,7 +86,7 @@ BRIEFINGS = [
      "descending through 4,500 ft. Tanks drop and Mitchell's twelve climb toward 18,000 ft. "
      "Holmes's tanks hang; he and Hine turn out to sea to shake them."),
     ("LANPHIER", "09:35:40", "09:36:40", "wikipedia-operation-vengeance",
-     "Three Zeros peel down in a string at Lanphier; he turns up into them firing and climbs "
+     "Three Zeros (which section is inferred) peel down in a string at Lanphier; he turns up into them firing and climbs "
      "to 6,000 ft. Barber banks hard behind the bombers, which split — T1-323 for the "
      "jungle, T1-326 for the sea."),
     ("BARBER", "09:36:40", "09:37:40", PW,
@@ -105,7 +105,7 @@ BRIEFINGS = [
      "11 of 14 aboard die."),
     ("HINE", "09:39:40", "09:42:30", MACR,
      "Past Ballale and Shortland the fighters clash again: Holmes and Barber each fire on a "
-     "Zero, and Sugita hits Hine's left engine. Hine is last seen with Zeros making passes — "
+     "Zero, and Sugita (by his account) hits Hine's left engine. Hine is last seen with Zeros making passes — "
      "MACR 599: four miles north of Shortland; MACR 609: south of it, 09:40. He is never "
      "found. Yanagiya has dived to Buin to fire an alarm burst over the airfield."),
     ("GRAEBNER", "09:42:30", "09:52:00", REPORT,
