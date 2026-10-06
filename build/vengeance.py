@@ -14,7 +14,7 @@ import engagement  # noqa: E402
 import presentation  # noqa: E402
 import routes  # noqa: E402
 from track import Emitter  # noqa: E402
-from sites import (OP, L, DURATION, ENGAGED, BETTYS, ZEROS, YAMAMOTO, UGAKI,  # noqa: E402
+from sites import (OP, L, DURATION, ENGAGED, BETTYS, ZEROS, P38S, YAMAMOTO, UGAKI,  # noqa: E402
                    CRASH_T1_323, DITCH_T1_326, entities, unix_ms)
 
 
@@ -22,17 +22,21 @@ from sites import (OP, L, DURATION, ENGAGED, BETTYS, ZEROS, YAMAMOTO, UGAKI,  # 
 # Intervals keep on-screen motion to a few pixels per update at each shot's zoom and speed.
 SAMPLING = [
     ("07:24:30", "07:28:30", 500, 500),
-    ("07:28:30", "07:38:00", 2000, 2000),
+    ("07:28:30", "07:31:00", 2000, 2000),
+    ("07:31:00", "07:35:30", 1000, 1000),
+    ("07:35:30", "07:38:00", 1000, 2000),
     ("07:38:00", "08:04:30", 2000, 10_000),
     ("08:04:30", "08:08:30", 500, 10_000),
     ("08:08:30", "09:28:00", 2000, 10_000),
-    ("09:28:00", "09:32:00", 2000, 2000),
+    ("09:28:00", "09:32:00", 1000, 1000),
     ("09:32:00", "09:34:00", 500, 1000),
     ("09:34:00", "09:35:40", 500, 2000),
     ("09:35:40", "09:38:10", 200, 2000),
     ("09:38:10", "09:39:40", 300, 2000),
     ("09:39:40", "09:42:30", 500, 2000),
-    ("09:42:30", "10:05:00", 2000, 10_000),
+    # Egress shot follows Mitchell at zoom 9.5; every P-38 in frame moves ~1 px per update.
+    ("09:42:30", "09:56:00", 1000, 10_000),
+    ("09:56:00", "10:05:00", 2000, 10_000),
 ]
 FOLLOWED = {"MITCHELL", "MOORE", "MCLANAHAN", "T1-323 YAMAMOTO"}
 JAPANESE_DEPARTURE = ("08:04:30", "08:08:30")
@@ -49,7 +53,9 @@ def step_for(entity, t):
         return 3000
     for start, until, close, other in SAMPLING:
         if L(start) <= t < L(until):
-            dense = entity in ENGAGED if start >= "09:32" else entity in FOLLOWED
+            dense = entity in FOLLOWED or (entity in ENGAGED and "09:32" <= start < "09:42:30")
+            if start >= "09:42:30":
+                dense = entity in P38S
             if (start, until) == JAPANESE_DEPARTURE:
                 dense = entity in BETTYS or entity in ZEROS
             if entity in ("HOLMES", "HINE") and "09:34:40" <= start < "09:37:40":
