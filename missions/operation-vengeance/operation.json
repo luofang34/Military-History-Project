@@ -529,17 +529,14 @@
       "start_ms": 7650000,
       "end_ms": 7770000,
       "target": {
-        "kind": "point",
-        "value": {
-          "lon": 155.37,
-          "lat": -6.745
-        }
+        "kind": "entity",
+        "value": "MITCHELL"
       },
-      "zoom": 12.3,
-      "pitch": 50,
-      "bearing": 30,
+      "zoom": 11.4,
+      "pitch": 45,
+      "bearing": 20,
       "orbit_deg_s": 0.0,
-      "transition_ms": 60000,
+      "transition_ms": 40000,
       "focus": "CANNING"
     },
     {
@@ -565,11 +562,11 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": 155.432,
+          "lon": 155.45,
           "lat": -6.765
         }
       },
-      "zoom": 13.6,
+      "zoom": 13.1,
       "pitch": 55,
       "bearing": 50,
       "orbit_deg_s": 0.0,
@@ -630,11 +627,11 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": 155.57,
-          "lat": -6.853
+          "lon": 155.586,
+          "lat": -6.8567
         }
       },
-      "zoom": 13.8,
+      "zoom": 13.4,
       "pitch": 55,
       "bearing": 80,
       "orbit_deg_s": 0.0,

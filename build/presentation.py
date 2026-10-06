@@ -1,5 +1,6 @@
 """Chapters, briefing text, camera shots and pacing for the reconstruction."""
-from sites import L, DURATION, PEARL_HARBOR, LAKUNAI, CRASH_T1_323, YAMAMOTO, UGAKI
+from sites import (L, DURATION, PEARL_HARBOR, LAKUNAI, CRASH_T1_323, DITCH_T1_326, YAMAMOTO,
+                   UGAKI)
 from engagement import HINE_LAST
 
 CHAPTERS = [
@@ -91,7 +92,7 @@ BRIEFINGS = [
      "Barber fires from directly astern of T1-323; its right engine and tail are hit. "
      "Inspection of the wreck found only rear-quarter hits."),
     (YAMAMOTO, "09:38:00", "09:38:10", PW,
-     "T1-323 crashes into the jungle inland of Moila Point (6°47.2′S 155°33.1′E). "
+     "T1-323 crashes into the jungle inland of Moila Point (6°47.2'S 155°33.1'E). "
      "Admiral Yamamoto and all ten others aboard are killed."),
     ("HOLMES", "09:38:10", "09:39:20", PW,
      "Off Moila Point Holmes and Hine catch T1-326 low over the water; Barber joins the attack "
@@ -186,11 +187,11 @@ def camera():
             focus="MITCHELL"),
         cue("09:22:00", "09:28:00", entity(YAMAMOTO), 9.6, 40, 130, focus=YAMAMOTO),
         cue("09:28:00", "09:32:00", entity("MITCHELL"), 10.8, 50, 40, focus="MITCHELL"),
-        cue("09:32:00", "09:34:00", point((155.37, -6.745)), 12.3, 50, 30, transition=60_000,
+        cue("09:32:00", "09:34:00", entity("MITCHELL"), 11.4, 45, 20, transition=40_000,
             focus="CANNING"),
         cue("09:34:00", "09:35:40", point((155.39, -6.76)), 12.6, 50, 30, orbit=0.12,
             transition=20_000, focus="CANNING"),
-        cue("09:35:40", "09:36:40", point((155.432, -6.765)), 13.6, 55, 50, transition=10_000,
+        cue("09:35:40", "09:36:40", point((155.45, -6.765)), 13.1, 55, 50, transition=10_000,
             focus="LANPHIER"),
         cue("09:36:40", "09:37:50", entity("BARBER"), 13.8, 55, 100, transition=8000,
             focus="BARBER"),
@@ -198,7 +199,7 @@ def camera():
             focus=YAMAMOTO),
         cue("09:38:10", "09:39:20", point((155.555, -6.853)), 13.6, 55, 80, transition=8000,
             focus="HOLMES"),
-        cue("09:39:20", "09:39:40", point((155.57, -6.853)), 13.8, 55, 80, transition=6000,
+        cue("09:39:20", "09:39:40", point(DITCH_T1_326), 13.4, 55, 80, transition=6000,
             focus=UGAKI),
         cue("09:39:40", "09:41:10", entity("HINE"), 12.4, 50, 95, transition=10_000,
             focus="HINE"),

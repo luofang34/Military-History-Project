@@ -39,7 +39,14 @@ JAPANESE_DEPARTURE = ("08:04:30", "08:08:30")
 
 
 def step_for(entity, t):
-    """Sampling interval: dense only where the camera is close or following."""
+    """Sampling interval: dense only where the camera is close or following.
+
+    The Japanese formation shares one interval during transit so its members update
+    together while the camera follows T1-323; differing rates read as escorts creeping
+    back and snapping forward.
+    """
+    if (entity in BETTYS or entity in ZEROS) and L("08:08:30") <= t < L("09:32:00"):
+        return 3000
     for start, until, close, other in SAMPLING:
         if L(start) <= t < L(until):
             dense = entity in ENGAGED if start >= "09:32" else entity in FOLLOWED
@@ -67,11 +74,16 @@ def evidence_for(entity, t):
     return "reconstruction-p38-route", 5000.0 if t >= L("09:28:00") else 20_000.0
 
 
-def emit_track(em, entity, track, final_valid):
+def emit_track(em, entity, track, final_valid, until=None):
+    """Samples on a shared time grid so aircraft in one formation update in the same frame.
+    With `until`, the last fix stays valid to that time instead of sampling the end point."""
     t = track.start
-    stop = min(track.end, DURATION)
+    stop = min(track.end if until is None else until, DURATION)
     while True:
-        nxt = min(t + step_for(entity, t), stop) if t < stop else None
+        step = step_for(entity, t)
+        nxt = min((t // step + 1) * step, stop) if t < stop else None
+        if until is not None and nxt == stop:
+            nxt = None
         point, alt = track.at(t)
         if nxt is not None:
             # Hold one fix across stationary spans (parked or stopped aircraft).
@@ -79,7 +91,8 @@ def emit_track(em, entity, track, final_valid):
             if following and following[0].point == point and following[0].alt_m == alt:
                 nxt = min(following[0].at_ms, stop)
         source, bound = evidence_for(entity, t)
-        em.fix(source, entity, t, point, alt, bound, nxt if nxt is not None else final_valid,
+        last = until if until is not None else final_valid
+        em.fix(source, entity, t, point, alt, bound, nxt if nxt is not None else last,
                "reconstructed", [])
         if nxt is None:
             return
@@ -123,12 +136,12 @@ def main():
     em = Emitter(OP)
     open_ended = {"MCLANAHAN", "MOORE"}
     for entity, track in tracks.items():
-        if entity in (YAMAMOTO, UGAKI):
-            track.waypoints.pop()  # the sourced wreck fix replaces the final sample
         final = None if entity in open_ended else track.end + 1
         if track.end >= DURATION:
             final = DURATION + 1
-        emit_track(em, entity, track, final)
+        # The sourced wreck fix takes over exactly when the reconstructed flight ends.
+        until = track.end if entity in (YAMAMOTO, UGAKI) else None
+        emit_track(em, entity, track, final, until)
     hine_end = endings(em, tracks)
     assert hine_end > L("09:41:10"), "the HINE camera cue must end while he is still tracked"
     presentation.annotations(em)
