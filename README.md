@@ -7,7 +7,7 @@ files; [`catalog.json`](catalog.json) lists them.
 
 | Mission | Event | Open |
 | --- | --- | --- |
-| [Operation Vengeance](missions/operation-vengeance/README.md) | Interception of Admiral Yamamoto over Bougainville, 18 April 1943 | [replay](https://history.sokoly.app/operation-vengeance/) |
+| [Operation Vengeance](https://github.com/luofang34/Military-History-Project/tree/master/missions/operation-vengeance) | Interception of Admiral Yamamoto over Bougainville, 18 April 1943 | [replay](https://history.sokoly.app/operation-vengeance/) |
 
 ## Opening a mission
 
