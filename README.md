@@ -25,3 +25,9 @@ Create `missions/<id>/` with the package, a README carrying its method and sourc
 its generator; shared track and event helpers are in `tools/`. Add it to `catalog.json`,
 then run `python3 verify.py`, which checks every mission's camera and pacing coverage and
 that the catalog matches the folders.
+
+## Licence
+
+The reconstructions, packages and code here are dedicated to the public domain under
+[CC0 1.0](LICENSE). Works cited in each mission's sources keep their own terms; briefings
+quote them only in short attributed passages.
