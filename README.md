@@ -7,14 +7,15 @@ files; [`catalog.json`](catalog.json) lists them.
 
 | Mission | Event | Open |
 | --- | --- | --- |
-| [Operation Vengeance](missions/operation-vengeance/) | Interception of Admiral Yamamoto over Bougainville, 18 April 1943 | [replay](https://luofang34.github.io/Sokoly-App/?operation=https://luofang34.github.io/Military-History-Project/missions/operation-vengeance&recorded-path) |
+| [Operation Vengeance](missions/operation-vengeance/README.md) | Interception of Admiral Yamamoto over Bougainville, 18 April 1943 | [replay](https://history.sokoly.app/operation-vengeance/) |
 
 ## Opening a mission
 
-The repository is published with GitHub Pages, so a mission folder's URL opens in the
-web viewer: `https://luofang34.github.io/Sokoly-App/?operation=<folder URL>`, plus `&recorded-path` for the story
-camera and `&at=SECONDS` to start elsewhere. Packages must not use Git LFS, since Pages
-serves LFS pointers rather than their content.
+[history.sokoly.app](https://history.sokoly.app/) hosts this project description.
+Each `/<mission-id>/` link launches its replay in the shared [Sokoly viewer](https://sokoly.app/)
+with the story camera. Add `?at=SECONDS` to start elsewhere or `?paused` to open paused.
+The viewer URL is `https://sokoly.app/?operation=<package URL>&recorded-path`.
+Packages must not use Git LFS, since Pages serves LFS pointers rather than their content.
 
 To play one in the native viewer, with its checkout beside this one (or `VIEWER_REPO`
 pointing at it): `./run operation-vengeance`, optionally with `--at SECONDS --paused`.
@@ -23,8 +24,9 @@ pointing at it): `./run operation-vengeance`, optionally with `--at SECONDS --pa
 
 Create `missions/<id>/` with the package, a README carrying its method and sources, and
 its generator; shared track and event helpers are in `tools/`. Add it to `catalog.json`,
-then run `python3 verify.py`, which checks every mission's camera and pacing coverage and
-that the catalog matches the folders.
+and add a `/<id>/index.html` launch page pointing at its package on `history.sokoly.app`.
+Then run `python3 verify.py`, which checks camera and pacing coverage, the catalog and
+public replay links. The Pages homepage renders this README.
 
 ## Licence
 

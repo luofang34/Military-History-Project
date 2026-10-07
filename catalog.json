@@ -2,7 +2,7 @@
   "format": "mission-catalog",
   "version": 1,
   "name": "Military History Project",
-  "viewer": "https://luofang34.github.io/Sokoly-App/",
+  "viewer": "https://sokoly.app/",
   "missions": [
     {
       "id": "operation-vengeance",

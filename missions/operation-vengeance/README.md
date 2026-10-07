@@ -3,8 +3,8 @@
 Interception of Admiral Yamamoto over Bougainville, 18 April 1943, from the P-38
 take-off at Fighter Two to egress at 10:05. Clock: Henderson Field time (UTC+11).
 
-[Open the replay in a browser](https://luofang34.github.io/Sokoly-App/?operation=https://luofang34.github.io/Military-History-Project/missions/operation-vengeance&recorded-path) ·
-start at the 09:34 sighting with `&at=7770`.
+[Open the replay in a browser](https://history.sokoly.app/operation-vengeance/) ·
+start at the 09:34 sighting with `?at=7770`.
 
 This folder is the package (`operation.json`, `events.jsonl`,
 `presentations/default.json`) and its generator, `build/`. Regenerate with

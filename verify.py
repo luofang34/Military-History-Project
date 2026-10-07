@@ -11,6 +11,8 @@ import json
 import sys
 from collections import defaultdict
 from pathlib import Path
+from html.parser import HTMLParser
+from urllib.parse import parse_qs, urljoin, urlsplit
 
 root = Path(__file__).resolve().parent
 
@@ -74,7 +76,47 @@ def catalog_lists_every_mission():
     return listed == present
 
 
+class LaunchLinkParser(HTMLParser):
+    """Read the accessible replay link, also used by the automatic launcher."""
+
+    def __init__(self):
+        super().__init__()
+        self.href = None
+
+    def handle_starttag(self, tag, attrs):
+        attributes = dict(attrs)
+        if tag == "a" and attributes.get("id") == "launch":
+            self.href = attributes.get("href")
+
+
+def replay_links_match_catalog():
+    """Keep each public launcher connected to its catalogued operation package."""
+    catalog = json.loads((root / "catalog.json").read_text())
+    origin = f"https://{(root / 'CNAME').read_text().strip()}/"
+    viewer = urlsplit(catalog["viewer"])
+    problems = []
+    for mission in catalog["missions"]:
+        path = root / mission["id"] / "index.html"
+        if not path.is_file():
+            problems.append(f"{mission['id']}: missing public replay page")
+            continue
+        link = LaunchLinkParser()
+        link.feed(path.read_text())
+        target = urlsplit(link.href or "")
+        options = parse_qs(target.query, keep_blank_values=True)
+        if (target.scheme, target.netloc, target.path) != (viewer.scheme, viewer.netloc, viewer.path):
+            problems.append(f"{mission['id']}: replay link does not use the catalog viewer")
+        if options.get("operation") != [urljoin(origin, mission["package"])]:
+            problems.append(f"{mission['id']}: replay link does not open its published package")
+        if "recorded-path" not in options:
+            problems.append(f"{mission['id']}: replay link does not enable the story camera")
+    for problem in problems:
+        print(problem, file=sys.stderr)
+    return not problems
+
+
 if __name__ == "__main__":
     ok = all([check(m) for m in sorted((root / "missions").iterdir()) if m.is_dir()])
     ok = catalog_lists_every_mission() and ok
+    ok = replay_links_match_catalog() and ok
     sys.exit(0 if ok else 1)
