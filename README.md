@@ -12,7 +12,7 @@ files; [`catalog.json`](catalog.json) lists them.
 ## Opening a mission
 
 [history.sokoly.app](https://history.sokoly.app/) hosts this project description.
-Each `/<mission-id>/` link launches its replay in the shared [Sokoly viewer](https://sokoly.app/)
+Each `/<mission-id>/` link launches its replay in [sokoly.app](https://sokoly.app/)
 with the story camera. Add `?at=SECONDS` to start elsewhere or `?paused` to open paused.
 The viewer URL is `https://sokoly.app/?operation=<package URL>&recorded-path`.
 Packages must not use Git LFS, since Pages serves LFS pointers rather than their content.
