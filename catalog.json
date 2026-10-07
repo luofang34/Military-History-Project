@@ -1,0 +1,15 @@
+{
+  "format": "sokoly-catalog",
+  "version": 1,
+  "name": "Sokoly History",
+  "viewer": "https://luofang34.github.io/Sokoly-App/",
+  "missions": [
+    {
+      "id": "operation-vengeance",
+      "name": "Operation Vengeance",
+      "summary": "Interception of Admiral Yamamoto over Bougainville, 18 April 1943",
+      "package": "missions/operation-vengeance",
+      "open": "?recorded-path"
+    }
+  ]
+}

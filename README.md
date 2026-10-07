@@ -1,13 +1,21 @@
-# Sokoly History Examples
+# Sokoly History
 
 Historical reconstructions packaged as Sokoly operations. No renderer lives here;
-the ordinary Sokoly App plays each mission.
+the Sokoly App plays each mission, in a browser or natively. Every mission is a folder
+under `missions/` and is listed in [`catalog.json`](catalog.json).
 
-| Mission | Event | Clock |
-| --- | --- | --- |
-| `operation-vengeance` | Interception of Admiral Yamamoto over Bougainville, 18 April 1943 | 07:24:30–10:05 Henderson Field time (UTC+11) |
+| Mission | Event | Clock | Open |
+| --- | --- | --- | --- |
+| `operation-vengeance` | Interception of Admiral Yamamoto over Bougainville, 18 April 1943 | 07:24:30–10:05 Henderson Field time (UTC+11) | [in the browser](https://luofang34.github.io/Sokoly-App/?operation=https://luofang34.github.io/Sokoly-History/missions/operation-vengeance&recorded-path) |
 
-## Open
+## Open in a browser
+
+This repository is published with GitHub Pages, so a package's folder URL opens in the
+shared viewer: `https://luofang34.github.io/Sokoly-App/?operation=<folder URL>`, plus
+`&recorded-path` for the story camera and `&at=SECONDS` to start elsewhere. Packages must
+not use Git LFS, since Pages serves LFS pointers rather than their content.
+
+## Open natively
 
 With Sokoly-App in the adjacent directory:
 

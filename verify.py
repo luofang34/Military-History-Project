@@ -62,6 +62,19 @@ def check(mission):
     return not problems
 
 
+def catalog_lists_every_mission():
+    """Each mission folder appears in catalog.json under its folder name, and nothing else."""
+    catalog = json.loads((root / "catalog.json").read_text())
+    listed = {m["package"] for m in catalog["missions"]}
+    present = {f"missions/{m.name}" for m in (root / "missions").iterdir() if m.is_dir()}
+    for missing in sorted(present - listed):
+        print(f"catalog.json does not list {missing}", file=sys.stderr)
+    for stale in sorted(listed - present):
+        print(f"catalog.json lists missing {stale}", file=sys.stderr)
+    return listed == present
+
+
 if __name__ == "__main__":
     ok = all([check(m) for m in sorted((root / "missions").iterdir()) if m.is_dir()])
+    ok = catalog_lists_every_mission() and ok
     sys.exit(0 if ok else 1)
