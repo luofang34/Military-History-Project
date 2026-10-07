@@ -96,6 +96,29 @@ class Track:
         b, _ = self.at(min(self.end, t + dt))
         return bearing_deg(a, b) if distance_m(a, b) > 1 else 0.0
 
+    def round_corners(self, t0, t1, passes=2):
+        """Cuts the corners of the path strictly between `t0` and `t1` (Chaikin, in time,
+        position and height), so turns read as turns; waypoints at or outside the bounds
+        stay where the sources or the choreography put them."""
+        for _ in range(passes):
+            inside = [i for i, w in enumerate(self.waypoints) if t0 < w.at_ms < t1]
+            if not inside:
+                return self
+            first, last = inside[0] - 1, inside[-1] + 1
+            if first < 0 or last >= len(self.waypoints):
+                return self
+            span = self.waypoints[first:last + 1]
+            cut = [span[0]]
+            for a, b in zip(span, span[1:]):
+                for f in (0.25, 0.75):
+                    at = round(a.at_ms + (b.at_ms - a.at_ms) * f)
+                    if cut[-1].at_ms < at < span[-1].at_ms:
+                        cut.append(Waypoint(at, slerp(a.point, b.point, f),
+                                            a.alt_m + (b.alt_m - a.alt_m) * f))
+            cut.append(span[-1])
+            self.waypoints[first:last + 1] = cut
+        return self
+
     def shifted(self, east_m, north_m):
         """A formation slot rotated with the instantaneous heading of this track."""
         out = Track()

@@ -119,6 +119,12 @@ BRIEFINGS = [
      "officially shared between Lanphier and Barber."),
 ]
 
+# What the cover flight does while the attack section fights below it.
+COVER_NOTE = ("MITCHELL", "09:35:40", "09:42:30", REPORT,
+              "Top cover: Mitchell's twelve climb to 18,000 ft over Empress Augusta Bay, "
+              "orbiting to meet fighters expected up from Kahili. None come up in time; the "
+              "cover flight never fires.")
+
 # Disputed occurrence windows: marked on the timeline, excluded from definite state.
 UNCERTAIN = [
     (YAMAMOTO, "09:36:00", "09:50:00", "ja-wikipedia-kaigun-ko-jiken",
@@ -133,6 +139,8 @@ def annotations(em):
     for entity, start, until, source, text in BRIEFINGS:
         end = DURATION + 1 if until == "10:05:00" else L(until)
         em.note(source, entity, L(start), end, text, "reported", [])
+    entity, start, until, source, text = COVER_NOTE
+    em.note(source, entity, L(start), L(until), text, "reported", [])
     for entity, start, latest, source, text in UNCERTAIN:
         em.note(source, entity, L(start), L(latest) + 1, text, "reported", [],
                 occurrence={"kind": "uncertain", "earliest": L(start), "latest": L(latest)})
@@ -171,18 +179,21 @@ def camera():
         cue(t0 + 10_000, "07:25:00", point(runway), 14.2, 45, 340, orbit=-0.1,
             focus="MITCHELL"),
         cue("07:25:00", "07:27:10", point(runway), 13.6, 50, 340 - 2.0, orbit=-0.01,
-            transition=8000, focus="MITCHELL"),
+            transition=8000, focus="LANPHIER"),
         cue("07:27:10", "07:28:30", point((160.006, -9.4265)), 14.4, 50, 330, transition=6000,
             focus="MCLANAHAN"),
         cue("07:28:30", "07:31:00", point((160.0, -9.385)), 11.6, 35, 300, transition=40_000,
             focus="LANPHIER"),
         cue("07:31:00", "07:35:30", entity("MITCHELL"), 10.4, 40, 280, transition=40_000,
             focus="MITCHELL"),
-        cue("07:35:30", "07:38:00", entity("MOORE"), 10.8, 40, 110, transition=20_000,
+        # Moore heads home down the screen; turning the camera with him would spin the view.
+        cue("07:35:30", "07:38:00", entity("MOORE"), 10.8, 40, 280, transition=40_000,
             focus="MOORE"),
-        cue("07:38:00", "08:04:30", entity("MITCHELL"), 8.3, 25, 280, transition=120_000,
+        cue("07:38:00", "07:52:00", entity("MITCHELL"), 8.3, 25, 280, transition=120_000,
             focus="MITCHELL"),
-        cue("08:04:30", "08:06:30", point(LAKUNAI), 13.8, 50, 150, focus="MORISAKI"),
+        # The whole run west along the Solomons, wave-top below the islanders' lookouts.
+        cue("07:52:00", "08:04:30", point((158.6, -8.95)), 7.8, 20, 280, transition=180_000),
+        cue("08:04:30", "08:06:30", point(LAKUNAI), 13.8, 50, 150, focus=YAMAMOTO),
         cue("08:06:30", "08:08:30", entity(YAMAMOTO), 12.6, 45, 140, transition=40_000,
             focus=YAMAMOTO),
         cue("08:08:30", "08:30:00", entity(YAMAMOTO), 8.6, 30, 130, transition=180_000,
@@ -203,11 +214,14 @@ def camera():
             focus="BARBER"),
         cue("09:37:50", "09:38:10", point(CRASH_T1_323), 14.2, 55, 110, transition=6000,
             focus=YAMAMOTO),
-        cue("09:38:10", "09:39:20", point((155.555, -6.853)), 13.6, 55, 80, transition=8000,
+        cue("09:38:10", "09:39:20", entity("HOLMES"), 13.4, 55, 80, transition=8000,
             focus="HOLMES"),
         cue("09:39:20", "09:39:40", point(DITCH_T1_326), 13.4, 55, 80, transition=6000,
             focus=UGAKI),
-        cue("09:39:40", "09:41:10", entity("HINE"), 12.4, 50, 95, transition=10_000,
+        # The fight at a glance: top cover overhead, both wrecks, the chase past Kahili, Hine
+        # and Holmes heading for Shortland.
+        cue("09:39:40", "09:40:20", point((155.56, -6.82)), 10.6, 30, 80, transition=10_000),
+        cue("09:40:20", "09:41:10", entity("HINE"), 12.4, 50, 95, transition=12_000,
             focus="HINE"),
         cue("09:41:10", "09:42:30", point(HINE_LAST), 12.2, 45, 95, transition=10_000,
             focus="HINE"),

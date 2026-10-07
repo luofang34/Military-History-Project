@@ -73,21 +73,50 @@ def parked(i):
     return offset(FIGHTER_TWO, 900 + 45 * i, -160)
 
 
+ROLL_M = 1400
+ABORT_STOP_M = 700
+
+
+def roll(track, threshold, start, end, accel, step=4_000):
+    """Waypoints of a uniformly accelerating take-off roll down the runway, ending at `end`."""
+    at = start + step
+    while at < end:
+        s = 0.5 * accel * ((at - start) / 1000) ** 2
+        track.add(at, destination(threshold, RUNWAY_HEADING, s), 0)
+        at += step
+    track.add(end, destination(threshold, RUNWAY_HEADING, 0.5 * accel * ((end - start) / 1000) ** 2), 0)
+
+
 def p38_departure(entity, slot_index, lead, abort_tire=False):
     """Taxi, take-off roll, climb-out and a left-hand orbit into the join-up slot."""
     takeoff = L("07:25:00") + 20_000 * (slot_index // 2) + 4_000 * (slot_index % 2)
-    t = Track().add(L("07:24:30"), parked(slot_index), 0)
     threshold = offset(FIGHTER_TWO, 1200, 0)
-    if takeoff - 50_000 > L("07:24:30"):
-        t.add(takeoff - 50_000, parked(slot_index), 0)
-    t.add(takeoff - 20_000, threshold, 0)
+    if takeoff - 30_000 <= L("07:24:30"):
+        # The lead pair is already lined up when the record starts.
+        t = Track().add(L("07:24:30"), threshold, 0)
+    else:
+        t = Track().add(L("07:24:30"), parked(slot_index), 0)
+        if takeoff - 56_000 > L("07:24:30"):
+            t.add(takeoff - 56_000, parked(slot_index), 0)
+        t.add(takeoff - 30_000, threshold, 0)
+    # Lined up, then a uniformly accelerating roll: 1,400 m to lift-off at about 58 m/s.
+    roll_start = takeoff - 26_000
+    t.add(roll_start, threshold, 0)
+    accel = 2 * ROLL_M / ((takeoff + 22_000 - roll_start) / 1000) ** 2
     if abort_tire:
-        # The tyre fails during the roll; the aircraft stops on the runway.
-        stop = destination(threshold, RUNWAY_HEADING, 700)
-        t.add(takeoff + 18_000, stop, 0)
+        # The tyre fails 26 s into the roll; braking stops the aircraft at 700 m.
+        roll(t, threshold, roll_start, takeoff, accel)
+        speed = accel * (takeoff - roll_start) / 1000
+        rolled = 0.5 * accel * ((takeoff - roll_start) / 1000) ** 2
+        brake = speed ** 2 / (2 * (ABORT_STOP_M - rolled))
+        stop_after = speed / brake
+        for k in range(1, 5):
+            s = speed * stop_after * k / 4 - 0.5 * brake * (stop_after * k / 4) ** 2
+            t.add(takeoff + stop_after * k / 4 * 1000,
+                  destination(threshold, RUNWAY_HEADING, rolled + s), 0)
         return t, takeoff
-    liftoff = destination(threshold, RUNWAY_HEADING, 1400)
-    t.add(takeoff + 22_000, liftoff, 0)
+    roll(t, threshold, roll_start, takeoff + 22_000, accel)
+    liftoff = destination(threshold, RUNWAY_HEADING, ROLL_M)
     climb = destination(liftoff, RUNWAY_HEADING - 20, 4500)
     t.add(takeoff + 75_000, climb, 300)
     joined, alt = slot_point(lead, entity, L("07:31:00"))
@@ -106,7 +135,7 @@ def p38_departure(entity, slot_index, lead, abort_tire=False):
     for tt, p in reversed(samples):
         t.add(tt, p, 450)
     t.add(L("07:31:00"), joined, alt)
-    return t, takeoff
+    return t.round_corners(takeoff + 22_000, L("07:31:00")), takeoff
 
 
 def moore_return(track, lead):

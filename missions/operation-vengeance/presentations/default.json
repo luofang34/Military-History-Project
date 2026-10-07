@@ -175,7 +175,7 @@
       "bearing": 338.0,
       "orbit_deg_s": -0.01,
       "transition_ms": 8000,
-      "focus": "MITCHELL"
+      "focus": "LANPHIER"
     },
     {
       "start_ms": 160000,
@@ -234,14 +234,14 @@
       },
       "zoom": 10.8,
       "pitch": 40,
-      "bearing": 110,
+      "bearing": 280,
       "orbit_deg_s": 0.0,
-      "transition_ms": 20000,
+      "transition_ms": 40000,
       "focus": "MOORE"
     },
     {
       "start_ms": 810000,
-      "end_ms": 2400000,
+      "end_ms": 1650000,
       "target": {
         "kind": "entity",
         "value": "MITCHELL"
@@ -252,6 +252,22 @@
       "orbit_deg_s": 0.0,
       "transition_ms": 120000,
       "focus": "MITCHELL"
+    },
+    {
+      "start_ms": 1650000,
+      "end_ms": 2400000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 158.6,
+          "lat": -8.95
+        }
+      },
+      "zoom": 7.8,
+      "pitch": 20,
+      "bearing": 280,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 180000
     },
     {
       "start_ms": 2400000,
@@ -268,7 +284,7 @@
       "bearing": 150,
       "orbit_deg_s": 0.0,
       "transition_ms": 0,
-      "focus": "MORISAKI"
+      "focus": "T1-323 YAMAMOTO"
     },
     {
       "start_ms": 2520000,
@@ -453,13 +469,10 @@
       "start_ms": 8020000,
       "end_ms": 8090000,
       "target": {
-        "kind": "point",
-        "value": {
-          "lon": 155.555,
-          "lat": -6.853
-        }
+        "kind": "entity",
+        "value": "HOLMES"
       },
-      "zoom": 13.6,
+      "zoom": 13.4,
       "pitch": 55,
       "bearing": 80,
       "orbit_deg_s": 0.0,
@@ -485,6 +498,22 @@
     },
     {
       "start_ms": 8110000,
+      "end_ms": 8150000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 155.56,
+          "lat": -6.82
+        }
+      },
+      "zoom": 10.6,
+      "pitch": 30,
+      "bearing": 80,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 10000
+    },
+    {
+      "start_ms": 8150000,
       "end_ms": 8200000,
       "target": {
         "kind": "entity",
@@ -494,7 +523,7 @@
       "pitch": 50,
       "bearing": 95,
       "orbit_deg_s": 0.0,
-      "transition_ms": 10000,
+      "transition_ms": 12000,
       "focus": "HINE"
     },
     {

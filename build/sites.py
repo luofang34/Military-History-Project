@@ -64,28 +64,45 @@ NAMES = {
     "HIDAKA": "Hidaka Yoshimi", "OKAZAKI": "Okazaki", "YANAGIYA": "Yanagiya Kenji",
 }
 
-# Declared formations; members are drawn as one symbol when they overlap on screen.
+# Declared formations as (id, name, symbol, members, parent); members are drawn as one
+# symbol when they overlap on screen, under the closest formation they share.
 FORMATIONS = [
-    ("MITCHELL FLIGHT", "Mitchell's flight", FRIENDLY_FIGHTER, MITCHELL_FLIGHT),
-    ("KITTEL FLIGHT", "Kittel's flight", FRIENDLY_FIGHTER, KITTEL_FLIGHT),
-    ("ANGLIN FLIGHT", "Anglin's flight", FRIENDLY_FIGHTER, ANGLIN_FLIGHT),
+    ("COVER FLIGHT", "Mitchell's cover flight", FRIENDLY_FIGHTER, [], None),
+    ("MITCHELL FLIGHT", "Mitchell's flight", FRIENDLY_FIGHTER, MITCHELL_FLIGHT, "COVER FLIGHT"),
+    ("KITTEL FLIGHT", "Kittel's flight", FRIENDLY_FIGHTER, KITTEL_FLIGHT, "COVER FLIGHT"),
+    ("ANGLIN FLIGHT", "Anglin's flight", FRIENDLY_FIGHTER, ANGLIN_FLIGHT, "COVER FLIGHT"),
     # As briefed, before Moore and McLanahan dropped out and Holmes and Hine replaced them.
-    ("ATTACK SECTION", "Lanphier's attack section", FRIENDLY_FIGHTER, KILLER + ABORTS),
-    ("BETTYS", "705th Kōkūtai G4M1 pair", HOSTILE_BOMBER, BETTYS),
-    ("ZERO SECTION 1", "Morisaki's section", HOSTILE_FIGHTER, ZERO_1),
-    ("ZERO SECTION 2", "Hidaka's section", HOSTILE_FIGHTER, ZERO_2),
+    ("ATTACK SECTION", "Lanphier's attack section", FRIENDLY_FIGHTER, ABORTS, None),
+    ("LANPHIER ELEMENT", "Lanphier and Barber", FRIENDLY_FIGHTER, ["LANPHIER", "BARBER"],
+     "ATTACK SECTION"),
+    ("HOLMES ELEMENT", "Holmes and Hine", FRIENDLY_FIGHTER, ["HOLMES", "HINE"],
+     "ATTACK SECTION"),
+    ("BETTYS", "705th Kōkūtai G4M1 pair", HOSTILE_BOMBER, BETTYS, None),
+    ("ESCORT", "204th Kōkūtai escort", HOSTILE_FIGHTER, [], None),
+    ("ZERO SECTION 1", "Morisaki's section", HOSTILE_FIGHTER, ZERO_1, "ESCORT"),
+    ("ZERO SECTION 2", "Hidaka's section", HOSTILE_FIGHTER, ZERO_2, "ESCORT"),
 ]
 
 
 def entities():
-    parent = {member: group for group, _, _, members in FORMATIONS for member in members}
+    parent = {member: group for group, _, _, members, _ in FORMATIONS for member in members}
     rows = [(e, FRIENDLY_FIGHTER, "P-38G") for e in P38S]
     rows += [(e, HOSTILE_BOMBER, "G4M1") for e in BETTYS]
     rows += [(e, HOSTILE_FIGHTER, "A6M") for e in ZEROS]
     out = [{"id": e, "sidc": s, "camera": False, "name": NAMES[e], "kind": k, "parent": parent[e]}
            for e, s, k in rows]
-    out += [{"id": g, "sidc": s, "camera": False, "name": n, "kind": "formation",
-             "quantity": len(members)} for g, n, s, members in FORMATIONS]
+
+    def strength(group):
+        children = [g for g, _, _, _, up in FORMATIONS if up == group]
+        own = next(members for g, _, _, members, _ in FORMATIONS if g == group)
+        return len(own) + sum(strength(child) for child in children)
+
+    for group, name, sidc, _, up in FORMATIONS:
+        row = {"id": group, "sidc": sidc, "camera": False, "name": name, "kind": "formation",
+               "quantity": strength(group)}
+        if up:
+            row["parent"] = up
+        out.append(row)
     return out
 
 

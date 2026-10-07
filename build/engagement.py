@@ -32,8 +32,11 @@ def go(track, specs, kmh=480):
 
 
 def home(track, via, final, kmh, alt=900):
-    """Return route; the record ends before any aircraft lands."""
-    return go(track, [(None, p, alt) for p in via + [final]], kmh)
+    """Return route; the record ends before any aircraft lands. Its turns are rounded,
+    from the last engagement waypoint onward."""
+    start = track.end
+    go(track, [(None, p, alt) for p in via + [final]], kmh)
+    return track.round_corners(start - 1, track.end)
 
 
 def attack_section(tracks):
@@ -181,7 +184,7 @@ def cover(tracks, mitchell_lead):
         track = tracks[entity]
         t = L("09:34:00") + 10_000
         while t <= lead.end:
-            point, alt = slot_point(lead, entity, t, scale=0.35)
+            point, alt = slot_point(lead, entity, t)
             track.add(t, point, alt)
             t += 10_000
         if entity == "CANNING":

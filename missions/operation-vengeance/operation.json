@@ -215,7 +215,7 @@
       "camera": false,
       "name": "Thomas G. Lanphier Jr.",
       "kind": "P-38G",
-      "parent": "ATTACK SECTION"
+      "parent": "LANPHIER ELEMENT"
     },
     {
       "id": "BARBER",
@@ -223,7 +223,7 @@
       "camera": false,
       "name": "Rex T. Barber",
       "kind": "P-38G",
-      "parent": "ATTACK SECTION"
+      "parent": "LANPHIER ELEMENT"
     },
     {
       "id": "HOLMES",
@@ -231,7 +231,7 @@
       "camera": false,
       "name": "Besby F. Holmes",
       "kind": "P-38G",
-      "parent": "ATTACK SECTION"
+      "parent": "HOLMES ELEMENT"
     },
     {
       "id": "HINE",
@@ -239,7 +239,7 @@
       "camera": false,
       "name": "Raymond K. Hine",
       "kind": "P-38G",
-      "parent": "ATTACK SECTION"
+      "parent": "HOLMES ELEMENT"
     },
     {
       "id": "MOORE",
@@ -322,12 +322,21 @@
       "parent": "ZERO SECTION 2"
     },
     {
+      "id": "COVER FLIGHT",
+      "sidc": "SFAPMFF--------",
+      "camera": false,
+      "name": "Mitchell's cover flight",
+      "kind": "formation",
+      "quantity": 12
+    },
+    {
       "id": "MITCHELL FLIGHT",
       "sidc": "SFAPMFF--------",
       "camera": false,
       "name": "Mitchell's flight",
       "kind": "formation",
-      "quantity": 4
+      "quantity": 4,
+      "parent": "COVER FLIGHT"
     },
     {
       "id": "KITTEL FLIGHT",
@@ -335,7 +344,8 @@
       "camera": false,
       "name": "Kittel's flight",
       "kind": "formation",
-      "quantity": 4
+      "quantity": 4,
+      "parent": "COVER FLIGHT"
     },
     {
       "id": "ANGLIN FLIGHT",
@@ -343,7 +353,8 @@
       "camera": false,
       "name": "Anglin's flight",
       "kind": "formation",
-      "quantity": 4
+      "quantity": 4,
+      "parent": "COVER FLIGHT"
     },
     {
       "id": "ATTACK SECTION",
@@ -354,6 +365,24 @@
       "quantity": 6
     },
     {
+      "id": "LANPHIER ELEMENT",
+      "sidc": "SFAPMFF--------",
+      "camera": false,
+      "name": "Lanphier and Barber",
+      "kind": "formation",
+      "quantity": 2,
+      "parent": "ATTACK SECTION"
+    },
+    {
+      "id": "HOLMES ELEMENT",
+      "sidc": "SFAPMFF--------",
+      "camera": false,
+      "name": "Holmes and Hine",
+      "kind": "formation",
+      "quantity": 2,
+      "parent": "ATTACK SECTION"
+    },
+    {
       "id": "BETTYS",
       "sidc": "SHAPMFB--------",
       "camera": false,
@@ -362,12 +391,21 @@
       "quantity": 2
     },
     {
+      "id": "ESCORT",
+      "sidc": "SHAPMFF--------",
+      "camera": false,
+      "name": "204th Kōkūtai escort",
+      "kind": "formation",
+      "quantity": 6
+    },
+    {
       "id": "ZERO SECTION 1",
       "sidc": "SHAPMFF--------",
       "camera": false,
       "name": "Morisaki's section",
       "kind": "formation",
-      "quantity": 3
+      "quantity": 3,
+      "parent": "ESCORT"
     },
     {
       "id": "ZERO SECTION 2",
@@ -375,7 +413,8 @@
       "camera": false,
       "name": "Hidaka's section",
       "kind": "formation",
-      "quantity": 3
+      "quantity": 3,
+      "parent": "ESCORT"
     }
   ],
   "media_archive": null
