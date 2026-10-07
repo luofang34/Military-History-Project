@@ -1,15 +1,16 @@
 #!/bin/sh
+# Verifies the packages, then plays one mission in the native viewer.
 set -eu
 repo=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-app=${SOKOLY_APP_REPO:-"$repo/../Sokoly-App"}
+viewer=${VIEWER_REPO:-"$repo/../Sokoly-App"}
 mission=${1:-operation-vengeance}
 if [ "$#" -gt 0 ]; then shift; fi
-case "$mission" in
-  operation-vengeance) ;;
-  *) printf '%s\n' 'Use operation-vengeance' >&2; exit 2 ;;
-esac
+if [ ! -f "$repo/missions/$mission/operation.json" ]; then
+  printf 'No mission %s under missions/\n' "$mission" >&2
+  exit 2
+fi
 python3 "$repo/verify.py"
-cd "$app"
+cd "$viewer"
 exec cargo run --locked --release -p sokoly-app -- \
   --no-save --settings-file target/examples/history/settings.json \
   --operation "$repo/missions/$mission" --recorded-path "$@"

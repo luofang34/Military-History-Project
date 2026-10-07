@@ -1,4 +1,4 @@
-"""Great-circle track sampling and Sokoly operation event emission.
+"""Great-circle track sampling and operation-package event emission, shared by missions.
 
 Tracks are piecewise great-circle paths between timed waypoints. Positions are
 sampled at an explicit interval and each fix stays valid until the next one, so

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Builds the Operation Vengeance reconstruction (18 April 1943).
 
-Run from anywhere; writes missions/operation-vengeance/{operation.json,events.jsonl} and
-the story in presentations/default.json. Fixed sites and anchor times are sourced; flight
+Run from anywhere; writes this mission's operation.json and events.jsonl beside build/,
+and the story in presentations/default.json. Fixed sites and anchor times are sourced; flight
 paths between anchors are reconstructions whose `bound_m` states the horizontal
 uncertainty.
 """
@@ -10,7 +10,9 @@ import json
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(HERE.parents[2] / "tools"))
 import engagement  # noqa: E402
 import presentation  # noqa: E402
 import routes  # noqa: E402
@@ -117,7 +119,7 @@ def endings(em, tracks):
 
 
 def main():
-    out = Path(__file__).resolve().parent.parent / "missions" / OP
+    out = HERE.parent
     out.mkdir(parents=True, exist_ok=True)
     tracks, lead, p38_speed = routes.p38_tracks()
     japanese, betty_kmh = routes.japanese_tracks()

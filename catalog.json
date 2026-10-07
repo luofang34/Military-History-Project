@@ -1,7 +1,7 @@
 {
-  "format": "sokoly-catalog",
+  "format": "mission-catalog",
   "version": 1,
-  "name": "Sokoly History",
+  "name": "Military History Project",
   "viewer": "https://luofang34.github.io/Sokoly-App/",
   "missions": [
     {
