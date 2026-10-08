@@ -23,11 +23,12 @@ pointing at it): `./run operation-vengeance`, optionally with `--at SECONDS --pa
 
 ## Adding a mission
 
-Create `missions/<id>/` with the package, a README carrying its method and sources, and
-its generator; shared track and event helpers are in `tools/`. Add it to `catalog.json`,
-and add a `/<id>/index.html` launch page pointing at its package on `history.sokoly.app`.
-Then run `python3 verify.py`, which checks camera and pacing coverage, the catalog and
-public replay links. The Pages homepage renders this README.
+Create `missions/<id>/` with the package, a README carrying its method and sources, its
+generator, and an `index.html` launch page pointing at its package on `history.sokoly.app`;
+the page's front matter sets `permalink: /<id>/` so it is served at `/<id>/`. Shared track
+and event helpers are in `tools/`. Add the mission to `catalog.json`, then run
+`python3 verify.py`, which checks camera and pacing coverage, the catalog and public replay
+links. The Pages homepage renders this README.
 
 ## Licence
 

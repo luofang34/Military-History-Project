@@ -89,19 +89,39 @@ class LaunchLinkParser(HTMLParser):
             self.href = attributes.get("href")
 
 
+def front_matter(text):
+    """Jekyll front matter as a dict of `key: value` lines; empty without front matter."""
+    lines = text.splitlines()
+    if not lines or lines[0].strip() != "---":
+        return {}
+    fields = {}
+    for line in lines[1:]:
+        if line.strip() == "---":
+            return fields
+        key, _, value = line.partition(":")
+        fields[key.strip()] = value.strip()
+    return {}
+
+
 def replay_links_match_catalog():
-    """Keep each public launcher connected to its catalogued operation package."""
+    """Keep each public launcher inside its mission folder, published at /<id>/, and
+    connected to its catalogued operation package."""
     catalog = json.loads((root / "catalog.json").read_text())
     origin = f"https://{(root / 'CNAME').read_text().strip()}/"
     viewer = urlsplit(catalog["viewer"])
     problems = []
     for mission in catalog["missions"]:
-        path = root / mission["id"] / "index.html"
+        if (root / mission["id"]).exists():
+            problems.append(f"{mission['id']}: launch page belongs in {mission['package']}/")
+        path = root / mission["package"] / "index.html"
         if not path.is_file():
             problems.append(f"{mission['id']}: missing public replay page")
             continue
+        text = path.read_text()
+        if front_matter(text).get("permalink") != f"/{mission['id']}/":
+            problems.append(f"{mission['id']}: replay page is not published at /{mission['id']}/")
         link = LaunchLinkParser()
-        link.feed(path.read_text())
+        link.feed(text)
         target = urlsplit(link.href or "")
         options = parse_qs(target.query, keep_blank_values=True)
         if (target.scheme, target.netloc, target.path) != (viewer.scheme, viewer.netloc, viewer.path):
