@@ -10,6 +10,13 @@
       "summary": "Interception of Admiral Yamamoto over Bougainville, 18 April 1943",
       "package": "missions/operation-vengeance",
       "open": "?recorded-path"
+    },
+    {
+      "id": "gulf-of-sidra-1981",
+      "name": "Gulf of Sidra incident",
+      "summary": "Two US Navy F-14s shoot down two Libyan Su-22s, 19 August 1981",
+      "package": "missions/gulf-of-sidra-1981",
+      "open": "?recorded-path"
     }
   ]
 }

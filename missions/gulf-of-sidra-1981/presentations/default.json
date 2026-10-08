@@ -1,0 +1,356 @@
+{
+  "format": "sokoly-presentation",
+  "version": 1,
+  "id": "default",
+  "name": "Gulf of Sidra incident, 19 August 1981",
+  "operation": "gulf-of-sidra-1981",
+  "chapters": [
+    {
+      "title": "Su-22s from Ghurdabiya",
+      "at_ms": 0,
+      "available_ms": 0
+    },
+    {
+      "title": "Racetrack over the Gulf",
+      "at_ms": 180000,
+      "available_ms": 180000
+    },
+    {
+      "title": "Vectored south, 07:15 contact",
+      "at_ms": 540000,
+      "available_ms": 540000
+    },
+    {
+      "title": "The Atoll, 07:16",
+      "at_ms": 991000,
+      "available_ms": 991000
+    },
+    {
+      "title": "The break",
+      "at_ms": 1005000,
+      "available_ms": 1005000
+    },
+    {
+      "title": "First Fitter down",
+      "at_ms": 1041000,
+      "available_ms": 1041000
+    },
+    {
+      "title": "Second Fitter down",
+      "at_ms": 1073000,
+      "available_ms": 1073000
+    },
+    {
+      "title": "Clear to defend yourself",
+      "at_ms": 1109000,
+      "available_ms": 1109000
+    },
+    {
+      "title": "Egress, Line of Death",
+      "at_ms": 1150000,
+      "available_ms": 1150000
+    }
+  ],
+  "camera_track": [
+    {
+      "start_ms": 0,
+      "end_ms": 180000,
+      "target": {
+        "kind": "entity",
+        "value": "SU22-LEAD"
+      },
+      "zoom": 8.2,
+      "pitch": 30,
+      "bearing": 340,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 2000,
+      "focus": "SU22-LEAD"
+    },
+    {
+      "start_ms": 180000,
+      "end_ms": 540000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 16.718643563139622,
+          "lat": 31.237792254868186
+        }
+      },
+      "zoom": 12.5,
+      "pitch": 30,
+      "bearing": 340,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 60000
+    },
+    {
+      "start_ms": 540000,
+      "end_ms": 900000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 17.52199505357801,
+          "lat": 32.52136537269798
+        }
+      },
+      "zoom": 7.0,
+      "pitch": 30,
+      "bearing": 0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 60000
+    },
+    {
+      "start_ms": 900000,
+      "end_ms": 980000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 17.22,
+          "lat": 32.2375
+        }
+      },
+      "zoom": 8.0,
+      "pitch": 35,
+      "bearing": 200,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 10000
+    },
+    {
+      "start_ms": 980000,
+      "end_ms": 991000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 17.24557867266668,
+          "lat": 32.305290661371906
+        }
+      },
+      "zoom": 9.0,
+      "pitch": 45,
+      "bearing": 200,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 6000
+    },
+    {
+      "start_ms": 991000,
+      "end_ms": 998000,
+      "target": {
+        "kind": "entity",
+        "value": "AA2-ATOLL"
+      },
+      "zoom": 10.5,
+      "pitch": 40,
+      "bearing": 200,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 1000,
+      "focus": "AA2-ATOLL"
+    },
+    {
+      "start_ms": 998000,
+      "end_ms": 1015000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 17.235868239625308,
+          "lat": 32.262627474886585
+        }
+      },
+      "zoom": 9.0,
+      "pitch": 40,
+      "bearing": 140,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 1500
+    },
+    {
+      "start_ms": 1015000,
+      "end_ms": 1031000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 17.224729998558196,
+          "lat": 32.24976211375188
+        }
+      },
+      "zoom": 9.0,
+      "pitch": 40,
+      "bearing": 140,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 1500
+    },
+    {
+      "start_ms": 1031000,
+      "end_ms": 1041000,
+      "target": {
+        "kind": "entity",
+        "value": "AIM9-102"
+      },
+      "zoom": 10.5,
+      "pitch": 40,
+      "bearing": 330,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 1000,
+      "focus": "AIM9-102"
+    },
+    {
+      "start_ms": 1041000,
+      "end_ms": 1044000,
+      "target": {
+        "kind": "entity",
+        "value": "SU22-WING"
+      },
+      "zoom": 11.5,
+      "pitch": 45,
+      "bearing": 330,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 1000,
+      "focus": "SU22-WING"
+    },
+    {
+      "start_ms": 1044000,
+      "end_ms": 1063000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 17.16910225385666,
+          "lat": 32.261644320504516
+        }
+      },
+      "zoom": 8.0,
+      "pitch": 35,
+      "bearing": 200,
+      "orbit_deg_s": 0.2,
+      "transition_ms": 6000
+    },
+    {
+      "start_ms": 1063000,
+      "end_ms": 1073000,
+      "target": {
+        "kind": "entity",
+        "value": "AIM9-107"
+      },
+      "zoom": 10.5,
+      "pitch": 40,
+      "bearing": 0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 1000,
+      "focus": "AIM9-107"
+    },
+    {
+      "start_ms": 1073000,
+      "end_ms": 1080000,
+      "target": {
+        "kind": "entity",
+        "value": "SU22-LEAD"
+      },
+      "zoom": 11.5,
+      "pitch": 45,
+      "bearing": 330,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 1000,
+      "focus": "SU22-LEAD"
+    },
+    {
+      "start_ms": 1080000,
+      "end_ms": 1090000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 17.054327212128403,
+          "lat": 32.42128311530351
+        }
+      },
+      "zoom": 10.0,
+      "pitch": 40,
+      "bearing": 0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 3000
+    },
+    {
+      "start_ms": 1090000,
+      "end_ms": 1110000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 17.385674510663662,
+          "lat": 32.44717762216986
+        }
+      },
+      "zoom": 9.0,
+      "pitch": 30,
+      "bearing": 0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 10000
+    },
+    {
+      "start_ms": 1110000,
+      "end_ms": 1150000,
+      "target": {
+        "kind": "entity",
+        "value": "FE102"
+      },
+      "zoom": 8.5,
+      "pitch": 30,
+      "bearing": 0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 20000,
+      "focus": "FE102"
+    },
+    {
+      "start_ms": 1150000,
+      "end_ms": 1500000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 17.5,
+          "lat": 32.5
+        }
+      },
+      "zoom": 5.4,
+      "pitch": 0,
+      "bearing": 0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 60000
+    }
+  ],
+  "playback_track": [
+    {
+      "start_ms": 0,
+      "end_ms": 180000,
+      "speed": 12
+    },
+    {
+      "start_ms": 180000,
+      "end_ms": 540000,
+      "speed": 10
+    },
+    {
+      "start_ms": 540000,
+      "end_ms": 900000,
+      "speed": 8
+    },
+    {
+      "start_ms": 900000,
+      "end_ms": 980000,
+      "speed": 2
+    },
+    {
+      "start_ms": 980000,
+      "end_ms": 1035000,
+      "speed": 1
+    },
+    {
+      "start_ms": 1035000,
+      "end_ms": 1090000,
+      "speed": 1
+    },
+    {
+      "start_ms": 1090000,
+      "end_ms": 1150000,
+      "speed": 2
+    },
+    {
+      "start_ms": 1150000,
+      "end_ms": 1500000,
+      "speed": 8
+    }
+  ]
+}

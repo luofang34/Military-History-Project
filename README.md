@@ -8,6 +8,7 @@ files; [`catalog.json`](catalog.json) lists them.
 | Mission | Event | Open |
 | --- | --- | --- |
 | [Operation Vengeance](https://github.com/luofang34/Military-History-Project/tree/master/missions/operation-vengeance) | Interception of Admiral Yamamoto over Bougainville, 18 April 1943 | [replay](https://history.sokoly.app/operation-vengeance/) |
+| [Gulf of Sidra incident](https://github.com/luofang34/Military-History-Project/tree/master/missions/gulf-of-sidra-1981) | Two F-14s shoot down two Su-22s over the Gulf of Sidra, 19 August 1981 | [replay](https://history.sokoly.app/gulf-of-sidra-1981/) |
 
 ## Opening a mission
 
