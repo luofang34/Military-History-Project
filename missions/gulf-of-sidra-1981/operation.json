@@ -35,13 +35,23 @@
     },
     {
       "id": "reconstruction-cap",
-      "name": "F-14 CAP racetrack and vector reconstruction",
+      "name": "F-14 CAP and vector reconstruction",
       "motion": "great_circle",
       "max_gap_ms": 1500000
     },
     {
       "id": "reconstruction-engagement",
       "name": "Engagement choreography (tape ranges)",
+      "motion": "great_circle",
+      "max_gap_ms": 1500000
+    },
+    {
+      "id": "reconstruction-carrier",
+      "name": "Nimitz from the 123 nm DME call"
+    },
+    {
+      "id": "reconstruction-s3a",
+      "name": "S-3A orbit and Buster North reconstruction",
       "motion": "great_circle",
       "max_gap_ms": 1500000
     },
@@ -95,71 +105,121 @@
     {
       "id": "natural-earth-10m",
       "name": "Natural Earth 10 m coastline"
+    },
+    {
+      "id": "wapo-1981",
+      "name": "Washington Post, 20 Aug 1981 (Pentagon briefing)"
+    },
+    {
+      "id": "nimitz-cruise-book",
+      "name": "USS Nimitz 1980-82 cruise book"
+    },
+    {
+      "id": "sanders-2012",
+      "name": "Sanders, 'Bait and Switch in Libya', Air & Space, 2012"
+    },
+    {
+      "id": "sasser-biddle",
+      "name": "Lt Mike Sasser, USS Biddle account"
     }
   ],
   "entities": [
+    {
+      "id": "FAST EAGLE",
+      "sidc": "SFAPMFF--------",
+      "camera": false,
+      "name": "Fast Eagle section, VF-41",
+      "kind": "formation",
+      "quantity": 2
+    },
+    {
+      "id": "FITTER PAIR",
+      "sidc": "SHAPMFF--------",
+      "camera": false,
+      "name": "Su-22 pair, 1022 Sqn",
+      "kind": "formation",
+      "quantity": 2
+    },
     {
       "id": "FE102",
       "sidc": "SFAPMFF--------",
       "camera": false,
       "name": "FE102 Kleemann / Venlet",
-      "kind": "F-14A VF-41, BuNo 160403 (secondary sources)"
+      "kind": "F-14A",
+      "parent": "FAST EAGLE"
     },
     {
       "id": "FE107",
       "sidc": "SFAPMFF--------",
       "camera": false,
       "name": "FE107 Muczynski / Anderson",
-      "kind": "F-14A VF-41, BuNo 160390 (secondary sources)"
+      "kind": "F-14A",
+      "parent": "FAST EAGLE"
     },
     {
       "id": "SU22-LEAD",
       "sidc": "SHAPMFF--------",
       "camera": false,
       "name": "Su-22 lead",
-      "kind": "Su-22M3, 1022 Sqn (Zintani per Cooper; unconfirmed)"
+      "kind": "Su-22M3",
+      "parent": "FITTER PAIR"
     },
     {
       "id": "SU22-WING",
       "sidc": "SHAPMFF--------",
       "camera": false,
       "name": "Su-22 wingman",
-      "kind": "Su-22M3, 1022 Sqn (Jafari per Cooper; unconfirmed)"
+      "kind": "Su-22M3",
+      "parent": "FITTER PAIR"
     },
     {
       "id": "AA2-ATOLL",
       "sidc": "SHAPWMAA-------",
       "camera": false,
       "name": "AA-2 Atoll",
-      "kind": "Fired by Su-22 lead, missed (US account)"
+      "kind": "AA-2"
     },
     {
       "id": "AIM9-102",
       "sidc": "SFAPWMAA-------",
       "camera": false,
-      "name": "AIM-9L",
-      "kind": "Fired by FE102 at the Su-22 wingman"
+      "name": "AIM-9L (102)",
+      "kind": "AIM-9L"
     },
     {
       "id": "AIM9-107",
       "sidc": "SFAPWMAA-------",
       "camera": false,
-      "name": "AIM-9L",
-      "kind": "Fired by FE107 at the Su-22 lead"
+      "name": "AIM-9L (107)",
+      "kind": "AIM-9L"
+    },
+    {
+      "id": "NIMITZ",
+      "sidc": "SFSPCLCV-------",
+      "camera": false,
+      "name": "USS Nimitz",
+      "kind": "CVN-68"
+    },
+    {
+      "id": "DC702",
+      "sidc": "SFAPMFS--------",
+      "camera": false,
+      "name": "Diamond Cutter 702",
+      "kind": "S-3A"
     },
     {
       "id": "LOD-WEST",
       "sidc": "SUGPUCI--------",
       "camera": false,
       "name": "Line of Death, west",
-      "kind": "32°30′N meets the coast, 14.60°E"
+      "kind": "32°30'N at the coast"
     },
     {
       "id": "LOD-EAST",
       "sidc": "SUGPUCI--------",
       "camera": false,
       "name": "Line of Death, east",
-      "kind": "32°30′N meets the coast, 20.48°E"
+      "kind": "32°30'N at the coast"
     }
   ],
   "media_archive": null

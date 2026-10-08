@@ -6,39 +6,49 @@
   "operation": "gulf-of-sidra-1981",
   "chapters": [
     {
-      "title": "Su-22s from Ghurdabiya",
+      "title": "The Line of Death",
       "at_ms": 0,
       "available_ms": 0
     },
     {
-      "title": "Racetrack over the Gulf",
-      "at_ms": 180000,
-      "available_ms": 180000
+      "title": "Two Fitters leave Ghurdabiya",
+      "at_ms": 20000,
+      "available_ms": 20000
     },
     {
-      "title": "Vectored south, 07:15 contact",
-      "at_ms": 540000,
-      "available_ms": 540000
+      "title": "Buster North",
+      "at_ms": 60000,
+      "available_ms": 60000
     },
     {
-      "title": "The Atoll, 07:16",
-      "at_ms": 991000,
-      "available_ms": 991000
+      "title": "Fast Eagles on CAP",
+      "at_ms": 360000,
+      "available_ms": 360000
     },
     {
-      "title": "The break",
-      "at_ms": 1005000,
-      "available_ms": 1005000
+      "title": "Radar contact, 80 nm",
+      "at_ms": 660000,
+      "available_ms": 660000
     },
     {
-      "title": "First Fitter down",
-      "at_ms": 1041000,
-      "available_ms": 1041000
+      "title": "Head-on: twenty miles",
+      "at_ms": 915000,
+      "available_ms": 915000
     },
     {
-      "title": "Second Fitter down",
-      "at_ms": 1073000,
-      "available_ms": 1073000
+      "title": "The Atoll",
+      "at_ms": 983000,
+      "available_ms": 983000
+    },
+    {
+      "title": "Kleemann's Sidewinder",
+      "at_ms": 1038000,
+      "available_ms": 1038000
+    },
+    {
+      "title": "Muczynski's Sidewinder",
+      "at_ms": 1070000,
+      "available_ms": 1070000
     },
     {
       "title": "Clear to defend yourself",
@@ -46,311 +56,393 @@
       "available_ms": 1109000
     },
     {
-      "title": "Egress, Line of Death",
-      "at_ms": 1150000,
-      "available_ms": 1150000
+      "title": "Vector north",
+      "at_ms": 1140000,
+      "available_ms": 1140000
     }
   ],
   "camera_track": [
     {
       "start_ms": 0,
-      "end_ms": 180000,
+      "end_ms": 20000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 17.169393169249286,
+          "lat": 32.569484886030985
+        }
+      },
+      "zoom": 5.49,
+      "pitch": 0,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 20000,
+      "end_ms": 60000,
       "target": {
         "kind": "entity",
         "value": "SU22-LEAD"
       },
-      "zoom": 8.2,
+      "zoom": 10.76,
       "pitch": 30,
-      "bearing": 340,
+      "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 2000,
+      "transition_ms": 3000,
       "focus": "SU22-LEAD"
     },
     {
-      "start_ms": 180000,
-      "end_ms": 540000,
+      "start_ms": 60000,
+      "end_ms": 150000,
       "target": {
-        "kind": "point",
-        "value": {
-          "lon": 16.718643563139622,
-          "lat": 31.237792254868186
-        }
+        "kind": "entity",
+        "value": "DC702"
       },
-      "zoom": 12.5,
+      "zoom": 7.41,
+      "pitch": 20,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 6000,
+      "focus": "DC702"
+    },
+    {
+      "start_ms": 150000,
+      "end_ms": 360000,
+      "target": {
+        "kind": "entity",
+        "value": "SU22-LEAD"
+      },
+      "zoom": 9.12,
       "pitch": 30,
-      "bearing": 340,
+      "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 60000
+      "transition_ms": 8000,
+      "focus": "SU22-LEAD"
     },
     {
-      "start_ms": 540000,
-      "end_ms": 900000,
+      "start_ms": 360000,
+      "end_ms": 660000,
       "target": {
-        "kind": "point",
-        "value": {
-          "lon": 17.52199505357801,
-          "lat": 32.52136537269798
-        }
+        "kind": "entity",
+        "value": "FE102"
       },
-      "zoom": 7.0,
-      "pitch": 30,
-      "bearing": 0,
+      "zoom": 6.4,
+      "pitch": 20,
+      "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 60000
+      "transition_ms": 15000,
+      "focus": "FE102"
     },
     {
-      "start_ms": 900000,
-      "end_ms": 980000,
+      "start_ms": 660000,
+      "end_ms": 780000,
       "target": {
-        "kind": "point",
-        "value": {
-          "lon": 17.22,
-          "lat": 32.2375
-        }
+        "kind": "entity",
+        "value": "FE102"
       },
-      "zoom": 8.0,
-      "pitch": 35,
-      "bearing": 200,
+      "zoom": 6.72,
+      "pitch": 20,
+      "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 10000
+      "transition_ms": 10000,
+      "focus": "FE102"
     },
     {
-      "start_ms": 980000,
-      "end_ms": 991000,
+      "start_ms": 780000,
+      "end_ms": 870000,
       "target": {
-        "kind": "point",
-        "value": {
-          "lon": 17.24557867266668,
-          "lat": 32.305290661371906
-        }
+        "kind": "entity",
+        "value": "FE102"
       },
-      "zoom": 9.0,
-      "pitch": 45,
-      "bearing": 200,
+      "zoom": 7.24,
+      "pitch": 25,
+      "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 6000
+      "transition_ms": 10000,
+      "focus": "FE102"
     },
     {
-      "start_ms": 991000,
-      "end_ms": 998000,
+      "start_ms": 870000,
+      "end_ms": 915000,
+      "target": {
+        "kind": "entity",
+        "value": "FE102"
+      },
+      "zoom": 7.79,
+      "pitch": 25,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 6000,
+      "focus": "FE102"
+    },
+    {
+      "start_ms": 915000,
+      "end_ms": 954000,
+      "target": {
+        "kind": "entity",
+        "value": "FE102"
+      },
+      "zoom": 8.34,
+      "pitch": 25,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 5000,
+      "focus": "FE102"
+    },
+    {
+      "start_ms": 954000,
+      "end_ms": 983000,
+      "target": {
+        "kind": "entity",
+        "value": "FE102"
+      },
+      "zoom": 9.63,
+      "pitch": 20,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 4000,
+      "focus": "FE102"
+    },
+    {
+      "start_ms": 983000,
+      "end_ms": 987000,
       "target": {
         "kind": "entity",
         "value": "AA2-ATOLL"
       },
-      "zoom": 10.5,
-      "pitch": 40,
-      "bearing": 200,
+      "zoom": 11.91,
+      "pitch": 15,
+      "bearing": 0.0,
       "orbit_deg_s": 0.0,
       "transition_ms": 1000,
       "focus": "AA2-ATOLL"
     },
     {
-      "start_ms": 998000,
-      "end_ms": 1015000,
+      "start_ms": 987000,
+      "end_ms": 1010000,
       "target": {
-        "kind": "point",
-        "value": {
-          "lon": 17.235868239625308,
-          "lat": 32.262627474886585
-        }
+        "kind": "entity",
+        "value": "FE102"
       },
-      "zoom": 9.0,
-      "pitch": 40,
-      "bearing": 140,
+      "zoom": 9.97,
+      "pitch": 20,
+      "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 1500
+      "transition_ms": 2000,
+      "focus": "FE102"
     },
     {
-      "start_ms": 1015000,
-      "end_ms": 1031000,
+      "start_ms": 1010000,
+      "end_ms": 1038000,
       "target": {
-        "kind": "point",
-        "value": {
-          "lon": 17.224729998558196,
-          "lat": 32.24976211375188
-        }
+        "kind": "entity",
+        "value": "FE102"
       },
-      "zoom": 9.0,
-      "pitch": 40,
-      "bearing": 140,
+      "zoom": 11.44,
+      "pitch": 15,
+      "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 1500
+      "transition_ms": 3000,
+      "focus": "FE102"
     },
     {
-      "start_ms": 1031000,
+      "start_ms": 1038000,
       "end_ms": 1041000,
       "target": {
         "kind": "entity",
         "value": "AIM9-102"
       },
-      "zoom": 10.5,
-      "pitch": 40,
-      "bearing": 330,
+      "zoom": 11.91,
+      "pitch": 15,
+      "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 1000,
+      "transition_ms": 800,
       "focus": "AIM9-102"
     },
     {
       "start_ms": 1041000,
-      "end_ms": 1044000,
+      "end_ms": 1050000,
       "target": {
         "kind": "entity",
         "value": "SU22-WING"
       },
-      "zoom": 11.5,
-      "pitch": 45,
-      "bearing": 330,
+      "zoom": 11.37,
+      "pitch": 15,
+      "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 1000,
+      "transition_ms": 1500,
       "focus": "SU22-WING"
     },
     {
-      "start_ms": 1044000,
-      "end_ms": 1063000,
+      "start_ms": 1050000,
+      "end_ms": 1070000,
       "target": {
-        "kind": "point",
-        "value": {
-          "lon": 17.16910225385666,
-          "lat": 32.261644320504516
-        }
+        "kind": "entity",
+        "value": "FE107"
       },
-      "zoom": 8.0,
-      "pitch": 35,
-      "bearing": 200,
-      "orbit_deg_s": 0.2,
-      "transition_ms": 6000
+      "zoom": 11.32,
+      "pitch": 15,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 3000,
+      "focus": "FE107"
     },
     {
-      "start_ms": 1063000,
+      "start_ms": 1070000,
       "end_ms": 1073000,
       "target": {
         "kind": "entity",
         "value": "AIM9-107"
       },
-      "zoom": 10.5,
-      "pitch": 40,
-      "bearing": 0,
+      "zoom": 12.0,
+      "pitch": 15,
+      "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 1000,
+      "transition_ms": 800,
       "focus": "AIM9-107"
     },
     {
       "start_ms": 1073000,
-      "end_ms": 1080000,
+      "end_ms": 1086000,
       "target": {
         "kind": "entity",
         "value": "SU22-LEAD"
       },
-      "zoom": 11.5,
-      "pitch": 45,
-      "bearing": 330,
+      "zoom": 11.76,
+      "pitch": 15,
+      "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 1000,
+      "transition_ms": 1500,
       "focus": "SU22-LEAD"
     },
     {
-      "start_ms": 1080000,
-      "end_ms": 1090000,
+      "start_ms": 1086000,
+      "end_ms": 1140000,
       "target": {
         "kind": "point",
         "value": {
-          "lon": 17.054327212128403,
-          "lat": 32.42128311530351
+          "lon": 17.03303561667391,
+          "lat": 32.1056896595933
         }
       },
-      "zoom": 10.0,
-      "pitch": 40,
-      "bearing": 0,
+      "zoom": 9.76,
+      "pitch": 20,
+      "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 3000
+      "transition_ms": 6000
     },
     {
-      "start_ms": 1090000,
-      "end_ms": 1110000,
-      "target": {
-        "kind": "point",
-        "value": {
-          "lon": 17.385674510663662,
-          "lat": 32.44717762216986
-        }
-      },
-      "zoom": 9.0,
-      "pitch": 30,
-      "bearing": 0,
-      "orbit_deg_s": 0.0,
-      "transition_ms": 10000
-    },
-    {
-      "start_ms": 1110000,
-      "end_ms": 1150000,
+      "start_ms": 1140000,
+      "end_ms": 1260000,
       "target": {
         "kind": "entity",
         "value": "FE102"
       },
-      "zoom": 8.5,
-      "pitch": 30,
-      "bearing": 0,
+      "zoom": 9.44,
+      "pitch": 20,
+      "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 20000,
+      "transition_ms": 8000,
       "focus": "FE102"
     },
     {
-      "start_ms": 1150000,
+      "start_ms": 1260000,
       "end_ms": 1500000,
       "target": {
         "kind": "point",
         "value": {
-          "lon": 17.5,
-          "lat": 32.5
+          "lon": 17.177207939428097,
+          "lat": 32.772314812065886
         }
       },
-      "zoom": 5.4,
+      "zoom": 5.49,
       "pitch": 0,
-      "bearing": 0,
+      "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 60000
+      "transition_ms": 30000
     }
   ],
   "playback_track": [
     {
       "start_ms": 0,
-      "end_ms": 180000,
+      "end_ms": 20000,
+      "speed": 4
+    },
+    {
+      "start_ms": 20000,
+      "end_ms": 60000,
+      "speed": 8
+    },
+    {
+      "start_ms": 60000,
+      "end_ms": 150000,
       "speed": 12
     },
     {
-      "start_ms": 180000,
-      "end_ms": 540000,
-      "speed": 10
+      "start_ms": 150000,
+      "end_ms": 660000,
+      "speed": 48
     },
     {
-      "start_ms": 540000,
-      "end_ms": 900000,
-      "speed": 8
+      "start_ms": 660000,
+      "end_ms": 870000,
+      "speed": 24
     },
     {
-      "start_ms": 900000,
-      "end_ms": 980000,
-      "speed": 2
+      "start_ms": 870000,
+      "end_ms": 915000,
+      "speed": 6
     },
     {
-      "start_ms": 980000,
-      "end_ms": 1035000,
+      "start_ms": 915000,
+      "end_ms": 983000,
+      "speed": 3
+    },
+    {
+      "start_ms": 983000,
+      "end_ms": 987000,
+      "speed": 0.5
+    },
+    {
+      "start_ms": 987000,
+      "end_ms": 1038000,
+      "speed": 1.25
+    },
+    {
+      "start_ms": 1038000,
+      "end_ms": 1041000,
+      "speed": 0.5
+    },
+    {
+      "start_ms": 1041000,
+      "end_ms": 1070000,
+      "speed": 1.25
+    },
+    {
+      "start_ms": 1070000,
+      "end_ms": 1073000,
+      "speed": 0.5
+    },
+    {
+      "start_ms": 1073000,
+      "end_ms": 1086000,
       "speed": 1
     },
     {
-      "start_ms": 1035000,
-      "end_ms": 1090000,
-      "speed": 1
+      "start_ms": 1086000,
+      "end_ms": 1140000,
+      "speed": 3
     },
     {
-      "start_ms": 1090000,
-      "end_ms": 1150000,
-      "speed": 2
+      "start_ms": 1140000,
+      "end_ms": 1260000,
+      "speed": 16
     },
     {
-      "start_ms": 1150000,
+      "start_ms": 1260000,
       "end_ms": 1500000,
-      "speed": 8
+      "speed": 48
     }
   ]
 }
