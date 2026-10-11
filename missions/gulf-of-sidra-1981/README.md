@@ -11,23 +11,26 @@ and its generator, `build/`. Regenerate with `python3 build/gulf_of_sidra.py`, t
 ## Method
 
 Clock times are the sourced anchors. The Biddle tape gives times relative to its start, which
-is placed at 07:15 Tripoli time; Stanik and the UPI wire give absolute times. Operation zero is
-the Libyan launch time (07:00, "7 A.M." in the Libyan account), with ±15 minutes. Positions
+is placed at 07:15 Tripoli time so that its "vector north" falls on Stanik's 07:19 rejoin;
+Stanik and the UPI wire give absolute times. Operation zero is 07:00, about when the Pentagon
+says the F-14s first picked up the Libyan jets (Washington Post), with ±15 minutes. No source
+times the Su-22s' launch. Positions
 are `reconstructed`, and each fix carries a horizontal `bound_m`. No published source gives
 coordinates for the fight, so the geometry is built in a local nautical-mile frame around the
 merge and constrained by the tape's ranges and times.
 
 - **Sourced anchors (clock)**, as tape time → Tripoli time:
-  - About 07:11: Venlet's radar contact, about 80 nm south (Stanik).
+  - Venlet's radar contact, 80 miles due south (Stanik), placed at 07:11 (see the ledger).
   - 00:15 → 07:15:15 "twenty miles, twenty thousand feet"; then 16, 14, 8 (tally-ho) and
     6 miles at 00:27, 00:38, 00:54 and 01:03.
   - 01:31 → 07:16:31 "two fitters has shot at my leader". The Atoll launch is placed at
     07:16:23, where the closure puts the pair about 300 m apart.
-  - 02:21 → 07:17:21 Kleemann (102) kills the wingman (Biddle "clean target").
+  - 02:21 → 07:17:21 Kleemann (102) kills the wingman ("shot one of them down"; "clean
+    target" at 02:29).
   - 02:34 "Want me shoot my guy down?" / "Shoot him down."
   - 02:53 → 07:17:53 Muczynski (107) kills the leader ("Fox 2 kill from music").
-  - 03:05 "His chute is not deploying"; 03:14 "123 DME on the 180"; 03:29 "clear to defend
-    yourself"; 03:59 "vector north". Stanik: rejoin at 07:19.
+  - 03:05 "His chute is not deploying"; 03:14 "123 DME on the 180"; 03:29 and 03:31 "clear
+    to defend yourself"; 03:59 "vector north". Stanik: rejoin at 07:19.
   - Pentagon: shootdowns at 0520Z, equal to 07:20 at UTC+2.
 - **Reconstructed geometry**:
   - The merge is placed at 32.07°N 17.05°E. The Pentagon briefing puts the fight "30 miles
@@ -56,7 +59,8 @@ merge and constrained by the tape's ranges and times.
 - **Build checks**: `build/gulf_of_sidra.py` fails if:
   - the F-14 to Su-22 range at the tape's calls drifts more than 30 % from the call;
   - the S-3A comes inside 12.5 nm of the shore, or the merge leaves 50–60 nm from it;
-  - any camera shot would lose a subject from the screen.
+  - any camera shot would lose a subject from the screen;
+  - an estimate in `build/evidence.py` falls outside its records' times without saying why.
 
   Distances to land use `build/coast.py`, a 35-point extract of the Natural Earth 10 m shore
   from Misrata to the gulf's southern bend. Camera shots are north-up and never orbit, since
@@ -70,47 +74,65 @@ merge and constrained by the tape's ranges and times.
 
 ## Conflicts carried
 
-- **Clock**: the Biddle tape is relative; the Libyan launch and the US contact are not
-  reconciled to the minute. The anchor is ±15 minutes.
-- **Which F-14 killed which Su-22**: the Stanik, Cooper and Biddle accounts agree on
-  102 killing the wingman and 107 the leader. The ACIG 2006 article swaps the callsigns.
-- **Pilot fate**: the Biddle tape says the leader's chute did not open, and Biddle's Lt
-  Sasser says no survivors were found. The Pentagon saw one parachute (Washington Post). The
-  Libyan account says both were recovered by helicopter. The UPI wire says one was found and
-  the other missing.
-- **Detection range**: 80 nm at about 07:11 (Stanik) vs 30 to 40 miles at about 07:00
-  (Pentagon briefing, Washington Post). The replay follows Stanik.
-- **Libyan base**: Ghurdabiya (Stanik, ACIG, Wikipedia) vs Okba Ben Nafi near Tripoli
-  (Sanders' memoir). The replay follows Ghurdabiya.
-- **Carrier distance**: about 100 miles north of the gulf (Pentagon briefing), 200 miles off
-  the coast (UPI), about 100 miles off Libya (Sanders).
-- **Engagement distance**: about 60 nm (US) vs about 75 km, or 35 nm, off Syrte (Libyan).
-- **Duration**: 45 seconds (Nimitz cruise book), about one minute (UPI), 3 min 44 s from
-  first sighting to the second kill (Cooper).
-- **Claimed F-14 loss**: Cooper's Libyan account gives a wreck found by fishermen. A Libyan
-  radio report puts a downed F-14 near Sardinia. US sources record no F-14 loss.
-- **Squadron**: 1022 (Cooper 2017) vs 1032 (Cooper, via Aviation Geek Club).
-- **E-2C and carriers**: the picket that vectored the F-14s is named only by squadron, VAW-124
-  "Bear Aces" (Nimitz cruise book; the patch reads BEAR ACE). No source gives its bureau number,
-  callsign or station, so it is described in the briefing but not placed on the map. The
-  tape's controller is "Bare Ace" in the Biddle transcript, not a confirmed E-2C callsign. No
-  source gives Nimitz's coordinates; her position is the DME inference above. Forrestal and
-  Biddle are not placed.
-- **"Clear to defend" relay**: DVIDS places it before the kills; the Biddle tape places it
-  after both.
+Where sources disagree, `build/evidence.py` keeps each source's record apart from the
+replay's estimate:
+
+- Each record stands under its own source, quoted exactly where the table shows quotation
+  marks and compared with the fetched text of the cited page. Stanik is read from The
+  Aviation Geek Club's reprint, Cooper's *Libyan Air Wars* from the extracts The Aviation
+  Geek Club and Warrior Maven print, and the Nimitz cruise book from its scanned page.
+- The records stay in the code base for study and correction; the replay is for a general
+  audience and shows at most a dispute's one-line note for viewers.
+- The E-2C picket that vectored the F-14s is named only by squadron, VAW-124 "Bear Aces"
+  (Nimitz cruise book; the patch reads BEAR ACE). No source gives its bureau number, callsign
+  or station, so it is described in the briefing but not placed on the map. The tape's
+  controller is "Bare Ace" in the Biddle transcript, not a confirmed E-2C callsign. No source
+  gives Nimitz's coordinates; her position is the DME inference above. Forrestal and Biddle
+  are not placed.
+
+<!-- evidence ledger: generated by build/gulf_of_sidra.py from build/evidence.py -->
+| Dispute | Records (source: what it says) | Replay estimate and basis |
+| --- | --- | --- |
+| Where the Biddle tape sits on the clock (`tape-clock`) | USS Biddle CIC audio (relative times): times relative to the tape's start: “00:15 102 Tweny miles for 102. Twenty thousand feet.”<br>Stanik, "Sudden Victory", Naval Aviation News, 1996 (The Aviation Geek Club reprint): reprint: “At 0719, Fast Eagles 102 and 107 joined up and headed back to Nimitz.”<br>Washington Post, 20 Aug 1981 (Pentagon briefing): “bringing down both of the Libyan warplanes at 7:20 a.m. local time (1:20 a.m. EDT), the Pentagon said.”<br>UPI wire reports, 19-20 Aug 1981: “downing both Libyan aircraft with heat-seeking Sidewinder missiles at 1:20 a.m. EDT, the Pentagon said.” | **The tape starts at 07:15**. Its 03:59 "vector north" then falls on Stanik's 07:19 rejoin; the Pentagon's 07:20 for the shootdowns comes two to three minutes after the tape's kills. |
+| The first radar contact (`detection`) | Stanik, "Sudden Victory", Naval Aviation News, 1996 (The Aviation Geek Club reprint): reprint, after "At about 0715": “Suddenly, Venlet detected an air contact due south at 80 miles, proceeding north from the Libyan air base at Ghurdabiyah”<br>Cooper, Grandolini and Delalande, Libyan Air Wars (extracts): “Dave [Venlet] detected a contact in a southerly direction, some 80 miles (128 kilometres) away”<br>Washington Post, 20 Aug 1981 (Pentagon briefing): “But about 7 a.m. Libyan time yesterday, two of the F14s on patrol picked up on their cockpit radars two more Libyan jets about 30 to 40 miles away and heading toward the fleet.” | **80 miles at 07:11**. Stanik's range, timed so that a head-on closure of about 1,000 kt reaches the tape's twenty miles at 07:15:15; his "about 0715" leaves no time to close from 80 miles to twenty. |
+| Which F-14 shot down which Su-22 (`who-killed-whom`) | Stanik, "Sudden Victory", Naval Aviation News, 1996 (The Aviation Geek Club reprint): reprint: “Satisfied that Muczynski was pursuing the lead Fitter, Kleemann settled in one-half mile behind the wingman”<br>Cooper, Grandolini and Delalande, Libyan Air Wars (extracts): “Kleemann followed the Libyan wingman through his right-hand turn”<br>Tom Cooper, "Libyan Wars 1980-89 Part 2", ACIG, 2003: “The Libyan leader was shot down by the Tomcat wingman, the „Fast Eagle 102“, and the Libyan wingman was shot down by the leader of the US formation and CO VF-41, Lt.Cdr. Henry Kleeman, which flew as „Fast Eagle 107“.” | **Kleemann (102) shoots down the wingman, Muczynski (107) the leader**. Stanik and Cooper's book agree; the ACIG article swaps the callsigns while still naming Kleemann as leader, and Stanik gives "Kleemann flew the lead F-14, Fast Eagle 102". |
+| What became of the Libyan pilots (`pilot-fate`) | USS Biddle CIC audio (relative times): “03:05 107 Fox 2 kill. His chute is not deploying. He is falling free.”<br>Lt Mike Sasser, USS Biddle account: “No survivors were ever found.”<br>Stanik, "Sudden Victory", Naval Aviation News, 1996 (The Aviation Geek Club reprint): reprint: “Kleemann observed him descending in his parachute.”<br>Washington Post, 20 Aug 1981 (Pentagon briefing): “One parachute was sighted, and a Libyan helicopter and surface ship were seen moving toward the area where the downed pilot was heading.”<br>UPI wire reports, 19-20 Aug 1981: “The pilot of one of the single-seat SU-22s was seen parachuting from his downed aircraft, the Pentagon said, but it was not known what happened to the other pilot.”<br>UPI wire report, 20 Aug 1981: “A Libyan press spokesman told a London news conference one of the Libyan pilots was found after parachuting into the sea. The other was missing.”<br>Cooper, Grandolini and Delalande, Libyan Air Wars (extracts): Warrior Maven's extract: “Both were recovered by Libyan air force helicopters and brought to Tripoli.” | **Not settled; the replay shows no parachute**. Each Su-22's track ends where it falls to the sea; the records disagree even within each side. |
+| The Su-22s' base (`base`) | Stanik, "Sudden Victory", Naval Aviation News, 1996 (The Aviation Geek Club reprint): reprint: “the Libyan air base at Ghurdabiyah on the south shore of the Gulf of Sidra”<br>Tom Cooper, "Libyan Wars 1980-89 Part 2", ACIG, 2003: “an E-2C of the VAW-124 detected two Libyan fighters taking off from the Ghurdabiya-Sirte AB, and moving north at high speed.”<br>Sanders, 'Bait and Switch in Libya', Air & Space, 2012: “an airborne early-warning E-2 Hawkeye radioed that two Su-22s were lifting off from Okba Ben Nafi Air Base, near Tripoli, and to stand by.” | **Ghurdabiya**. The base in Stanik, the ACIG article and Cooper's book, against Sanders' recollection. |
+| The Su-22s' squadron (`squadron`) | Cooper, Grandolini and Delalande, Libyan Air Wars (extracts): Warrior Maven's extract: “The two Sukhois were from No. 1022 Squadron commanded by Maj. Abdelsalam Djalloud”<br>Cooper, Grandolini and Delalande, Libyan Air Wars (extracts): The Aviation Geek Club's extract: “Su-22Ms from Syrte-based No. 1032 Squadron LAAF”<br>EasternOrbat: Ghardabiya Air Base: “shot down two Su-22M aircraft from the Libyan Air Force's 1022nd Squadron.” | **1022 Squadron**. Two of the three records; EasternOrbat lists 1032 as a training squadron. |
+| How far off the carriers were (`carrier`) | Washington Post, 20 Aug 1981 (Pentagon briefing): “The carriers, Pentagon officials say, were well to the north, about 100 miles away from the gulf.”<br>UPI wire report, 20 Aug 1981: “The two Navy Tomcats were stationed on the nuclear-powered aircraft carrier Nimitz, which was 200 miles off the coast of Libya at the time.”<br>Sanders, 'Bait and Switch in Libya', Air & Space, 2012: “Late one night in August, the USS Nimitz and the Forrestal took up station in the gulf, about 100 miles off Libya.” | **123 nm north of 107 at the tape's 03:14**. The tape's "123 DME on the 180" read as Nimitz's TACAN; that lands about 100 nm north of 32°30'N and about 190 nm off Sirte. |
+| How far offshore the fight was (`distance-offshore`) | Washington Post, 20 Aug 1981 (Pentagon briefing): “The attack took place 60 miles from the nearest land, according to Pentagon officials.”<br>UPI wire reports, 19-20 Aug 1981: “taking part in a 6th Fleet exercise about 60 nautical miles off the Libyan coast.”<br>Stanik, "Sudden Victory", Naval Aviation News, 1996 (The Aviation Geek Club reprint): reprint: “The dogfight over the Gulf of Sidra occurred approximately 60 miles off the coast of Libya and lasted less than a minute.”<br>EasternOrbat: Ghardabiya Air Base: “ejected about 75km off the coast of Syrte.”<br>Cooper, Grandolini and Delalande, Libyan Air Wars (extracts): Warrior Maven's extract: “Zintani and Jafaari ended up floating under their parachutes around 35 miles off the coast of Syrte.” | **53 nm from the nearest shore**. The US figure, checked by the build to lie 50–60 nm from the Natural Earth coast; the Libyan figures put it nearer Sirte. |
+| How long the fight lasted (`duration`) | USS Nimitz 1980-82 cruise book: VF-41 page, read from the scan: “In 45 seconds, the "TOMCATS" had turned a defensive situation into two confirmed AIM-9L Sidewinder direct hits, bringing the "FITTERS" down”<br>UPI wire reports, 19-20 Aug 1981: “The F-14s returned safely to the Nimitz after the dogfight, which lasted about one minute.”<br>Cooper, Grandolini and Delalande, Libyan Air Wars (extracts): “This encounter had lasted about three minutes and 44 seconds, from the US pilots sighting the Sukhois for the first time until second Su-22M was shot down” | **About 90 s from the Atoll to the second kill**. The tape's times, from the merge to "Fox 2 kill from music" at 02:53. |
+| The claimed F-14 loss (`f14-loss`) | Cooper, Grandolini and Delalande, Libyan Air Wars (extracts): Warrior Maven's extract: “Moment later, he fired one R-13M missile that, he claimed, destroyed the lead F-14.”<br>UPI wire reports, 19-20 Aug 1981: “Libya's official Jamahiriyah news agency said its jets shot down one F-14 and the Libyan navy retrieved the wreckage of the U.S. plane.”<br>Ratner, Yale Journal of International Law, 1984: note 11: “The Libyan government claimed that it shot down one U.S. fighter, and that the American plane crashed about ten miles west of Poisano, Sardinia.”<br>Washington Post, 20 Aug 1981 (Pentagon briefing): “The Libyan news agency also reported one F14 had been shot down, but the Pentagon denied this” | **No F-14 is lost**. Both returned to Nimitz (UPI); the two Libyan claims also place the wreck in different seas. |
+| When the F-14s were cleared to defend themselves (`clear-to-defend`) | USS Biddle CIC audio (relative times): “03:29 Nimitz 102 107, you are clear to defend yourself.”<br>USS Biddle CIC audio (relative times): “03:31 Bare Ace 102 107, you are clear to defend yourself. Pass from the ship.”<br>DVIDS: Fast Eagles made history over the Gulf of Sidra: “By the time the ship had advised them to fight back, the two F-14 aviators had already taken down the enemy aircraft.”<br>Lt Mike Sasser, USS Biddle account: “Immediately after the engagement, the F-14s were returning to the carrier and at that time received “Permission to defend yourselves” from the carrier.”<br>Cooper, Grandolini and Delalande, Libyan Air Wars (extracts): The Aviation Geek Club's extract, before the kills: “the two Tomcat crews, now granted permission to take immediate action and defend themselves.” | **After both kills**. The tape and both Biddle and DVIDS accounts; Cooper alone puts it first. |
+<!-- end of evidence ledger -->
+
+Other accounts the replay does not show:
+
+- **The Atoll**: Stanik's AA-2 Atoll is an R-13M in Cooper, and the ACIG article notes a
+  claim that it was a dropped tank.
+- **MiG-25s**: Cooper has two MiG-25s run toward Nimitz within the hour and turn back from
+  VF-41 and VF-84 Tomcats.
 
 ## Sources
 
-- Stanik, "Sudden Victory", Naval Aviation News, Jul–Aug 1996.
+- Stanik, "Sudden Victory", Naval Aviation News, Jul–Aug 1996, as reprinted by The Aviation
+  Geek Club:
+  https://theaviationgeekclub.com/tomcats-2-fitters-0-how-two-u-s-navy-f-14s-shot-down-two-qaddafis-su-22s-over-the-gulf-of-sidra-on-aug-19-1981/
 - USS Biddle CIC audio, transcript of the fitter engagement (Wayback Machine copy):
   https://web.archive.org/web/20060212192336/http://www.ussbiddle.org/history/fitter_engagement_audio.html
-- UPI wire, 19 and 20 August 1981 (Pentagon times, "about one minute"):
-  https://www.upi.com/Archives/1981/08/19/Two-US-Navy-jet-fighters-early-Wednesday-shot-down/9720367041600/
+- UPI wire, 19 and 20 August 1981 (Pentagon times, "about one minute"; the Libyan spokesman and
+  "200 miles off the coast"):
+  https://www.upi.com/Archives/1981/08/19/Two-US-Navy-jet-fighters-early-Wednesday-shot-down/9720367041600/ ,
+  https://www.upi.com/Archives/1981/08/20/The-Reagan-administration-says-the-attack-by-two-Libyan/5669367128000/
 - Joe Baugher, third-series serials (160403 = AJ102, 160390 = AJ107), Wayback copy:
   https://web.archive.org/web/2022/http://www.joebaugher.com/navy_serials/thirdseries21.html
 - DVIDS, "Two enemy kills: Fast Eagles made history over the Gulf of Sidra" (2022):
   https://www.dvidshub.net/news/436006/two-enemy-kills-fast-eagles-made-history-over-gulf-sidra
-- Tom Cooper, ACIG "Libyan Wars 1980–89 Part 2": http://acig.org/artman/publish/article_356.shtml
+- Tom Cooper, ACIG "Libyan Wars 1980–89 Part 2" (13 November 2003):
+  http://acig.org/artman/publish/article_356.shtml
+- Cooper, Grandolini and Delalande, *Libyan Air Wars Part 1*, via extracts at
+  https://theaviationgeekclub.com/vf-41-black-aces-f-14-tomcat-crew-members-who-took-part-in-gulf-of-sidra-incident-recall-the-shooting-down-of-gaddafi-sukhoi-su-22m-fitter-fighter-bombers/
+  and https://warriormaven.com/news/history/the-libyans-have-a-different-take-on-their-battle-with-the-us-navy
 - Yale Journal of International Law, Ratner (1984), quoting the 1973 Libyan declaration.
 - Francioni, Syracuse Journal of International Law, on the 1973 line:
   https://jilc.syr.edu/wp-content/uploads/2024/12/Gulf-of-Sirte.pdf
@@ -122,6 +144,7 @@ merge and constrained by the tape's ranges and times.
 - Washington Post, "U.S. Navy Fighters Shoot Down 2 Libyan Jets", 20 Aug 1981 (Pentagon
   briefing: 07:20 local, 20,000 ft, 60 miles from land, 30 miles below the line):
   https://www.washingtonpost.com/archive/politics/1981/08/20/us-navy-fighters-shoot-down-2-libyan-jets/324a4b20-d0c7-42c2-a61a-92b51c7012eb/
+  (read from the Wayback copy of 15 July 2024)
 - USS Nimitz 1980–82 cruise book (OOMEX, VAW-124, VF-41 pages):
   https://www.navysite.de/cruisebooks/cvn68-82/index.html
 - Thompson Sanders, "Bait and Switch in Libya", Air & Space, July 2012 (S-3A Diamond Cutter

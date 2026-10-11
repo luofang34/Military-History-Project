@@ -26,7 +26,7 @@
       "available_ms": 360000
     },
     {
-      "title": "Radar contact, 80 nm",
+      "title": "Radar contact, 80 miles",
       "at_ms": 660000,
       "available_ms": 660000
     },
@@ -381,8 +381,13 @@
     },
     {
       "start_ms": 150000,
+      "end_ms": 360000,
+      "speed": 32
+    },
+    {
+      "start_ms": 360000,
       "end_ms": 660000,
-      "speed": 48
+      "speed": 24
     },
     {
       "start_ms": 660000,
@@ -442,7 +447,7 @@
     {
       "start_ms": 1260000,
       "end_ms": 1500000,
-      "speed": 48
+      "speed": 24
     }
   ]
 }

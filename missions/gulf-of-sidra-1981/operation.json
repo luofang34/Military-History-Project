@@ -4,7 +4,7 @@
   "id": "gulf-of-sidra-1981",
   "name": "Gulf of Sidra incident, 19 August 1981",
   "duration_ms": 1500000,
-  "time_origin": "19 August 1981 07:00 Tripoli time (UTC+2), the Libyan clock of the launch report; US wire times are Pentagon times converted from Zulu",
+  "time_origin": "19 August 1981 07:00 Tripoli time (UTC+2), about when the Pentagon says the F-14s first picked up the Libyan jets; US wire times are Pentagon times converted",
   "time": {
     "range": {
       "start": 0,
@@ -13,7 +13,7 @@
     "anchor": {
       "at": 0,
       "unix_ms": 367045200000,
-      "source": "Libyan account: Su-22s sent at 7 AM; Biddle tape: contact at about 07:15; Pentagon: shootdowns 0520Z",
+      "source": "Pentagon via the Washington Post: contact about 7 a.m. Libyan time, shootdowns 7:20; Stanik: rejoin 0719",
       "source_scale": "utc",
       "uncertainty_ms": 900000,
       "resolution_ms": 60000,
@@ -70,7 +70,7 @@
     },
     {
       "id": "stanik-1996",
-      "name": "Stanik, Naval Aviation News, 1996",
+      "name": "Stanik, \"Sudden Victory\", Naval Aviation News, 1996 (The Aviation Geek Club reprint)",
       "zone": {
         "kind": "fixed",
         "seconds": 7200,
@@ -87,7 +87,7 @@
     },
     {
       "id": "cooper-acig",
-      "name": "Tom Cooper, Libyan Air Wars and ACIG",
+      "name": "Tom Cooper, \"Libyan Wars 1980-89 Part 2\", ACIG, 2003",
       "zone": {
         "kind": "fixed",
         "seconds": 7200,
@@ -121,6 +121,27 @@
     {
       "id": "sasser-biddle",
       "name": "Lt Mike Sasser, USS Biddle account"
+    },
+    {
+      "id": "upi-1981-08-20",
+      "name": "UPI wire report, 20 Aug 1981"
+    },
+    {
+      "id": "cooper-libyan-air-wars",
+      "name": "Cooper, Grandolini and Delalande, Libyan Air Wars (extracts)",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 7200,
+        "source": "tzdb Africa/Tripoli: UTC+2 (EET) with no DST in August 1981"
+      }
+    },
+    {
+      "id": "easternorbat",
+      "name": "EasternOrbat: Ghardabiya Air Base"
+    },
+    {
+      "id": "reconstruction-estimate",
+      "name": "Replay estimates where sources disagree (build/evidence.py)"
     }
   ],
   "entities": [
@@ -177,21 +198,24 @@
       "sidc": "SHAPWMAA-------",
       "camera": false,
       "name": "AA-2 Atoll",
-      "kind": "AA-2"
+      "kind": "AA-2",
+      "parent": "SU22-LEAD"
     },
     {
       "id": "AIM9-102",
       "sidc": "SFAPWMAA-------",
       "camera": false,
       "name": "AIM-9L (102)",
-      "kind": "AIM-9L"
+      "kind": "AIM-9L",
+      "parent": "FE102"
     },
     {
       "id": "AIM9-107",
       "sidc": "SFAPWMAA-------",
       "camera": false,
       "name": "AIM-9L (107)",
-      "kind": "AIM-9L"
+      "kind": "AIM-9L",
+      "parent": "FE107"
     },
     {
       "id": "NIMITZ",
@@ -209,14 +233,14 @@
     },
     {
       "id": "LOD-WEST",
-      "sidc": "SUGPUCI--------",
+      "sidc": "SUGP-----------",
       "camera": false,
       "name": "Line of Death, west",
       "kind": "32°30'N at the coast"
     },
     {
       "id": "LOD-EAST",
-      "sidc": "SUGPUCI--------",
+      "sidc": "SUGP-----------",
       "camera": false,
       "name": "Line of Death, east",
       "kind": "32°30'N at the coast"
