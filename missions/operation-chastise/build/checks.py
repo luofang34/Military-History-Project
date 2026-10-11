@@ -16,13 +16,13 @@
 - No airborne Lancaster changes heading by more than MAX_SNAP_DEG at a single waypoint: the
   replay draws straight lines between fixes, so a turn must be flown as an arc.
 - The Möhne and Eder are reported destroyed and the Sorpe damaged, each only after a mine
-  released at it has gone off.
+  released at it has gone off; an aircraft shot down by flak is reported hit first.
 """
 import ledger
 import waypoints as w
 from crews import ORB_CREWS, PRISONERS
 from evidence import DISPUTES
-from flights import LOSS, MCCARTHY_HOME, MCCARTHY_OUT
+from flights import LOSS, MCCARTHY_HOME, MCCARTHY_OUT, SHOT_DOWN
 from sites import CRASH, DURATION, L, LANDED, MOHNE, EDER, ENNEPE, SORPE, TAKE_OFF
 from manoeuvre import ENVELOPE_MPH
 from track import FT, MPH, bearing_deg, distance_m
@@ -147,7 +147,12 @@ DAMAGE = {"MÖHNE": "destroyed", "EDER": "destroyed", "SORPE": "damaged"}
 
 
 def check_damage(plan):
-    """Each dam in DAMAGE reports its state, after the first mine at it has gone off."""
+    """Each dam in DAMAGE reports its state, after the first mine at it has gone off, and
+    each aircraft shot down by flak is reported hit before it is lost."""
+    for code in SHOT_DOWN:
+        hits = [at for _, e, at, c in plan.conditions if e == code and c == "damaged"]
+        if not any(at < plan.lost[code] for at in hits):
+            raise ValueError(f"{code} is lost to flak without first being reported hit")
     for dam, state in DAMAGE.items():
         reported = [at for _, entity, at, c in plan.conditions if entity == dam and c == state]
         bursts = [plan.mines[f"UPKEEP {r.code}"].end for r in plan.releases if r.target == dam]
