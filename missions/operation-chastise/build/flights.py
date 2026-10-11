@@ -177,6 +177,18 @@ def flood():
     return t
 
 
+def damage(plan):
+    """Each target's reported state once the mine that changed it has gone off: the Möhne
+    and the Eder breached (no longer able to hold their water, "destroyed" in MIL-STD-2525),
+    the Sorpe's crest crumbled but holding, the Möhne power station wrecked by Hopgood's
+    mine."""
+    burst = {code: plan.mines[f"UPKEEP {code}"].end for code in ("AJ-J", "AJ-N", "AJ-T", "AJ-M")}
+    plan.condition("dewiki-moehne", "MÖHNE", burst["AJ-J"], "destroyed")
+    plan.condition("dewiki-eder", "EDER", burst["AJ-N"], "destroyed")
+    plan.condition("orb-617", "SORPE", burst["AJ-T"], "damaged")
+    plan.condition("orb-617", "MÖHNE POWER STATION", burst["AJ-M"], "destroyed")
+
+
 def build():
     plan = Plan()
     wave_one(plan)
@@ -190,6 +202,7 @@ def build():
     targets.sorpe(plan, "AJ-F", ["02:51", "02:54", "02:57", "03:00", "03:03", "03:06",
                                  "03:09"], "03:14", 60 * 0.3048)
     targets.ennepe(plan)
+    damage(plan)
     returns(plan)
     plan.flood = flood()
     return plan
