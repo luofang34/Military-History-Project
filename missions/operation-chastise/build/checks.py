@@ -10,13 +10,17 @@
 - The ORB's crew lists give the sourced totals: 133 flew, 53 killed, three captured.
 - Each timed estimate in build/evidence.py lies within its records' times, or is flagged as
   lying outside them with its reason.
+- AJ-T turns at each point its navigator logged, within a kilometre of it at the logged
+  time, and passes the two turns the replay does not time, the Haltern lakes and the
+  Afsluitdijk, within two minutes of the log.
 - The Möhne and Eder are reported destroyed and the Sorpe damaged, each only after a mine
   released at it has gone off.
 """
 import ledger
+import waypoints as w
 from crews import ORB_CREWS, PRISONERS
 from evidence import DISPUTES
-from flights import LOSS
+from flights import LOSS, MCCARTHY_HOME, MCCARTHY_OUT
 from sites import CRASH, DURATION, L, LANDED, MOHNE, EDER, ENNEPE, SORPE, TAKE_OFF
 from track import FT, MPH, distance_m
 
@@ -101,6 +105,24 @@ def check_evidence():
     ledger.check(DISPUTES, L)
 
 
+# Turns on the AJ-T log the replay does not use as anchors: a check on the legs between.
+UNANCHORED = [(w.HALTERN_LAKES, "01:14"), (w.AFSLUITDIJK, "02:00:30")]
+
+
+def check_mccarthy(plan):
+    """AJ-T keeps to its navigator's logged turns."""
+    track = plan.tracks["AJ-T"]
+    for points, at in MCCARTHY_OUT + MCCARTHY_HOME:
+        off = distance_m(track.at(L(at))[0], points[-1])
+        if off > 1000:
+            raise ValueError(f"AJ-T is {off:.0f} m from its logged turn at {at}")
+    for point, at in UNANCHORED:
+        near = min(abs(p.at_ms - L(at)) for p in track.waypoints
+                   if distance_m(p.point, point) < 1000)
+        if near > 120_000:
+            raise ValueError(f"AJ-T passes its logged turn at {at} {near / 60_000:.0f} min out")
+
+
 DAMAGE = {"MÖHNE": "destroyed", "EDER": "destroyed", "SORPE": "damaged"}
 
 
@@ -122,6 +144,7 @@ def all(plan):  # noqa: A001 - the module's one entry point, called as checks.al
     check_releases(plan)
     check_anchors(plan)
     check_damage(plan)
+    check_mccarthy(plan)
 
 
 def summary(plan):

@@ -10,16 +10,48 @@ ORB = "orb-617"
 DB = "dambustersblog"
 WP = "wikipedia-chastise"
 EDITOR = "ORB editor's note"
+LOG = "nav-log-aj-t"
 
 DISPUTES = {
     "mccarthy-arrival": Dispute(
         "McCarthy's arrival at the Sorpe", "AJ-T",
         (Record(DB, "Flying as fast as he could, McCarthy made up 13 or 14 minutes by the time he "
                 "reached the Sorpe at 0015", "00:15", quote=True),
-         Record("nav-log-aj-t", "Target Z 0030", "00:30", label="Navigator's log",
-                checked=False)),
-        "00:15", "The blog's reading of the log; ten runs ending in the 00:46 release (ORB) "
-        "cannot be flown from 00:30 within a Lancaster's holding speeds.", at="00:15"),
+         Record(LOG, "Target Z", "00:30", label="Navigator's log, page 3", quote=True),
+         Record(DB, "He recorded the time of arrival at Target Z as 0030", "00:30", quote=True,
+                label="Foster on MacLean's log")),
+        "00:30", "The log's own time, as the blog later reads it too. Ten approaches from about "
+        "00:32, once across from the Möhne side, to the 00:46 release take 90 s each, which the "
+        "blog also works out (\"not much more than 90 seconds\") and a tight circuit allows.",
+        at="00:30"),
+    "mccarthy-route-out": Dispute(
+        "McCarthy's route to the Sorpe", "AJ-T",
+        (Record(LOG, "Stavoren a/c Harderwijk; Harderwijk a/c Doesburg; Doesburg a/c Rees; Rees "
+                "a/c Lake; Lake a/c Ahlen; Ahlen a/c Target X; Target X a/c Target Z",
+                label="Navigator's log, page 3, its legs in order"),
+         Record(WP, "Formation No. 2 flew further north, cutting over Vlieland and crossing the "
+                "IJsselmeer", quote=True),
+         Record(WP, "before joining the first route near Wesel", quote=True)),
+        "The northern route by Doesburg to Rees, then the lakes, Ahlen and the Möhne",
+        "The log's own legs. Rees, where it joins the southern route, lies near Wesel; Target X, "
+        "the Möhne, is where it turns for the Sorpe, placed 2 km short of the dam.",
+        shown="00:20"),
+    "mccarthy-route-home": Dispute(
+        "McCarthy's route home", "AJ-T",
+        (Record(LOG, "Target Z a/c Target X; Target X a/c Ahlen; Ahlen a/c Lake; Lake a/c Rees; "
+                "Rees a/c Doesburg; Doesburg a/c Harderwijk; Harderwijk a/c Stavoren; Wall; "
+                "Island Vlieland; Mablethorpe", label="Navigator's log, page 3, its legs in order"),
+         Record(DB, "they simply backtracked along their outbound course", quote=True),
+         Record(DB, "McCarthy set course for home, but went via the Möhne, having heard over the "
+                "radio that it had been breached.", quote=True),
+         Record(DB, "ending up over the heavily defended town of Hamm.", quote=True,
+                label="Foster on MacLean")),
+        "The outbound legs reversed, off course over Hamm between Ahlen and the lakes",
+        "The log reverses its outbound legs and names no Hamm; its Ahlen to Rees leg, 00:59 to "
+        "01:32, takes half as long again as the same leg out, room for the deviation both blog "
+        "posts describe. Times are the log's legible ones. The log crosses the English coast "
+        "at Mablethorpe about 03:02 and is over base at 03:18; the replay, with no circuit of "
+        "Scampton before the 03:23 landing (ORB), crosses about 03:11.", shown="00:59"),
     "mccarthy-runs": Dispute(
         "McCarthy's runs at the Sorpe", "AJ-T",
         (Record(DB, "on the tenth approach, he managed to make a near perfect run, getting down "

@@ -7,14 +7,15 @@ The first wave flew in vics of three, the others singly.
 import targets
 from evidence import time_of
 import waypoints as w
-from manoeuvre import CIRCUIT_ALT_M, FINAL, between, go, land, take_off
+from manoeuvre import CIRCUIT_ALT_M, FINAL, between, circuit_to, go, land, take_off
 from plan import Plan
 from sites import (CRASH, FRONDENBERG, GUNNE, HIMMELPFORTEN, L, LANDED, MOHNE, NEHEIM_CAMP,
                    NIEDERENSE, SCHWERTE, TAKE_OFF, WICKEDE)
-from track import Track, distance_m
+from track import Track, bearing_deg, distance_m
 
 ENGLAND = {w.WEST_RAYNHAM, w.WAINFLEET, w.NORTH_COAST_OUT}
-SEA = {w.ZERO, w.NORTH_ZERO, w.NORTH_SEA_EXIT, w.VLIELAND_GAP, w.STAVOREN}
+SEA = {w.ZERO, w.NORTH_ZERO, w.NORTH_SEA_EXIT, w.VLIELAND_GAP, w.STAVOREN, w.AFSLUITDIJK,
+       w.VLIELAND}
 SLOTS = [(0, 0), (-110, -90), (110, -90)]  # (right m, ahead m) in a vic
 
 # Loss times: the ORB's notes, dambustersblog and the crews' logs (see the README).
@@ -121,7 +122,7 @@ def wave_two(plan):
     out = [w.NORTH_COAST_OUT, w.NORTH_ZERO, w.VLIELAND_GAP]
     for code in ("AJ-E", "AJ-W", "AJ-K", "AJ-H", "AJ-T"):
         depart(plan, code)
-    lose(plan, "AJ-E", out + [w.STAVOREN, w.HARDERWIJK])
+    lose(plan, "AJ-E", out + [w.STAVOREN, w.HARDERWIJK, w.DOESBURG])
     fly(plan, "AJ-W", out, "22:54")
     plan.condition("orb-617", "AJ-W", L("22:54"), "damaged")
     home(plan, "AJ-W", [w.NORTH_ZERO, w.NORTH_COAST_OUT])
@@ -130,8 +131,47 @@ def wave_two(plan):
     go(plan.tracks["AJ-H"], [(L("23:01"), w.RICE_SEA, 0.0)], 0)
     plan.condition("orb-617", "AJ-H", L("23:01"), "damaged")
     home(plan, "AJ-H", [w.VLIELAND_GAP, w.NORTH_ZERO, w.NORTH_COAST_OUT])
-    fly(plan, "AJ-T", w.NORTH_OUT[:-1] + [w.AHLEN, w.SORPE_NORTH],
-        time_of("mccarthy-arrival"))
+    mccarthy_out(plan)
+
+
+# McCarthy's legs and the times his navigator logged at each turn (mccarthy-route-out,
+# mccarthy-route-home), at constant speed between them.
+MCCARTHY_OUT = [
+    ([w.NORTH_COAST_OUT, w.NORTH_ZERO, w.VLIELAND_GAP, w.STAVOREN], "23:26:30"),
+    ([w.HARDERWIJK], "23:37:30"), ([w.DOESBURG], "23:49:30"), ([w.REES], "23:57"),
+    ([w.HALTERN_LAKES], "00:10"), ([w.AHLEN], "00:20"), ([w.MOHNE_TURN], "00:27"),
+]
+MCCARTHY_HOME = [
+    ([w.MOHNE_TURN], "00:54"), ([w.AHLEN], "00:59"), ([w.HAMM, w.HALTERN_LAKES, w.REES], "01:32"),
+    ([w.DOESBURG], "01:37"), ([w.HARDERWIJK], "01:46"), ([w.STAVOREN], "01:57"),
+    ([w.AFSLUITDIJK, w.VLIELAND], "02:06"),
+]
+
+
+# Ten approaches between the 00:30 arrival and the 00:46 release (mccarthy-arrival), the
+# first once he has crossed from the Möhne side to the start of the run: 90 s apart, as the
+# blog works out from the log. That leaves room only for a tight circuit, pulling up soon
+# after the crest; the ORB has a hill at either end of the run.
+MCCARTHY_FIRST, MCCARTHY_RUN_MS = "00:32:30", 90_000
+MCCARTHY_CIRCUIT_M, MCCARTHY_EXIT_M = 700, 400
+
+
+def mccarthy_out(plan):
+    for points, at in MCCARTHY_OUT:
+        fly(plan, "AJ-T", points, at)
+    fly(plan, "AJ-T", [w.SORPE_NORTH], time_of("mccarthy-arrival"))
+
+
+def mccarthy_home(plan):
+    """Circles the Sorpe after the release until the log's 00:51 "Target Z a/c Target X", then
+    flies its homeward legs."""
+    track = plan.tracks["AJ-T"]
+    circuit_to(track, w.SORPE_NORTH, bearing_deg(w.SORPE_NORTH, w.MOHNE_TURN), 1300,
+               L("00:51"), 250.0)
+    plan.phase("AJ-T", track.end + 1, "reconstruction-route", 5000.0)
+    for points, at in MCCARTHY_HOME:
+        fly(plan, "AJ-T", points, at)
+    home(plan, "AJ-T", [w.NORTH_ZERO, w.NORTH_COAST_OUT])
 
 
 def wave_three(plan):
@@ -158,8 +198,7 @@ def returns(plan):
     home(plan, "AJ-G", [MOHNE] + w.RETURN_3[:-1])
     home(plan, "AJ-N", w.RETURN_2[:-1])
     home(plan, "AJ-L", w.RETURN_2[:-1])
-    home(plan, "AJ-T", [w.HAMM, w.DULMEN, w.HARDERWIJK, w.STAVOREN, w.VLIELAND_GAP,
-                        w.NORTH_ZERO, w.NORTH_COAST_OUT])
+    mccarthy_home(plan)
     home(plan, "AJ-F", [MOHNE] + w.RETURN_1[:-1])
     home(plan, "AJ-O", w.RETURN_1[1:-1])
     home(plan, "AJ-Y", [w.DULMEN, w.REES, w.GOCH, w.BEEK, w.ROOSENDAAL, w.SCHELDT, w.ZERO,
@@ -198,7 +237,8 @@ def build():
     targets.eder(plan)
     # McCarthy drops on his tenth run (evidence: mccarthy-runs); Brown makes seven runs,
     # marks the mist with incendiaries, and drops on the eighth.
-    targets.sorpe(plan, "AJ-T", [f"00:{m}" for m in range(19, 44, 3)], "00:46", 30 * 0.3048)
+    targets.sorpe(plan, "AJ-T", [L(MCCARTHY_FIRST) + k * MCCARTHY_RUN_MS for k in range(9)],
+                  "00:46", 30 * 0.3048, radius=MCCARTHY_CIRCUIT_M, exit_m=MCCARTHY_EXIT_M)
     targets.sorpe(plan, "AJ-F", ["02:51", "02:54", "02:57", "03:00", "03:03", "03:06",
                                  "03:09"], "03:14", 60 * 0.3048)
     targets.ennepe(plan)

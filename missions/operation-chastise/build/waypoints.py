@@ -11,7 +11,8 @@ from sites import SCAMPTON
 WEST_RAYNHAM = (0.785, 52.790)
 SOUTHWOLD = (1.679, 52.326)
 WAINFLEET = (0.237, 53.107)
-NORTH_COAST_OUT = (0.30, 53.42)  # Lincolnshire coast for the northern route, reconstructed
+# Mablethorpe: the coast the AJ-T log names, on the planned 090° leg from Scampton.
+NORTH_COAST_OUT = (0.26, 53.34)
 
 # Southern route (waves 1 and 3).
 ZERO = (3.0000, 51.8667)  # B.976: 51°52'N 03°00'E, the first section's Zero Hour position
@@ -34,8 +35,13 @@ NORTH_ZERO = (4.0000, 53.3167)  # B.976: 53°19'N 04°00'E, the second wave at Z
 VLIELAND_GAP = (4.95, 53.22)  # between Vlieland and Texel
 STAVOREN = (5.360, 52.883)
 HARDERWIJK = (5.619, 52.349)
-NORTH_OUT = [NORTH_COAST_OUT, NORTH_ZERO, VLIELAND_GAP, STAVOREN, HARDERWIJK, REES,
+DOESBURG = (6.153, 52.012)
+NORTH_OUT = [NORTH_COAST_OUT, NORTH_ZERO, VLIELAND_GAP, STAVOREN, HARDERWIJK, DOESBURG, REES,
              HALTERN_LAKES, AHSEN, AHLEN]
+# Target X on the AJ-T log, where it turned for the Sorpe; placed 2 km short of the Möhne dam.
+MOHNE_TURN = (8.0385, 51.5026)
+AFSLUITDIJK = (5.20, 53.02)  # "Wall" on the AJ-T log, the IJsselmeer dam
+VLIELAND = (5.05, 53.27)  # "Island Vlieland" on the AJ-T log
 
 # Return routes, numbered as on the planned-routes map.
 DULMEN = (7.279, 51.828)
