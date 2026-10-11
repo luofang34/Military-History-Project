@@ -24,17 +24,10 @@ pointing at it): `./run operation-vengeance`, optionally with `--at SECONDS --pa
 
 ## Adding a mission
 
-Create `missions/<id>/` with the package, a README carrying its method and sources, its
-generator, and an `index.html` launch page pointing at its package on `history.sokoly.app`;
-the page's front matter sets `permalink: /<id>/` so it is served at `/<id>/`. Shared track
-and event helpers are in `tools/`. Add the mission to `catalog.json`, then run
-`python3 verify.py`, which checks camera and pacing coverage within the operation, that a map
-on which nothing moves plays for at most 6 s, source handovers in reconstructed tracks, the
-order of battle, the catalog and public replay links. With a Sokoly-App build that has
-`--frame-report` (named by `SOKOLY_APP`, or a release build in `../Sokoly-App`), it also checks
-the viewer's own projection of every shot: its focus stays in frame, and each briefing note
-can be read before it leaves the screen. `python3 tools/composition.py missions/<id>` prints
-what each shot shows, for framing a story.
+[AGENTS.md](https://github.com/luofang34/Military-History-Project/blob/master/AGENTS.md) describes how a mission is built, sourced, shot and checked, for
+people and coding agents alike. `python3 verify.py` checks every package before it is
+published, including each shot of its story against the viewer's own projection.
+
 The Pages homepage renders this README.
 
 ## Licence

@@ -3,3 +3,6 @@ description: Reconstructions of historical military operations
 theme: jekyll-theme-primer
 url: https://history.sokoly.app
 baseurl: ""
+exclude:
+  - AGENTS.md
+  - CLAUDE.md
