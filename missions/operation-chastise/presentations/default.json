@@ -134,11 +134,11 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": -0.55015,
-          "lat": 53.30559
+          "lon": -0.54961,
+          "lat": 53.30564
         }
       },
-      "zoom": 11.09,
+      "zoom": 11.07,
       "pitch": 40,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
@@ -164,11 +164,11 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": -0.5616,
-          "lat": 53.30306
+          "lon": -0.56112,
+          "lat": 53.303
         }
       },
-      "zoom": 12.22,
+      "zoom": 12.24,
       "pitch": 40,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
@@ -194,11 +194,11 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": -0.56166,
-          "lat": 53.30309
+          "lon": -0.56118,
+          "lat": 53.30302
         }
       },
-      "zoom": 12.22,
+      "zoom": 12.25,
       "pitch": 40,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
@@ -224,11 +224,11 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": -0.55553,
-          "lat": 53.29971
+          "lon": -0.55498,
+          "lat": 53.29959
         }
       },
-      "zoom": 11.48,
+      "zoom": 11.47,
       "pitch": 40,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
@@ -256,11 +256,11 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": 4.72028,
-          "lat": 53.23053
+          "lon": 4.72999,
+          "lat": 53.23228
         }
       },
-      "zoom": 8.85,
+      "zoom": 8.83,
       "pitch": 25,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
@@ -332,8 +332,8 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": 8.01639,
-          "lat": 51.53193
+          "lon": 8.01232,
+          "lat": 51.53106
         }
       },
       "zoom": 8.84,
@@ -563,7 +563,7 @@
         "kind": "entity",
         "value": "AJ-G"
       },
-      "zoom": 10.51,
+      "zoom": 10.69,
       "pitch": 25,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
@@ -576,11 +576,11 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": 9.06406,
-          "lat": 51.19759
+          "lon": 9.06588,
+          "lat": 51.19694
         }
       },
-      "zoom": 11.58,
+      "zoom": 11.45,
       "pitch": 45,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
@@ -667,8 +667,8 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": 8.03151,
-          "lat": 51.49581
+          "lon": 8.03056,
+          "lat": 51.49606
         }
       },
       "zoom": 7.59,
@@ -683,8 +683,8 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": 6.77604,
-          "lat": 51.6953
+          "lon": 6.77589,
+          "lat": 51.69526
         }
       },
       "zoom": 7.24,
@@ -789,8 +789,8 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": 2.86439,
-          "lat": 52.71789
+          "lon": 2.85863,
+          "lat": 52.72041
         }
       },
       "zoom": 5.58,
@@ -819,11 +819,11 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": -0.53866,
-          "lat": 53.30946
+          "lon": -0.53855,
+          "lat": 53.31043
         }
       },
-      "zoom": 10.67,
+      "zoom": 10.63,
       "pitch": 40,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,

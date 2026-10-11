@@ -4,14 +4,16 @@ Legs between sourced anchors are flown at constant ground speed along the planne
 anchors are the ORB's times, the navigators' logs and the loss times quoted in the README.
 The first wave flew in vics of three, the others singly.
 """
+import math
 import targets
 from evidence import time_of
 import waypoints as w
-from manoeuvre import CIRCUIT_ALT_M, FINAL, between, circuit_to, go, land, take_off
+from manoeuvre import (APPROACH, CIRCUIT_ALT_M, ENVELOPE_MPH, FINAL, between, circuit_to, go, land,
+                       take_off, turn)
 from plan import Plan
 from sites import (CRASH, FRONDENBERG, GUNNE, HIMMELPFORTEN, L, LANDED, MOHNE, NEHEIM_CAMP,
                    NIEDERENSE, SCHWERTE, TAKE_OFF, WICKEDE)
-from track import Track, bearing_deg, distance_m
+from track import MPH, Track, bearing_deg, distance_m
 
 ENGLAND = {w.WEST_RAYNHAM, w.WAINFLEET, w.NORTH_COAST_OUT}
 SEA = {w.ZERO, w.NORTH_ZERO, w.NORTH_SEA_EXIT, w.VLIELAND_GAP, w.STAVOREN, w.AFSLUITDIJK,
@@ -25,7 +27,7 @@ LOSS = {"AJ-K": "22:57", "AJ-E": "23:50", "AJ-B": "00:15", "AJ-M": "00:34",
 
 
 def alt(point):
-    if point == FINAL:
+    if point in (FINAL, APPROACH):
         return CIRCUIT_ALT_M
     if point == w.OSTONNEN_CLIMB:
         return 150.0
@@ -56,7 +58,7 @@ def home(plan, code, points):
     plan.phase(code, plan.tracks[code].end + 1, "reconstruction-route", 5000.0)
     track = plan.tracks[code]
     landing = L(LANDED[code])
-    points = list(points) + [FINAL]
+    points = list(points) + [APPROACH, FINAL]
     between(track, points, landing - 120_000, [alt(p) for p in points])
     plan.phase(code, landing - 120_000, "reconstruction-airfield", 1000.0)
     land(track, landing)
@@ -113,6 +115,14 @@ def wave_one(plan):
     lose(plan, "AJ-B")
 
 
+def turn_back(track, mps=80.0, bank_deg=30.0):
+    """A turn to port onto the reciprocal of the track's heading, as a crew abandoning the
+    sortie flies it, rather than a reversal at a point."""
+    a, b = track.waypoints[-2], track.waypoints[-1]
+    radius = mps ** 2 / (9.81 * math.tan(math.radians(bank_deg)))
+    turn(track, bearing_deg(a.point, b.point), -180, radius * math.pi, mps, max(b.alt_m, 18.0))
+
+
 def time_at(track, point):
     """The time `track` passes closest to `point`."""
     return min((distance_m(wp.point, point), wp.at_ms) for wp in track.waypoints)[1]
@@ -125,11 +135,13 @@ def wave_two(plan):
     lose(plan, "AJ-E", out + [w.STAVOREN, w.HARDERWIJK, w.DOESBURG])
     fly(plan, "AJ-W", out, "22:54")
     plan.condition("orb-617", "AJ-W", L("22:54"), "damaged")
+    turn_back(plan.tracks["AJ-W"])
     home(plan, "AJ-W", [w.NORTH_ZERO, w.NORTH_COAST_OUT])
     lose(plan, "AJ-K", out[:2] + [w.TEXEL_NORTH])
     fly(plan, "AJ-H", out, "22:59")
     go(plan.tracks["AJ-H"], [(L("23:01"), w.RICE_SEA, 0.0)], 0)
     plan.condition("orb-617", "AJ-H", L("23:01"), "damaged")
+    turn_back(plan.tracks["AJ-H"])
     home(plan, "AJ-H", [w.VLIELAND_GAP, w.NORTH_ZERO, w.NORTH_COAST_OUT])
     mccarthy_out(plan)
 
@@ -244,5 +256,10 @@ def build():
     targets.ennepe(plan)
     damage(plan)
     returns(plan)
+    # Corners between legs, circuits and runs turn as a banked Lancaster turns; releases stay
+    # at their briefed height and range.
+    for code, track in plan.tracks.items():
+        releases = {r.at_ms for r in plan.releases if r.code == code}
+        track.fillet(min_mps=ENVELOPE_MPH[0] * MPH, keep=releases)
     plan.flood = flood()
     return plan

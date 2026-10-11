@@ -6,8 +6,10 @@ dam's run. Dummy-run counts follow the crews' accounts; their times are spaced e
 arrival and release and are not sourced. Each run's geometry is reconstructed from the dam's
 crest and the accounts quoted in the README.
 """
+import math
+
 from evidence import time_of
-from manoeuvre import RELEASE_M, RUN_ALT_M, alongside, attack_run, circuit_to, go
+from manoeuvre import RELEASE_M, RUN_ALT_M, alongside, attack_run, circuit_to, go, turn
 from sites import (EDER, EDER_RUN, ENNEPE, HAMMERBERG, L, MOHNE, MOHNE_RUN, POWER_STATION,
                    SORPE, SORPE_AXIS, WALDECK)
 from track import MPH, bearing_deg, destination, distance_m
@@ -23,6 +25,8 @@ MOHNE_START = destination(MOHNE_RELEASE, MOHNE_RUN + 180, 4500)
 EDER_RELEASE = destination(EDER, EDER_RUN + 180, RELEASE_M)
 EDER_DIVE = bearing_deg(WALDECK, HAMMERBERG)
 EDER_START = destination(WALDECK, EDER_DIVE + 180, 2000)
+EDER_LINED_UP_M = 500.0
+EDER_LINED_UP = destination(EDER_RELEASE, EDER_RUN + 180, EDER_LINED_UP_M)
 
 # Sorpe: along the crest from over Langscheid, at the lowest practicable height and 180 mph,
 # the mine dropped unspun near the middle of the crest on the water side.
@@ -97,6 +101,7 @@ def mohne(plan):
     near = destination(MOHNE, MOHNE_RUN + 180, 1500)
     circuit_to(plan.tracks["AJ-G"], near, MOHNE_RUN, 2000, T("00:53:30"), 250)
     go(plan.tracks["AJ-G"], [(T("00:54:00"), destination(MOHNE, MOHNE_RUN - 90, 800), 250)], 0)
+    turn_toward(plan.tracks["AJ-G"], EDER)
     for code, radius, leave in [("AJ-L", 4600, "00:56:30"), ("AJ-Z", 5000, "00:56:30"),
                                 ("AJ-N", 5400, "00:56:30"), ("AJ-J", 4200, "00:56"),
                                 ("AJ-P", 3400, "00:56")]:
@@ -109,18 +114,20 @@ def mohne(plan):
 def eder_run(plan, code, release_at, radius):
     track = plan.tracks[code]
     v = 220 * MPH
-    hammer_at = release_at - distance_m(HAMMERBERG, EDER_RELEASE) / v * 1000
+    lined_up_at = release_at - EDER_LINED_UP_M / v * 1000
+    hammer_at = lined_up_at - distance_m(HAMMERBERG, EDER_LINED_UP) / v * 1000
     castle_at = hammer_at - distance_m(WALDECK, HAMMERBERG) / v * 1000
     start_at = castle_at - 2000 / v * 1000
     circuit_to(track, EDER_START, EDER_DIVE, radius, start_at, 330)
     plan.phase(code, start_at - 1, "reconstruction-target", 400.0)
     track.add(castle_at, WALDECK, 300.0)  # 1,000 ft over the castle, diving
     track.add(hammer_at, HAMMERBERG, 30.0)
+    # Lined up on the wall before the release, not turning onto it at the release.
+    track.add(lined_up_at, EDER_LINED_UP, RUN_ALT_M)
     track.add(release_at, EDER_RELEASE, RUN_ALT_M)
     over = destination(EDER, EDER_RUN, 150)
     track.add(release_at + (RELEASE_M + 150) / v * 1000, over, RUN_ALT_M + 15)
-    climb = destination(over, EDER_RUN + 45, 1800)
-    track.add(release_at + (RELEASE_M + 1950) / v * 1000, climb, 320.0)
+    turn(track, EDER_RUN, 45, 1800, v, 320.0)
     return EDER_RELEASE
 
 
@@ -150,6 +157,16 @@ def eder(plan):
         circuit_to(plan.tracks[code], EDER_START, EDER_DIVE, radius, leave, 330)
 
 
+def turn_toward(track, point, mps=72.0, bank_deg=30.0):
+    """Turns the shorter way from the track's heading onto the bearing of `point`, flown as
+    an arc, before the leg that follows."""
+    a, b = track.waypoints[-2], track.waypoints[-1]
+    heading = bearing_deg(a.point, b.point)
+    need = (bearing_deg(b.point, point) - heading + 180) % 360 - 180
+    radius = mps ** 2 / (9.81 * math.tan(math.radians(bank_deg)))
+    turn(track, heading, need, radius * math.radians(abs(need)), mps, b.alt_m)
+
+
 def sorpe_run(plan, code, release_at, alt, radius=1300, exit_m=900):
     """A run along the crest released at `release_at`, then a climbing turn to port
     `exit_m` beyond the dam."""
@@ -161,8 +178,7 @@ def sorpe_run(plan, code, release_at, alt, radius=1300, exit_m=900):
     beyond = destination(SORPE, SORPE_RUN, exit_m)
     over = distance_m(SORPE_RELEASE, beyond)
     track.add(release_at + over / SORPE_SPEED * 1000, beyond, alt + 30)
-    climb = destination(beyond, SORPE_RUN - 60, exit_m)
-    track.add(release_at + (over + exit_m) / SORPE_SPEED * 1000, climb, 220.0)
+    turn(track, SORPE_RUN, -60, exit_m, SORPE_SPEED, 220.0)
     return SORPE_RELEASE
 
 

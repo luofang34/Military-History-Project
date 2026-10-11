@@ -97,7 +97,9 @@ and, on the map, folds overlapping members into one symbol under the formation t
     - under 1,500 ft over England;
     - 60 ft on the spotlight altimeter over the sea;
     - about 130 ft over land.
-  - Each leg between sourced anchors is flown at constant ground speed.
+  - Each leg between sourced anchors is flown at constant ground speed. Turns are flown as
+    arcs a Lancaster could fly: circuits are joined along their tangent, and corners are
+    rounded at about 30° of bank, never through a release point.
   - Maudslay's section is timed to be abeam Marbeck at 00:15, when Astell was seen to go down.
 - **Attacks** (±400 m): reconstructed from the crests and the accounts.
   - **Möhne**: runs down the lake on 323°, perpendicular to the crest, toward its water face.
@@ -108,8 +110,8 @@ and, on the map, folds overlapping members into one symbol under the formation t
       Maltby's run he flies to starboard and Martin to port (dambustersblog). The sides on
       the earlier runs are not recorded.
   - **Eder**: a dive from 1,000 ft over Waldeck castle toward the Hammerberg spit. A hard turn
-    to port lines the aircraft up on the wall, on 124°, and a steep climbing turn to starboard
-    clears the hill beyond (Gibson).
+    to port lines the aircraft up on the wall, on 124°, 500 m before the release, and a steep
+    climbing turn to starboard clears the hill beyond (Gibson).
   - **Sorpe**: runs along the crest from over Langscheid on 132°, at 180 mph (B.976). The mine
     is dropped unspun on the water side of the crest.
   - **Ennepe**: a run perpendicular to the crest from the lake to the south. Townsend reported
