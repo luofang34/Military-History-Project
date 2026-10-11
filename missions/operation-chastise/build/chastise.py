@@ -16,6 +16,7 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parents[2] / "tools"))
 import checks  # noqa: E402
 import ledger  # noqa: E402
+from evidence import DISPUTES  # noqa: E402
 import flights  # noqa: E402
 import shots  # noqa: E402
 import story  # noqa: E402
@@ -98,7 +99,7 @@ def main():
         em.fix(source, id_, 0, point, 0.0, bound, None, "reported", [], reference="site")
     for source, entity, at, condition in plan.conditions:
         em.condition(source, entity, at, condition, "reported", [])
-    story.annotations(em, {s["id"]: s["name"] for s in SOURCES})
+    story.annotations(em)
     undeclared = {e["source"]["id"] for e in em.events} - {s["id"] for s in SOURCES}
     if undeclared:
         raise ValueError(f"events cite undeclared sources: {sorted(undeclared)}")
@@ -137,7 +138,8 @@ def main():
         "media_archive": None,
     }
     (out / "operation.json").write_text(json.dumps(op, indent=2, ensure_ascii=False) + "\n")
-    ledger.write_readme(out / "README.md", {s["id"]: s["name"] for s in SOURCES})
+    ledger.write_readme(out / "README.md", DISPUTES, {s["id"]: s["name"] for s in SOURCES},
+                        "chastise.py")
     shot_list = shots.shots(plan)
     doc = story.document(OP, shot_list)
     (out / "presentations").mkdir(exist_ok=True)

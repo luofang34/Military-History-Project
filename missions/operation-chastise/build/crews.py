@@ -4,7 +4,6 @@ Each list follows the ORB's duty order: captain, flight engineer, navigator, wir
 operator, bomb aimer, front gunner, rear gunner. Fates are from dambustersblog's crew pages
 and the ORB editor's notes.
 """
-DUTIES = "Captain, F/Eng., Nav., W/Optr., A/B, F/Gunner, R/Gunner"
 
 ORB_CREWS = {
     "AJ-G": ["W/Cmdr. G.P. GIBSON", "Sgt. J. PULFORD", "F/O. H.T. TAERUM",
@@ -51,10 +50,6 @@ ORB_CREWS = {
 
 # Survivors of the lost crews, taken prisoner; everyone else aboard a lost aircraft was killed.
 PRISONERS = {"AJ-M": ["F/Sgt. J.W. FRASER", "P/O. A.F. BURCHER"], "AJ-C": ["Sgt. TEES R."]}
-
-
-def crew_note(code):
-    return f"ORB crew ({DUTIES}): " + "; ".join(ORB_CREWS[code])
 
 
 def fate_note(code):

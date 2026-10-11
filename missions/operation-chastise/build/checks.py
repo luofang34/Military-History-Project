@@ -11,6 +11,7 @@
 - Each timed estimate in build/evidence.py lies within its records' times, or is flagged as
   lying outside them with its reason.
 """
+import ledger
 from crews import ORB_CREWS, PRISONERS
 from evidence import DISPUTES
 from flights import LOSS
@@ -95,15 +96,7 @@ def check_crews():
 
 def check_evidence():
     """A timed estimate lies within its records' times, or says why not."""
-    for key, d in DISPUTES.items():
-        if d.at is None:
-            continue
-        times = [L(t) for r in d.records for t in (r.at, r.latest) if t]
-        inside = bool(times) and min(times) <= L(d.at) <= max(times)
-        if inside == d.outside:
-            raise ValueError(f"evidence {key}: estimate {d.at} is "
-                             f"{'inside' if inside else 'outside'} its records' times, but "
-                             f"outside={d.outside}")
+    ledger.check(DISPUTES, L)
 
 
 def all(plan):  # noqa: A001 - the module's one entry point, called as checks.all
