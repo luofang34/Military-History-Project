@@ -20,6 +20,7 @@
 """
 import ledger
 import waypoints as w
+from targets import SORPE_RUN, STEEPLE
 from crews import ORB_CREWS, PRISONERS
 from evidence import DISPUTES
 from flights import LOSS, MCCARTHY_HOME, MCCARTHY_OUT, SHOT_DOWN
@@ -130,8 +131,17 @@ UNANCHORED = [(w.HALTERN_LAKES, "01:14"), (w.AFSLUITDIJK, "02:00:30")]
 
 
 def check_mccarthy(plan):
-    """AJ-T keeps to its navigator's logged turns."""
+    """AJ-T keeps to its navigator's logged turns, and its release run comes in over
+    Langscheid's steeple and reaches the release on the crest's heading."""
     track = plan.tracks["AJ-T"]
+    release = next(r.at_ms for r in plan.releases if r.code == "AJ-T")
+    nearest = min(distance_m(track.at(t)[0], STEEPLE)
+                  for t in range(release - 20_000, release, 250))
+    if nearest > 150:
+        raise ValueError(f"AJ-T's run passes {nearest:.0f} m from Langscheid's steeple")
+    heading = bearing_deg(track.at(release - 500)[0], track.at(release)[0])
+    if abs((heading - SORPE_RUN + 180) % 360 - 180) > 5:
+        raise ValueError(f"AJ-T releases on {heading:.0f}°, off the crest's {SORPE_RUN:.0f}°")
     for points, at in MCCARTHY_OUT + MCCARTHY_HOME:
         off = distance_m(track.at(L(at))[0], points[-1])
         if off > 1000:

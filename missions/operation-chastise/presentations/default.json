@@ -471,8 +471,8 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": 7.96005,
-          "lat": 51.35656
+          "lon": 7.95917,
+          "lat": 51.35333
         }
       },
       "zoom": 13.86,
@@ -1397,7 +1397,7 @@
         ]
       },
       "11940000": {
-        "intent": "Cut away to the Sorpe: McCarthy, alone of his wave, drops along the crest of the earth dam, and it holds.",
+        "intent": "Cut away to the Sorpe: McCarthy, alone of his wave, comes in over Langscheid's steeple and drops along the crest of the earth dam, and it holds.",
         "shows": [
           "SORPE",
           "UPKEEP AJ-T"

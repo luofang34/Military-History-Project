@@ -166,8 +166,14 @@ DISPUTES = {
         (Record(WP, "the approach was made along the length of the dam, not at right angles over "
                 "the reservoir", quote=True),
          Record(ORB, "detailed to fly from left to right at about 30 degrees with the mine "
-                "bouncing up to the dam face", quote=True, label=EDITOR)),
-        "Along the crest, unspun", "McCarthy's own report of \"the run along the Dam\" (ORB).",
+                "bouncing up to the dam face", quote=True, label=EDITOR),
+         Record(WP, "led over a church steeple in the village of Langscheid", quote=True),
+         Record(DB, "The approach involved flying over the small town of Langscheid, which had "
+                "a prominent church steeple", quote=True)),
+        "Along the crest, unspun; McCarthy in over Langscheid's steeple",
+        "McCarthy's own report of \"the run along the Dam\" (ORB). His crew came in over the "
+        "church of St. Antonius, Langscheid, 320 m to the lake side of the crest line, at some "
+        "30-40° to the crest, as the editor's note has it, and turned onto it before the dam.",
         shown="00:46"),
     "release-speed": Dispute(
         "Release speed", None,
