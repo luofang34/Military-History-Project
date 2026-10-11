@@ -80,54 +80,6 @@
     },
     {
       "start_ms": 1500,
-      "end_ms": 3500,
-      "target": {
-        "kind": "point",
-        "value": {
-          "lon": -157.95,
-          "lat": 21.35
-        }
-      },
-      "zoom": 1.9,
-      "pitch": 0,
-      "bearing": 0,
-      "orbit_deg_s": 0.0,
-      "transition_ms": 2000
-    },
-    {
-      "start_ms": 3500,
-      "end_ms": 6700,
-      "target": {
-        "kind": "point",
-        "value": {
-          "lon": 162.0,
-          "lat": -8.0
-        }
-      },
-      "zoom": 1.7,
-      "pitch": 0,
-      "bearing": 0,
-      "orbit_deg_s": 0.0,
-      "transition_ms": 3200
-    },
-    {
-      "start_ms": 6700,
-      "end_ms": 8200,
-      "target": {
-        "kind": "point",
-        "value": {
-          "lon": 159.8,
-          "lat": -9.3
-        }
-      },
-      "zoom": 6.0,
-      "pitch": 0,
-      "bearing": 0,
-      "orbit_deg_s": 0.0,
-      "transition_ms": 1500
-    },
-    {
-      "start_ms": 8200,
       "end_ms": 11200,
       "target": {
         "kind": "point",
@@ -140,7 +92,7 @@
       "pitch": 45,
       "bearing": 340,
       "orbit_deg_s": 0.0,
-      "transition_ms": 3000,
+      "transition_ms": 9700,
       "focus": "MITCHELL"
     },
     {
@@ -665,21 +617,7 @@
         "shows": []
       },
       "1500": {
-        "intent": "Pull back to the whole Pacific: the reach of one decrypted message.",
-        "shows": []
-      },
-      "3500": {
-        "intent": "Swing across the ocean to the Solomons.",
-        "shows": []
-      },
-      "6700": {
-        "intent": "Down onto Guadalcanal and its fighter strip.",
-        "shows": [
-          "FIGHTER TWO"
-        ]
-      },
-      "8200": {
-        "intent": "Down to Fighter Two, Mitchell's P-38 at the head of the line.",
+        "intent": "Fly from Pearl Harbor across the Pacific to Fighter Two on Guadalcanal, where Mitchell's P-38 waits at the head of the line.",
         "shows": [
           "MITCHELL",
           "FIGHTER TWO"
