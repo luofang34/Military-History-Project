@@ -15,7 +15,12 @@ from sites import (L, KAHILI, BALLALE, CRASH_T1_323, DITCH_T1_326, BANIKA, FIGHT
 E1 = (155.63, -7.15)   # between Shortland and the Treasuries
 E2 = (155.95, -7.60)
 R2 = (156.30, -8.40)   # 27 km west of Simbo
-HINE_LAST = (155.77, -6.905)  # MACR 599: four miles north of Shortland
+# Mitchell sees Hine smoking four miles north of Shortland with Zeros making passes (MACR 599);
+# the same-day report and Holmes (MACR 609) last see him south of it, losing height.
+HINE_HIT = (155.77, -6.905)
+HINE_OVER = (155.775, -6.96)   # Shortland's north coast
+HINE_SOUTH = (155.79, -7.12)   # its south coast
+HINE_LAST = (155.80, -7.16)
 COVER_ORBIT = (155.40, -6.76)
 
 
@@ -83,7 +88,9 @@ def attack_section(tracks):
     for wp in tracks["HOLMES"].waypoints:
         if L("09:34:00") < wp.at_ms <= L("09:39:00"):
             hine.add(wp.at_ms, offset(wp.point, 220, -160), wp.alt_m + 20)
-    go(hine, [(None, HINE_LAST, 40)], 540)
+    # Over the island's hills he holds his height; he loses it beyond, as last seen.
+    go(hine, [("09:41:36", HINE_HIT, 40), ("09:42:40", HINE_OVER, 300),
+              ("09:44:50", HINE_SOUTH, 250), ("09:45:40", HINE_LAST, 25)])
 
 
 def bombers(tracks):
@@ -116,9 +123,9 @@ def escorts(tracks):
         ("09:38:20", (155.545, -6.835), 250),    # broken up by Holmes and Hine
         ("09:39:00", (155.575, -6.845), 400),
         ("09:39:45", (155.620, -6.875), 200),
-        ("09:40:10", (155.650, -6.885), 80),     # Sugita hits Hine's left engine
-        ("09:40:55", (155.710, -6.895), 60),
-        ("09:41:35", (155.760, -6.905), 60),     # passes on Hine north of Shortland
+        ("09:40:10", (155.650, -6.885), 80),     # passes on Hine
+        ("09:40:57", (155.710, -6.895), 60),
+        ("09:41:36", (155.760, -6.905), 60),     # passes on Hine north of Shortland
         ("09:42:00", (155.770, -6.885), 150),
     ]
     chase = [
@@ -169,16 +176,37 @@ def cover(tracks, mitchell_lead):
     lead = Track()
     p, _ = mitchell_lead.at(L("09:34:00"))
     lead.add(L("09:34:00"), p, 6)
-    lead.add(L("09:35:00"), destination(p, 40, 5000), 700)
+    climbed = destination(p, 40, 5000)
+    lead.add(L("09:35:00"), climbed, 700)
     radius = 10_000
-    entry = destination(COVER_ORBIT, 20, radius)
-    lead.add(L("09:36:00"), entry, 1700)
+    start = 20
+    entry = destination(COVER_ORBIT, start, radius)
+    # A curve from the 040° climb-out into the clockwise orbit's tangent: the slots swing
+    # with the lead's heading, and a sharp turn would fling the outer ones round.
+    p1 = destination(climbed, 40, 4000)
+    p2 = destination(entry, start + 90 + 180, 4000)
+    pts = (climbed, p1, p2, entry)
+
+    def bezier(f):
+        w = ((1 - f) ** 3, 3 * f * (1 - f) ** 2, 3 * f * f * (1 - f), f ** 3)
+        return (sum(c * q[0] for c, q in zip(w, pts)), sum(c * q[1] for c, q in zip(w, pts)))
+
+    # Timed by distance along the curve, so the lead holds one speed through it.
+    dense = [bezier(k / 200) for k in range(201)]
+    run = [0.0]
+    for x, y in zip(dense, dense[1:]):
+        run.append(run[-1] + distance_m(x, y))
+    for k in range(1, 8):
+        i = min(range(201), key=lambda j: abs(run[j] - run[-1] * k / 8))
+        lead.add(L("09:35:00") + round(105_000 * k / 8), dense[i], 700 + 1000 * k / 8)
+    orbit_at = L("09:36:45")
+    lead.add(orbit_at, entry, 1700)
     omega = 100 / radius
-    t = L("09:36:00")
+    t = orbit_at
     while t < L("09:42:30"):
         t += 10_000
-        angle = 20 + math.degrees(omega * (t - L("09:36:00")) / 1000)
-        climb = min(1.0, (t - L("09:36:00")) / (L("09:39:30") - L("09:36:00")))
+        angle = start + math.degrees(omega * (t - orbit_at) / 1000)
+        climb = min(1.0, (t - orbit_at) / (L("09:39:30") - orbit_at))
         lead.add(t, destination(COVER_ORBIT, angle, radius), 1700 + (COVER_TOP_M - 1700) * climb)
     for entity in COVER:
         track = tracks[entity]

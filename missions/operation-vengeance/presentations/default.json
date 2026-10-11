@@ -427,7 +427,7 @@
           "lat": -6.765
         }
       },
-      "zoom": 13.1,
+      "zoom": 12.6,
       "pitch": 55,
       "bearing": 50,
       "orbit_deg_s": 0.0,
@@ -528,23 +528,20 @@
     },
     {
       "start_ms": 8200000,
-      "end_ms": 8280000,
+      "end_ms": 8470000,
       "target": {
-        "kind": "point",
-        "value": {
-          "lon": 155.77,
-          "lat": -6.905
-        }
+        "kind": "entity",
+        "value": "HINE"
       },
-      "zoom": 12.2,
-      "pitch": 45,
-      "bearing": 95,
+      "zoom": 11.4,
+      "pitch": 40,
+      "bearing": 160,
       "orbit_deg_s": 0.0,
       "transition_ms": 10000,
       "focus": "HINE"
     },
     {
-      "start_ms": 8280000,
+      "start_ms": 8470000,
       "end_ms": 8850000,
       "target": {
         "kind": "entity",
@@ -652,6 +649,11 @@
     },
     {
       "start_ms": 8280000,
+      "end_ms": 8470000,
+      "speed": 16
+    },
+    {
+      "start_ms": 8470000,
       "end_ms": 9630000,
       "speed": 64
     }

@@ -4,7 +4,8 @@
 Every second of each operation needs exactly one playback cue and one camera
 cue in its default presentation, and a cue that follows an entity must find a
 valid fix for its whole span; otherwise the authored camera stalls. A map on
-which nothing moves may play for at most MAX_STILL_VIEWING_S. Reconstructed
+which nothing moves may play for at most MAX_STILL_VIEWING_S, every event must
+lie within the operation, and every source an event cites must be declared. Reconstructed
 tracks must hand over between sources 1 ms apart, and the order of battle must
 resolve. The App itself validates the schema.
 """
@@ -134,6 +135,13 @@ def check(mission):
         if target["kind"] == "entity" and not located(spans.get(target["value"], []), at):
             problems.append(f"t={at}: camera target {target['value']} has no fix")
     problems.extend(broken_parents(op["entities"]))
+    for e in events:
+        if not 0 <= e["observed_ms"] <= duration:
+            problems.append(f"event {e['id']} at {e['observed_ms']} ms lies outside 0–{duration}")
+            break
+    declared = {s["id"] for s in op["sources"]}
+    for source in sorted({e["source"]["id"] for e in events} - declared):
+        problems.append(f"events cite source {source}, which operation.json does not declare")
     for entity, fixes in joins_across_sources(events):
         problems.append(f"{entity}: fix at {fixes} joins a fix from another source")
     for a, b, viewing in still_stretches(events, story, duration, op["sources"]):

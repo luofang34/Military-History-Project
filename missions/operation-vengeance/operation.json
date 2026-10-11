@@ -110,6 +110,89 @@
         "seconds": 32400,
         "source": "Imperial Japanese Navy records kept Tokyo time (UTC+9)"
       }
+    },
+    {
+      "id": "ja-wikipedia-sugita",
+      "name": "杉田庄一 (ja.wikipedia)",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 32400,
+        "source": "Imperial Japanese Navy records kept Tokyo time (UTC+9)"
+      }
+    },
+    {
+      "id": "pacific-wrecks-hine",
+      "name": "Pacific Wrecks: P-38G Hine"
+    },
+    {
+      "id": "pacific-wrecks-ballale",
+      "name": "Pacific Wrecks: Ballale Airfield"
+    },
+    {
+      "id": "historynet-lehr-hine",
+      "name": "Dick Lehr, \"What Happened to Operation Vengeance Wingman Raymond K. Hine\", HistoryNet"
+    },
+    {
+      "id": "jacar-204-kokutai-18-april",
+      "name": "第二〇四海軍航空隊 戦闘行動調書, 18 April 1943 (JACAR C08051654600)",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 32400,
+        "source": "Imperial Japanese Navy records kept Tokyo time (UTC+9)"
+      }
+    },
+    {
+      "id": "yanagiya-yoshimura",
+      "name": "Yanagiya Kenji, interviewed in Yoshimura Akira, 戦史の証言者たち",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 32400,
+        "source": "Imperial Japanese Navy records kept Tokyo time (UTC+9)"
+      }
+    },
+    {
+      "id": "wikipedia-operation-vengeance",
+      "name": "Operation Vengeance (en.wikipedia)"
+    },
+    {
+      "id": "wikipedia-kukum",
+      "name": "Kukum Field (en.wikipedia)"
+    },
+    {
+      "id": "wikipedia-lakunai",
+      "name": "Lakunai Airfield (en.wikipedia)"
+    },
+    {
+      "id": "wikipedia-kahili",
+      "name": "Kahili Airfield (en.wikipedia)"
+    },
+    {
+      "id": "decrypt-ntf131755",
+      "name": "US Navy decrypt of JN-25 message NTF131755"
+    },
+    {
+      "id": "historynet-death-by-p38",
+      "name": "HistoryNet, \"Death by P-38\""
+    },
+    {
+      "id": "warfare-history-network-ames",
+      "name": "Roger Ames, via Warfare History Network, \"Killing Yamamoto\""
+    },
+    {
+      "id": "afm-grant",
+      "name": "Rebecca Grant, \"Magic and Lightning\", Air & Space Forces Magazine"
+    },
+    {
+      "id": "afm-haulman",
+      "name": "Daniel Haulman, \"The Man Who Shot Down Yamamoto\", Air & Space Forces Magazine"
+    },
+    {
+      "id": "barber-v-widnall",
+      "name": "Barber v. Widnall, 78 F.3d 1419 (9th Cir. 1996)"
+    },
+    {
+      "id": "reconstruction-estimate",
+      "name": "Replay estimates where sources disagree (build/evidence.py)"
     }
   ],
   "entities": [
@@ -322,12 +405,29 @@
       "parent": "ZERO SECTION 2"
     },
     {
+      "id": "339TH FS",
+      "sidc": "SFAPMFF--------",
+      "camera": false,
+      "name": "339th Fighter Squadron, 347th Fighter Group",
+      "kind": "formation",
+      "quantity": 18
+    },
+    {
+      "id": "11TH AIR FLEET",
+      "sidc": "SHAPMF---------",
+      "camera": false,
+      "name": "11th Air Fleet",
+      "kind": "formation",
+      "quantity": 8
+    },
+    {
       "id": "COVER FLIGHT",
       "sidc": "SFAPMFF--------",
       "camera": false,
       "name": "Mitchell's cover flight",
       "kind": "formation",
-      "quantity": 12
+      "quantity": 12,
+      "parent": "339TH FS"
     },
     {
       "id": "MITCHELL FLIGHT",
@@ -362,7 +462,8 @@
       "camera": false,
       "name": "Lanphier's attack section",
       "kind": "formation",
-      "quantity": 6
+      "quantity": 6,
+      "parent": "339TH FS"
     },
     {
       "id": "LANPHIER ELEMENT",
@@ -388,7 +489,8 @@
       "camera": false,
       "name": "705th Kōkūtai G4M1 pair",
       "kind": "formation",
-      "quantity": 2
+      "quantity": 2,
+      "parent": "11TH AIR FLEET"
     },
     {
       "id": "ESCORT",
@@ -396,7 +498,8 @@
       "camera": false,
       "name": "204th Kōkūtai escort",
       "kind": "formation",
-      "quantity": 6
+      "quantity": 6,
+      "parent": "11TH AIR FLEET"
     },
     {
       "id": "ZERO SECTION 1",
@@ -415,6 +518,34 @@
       "kind": "formation",
       "quantity": 3,
       "parent": "ESCORT"
+    },
+    {
+      "id": "FIGHTER TWO",
+      "sidc": "SFGPIBA---H----",
+      "camera": false,
+      "name": "Fighter Two (Kukum Field), Guadalcanal",
+      "kind": "airfield"
+    },
+    {
+      "id": "LAKUNAI",
+      "sidc": "SHGPIBA---H----",
+      "camera": false,
+      "name": "Lakunai airfield, Rabaul",
+      "kind": "airfield"
+    },
+    {
+      "id": "KAHILI",
+      "sidc": "SHGPIBA---H----",
+      "camera": false,
+      "name": "Kahili (Buin) airfield",
+      "kind": "airfield"
+    },
+    {
+      "id": "BALLALE",
+      "sidc": "SHGPIBA---H----",
+      "camera": false,
+      "name": "Ballale airfield",
+      "kind": "airfield"
     }
   ],
   "media_archive": null
