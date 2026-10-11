@@ -5,7 +5,9 @@ Every second of each operation needs exactly one playback cue and one camera
 cue in its default presentation, and a cue that follows an entity must find a
 valid fix for its whole span; otherwise the authored camera stalls. A map on
 which nothing moves may play for at most MAX_STILL_VIEWING_S, every event must
-lie within the operation, and every source an event cites must be declared. Reconstructed
+lie within the operation, and every source an event cites must be declared. With
+a viewer binary, its frame report must show each shot's focus in frame and every
+briefing note readable before it leaves the screen. Reconstructed
 tracks must hand over between sources 1 ms apart, and the order of battle must
 resolve. The App itself validates the schema.
 """
@@ -18,6 +20,8 @@ from html.parser import HTMLParser
 from urllib.parse import parse_qs, urljoin, urlsplit
 
 root = Path(__file__).resolve().parent
+sys.path.insert(0, str(root / "tools"))
+import composition as composition_tool  # noqa: E402
 
 
 def fixes_by_entity(events):
@@ -118,6 +122,15 @@ def still_stretches(events, presentation, duration, sources):
         yield a, b, viewing
 
 
+APP = None
+
+
+def composition(mission, app):
+    """Framing and reading problems from the viewer's own frame report
+    (tools/composition.py)."""
+    return composition_tool.findings(mission, app)
+
+
 def check(mission):
     op = json.loads((mission / "operation.json").read_text())
     story = json.loads((mission / "presentations" / "default.json").read_text())
@@ -154,11 +167,20 @@ def check(mission):
     for a, b in zip(story["camera_track"], story["camera_track"][1:]):
         if a["end_ms"] != b["start_ms"]:
             problems.append(f"camera gap or overlap at {a['end_ms']}")
-    viewing = sum((c["end_ms"] - c["start_ms"]) / c["speed"] for c in story["playback_track"]) / 1000
+    reading = None
+    if APP:
+        try:
+            framing, reading = composition(mission, APP)
+            problems.extend(framing + reading)
+        except composition_tool.NoReport as error:
+            print(f"{mission.name}: composition skipped, {error}", file=sys.stderr)
+    viewing = sum((c["end_ms"] - c["start_ms"]) / c["speed"]
+                  for c in story["playback_track"]) / 1000
     for problem in problems[:20]:
         print(f"{mission.name}: {problem}", file=sys.stderr)
     print(f"{mission.name}: {len(events)} events, {len(op['entities'])} entities, "
-          f"{len(story['camera_track'])} shots, viewing {viewing:.0f} s")
+          f"{len(story['camera_track'])} shots, viewing {viewing:.0f} s"
+          + (", composition checked" if reading is not None else ""))
     return not problems
 
 
@@ -234,6 +256,9 @@ def replay_links_match_catalog():
 
 
 if __name__ == "__main__":
+    APP = composition_tool.app_binary()
+    print(f"composition: {APP}" if APP else
+          "composition: skipped, no viewer binary (set SOKOLY_APP or build Sokoly-App --release)")
     ok = all([check(m) for m in sorted((root / "missions").iterdir()) if m.is_dir()])
     ok = catalog_lists_every_mission() and ok
     ok = replay_links_match_catalog() and ok
