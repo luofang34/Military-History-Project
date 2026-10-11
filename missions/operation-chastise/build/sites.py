@@ -76,7 +76,7 @@ DAM = "SHGPIUED--H----"
 POWER = "SHGPIUE---H----"
 FLAK = "SHGPUCDG---E---"  # light air-defence guns, battery
 AIRFIELD = "SFGPIBA---H----"
-HQ = "SFGPI-----H----"
+HQ = "SFGPUCVF--A----"  # fixed-wing aviation HQ; no echelon, as mapping an RAF group is a judgement
 FLOOD = "SUGP-----------"  # natural-event symbols draw black, unseen on the dark map
 
 # 617 Squadron, as listed in the ORB (AIR 27/2128): code, serial, captain, wave, section.
@@ -143,7 +143,7 @@ FORMATIONS = [
 FIXED = [
     # (id, sidc, name, kind, point, bound m, source)
     ("SCAMPTON", AIRFIELD, "RAF Scampton", "airfield", SCAMPTON, 300.0, "wikipedia-scampton"),
-    ("5 GROUP HQ", HQ, "No. 5 Group HQ, St Vincents, Grantham", "headquarters", GRANTHAM,
+    ("5 GROUP HQ", HQ, "No. 5 Group HQ, St Vincents, Grantham", "group headquarters", GRANTHAM,
      150.0, "wikipedia-st-vincents"),
     ("MÖHNE", DAM, "Möhne dam (target X)", "masonry gravity dam", MOHNE, 20.0, "osm"),
     ("EDER", DAM, "Eder dam (target Y)", "masonry gravity dam", EDER, 20.0, "osm"),
