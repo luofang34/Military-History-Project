@@ -1,0 +1,81 @@
+{
+ "format": "sokoly-presentation",
+ "version": 1,
+ "id": "default",
+ "name": "Operation Chastise · dam photographs (review)",
+ "operation": "chastise-dam-photographs",
+ "chapters": [
+  {
+   "title": "Möhne dam from the air, 17 May 1943",
+   "at_ms": 0
+  },
+  {
+   "title": "Möhne dam from below the breach, May 1943",
+   "at_ms": 9000
+  },
+  {
+   "title": "Eder dam after the breach, May 1943",
+   "at_ms": 18000
+  }
+ ],
+ "camera_track": [
+  {
+   "start_ms": 0,
+   "end_ms": 9000,
+   "target": {
+    "kind": "point",
+    "value": {
+     "lat": 51.4946021172691,
+     "lon": 8.056863942114882
+    }
+   },
+   "zoom": 13,
+   "pitch": 0,
+   "bearing": 0,
+   "orbit_deg_s": 0,
+   "transition_ms": 1000,
+   "focus": "MÖHNE"
+  },
+  {
+   "start_ms": 9000,
+   "end_ms": 18000,
+   "target": {
+    "kind": "point",
+    "value": {
+     "lat": 51.4895588154191,
+     "lon": 8.057683098760332
+    }
+   },
+   "zoom": 13,
+   "pitch": 0,
+   "bearing": 0,
+   "orbit_deg_s": 0,
+   "transition_ms": 1000,
+   "focus": "MÖHNE"
+  },
+  {
+   "start_ms": 18000,
+   "end_ms": 27000,
+   "target": {
+    "kind": "point",
+    "value": {
+     "lat": 51.18426930183886,
+     "lon": 9.061589588579116
+    }
+   },
+   "zoom": 13,
+   "pitch": 0,
+   "bearing": 0,
+   "orbit_deg_s": 0,
+   "transition_ms": 1000,
+   "focus": "EDER"
+  }
+ ],
+ "playback_track": [
+  {
+   "start_ms": 0,
+   "end_ms": 27000,
+   "speed": 1
+  }
+ ]
+}
