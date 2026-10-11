@@ -1,0 +1,545 @@
+{
+  "format": "sokoly-operation",
+  "version": 4,
+  "id": "operation-chastise",
+  "name": "Operation Chastise",
+  "duration_ms": 32100000,
+  "time_origin": "16 May 1943 21:25 British Double Summer Time (UTC+2), the clock of 617 Squadron's Operations Record Book; German summer time was also UTC+2",
+  "time": {
+    "range": {
+      "start": 0,
+      "end": 32100000
+    },
+    "anchor": {
+      "at": 0,
+      "unix_ms": -840342900000,
+      "source": "617 Squadron ORB, 16/17 May 1943: first take-off 2128, last landing 0615",
+      "source_scale": "utc",
+      "uncertainty_ms": 60000,
+      "resolution_ms": 60000,
+      "original_calendar": "1943-05-16 British Double Summer Time (UTC+2)"
+    },
+    "zone": {
+      "kind": "fixed",
+      "seconds": 7200,
+      "source": "tzdb: Europe/London BDST and Europe/Berlin CEST were both UTC+2 on 16/17 May 1943"
+    }
+  },
+  "captured_availability": false,
+  "sources": [
+    {
+      "id": "reconstruction-route",
+      "name": "Route reconstruction (B.976 turning points)",
+      "motion": "great_circle",
+      "max_gap_ms": 32100000
+    },
+    {
+      "id": "reconstruction-target",
+      "name": "Target-area choreography",
+      "motion": "great_circle",
+      "max_gap_ms": 32100000
+    },
+    {
+      "id": "reconstruction-airfield",
+      "name": "Scampton take-off and landing reconstruction",
+      "motion": "great_circle",
+      "max_gap_ms": 32100000
+    },
+    {
+      "id": "reconstruction-upkeep",
+      "name": "Upkeep bounce choreography",
+      "motion": "great_circle",
+      "max_gap_ms": 32100000
+    },
+    {
+      "id": "reconstruction-flood",
+      "name": "Möhne flood front through the sourced towns",
+      "motion": "great_circle",
+      "max_gap_ms": 32100000
+    },
+    {
+      "id": "reconstruction-estimate",
+      "name": "Replay estimates where sources disagree (build/evidence.py)"
+    },
+    {
+      "id": "orb-617",
+      "name": "617 Squadron Operations Record Book, AIR 27/2128"
+    },
+    {
+      "id": "nav-log-aj-t",
+      "name": "AJ-T navigator's log (Dambusters Blog transcription)"
+    },
+    {
+      "id": "asn",
+      "name": "Aviation Safety Network wikibase"
+    },
+    {
+      "id": "wikipedia-gibson",
+      "name": "Guy Gibson (en.wikipedia)"
+    },
+    {
+      "id": "order-b976",
+      "name": "5 Group Operation Order B.976 (IBCC 10501, 33688)"
+    },
+    {
+      "id": "gibson-eca",
+      "name": "Guy Gibson, Enemy Coast Ahead (1946)"
+    },
+    {
+      "id": "dambustersblog",
+      "name": "Charles Foster, Dambusters Blog"
+    },
+    {
+      "id": "lwl-moehne",
+      "name": "LWL Westfälische Geschichte: Möhnekatastrophe"
+    },
+    {
+      "id": "dewiki-moehne",
+      "name": "Möhnekatastrophe (de.wikipedia)"
+    },
+    {
+      "id": "dewiki-eder",
+      "name": "Edertalsperre (de.wikipedia)"
+    },
+    {
+      "id": "hinks-2010",
+      "name": "Hinks, Heitefuss & Chrimes, The Dambusters Revisited (2010)"
+    },
+    {
+      "id": "wikipedia-chastise",
+      "name": "Operation Chastise (en.wikipedia)"
+    },
+    {
+      "id": "rafm-podcast",
+      "name": "RAF Museum, The Dams Raid (transcript)"
+    },
+    {
+      "id": "osm",
+      "name": "OpenStreetMap dam and site geometry"
+    },
+    {
+      "id": "wikipedia-scampton",
+      "name": "RAF Scampton (en.wikipedia)"
+    },
+    {
+      "id": "wikipedia-st-vincents",
+      "name": "St Vincents Hall, Grantham (en.wikipedia)"
+    }
+  ],
+  "entities": [
+    {
+      "id": "5 GROUP",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "No. 5 Group, RAF Bomber Command",
+      "kind": "formation",
+      "quantity": 19
+    },
+    {
+      "id": "617 SQUADRON",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "No. 617 Squadron",
+      "kind": "formation",
+      "quantity": 19,
+      "parent": "5 GROUP"
+    },
+    {
+      "id": "WAVE 1",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "First wave · Möhne and Eder",
+      "kind": "formation",
+      "quantity": 9,
+      "parent": "617 SQUADRON"
+    },
+    {
+      "id": "WAVE 1 SECTION 1",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "Gibson's section",
+      "kind": "formation",
+      "quantity": 3,
+      "parent": "WAVE 1"
+    },
+    {
+      "id": "WAVE 1 SECTION 2",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "Young's section",
+      "kind": "formation",
+      "quantity": 3,
+      "parent": "WAVE 1"
+    },
+    {
+      "id": "WAVE 1 SECTION 3",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "Maudslay's section",
+      "kind": "formation",
+      "quantity": 3,
+      "parent": "WAVE 1"
+    },
+    {
+      "id": "WAVE 2",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "Second wave · Sorpe",
+      "kind": "formation",
+      "quantity": 5,
+      "parent": "617 SQUADRON"
+    },
+    {
+      "id": "WAVE 3",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "Third wave · mobile reserve",
+      "kind": "formation",
+      "quantity": 5,
+      "parent": "617 SQUADRON"
+    },
+    {
+      "id": "FLAKGRUPPE DORTMUND",
+      "sidc": "SHGPUCD----G---",
+      "camera": false,
+      "name": "Flakgruppe Dortmund",
+      "kind": "formation"
+    },
+    {
+      "id": "LE. FLAK-ABT. 840",
+      "sidc": "SHGPUCDG---F---",
+      "camera": false,
+      "name": "leichte Flak-Abteilung 840",
+      "kind": "formation",
+      "parent": "FLAKGRUPPE DORTMUND"
+    },
+    {
+      "id": "AJ-G",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "AJ-G · W/Cdr Guy Gibson",
+      "kind": "Lancaster B.III Type 464 ED932/G",
+      "parent": "WAVE 1 SECTION 1"
+    },
+    {
+      "id": "AJ-M",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "AJ-M · F/Lt John Hopgood",
+      "kind": "Lancaster B.III Type 464 ED925/G",
+      "parent": "WAVE 1 SECTION 1"
+    },
+    {
+      "id": "AJ-P",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "AJ-P · F/Lt Mick Martin",
+      "kind": "Lancaster B.III Type 464 ED909/G",
+      "parent": "WAVE 1 SECTION 1"
+    },
+    {
+      "id": "AJ-A",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "AJ-A · S/Ldr Melvin Young",
+      "kind": "Lancaster B.III Type 464 ED887/G",
+      "parent": "WAVE 1 SECTION 2"
+    },
+    {
+      "id": "AJ-J",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "AJ-J · F/Lt David Maltby",
+      "kind": "Lancaster B.III Type 464 ED906/G",
+      "parent": "WAVE 1 SECTION 2"
+    },
+    {
+      "id": "AJ-L",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "AJ-L · F/Lt David Shannon",
+      "kind": "Lancaster B.III Type 464 ED929/G",
+      "parent": "WAVE 1 SECTION 2"
+    },
+    {
+      "id": "AJ-Z",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "AJ-Z · S/Ldr Henry Maudslay",
+      "kind": "Lancaster B.III Type 464 ED937/G",
+      "parent": "WAVE 1 SECTION 3"
+    },
+    {
+      "id": "AJ-B",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "AJ-B · F/Lt Bill Astell",
+      "kind": "Lancaster B.III Type 464 ED864/G",
+      "parent": "WAVE 1 SECTION 3"
+    },
+    {
+      "id": "AJ-N",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "AJ-N · P/O Les Knight",
+      "kind": "Lancaster B.III Type 464 ED912/G",
+      "parent": "WAVE 1 SECTION 3"
+    },
+    {
+      "id": "AJ-E",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "AJ-E · F/Lt Norman Barlow",
+      "kind": "Lancaster B.III Type 464 ED927/G",
+      "parent": "WAVE 2"
+    },
+    {
+      "id": "AJ-W",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "AJ-W · F/Lt Les Munro",
+      "kind": "Lancaster B.III Type 464 ED921/G",
+      "parent": "WAVE 2"
+    },
+    {
+      "id": "AJ-K",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "AJ-K · P/O Vernon Byers",
+      "kind": "Lancaster B.III Type 464 ED934/G",
+      "parent": "WAVE 2"
+    },
+    {
+      "id": "AJ-H",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "AJ-H · P/O Geoff Rice",
+      "kind": "Lancaster B.III Type 464 ED936/G",
+      "parent": "WAVE 2"
+    },
+    {
+      "id": "AJ-T",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "AJ-T · F/Lt Joe McCarthy",
+      "kind": "Lancaster B.III Type 464 ED825/G",
+      "parent": "WAVE 2"
+    },
+    {
+      "id": "AJ-C",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "AJ-C · P/O Warner Ottley",
+      "kind": "Lancaster B.III Type 464 ED910/G",
+      "parent": "WAVE 3"
+    },
+    {
+      "id": "AJ-S",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "AJ-S · P/O Lewis Burpee",
+      "kind": "Lancaster B.III Type 464 ED865/G",
+      "parent": "WAVE 3"
+    },
+    {
+      "id": "AJ-F",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "AJ-F · F/Sgt Ken Brown",
+      "kind": "Lancaster B.III Type 464 ED918/G",
+      "parent": "WAVE 3"
+    },
+    {
+      "id": "AJ-O",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "AJ-O · F/Sgt Bill Townsend",
+      "kind": "Lancaster B.III Type 464 ED886/G",
+      "parent": "WAVE 3"
+    },
+    {
+      "id": "AJ-Y",
+      "sidc": "SFAPMFB--------",
+      "camera": false,
+      "name": "AJ-Y · F/Sgt Cyril Anderson",
+      "kind": "Lancaster B.III Type 464 ED924/G",
+      "parent": "WAVE 3"
+    },
+    {
+      "id": "UPKEEP AJ-G",
+      "sidc": "SFAPWB---------",
+      "camera": false,
+      "name": "Upkeep · AJ-G",
+      "kind": "Upkeep mine, 9,250 lb",
+      "parent": "AJ-G"
+    },
+    {
+      "id": "UPKEEP AJ-M",
+      "sidc": "SFAPWB---------",
+      "camera": false,
+      "name": "Upkeep · AJ-M",
+      "kind": "Upkeep mine, 9,250 lb",
+      "parent": "AJ-M"
+    },
+    {
+      "id": "UPKEEP AJ-P",
+      "sidc": "SFAPWB---------",
+      "camera": false,
+      "name": "Upkeep · AJ-P",
+      "kind": "Upkeep mine, 9,250 lb",
+      "parent": "AJ-P"
+    },
+    {
+      "id": "UPKEEP AJ-A",
+      "sidc": "SFAPWB---------",
+      "camera": false,
+      "name": "Upkeep · AJ-A",
+      "kind": "Upkeep mine, 9,250 lb",
+      "parent": "AJ-A"
+    },
+    {
+      "id": "UPKEEP AJ-J",
+      "sidc": "SFAPWB---------",
+      "camera": false,
+      "name": "Upkeep · AJ-J",
+      "kind": "Upkeep mine, 9,250 lb",
+      "parent": "AJ-J"
+    },
+    {
+      "id": "UPKEEP AJ-L",
+      "sidc": "SFAPWB---------",
+      "camera": false,
+      "name": "Upkeep · AJ-L",
+      "kind": "Upkeep mine, 9,250 lb",
+      "parent": "AJ-L"
+    },
+    {
+      "id": "UPKEEP AJ-Z",
+      "sidc": "SFAPWB---------",
+      "camera": false,
+      "name": "Upkeep · AJ-Z",
+      "kind": "Upkeep mine, 9,250 lb",
+      "parent": "AJ-Z"
+    },
+    {
+      "id": "UPKEEP AJ-N",
+      "sidc": "SFAPWB---------",
+      "camera": false,
+      "name": "Upkeep · AJ-N",
+      "kind": "Upkeep mine, 9,250 lb",
+      "parent": "AJ-N"
+    },
+    {
+      "id": "UPKEEP AJ-T",
+      "sidc": "SFAPWB---------",
+      "camera": false,
+      "name": "Upkeep · AJ-T",
+      "kind": "Upkeep mine, 9,250 lb",
+      "parent": "AJ-T"
+    },
+    {
+      "id": "UPKEEP AJ-F",
+      "sidc": "SFAPWB---------",
+      "camera": false,
+      "name": "Upkeep · AJ-F",
+      "kind": "Upkeep mine, 9,250 lb",
+      "parent": "AJ-F"
+    },
+    {
+      "id": "UPKEEP AJ-O",
+      "sidc": "SFAPWB---------",
+      "camera": false,
+      "name": "Upkeep · AJ-O",
+      "kind": "Upkeep mine, 9,250 lb",
+      "parent": "AJ-O"
+    },
+    {
+      "id": "SCAMPTON",
+      "sidc": "SFGPIBA---H----",
+      "camera": false,
+      "name": "RAF Scampton",
+      "kind": "airfield",
+      "parent": "5 GROUP"
+    },
+    {
+      "id": "5 GROUP HQ",
+      "sidc": "SFGPI-----H----",
+      "camera": false,
+      "name": "No. 5 Group HQ, St Vincents, Grantham",
+      "kind": "headquarters",
+      "parent": "5 GROUP"
+    },
+    {
+      "id": "MÖHNE",
+      "sidc": "SHGPIUED--H----",
+      "camera": false,
+      "name": "Möhne dam (target X)",
+      "kind": "masonry gravity dam"
+    },
+    {
+      "id": "EDER",
+      "sidc": "SHGPIUED--H----",
+      "camera": false,
+      "name": "Eder dam (target Y)",
+      "kind": "masonry gravity dam"
+    },
+    {
+      "id": "SORPE",
+      "sidc": "SHGPIUED--H----",
+      "camera": false,
+      "name": "Sorpe dam (target Z)",
+      "kind": "earth dam with concrete core"
+    },
+    {
+      "id": "ENNEPE",
+      "sidc": "SHGPIUED--H----",
+      "camera": false,
+      "name": "Ennepe dam (target E)",
+      "kind": "masonry dam"
+    },
+    {
+      "id": "LISTER",
+      "sidc": "SHGPIUED--H----",
+      "camera": false,
+      "name": "Lister dam (target D)",
+      "kind": "masonry dam"
+    },
+    {
+      "id": "DIEMEL",
+      "sidc": "SHGPIUED--H----",
+      "camera": false,
+      "name": "Diemel dam (target F)",
+      "kind": "masonry dam"
+    },
+    {
+      "id": "BEVER",
+      "sidc": "SHGPIUED--H----",
+      "camera": false,
+      "name": "Bever dam",
+      "kind": "earth and rockfill dam"
+    },
+    {
+      "id": "MÖHNE POWER STATION",
+      "sidc": "SHGPIUE---H----",
+      "camera": false,
+      "name": "Möhne power station",
+      "kind": "hydroelectric plant"
+    },
+    {
+      "id": "MÖHNE FLAK",
+      "sidc": "SHGPUCDG---E---",
+      "camera": false,
+      "name": "3./le. Flak-Abt. 840 · six 2 cm guns",
+      "kind": "light flak battery",
+      "parent": "LE. FLAK-ABT. 840"
+    },
+    {
+      "id": "MÖHNE FLOOD",
+      "sidc": "SUGP-----------",
+      "camera": false,
+      "name": "Möhne flood wave",
+      "kind": "flood front"
+    }
+  ],
+  "media_archive": null
+}
