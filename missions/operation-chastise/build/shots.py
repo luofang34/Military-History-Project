@@ -77,7 +77,8 @@ SHOTS = [
      {"pitch": 55, "pad_km": 1.5}),
     ("00:44", "00:47", ["SORPE", "LANGSCHEID RUN-IN", "UPKEEP AJ-T"],
      "Cut away to the Sorpe: McCarthy, alone of his wave, comes in over Langscheid's steeple "
-     "and drops along the crest of the earth dam, and it holds.", {"pitch": 50, "pad_km": 1.0, "move": 0}),
+     "and drops along the crest of the earth dam, and it holds.",
+     {"pitch": 50, "pad_km": 1.0, "move": 0}),
     ("00:47", "00:50", ["MÖHNE", "MÖHNE RUN-IN", "UPKEEP AJ-J"],
      "Cut back to the Möhne for Maltby's attack, the one that breaks it.",
      {"pitch": 50, "pad_km": 0.8, "move": 0}),
@@ -96,7 +97,7 @@ SHOTS = [
     ("01:47", "01:54", ["EDER", "HAMMERBERG", "UPKEEP AJ-N"],
      "Tighter for Knight, the last mine: the dive past the spit, the turn onto the dam, the "
      "breach.", {"pitch": 55, "pad_km": 0.8}),
-    ("01:54", "02:24", ["AJ-G", "AJ-A", "AJ-Z", "AJ-N", "AJ-L", "MÖHNE FLOOD"],
+    ("01:54", "02:24", ["AJ-G", "AJ-A", "AJ-Z", "AJ-N", "AJ-L", "MÖHNE FLOOD", "EDER FLOOD"],
      "Pull out over Germany: both floods running, the survivors turning for home.",
      {"move": 3}),
     ("02:24", "02:38", ["AJ-C", "AJ-Z", "AJ-O", "AJ-Y", "AJ-F"],
@@ -136,6 +137,7 @@ def lifetimes(plan):
     for mine, track in plan.mines.items():
         out[mine] = (track.start, track.end)
     out["MÖHNE FLOOD"] = (plan.flood.start, DURATION)
+    out["EDER FLOOD"] = (plan.eder_flood.start, DURATION)
     return out
 
 
@@ -143,7 +145,8 @@ def shots(plan, pacing):
     """(camera cues, intents by start_ms) for SHOTS, fitted under the story's `pacing`."""
     fixed = {id_: point for id_, _, _, _, point, _, _ in FIXED}
     fixed.update(POINTS)
-    tracks = {**plan.tracks, **plan.mines, "MÖHNE FLOOD": plan.flood}
+    tracks = {**plan.tracks, **plan.mines, "MÖHNE FLOOD": plan.flood,
+              "EDER FLOOD": plan.eder_flood}
     f = Framer(tracks, fixed, lifetimes(plan), pacing)
     drops = releases(plan)
     for start, end, subjects, intent, framing in SHOTS:

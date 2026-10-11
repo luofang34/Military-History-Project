@@ -15,6 +15,8 @@
   Afsluitdijk, within two minutes of the log.
 - No airborne Lancaster changes heading by more than MAX_SNAP_DEG at a single waypoint: the
   replay draws straight lines between fixes, so a turn must be flown as an arc.
+- Both flood fronts are drawn with the APP-6D flood symbol, and the Eder's reaches Wabern
+  at its sourced time.
 - The Möhne and Eder are reported destroyed and the Sorpe damaged, each only after a mine
   released at it has gone off; an aircraft shot down by flak is reported hit first.
 """
@@ -22,9 +24,10 @@ import ledger
 import waypoints as w
 from targets import SORPE_RUN, STEEPLE
 from crews import ORB_CREWS, PRISONERS
-from evidence import DISPUTES
+from evidence import DISPUTES, time_of
 from flights import LOSS, MCCARTHY_HOME, MCCARTHY_OUT, SHOT_DOWN
-from sites import CRASH, DURATION, L, LANDED, MOHNE, EDER, ENNEPE, SORPE, TAKE_OFF
+from sites import (CRASH, DURATION, EDER, ENNEPE, L, LANDED, MOHNE, SORPE, TAKE_OFF, WABERN,
+                   entities)
 from manoeuvre import ENVELOPE_MPH
 from track import FT, MPH, bearing_deg, distance_m
 
@@ -153,6 +156,22 @@ def check_mccarthy(plan):
             raise ValueError(f"AJ-T passes its logged turn at {at} {near / 60_000:.0f} min out")
 
 
+def check_floods(plan):
+    """The flood fronts use the standard flood symbol, and the Eder's keeps its anchor."""
+    fronts = [e for e in entities(plan.mine_owners) if e["kind"] == "flood front"]
+    if {e["id"] for e in fronts} != {"MÖHNE FLOOD", "EDER FLOOD"}:
+        raise ValueError(f"flood fronts are {[e['id'] for e in fronts]}")
+    for e in fronts:
+        if e["sidc"] != APP6_FLOOD:
+            raise ValueError(f"{e['id']} is drawn as {e['sidc']}, not the APP-6D flood")
+    arrive = L(time_of("eder-flood"))
+    if distance_m(plan.eder_flood.at(arrive)[0], WABERN) > 100:
+        raise ValueError("the Eder flood front is not at Wabern at its sourced time")
+
+
+# APP-6D symbol set 40 (activities), natural event, flood (170202).
+APP6_FLOOD = "10044000001702020000"
+
 DAMAGE = {"MÖHNE": "destroyed", "EDER": "destroyed", "SORPE": "damaged"}
 
 
@@ -181,6 +200,7 @@ def all(plan):  # noqa: A001 - the module's one entry point, called as checks.al
     check_damage(plan)
     check_mccarthy(plan)
     check_turns(plan)
+    check_floods(plan)
 
 
 def summary(plan):

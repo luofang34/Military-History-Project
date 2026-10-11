@@ -55,6 +55,12 @@ NEHEIM_CAMP = (7.9697, 51.4573)  # Möhnewiesen forced-labour camp memorial
 WICKEDE = (7.870, 51.496)
 FRONDENBERG = (7.7618, 51.4713)
 SCHWERTE = (7.567, 51.446)
+# Down the Eder from the dam (OpenStreetMap).
+AFFOLDERN = (9.0855, 51.1667)
+BERGHEIM_EDER = (9.1364, 51.1689)
+WEGA = (9.1757, 51.1304)
+FRITZLAR = (9.2645, 51.1537)
+WABERN = (9.3292, 51.0941)
 WALDECK = (9.05538, 51.20381)
 HAMMERBERG = (9.04810, 51.19147)
 LANGSCHEID = (7.9575, 51.3585)
@@ -77,7 +83,7 @@ POWER = "SHGPIUE---H----"
 FLAK = "SHGPUCDG---E---"  # light air-defence guns, battery
 AIRFIELD = "SFGPIBA---H----"
 HQ = "SFGPUCVF--A----"  # fixed-wing aviation HQ; no echelon, as mapping an RAF group is a judgement
-FLOOD = "SUGP-----------"  # natural-event symbols draw black, unseen on the dark map
+FLOOD = "10044000001702020000"  # APP-6D activity, natural event: flood (170202), neutral
 
 # 617 Squadron, as listed in the ORB (AIR 27/2128): code, serial, captain, wave, section.
 # Young's serial is ED887/G and McCarthy's ED825/G; the ORB transcript reads ED877 and ED923.
@@ -194,4 +200,6 @@ def entities(mines):
         out.append(row)
     out.append({"id": "MÖHNE FLOOD", "sidc": FLOOD, "camera": False,
                 "name": "Möhne flood wave", "kind": "flood front"})
+    out.append({"id": "EDER FLOOD", "sidc": FLOOD, "camera": False,
+                "name": "Eder flood wave", "kind": "flood front"})
     return out

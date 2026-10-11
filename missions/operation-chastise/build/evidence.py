@@ -138,6 +138,15 @@ DISPUTES = {
          Record(DB, "Ken Brown, flying AJ-F a few minutes behind, reported seeing him hit the "
                 "ground at 0235.", "02:35", quote=True)),
         "02:35", "Brown's sighting, the one direct observation.", at="02:35"),
+    "eder-flood": Dispute(
+        "The Eder flood down the valley", "EDER FLOOD",
+        (Record("dewiki-eder", "In der Folge ergoss sich eine 6 bis 8 m hohe Flutwelle durch das "
+                "untere Edertal nach Fritzlar, Wabern und Felsberg", quote=True),
+         Record("geschichtskreis-wabern", "Um 5.30 Uhr traf die Flutwelle ein", "05:30",
+                quote=True)),
+        "05:30", "Wabern's arrival is the one time found below the dam; the front runs there "
+        "from the breach at an even pace through Affoldern, Bergheim, Wega and Fritzlar.",
+        at="05:30"),
     "young-loss": Dispute(
         "Young's loss", "AJ-A",
         (Record("asn", "02:57", "02:57", quote=True, label="Time"),

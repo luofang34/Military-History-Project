@@ -28,6 +28,7 @@ class Plan:
     landed: dict = field(default_factory=dict)
     lost: dict = field(default_factory=dict)
     flood: Track = None
+    eder_flood: Track = None
 
     def phase(self, code, at_ms, source, bound_m):
         """From `at_ms` on, `code`'s fixes rest on `source` with horizontal bound `bound_m`."""
