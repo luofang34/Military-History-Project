@@ -5,4 +5,3 @@ url: https://history.sokoly.app
 baseurl: ""
 exclude:
   - AGENTS.md
-  - CLAUDE.md
