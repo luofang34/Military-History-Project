@@ -22,7 +22,9 @@ def fixes_by_entity(events):
     for e in events:
         if e["payload"]["kind"] != "position":
             continue
+        # An open-ended fix holds until the next one; inf keeps the tuples orderable.
         end = e["valid_until_ms"]
+        end = float("inf") if end is None else end
         spans[e["entity"]].append((e["observed_ms"], end, e["payload"]["data"] is not None))
     for entity in spans:
         spans[entity].sort()
@@ -34,7 +36,41 @@ def located(spans, at):
     if i < 0:
         return False
     start, end, present = spans[i]
-    return present and (end is None or at < end)
+    return present and at < end
+
+
+def joins_across_sources(events):
+    """The App joins consecutive fixes only within one source, so where a reconstructed path
+    changes source while the earlier fix still holds, the handover must be 1 ms apart; a
+    longer one freezes the entity on the earlier fix. A fix that expires first is a gap."""
+    by_entity = defaultdict(list)
+    for e in events:
+        if e["payload"]["kind"] == "position":
+            by_entity[e["entity"]].append(e)
+    for entity, fixes in by_entity.items():
+        fixes.sort(key=lambda e: e["observed_ms"])
+        for a, b in zip(fixes, fixes[1:]):
+            joined = a["payload"]["data"] is not None and b["payload"]["data"] is not None
+            until = a["valid_until_ms"]
+            holds = until is None or until >= b["observed_ms"]
+            if (joined and holds and a["source"]["id"] != b["source"]["id"]
+                    and b["observed_ms"] - a["observed_ms"] > 1):
+                yield entity, a["observed_ms"]
+
+
+def broken_parents(entities):
+    """Parents that name no declared entity, or chains that loop; the App rejects both."""
+    parent = {e["id"]: e.get("parent") for e in entities}
+    for entity, up in parent.items():
+        if up is not None and up not in parent:
+            yield f"{entity}: parent {up} is not declared"
+        seen, at = {entity}, up
+        while at is not None and at in parent:
+            if at in seen:
+                yield f"{entity}: order of battle loops through {at}"
+                break
+            seen.add(at)
+            at = parent[at]
 
 
 def check(mission):
@@ -53,6 +89,13 @@ def check(mission):
         target = cams[0]["target"]
         if target["kind"] == "entity" and not located(spans.get(target["value"], []), at):
             problems.append(f"t={at}: camera target {target['value']} has no fix")
+    problems.extend(broken_parents(op["entities"]))
+    for entity, fixes in joins_across_sources(events):
+        problems.append(f"{entity}: fix at {fixes} joins a fix from another source")
+    for track in ("camera_track", "playback_track"):
+        for c in story[track]:
+            if not 0 <= c["start_ms"] < c["end_ms"] <= duration:
+                problems.append(f"{track} cue {c['start_ms']}–{c['end_ms']} leaves 0–{duration}")
     for a, b in zip(story["camera_track"], story["camera_track"][1:]):
         if a["end_ms"] != b["start_ms"]:
             problems.append(f"camera gap or overlap at {a['end_ms']}")

@@ -27,8 +27,9 @@ Create `missions/<id>/` with the package, a README carrying its method and sourc
 generator, and an `index.html` launch page pointing at its package on `history.sokoly.app`;
 the page's front matter sets `permalink: /<id>/` so it is served at `/<id>/`. Shared track
 and event helpers are in `tools/`. Add the mission to `catalog.json`, then run
-`python3 verify.py`, which checks camera and pacing coverage, the catalog and public replay
-links. The Pages homepage renders this README.
+`python3 verify.py`, which checks camera and pacing coverage within the operation, source
+handovers in reconstructed tracks, the order of battle, the catalog and public replay links.
+The Pages homepage renders this README.
 
 ## Licence
 
