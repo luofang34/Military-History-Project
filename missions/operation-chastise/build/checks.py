@@ -10,6 +10,8 @@
 - The ORB's crew lists give the sourced totals: 133 flew, 53 killed, three captured.
 - Each timed estimate in build/evidence.py lies within its records' times, or is flagged as
   lying outside them with its reason.
+- The Möhne and Eder are reported destroyed and the Sorpe damaged, each only after a mine
+  released at it has gone off.
 """
 import ledger
 from crews import ORB_CREWS, PRISONERS
@@ -99,12 +101,27 @@ def check_evidence():
     ledger.check(DISPUTES, L)
 
 
+DAMAGE = {"MÖHNE": "destroyed", "EDER": "destroyed", "SORPE": "damaged"}
+
+
+def check_damage(plan):
+    """Each dam in DAMAGE reports its state, after the first mine at it has gone off."""
+    for dam, state in DAMAGE.items():
+        reported = [at for _, entity, at, c in plan.conditions if entity == dam and c == state]
+        bursts = [plan.mines[f"UPKEEP {r.code}"].end for r in plan.releases if r.target == dam]
+        if not reported:
+            raise ValueError(f"{dam} is never reported {state}")
+        if min(reported) < min(bursts):
+            raise ValueError(f"{dam} is reported {state} before any mine at it goes off")
+
+
 def all(plan):  # noqa: A001 - the module's one entry point, called as checks.all
     check_evidence()
     check_crews()
     check_speeds(plan)
     check_releases(plan)
     check_anchors(plan)
+    check_damage(plan)
 
 
 def summary(plan):
