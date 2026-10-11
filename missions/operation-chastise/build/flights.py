@@ -65,6 +65,12 @@ def home(plan, code, points):
     plan.landed[code] = landing
 
 
+# Shot down by flak, by the source that says so: the hit came before the aircraft went down,
+# but is not timed apart from the loss, so it is placed shortly before it.
+SHOT_DOWN = {"AJ-A": "orb-617", "AJ-K": "dambustersblog", "AJ-Z": "dambustersblog"}
+HIT_BEFORE_MS = 20_000
+
+
 def lose(plan, code, via=()):
     """Flies `via` at constant speed and reaches the crash site at the loss time."""
     site, _, _ = CRASH[code]
@@ -72,6 +78,8 @@ def lose(plan, code, via=()):
     between(track, list(via) + [site], L(LOSS[code]), [alt(p) for p in via] + [0.0])
     plan.lost[code] = L(LOSS[code])
     plan.condition("dambustersblog", code, L(LOSS[code]), "destroyed")
+    if code in SHOT_DOWN:
+        plan.condition(SHOT_DOWN[code], code, L(LOSS[code]) - HIT_BEFORE_MS, "damaged")
 
 
 def vic(plan, codes, route, arrive, split, abeam=None):

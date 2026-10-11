@@ -88,6 +88,8 @@ def mohne(plan):
     m("AJ-P", "MÖHNE", mohne_run(plan, "AJ-P", T("00:38"), radius=3400), MOHNE,
       T("00:38"), 3, end_m=18.0)
     escort(plan, "AJ-G", "AJ-P", T("00:38"), 180, 3000)
+    # The ORB: 20 mm fire from the dam holes the starboard outer tank on the run.
+    plan.condition("orb-617", "AJ-P", T("00:38"), "damaged")
     young = T(time_of("young-release"))
     m("AJ-A", "MÖHNE", mohne_run(plan, "AJ-A", young, radius=3800), MOHNE, young, 3)
     escort(plan, "AJ-G", "AJ-A", young, -200, 3000)
