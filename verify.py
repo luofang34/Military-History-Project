@@ -306,7 +306,7 @@ def replay_links_match_catalog():
 
 def agents_guide_holds():
     """AGENTS.md names only files that exist, in the repository or in every mission, and
-    constants that exist, and Pages leaves the guide unpublished."""
+    constants that exist; Pages leaves the guide unpublished, and no CLAUDE.md displaces it."""
     guide = (root / "AGENTS.md").read_text()
     missions = [m for m in (root / "missions").iterdir() if m.is_dir()]
     problems = []
@@ -319,9 +319,10 @@ def agents_guide_holds():
             problems.append(f"AGENTS.md names {constant}, which verify.py and "
                             f"tools/composition.py do not define")
     config = (root / "_config.yml").read_text()
-    for page in ("AGENTS.md", "CLAUDE.md"):
-        if not re.search(rf"^\s*- {re.escape(page)}$", config, re.M):
-            problems.append(f"_config.yml does not exclude {page} from Pages")
+    if not re.search(r"^\s*- AGENTS\.md$", config, re.M):
+        problems.append("_config.yml does not exclude AGENTS.md from Pages")
+    if (root / "CLAUDE.md").exists():
+        problems.append("CLAUDE.md exists; Claude Code would read it instead of AGENTS.md")
     for problem in problems:
         print(problem, file=sys.stderr)
     return not problems

@@ -1,5 +1,8 @@
 # Working on the Military History Project
 
+Codex and Claude Code both read this file; keep the instructions here, not in a CLAUDE.md,
+which Claude Code would read instead of it.
+
 Each mission under `missions/<id>/` is a replayable operation package (`operation.json`,
 `events.jsonl`, `presentations/default.json`) written by its generator in `build/`, with a
 README of method, anchors, disputes and sources, and an `index.html` launch page. Shared
