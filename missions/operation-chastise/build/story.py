@@ -32,9 +32,10 @@ CHAPTERS = [
     ("Home in daylight", "03:39"),
 ]
 
-# (from, until, speed): about twenty minutes of viewing.
+# (from, until, speed): about twenty minutes of viewing. A still map plays fast; its briefing
+# stays up into the action that follows.
 PACING = [
-    ("21:25", "21:27:30", 6), ("21:27:30", "21:32", 10), ("21:32", "21:38", 60),
+    ("21:25", "21:27:55", 36), ("21:27:55", "21:32", 10), ("21:32", "21:38", 60),
     ("21:38", "21:41", 10), ("21:41", "21:46", 60), ("21:46", "21:49", 10),
     ("21:49", "21:58", 60), ("21:58", "22:02", 12), ("22:02", "22:50", 120),
     ("22:50", "23:03", 16), ("23:03", "23:46", 120), ("23:46", "23:52", 16),
@@ -43,7 +44,8 @@ PACING = [
     ("00:50", "00:56:30", 12), ("00:56:30", "01:18", 60), ("01:18", "01:37", 30),
     ("01:37", "01:54", 6), ("01:54", "02:24", 60), ("02:24", "02:38", 16), ("02:38", "02:56", 40),
     ("02:56", "03:00", 8), ("03:00", "03:08", 60), ("03:08", "03:16", 8), ("03:16", "03:25", 60),
-    ("03:25", "03:39", 10), ("03:39", "06:12", 240), ("06:12", "06:20", 20),
+    ("03:25", "03:39", 10), ("03:39", "06:12", 240), ("06:12", "06:15:40", 20),
+    ("06:15:40", "06:20", 240),
 ]
 
 ORB = "orb-617"
@@ -54,7 +56,7 @@ ESTIMATE = "reconstruction-estimate"
 
 # (entity or None, from, until, source, text)
 BRIEFINGS = [
-    (None, "21:25", "21:28", B976,
+    (None, "21:25", "21:31", B976,
      "Night of 16/17 May 1943. Nineteen Lancaster B.III (Type 464 Provisioning) of 617 "
      "Squadron, each carrying one 9,250 lb Upkeep mine, are to breach the Ruhr dams: Möhne "
      "(X), Eder (Y) and Sorpe (Z), with Lister, Ennepe and Diemel as last resorts. Upkeep is "
