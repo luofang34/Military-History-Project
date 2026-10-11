@@ -11,8 +11,9 @@ import waypoints as w
 from manoeuvre import (APPROACH, CIRCUIT_ALT_M, ENVELOPE_MPH, FINAL, between, circuit_to, go, land,
                        take_off, turn)
 from plan import Plan
-from sites import (CRASH, FRONDENBERG, GUNNE, HIMMELPFORTEN, L, LANDED, MOHNE, NEHEIM_CAMP,
-                   NIEDERENSE, SCHWERTE, TAKE_OFF, WICKEDE)
+from sites import (AFFOLDERN, BERGHEIM_EDER, CRASH, EDER, FRITZLAR, FRONDENBERG, GUNNE,
+                   HIMMELPFORTEN, L, LANDED, MOHNE, NEHEIM_CAMP, NIEDERENSE, SCHWERTE, TAKE_OFF,
+                   WABERN, WEGA, WICKEDE)
 from track import MPH, Track, bearing_deg, distance_m
 
 ENGLAND = {w.WEST_RAYNHAM, w.WAINFLEET, w.NORTH_COAST_OUT}
@@ -248,6 +249,15 @@ def damage(plan):
     plan.condition("orb-617", "MÖHNE POWER STATION", burst["AJ-M"], "destroyed")
 
 
+def eder_flood(breach_ms):
+    """The Eder flood front from Knight's breach down the valley past Fritzlar to Wabern,
+    where it arrived at 05:30 (eder-flood), at an even pace between."""
+    t = Track().add(breach_ms, EDER, 0)
+    between(t, [AFFOLDERN, BERGHEIM_EDER, WEGA, FRITZLAR, WABERN], L(time_of("eder-flood")),
+            [0] * 5)
+    return t
+
+
 def build():
     plan = Plan()
     wave_one(plan)
@@ -271,4 +281,5 @@ def build():
         releases = {r.at_ms for r in plan.releases if r.code == code}
         track.fillet(min_mps=ENVELOPE_MPH[0] * MPH, keep=releases)
     plan.flood = flood()
+    plan.eder_flood = eder_flood(plan.mines["UPKEEP AJ-N"].end)
     return plan

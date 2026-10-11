@@ -667,11 +667,11 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": 8.03056,
-          "lat": 51.49606
+          "lon": 8.18047,
+          "lat": 51.44977
         }
       },
-      "zoom": 7.59,
+      "zoom": 7.41,
       "pitch": 0,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
@@ -1493,7 +1493,8 @@
           "AJ-Z",
           "AJ-N",
           "AJ-L",
-          "MÖHNE FLOOD"
+          "MÖHNE FLOOD",
+          "EDER FLOOD"
         ]
       },
       "17940000": {

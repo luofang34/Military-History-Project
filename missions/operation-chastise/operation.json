@@ -53,7 +53,7 @@
     },
     {
       "id": "reconstruction-flood",
-      "name": "Möhne flood front through the sourced towns",
+      "name": "Flood fronts through the sourced towns",
       "motion": "great_circle",
       "max_gap_ms": 32100000
     },
@@ -68,6 +68,10 @@
     {
       "id": "nav-log-aj-t",
       "name": "AJ-T navigator's log (Dambusters Blog transcription)"
+    },
+    {
+      "id": "geschichtskreis-wabern",
+      "name": "Geschichtskreis Wabern, Erinnerungspfad, Tafel 6: Die Ederseekatastrophe"
     },
     {
       "id": "asn",
@@ -535,9 +539,16 @@
     },
     {
       "id": "MÖHNE FLOOD",
-      "sidc": "SUGP-----------",
+      "sidc": "10044000001702020000",
       "camera": false,
       "name": "Möhne flood wave",
+      "kind": "flood front"
+    },
+    {
+      "id": "EDER FLOOD",
+      "sidc": "10044000001702020000",
+      "camera": false,
+      "name": "Eder flood wave",
       "kind": "flood front"
     }
   ],

@@ -32,12 +32,14 @@ SOURCES = [
     {"id": "reconstruction-airfield", "name": "Scampton take-off and landing reconstruction",
      **RECONSTRUCTED},
     {"id": "reconstruction-upkeep", "name": "Upkeep bounce choreography", **RECONSTRUCTED},
-    {"id": "reconstruction-flood", "name": "Möhne flood front through the sourced towns",
+    {"id": "reconstruction-flood", "name": "Flood fronts through the sourced towns",
      **RECONSTRUCTED},
     {"id": "reconstruction-estimate",
      "name": "Replay estimates where sources disagree (build/evidence.py)"},
     {"id": "orb-617", "name": "617 Squadron Operations Record Book, AIR 27/2128"},
     {"id": "nav-log-aj-t", "name": "AJ-T navigator's log (Dambusters Blog transcription)"},
+    {"id": "geschichtskreis-wabern",
+     "name": "Geschichtskreis Wabern, Erinnerungspfad, Tafel 6: Die Ederseekatastrophe"},
     {"id": "asn", "name": "Aviation Safety Network wikibase"},
     {"id": "wikipedia-gibson", "name": "Guy Gibson (en.wikipedia)"},
     {"id": "order-b976", "name": "5 Group Operation Order B.976 (IBCC 10501, 33688)"},
@@ -96,6 +98,8 @@ def main():
     flood = plan.flood
     emit_track(em, "MÖHNE FLOOD", flood, lambda *_: ("reconstruction-flood", 1500.0),
                DURATION + 1)
+    emit_track(em, "EDER FLOOD", plan.eder_flood,
+               lambda *_: ("reconstruction-flood", 1500.0), DURATION + 1)
     for id_, _, _, _, point, bound, source in FIXED:
         em.fix(source, id_, 0, point, 0.0, bound, None, "reported", [], reference="site")
     for source, entity, at, condition in plan.conditions:
