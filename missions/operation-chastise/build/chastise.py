@@ -15,6 +15,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parents[2] / "tools"))
 import checks  # noqa: E402
+import drops  # noqa: E402
 import ledger  # noqa: E402
 from evidence import DISPUTES  # noqa: E402
 import flights  # noqa: E402
@@ -140,7 +141,7 @@ def main():
     (out / "operation.json").write_text(json.dumps(op, indent=2, ensure_ascii=False) + "\n")
     ledger.write_readme(out / "README.md", DISPUTES, {s["id"]: s["name"] for s in SOURCES},
                         "chastise.py")
-    pace = story.pacing(plan.releases)
+    pace = story.pacing(plan.releases, drops.windows(plan))
     shot_list, intents = shots.shots(plan, pace)
     doc = story.document(OP, shot_list, intents, pace)
     (out / "presentations").mkdir(exist_ok=True)

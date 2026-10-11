@@ -344,19 +344,78 @@
     },
     {
       "start_ms": 10920000,
+      "end_ms": 10960000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 8.08015,
+          "lat": 51.47229
+        }
+      },
+      "zoom": 12.57,
+      "pitch": 50,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 20000
+    },
+    {
+      "start_ms": 10960000,
+      "end_ms": 10980000,
+      "target": {
+        "kind": "entity",
+        "value": "AJ-G"
+      },
+      "zoom": 15.6,
+      "pitch": 60,
+      "bearing": 323.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 0,
+      "focus": "AJ-G"
+    },
+    {
+      "start_ms": 10980000,
+      "end_ms": 10985288,
+      "target": {
+        "kind": "entity",
+        "value": "UPKEEP AJ-G"
+      },
+      "zoom": 16.4,
+      "pitch": 60,
+      "bearing": 323.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 1200
+    },
+    {
+      "start_ms": 10985288,
+      "end_ms": 11015288,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 8.05892,
+          "lat": 51.48985
+        }
+      },
+      "zoom": 15.4,
+      "pitch": 55,
+      "bearing": 323.0,
+      "orbit_deg_s": 1.5,
+      "transition_ms": 1500
+    },
+    {
+      "start_ms": 11015288,
       "end_ms": 11160000,
       "target": {
         "kind": "point",
         "value": {
-          "lon": 8.07992,
-          "lat": 51.47248
+          "lon": 8.08015,
+          "lat": 51.47229
         }
       },
-      "zoom": 12.55,
+      "zoom": 12.57,
       "pitch": 50,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 33000
+      "transition_ms": 48000
     },
     {
       "start_ms": 11160000,
@@ -424,19 +483,62 @@
     },
     {
       "start_ms": 12120000,
-      "end_ms": 12300000,
+      "end_ms": 12220000,
       "target": {
         "kind": "point",
         "value": {
-          "lon": 8.07973,
-          "lat": 51.47264
+          "lon": 8.08015,
+          "lat": 51.47229
         }
       },
-      "zoom": 12.54,
+      "zoom": 12.57,
       "pitch": 50,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
       "transition_ms": 0
+    },
+    {
+      "start_ms": 12220000,
+      "end_ms": 12240000,
+      "target": {
+        "kind": "entity",
+        "value": "AJ-J"
+      },
+      "zoom": 15.6,
+      "pitch": 60,
+      "bearing": 323.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 0,
+      "focus": "AJ-J"
+    },
+    {
+      "start_ms": 12240000,
+      "end_ms": 12246075,
+      "target": {
+        "kind": "entity",
+        "value": "UPKEEP AJ-J"
+      },
+      "zoom": 16.4,
+      "pitch": 60,
+      "bearing": 323.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 1200
+    },
+    {
+      "start_ms": 12246075,
+      "end_ms": 12300000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 8.05892,
+          "lat": 51.48985
+        }
+      },
+      "zoom": 15.4,
+      "pitch": 55,
+      "bearing": 323.0,
+      "orbit_deg_s": 1.5,
+      "transition_ms": 1500
     },
     {
       "start_ms": 12300000,
@@ -502,12 +604,12 @@
     },
     {
       "start_ms": 15720000,
-      "end_ms": 16140000,
+      "end_ms": 16008000,
       "target": {
         "kind": "point",
         "value": {
-          "lon": 9.05337,
-          "lat": 51.18747
+          "lon": 9.05335,
+          "lat": 51.18749
         }
       },
       "zoom": 14.18,
@@ -515,6 +617,49 @@
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
       "transition_ms": 90000
+    },
+    {
+      "start_ms": 16008000,
+      "end_ms": 16020000,
+      "target": {
+        "kind": "entity",
+        "value": "AJ-N"
+      },
+      "zoom": 15.6,
+      "pitch": 60,
+      "bearing": 124.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 0,
+      "focus": "AJ-N"
+    },
+    {
+      "start_ms": 16020000,
+      "end_ms": 16025288,
+      "target": {
+        "kind": "entity",
+        "value": "UPKEEP AJ-N"
+      },
+      "zoom": 16.4,
+      "pitch": 60,
+      "bearing": 124.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 1200
+    },
+    {
+      "start_ms": 16025288,
+      "end_ms": 16140000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 9.0586,
+          "lat": 51.1835
+        }
+      },
+      "zoom": 15.4,
+      "pitch": 55,
+      "bearing": 124.0,
+      "orbit_deg_s": 1.5,
+      "transition_ms": 1500
     },
     {
       "start_ms": 16140000,
@@ -778,11 +923,11 @@
     },
     {
       "start_ms": 10990000,
-      "end_ms": 11000000,
+      "end_ms": 11015288,
       "speed": 4
     },
     {
-      "start_ms": 11000000,
+      "start_ms": 11015288,
       "end_ms": 11240000,
       "speed": 24
     },
@@ -878,11 +1023,11 @@
     },
     {
       "start_ms": 12250000,
-      "end_ms": 12260000,
+      "end_ms": 12276075,
       "speed": 4
     },
     {
-      "start_ms": 12260000,
+      "start_ms": 12276075,
       "end_ms": 12300000,
       "speed": 24
     },
@@ -958,11 +1103,11 @@
     },
     {
       "start_ms": 16030000,
-      "end_ms": 16040000,
+      "end_ms": 16055288,
       "speed": 4
     },
     {
-      "start_ms": 16040000,
+      "start_ms": 16055288,
       "end_ms": 17940000,
       "speed": 60
     },
@@ -1202,8 +1347,32 @@
       "10920000": {
         "intent": "Down onto the run-in from the lake: Gibson's attack, and his mine bursting short.",
         "shows": [
-          "MÖHNE",
-          "UPKEEP AJ-G"
+          "MÖHNE"
+        ]
+      },
+      "10960000": {
+        "intent": "Behind Gibson down the lake, the first attack of the night, held at 60 ft by the spotlights.",
+        "shows": [
+          "AJ-G"
+        ]
+      },
+      "10980000": {
+        "intent": "Ride Gibson's mine as it skips toward the wall.",
+        "shows": [
+          "UPKEEP AJ-G",
+          "MÖHNE"
+        ]
+      },
+      "10985288": {
+        "intent": "Round the dam as the mine bursts short and the water rises.",
+        "shows": [
+          "MÖHNE"
+        ]
+      },
+      "11015288": {
+        "intent": "Back out over the lake while the water settles for the next attack.",
+        "shows": [
+          "MÖHNE"
         ]
       },
       "11160000": {
@@ -1237,8 +1406,26 @@
       "12120000": {
         "intent": "Cut back to the Möhne for Maltby's attack, the one that breaks it.",
         "shows": [
-          "MÖHNE",
-          "UPKEEP AJ-J"
+          "MÖHNE"
+        ]
+      },
+      "12220000": {
+        "intent": "Behind Maltby on the run that decides the Möhne, Gibson and Martin flanking him.",
+        "shows": [
+          "AJ-J"
+        ]
+      },
+      "12240000": {
+        "intent": "Ride Maltby's mine to the wall.",
+        "shows": [
+          "UPKEEP AJ-J",
+          "MÖHNE"
+        ]
+      },
+      "12246075": {
+        "intent": "Round the dam as the wall gives way.",
+        "shows": [
+          "MÖHNE"
         ]
       },
       "12300000": {
@@ -1276,8 +1463,26 @@
       "15720000": {
         "intent": "Tighter for Knight, the last mine: the dive past the spit, the turn onto the dam, the breach.",
         "shows": [
-          "EDER",
-          "UPKEEP AJ-N"
+          "EDER"
+        ]
+      },
+      "16008000": {
+        "intent": "Behind Knight, the last mine in the first wave, as he turns onto the Eder.",
+        "shows": [
+          "AJ-N"
+        ]
+      },
+      "16020000": {
+        "intent": "Ride Knight's mine to the wall.",
+        "shows": [
+          "UPKEEP AJ-N",
+          "EDER"
+        ]
+      },
+      "16025288": {
+        "intent": "Round the Eder as it breaks.",
+        "shows": [
+          "EDER"
         ]
       },
       "16140000": {

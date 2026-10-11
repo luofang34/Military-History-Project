@@ -59,11 +59,13 @@ RUN_BEFORE_MS, RUN_AFTER_MS = 30_000, 20_000
 MINE_BEFORE_MS, MINE_AFTER_MS = 3_000, 10_000
 
 
-def pacing(releases):
-    """The story's pacing in operation ms, slowed through each attack run in `releases`."""
+def pacing(releases, drop_windows):
+    """The story's pacing in operation ms, slowed through each attack run in `releases` and
+    through each decisive drop's sequence in `drop_windows`."""
     base = [(L(a), L(b), speed) for a, b, speed in BASE_PACING]
     beats = [(r.at_ms - RUN_BEFORE_MS, r.at_ms + RUN_AFTER_MS, RUN) for r in releases]
     beats += [(r.at_ms - MINE_BEFORE_MS, r.at_ms + MINE_AFTER_MS, MINE) for r in releases]
+    beats += [(release - RUN_BEFORE_MS, end, RUN) for release, end in drop_windows]
     young = L(LOSS["AJ-A"])
     beats.append((young - 20_000, young + 20_000, RUN))
     return with_beats(base, beats)

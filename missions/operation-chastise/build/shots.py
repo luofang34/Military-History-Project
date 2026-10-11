@@ -4,6 +4,7 @@ Every shot is fitted to its subjects by `framing.Framer`; subjects are Lancaster
 flood front, fixed sites, or the run-in points that frame an attack. Each shot states what it
 is for; tools/composition.py prints that beside what the viewer's frame report shows.
 """
+from drops import chase_ms, releases, sequence
 from framer import Framer
 from sites import CRASH, DURATION, FIXED, HAMMERBERG, L, NEHEIM_CAMP, WALDECK
 from targets import ENNEPE_START, MOHNE_START, SORPE_START
@@ -143,9 +144,20 @@ def shots(plan, pacing):
     fixed.update(POINTS)
     tracks = {**plan.tracks, **plan.mines, "MÖHNE FLOOD": plan.flood}
     f = Framer(tracks, fixed, lifetimes(plan), pacing)
+    drops = releases(plan)
     for start, end, subjects, intent, framing in SHOTS:
         a = start if isinstance(start, int) else L(start)
         b = end if isinstance(end, int) else L(end)
-        shows = [n for n in subjects if n not in POINTS]
-        f.shot(a, b, subjects, {"intent": intent, "shows": shows}, **framing)
+        code = next((c for c, (r, _) in drops.items() if a < r - chase_ms(c) and r < b), None)
+        # A drop's own sequence shows its mine; the wide shot around it does not.
+        shows = [n for n in subjects if n not in POINTS and n != f"UPKEEP {code}"]
+
+        def base(s, e, purpose, move=framing.get("move", 1.5)):
+            f.shot(s, e, subjects, {"intent": purpose, "shows": shows},
+                   **{**framing, "move": move})
+        if code is None:
+            base(a, b, intent)
+            continue
+        base(a, drops[code][0] - chase_ms(code), intent)
+        sequence(f, plan, code, b, lambda s, e, purpose: base(s, e, purpose, move=2))
     return f.shots, f.intents
