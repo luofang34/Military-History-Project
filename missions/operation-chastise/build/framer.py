@@ -78,3 +78,27 @@ class Framer:
         self.shots.append(cue)
         self.intents[str(start)] = intent
         return cue
+
+    def view(self, start, end, intent, target, zoom, pitch, bearing, orbit=0.0, move=1.5,
+             focus=None):
+        """A shot composed by hand rather than fitted: on `target` (a track or a site) at the
+        given zoom, pitch and bearing, orbiting `orbit` degrees per operation second. The
+        frame report checks the entities its `intent` promises."""
+        if self.shots and self.shots[-1]["end_ms"] != start:
+            raise ValueError(f"shot at {start} ms does not follow the previous one")
+        if target in self.fixed:
+            lon, lat = self.fixed[target]
+            aim = {"kind": "point", "value": {"lon": round(lon, 5), "lat": round(lat, 5)}}
+        else:
+            if not all(self.alive(target, at) for at in range(start, end, 250)):
+                raise ValueError(f"shot at {start} ms follows {target} past its track")
+            aim = {"kind": "entity", "value": target}
+        cue = {"start_ms": start, "end_ms": end, "target": aim, "zoom": zoom, "pitch": pitch,
+               "bearing": bearing, "orbit_deg_s": orbit,
+               "transition_ms": min(after_viewing(self.pacing, start, move) - start,
+                                    (end - start) // 2)}
+        if focus:
+            cue["focus"] = focus
+        self.shots.append(cue)
+        self.intents[str(start)] = intent
+        return cue

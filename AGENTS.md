@@ -61,8 +61,13 @@ moves on screen, the symbols drawn, and the briefing it carries. Read it as an e
 entities in frame (`SHOWN` in `tools/composition.py`), plays at least `MIN_SHOT_S`, arrives
 by a cut or a move of at least `MIN_MOVE_S`, and holds no longer than `MAX_HOLD_S`; every note
 is readable before it leaves; the focus stays in frame.
-Passing them does not make the story good. Take a screenshot only for what the report cannot
-show: terrain under low-flying symbols (the report flags its lift) or a crowded frame.
+Passing them does not make the story good. The report projects without terrain: the viewer
+centres a followed entity on the ground under it, but a symbol far up a steep close shot can
+be lifted out of frame, or hidden, by the ground between. Keep such a symbol well inside the
+frame, not near its top edge, before promising it. Take a screenshot only for what the report
+cannot show: terrain under steep close shots (the report flags its lift) or a crowded frame.
+A screenshot taken with `--at` shows the story camera only once the viewer has handed it
+back; one whose bar still reads "Recorded path in 1s" is not the story's frame.
 
 ## Git
 
