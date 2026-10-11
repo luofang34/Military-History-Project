@@ -4,6 +4,7 @@ Times are operation milliseconds from 07:00 Tripoli time (UTC+2). The fight's be
 Biddle tape's calls, whose 00:00 is placed at 07:15; quiet stretches play fast and the three
 missile flights play at half speed.
 """
+from composition import INTENTS
 import ledger
 from evidence import DISPUTES
 from geometry import (AA2, AIM_102, AIM_107, ATOLL_S, DME_S, FE102, FE107, HIT_LEAD_S,
@@ -49,7 +50,8 @@ PACING = [
     (t("14:30"), s_ms(15), 6),
     (s_ms(15), s_ms(ATOLL_S), 3),
     (s_ms(ATOLL_S), s_ms(MERGE_S + 3), 0.5),
-    (s_ms(MERGE_S + 3), s_ms(HIT_WING_S - 3), 1.25),
+    (s_ms(MERGE_S + 3), s_ms(110), 1.25),
+    (s_ms(110), s_ms(HIT_WING_S - 3), 2),
     (s_ms(HIT_WING_S - 3), s_ms(HIT_WING_S), 0.5),
     (s_ms(HIT_WING_S), s_ms(HIT_LEAD_S - 3), 1.25),
     (s_ms(HIT_LEAD_S - 3), s_ms(HIT_LEAD_S), 0.5),
@@ -151,7 +153,7 @@ def annotations(em, names):
     ledger.emit(em, DISPUTES, clock, "reconstruction-estimate")
 
 
-def document(operation, camera_track):
+def document(operation, camera_track, intents):
     return {
         "format": "sokoly-presentation",
         "version": 1,
@@ -161,4 +163,5 @@ def document(operation, camera_track):
         "chapters": [{"title": title, "at_ms": at, "available_ms": at} for title, at in CHAPTERS],
         "camera_track": camera_track,
         "playback_track": [{"start_ms": a, "end_ms": b, "speed": s} for a, b, s in PACING],
+        "extensions": {INTENTS: intents},
     }

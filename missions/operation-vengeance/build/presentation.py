@@ -1,4 +1,6 @@
 """Chapters, briefing text, camera shots and pacing for the reconstruction."""
+from composition import INTENTS
+from pacing import after_viewing
 from sites import (L, DURATION, PEARL_HARBOR, LAKUNAI, CRASH_T1_323, DITCH_T1_326, YAMAMOTO,
                    UGAKI)
 import ledger
@@ -135,92 +137,137 @@ def annotations(em, names):
     ledger.emit(em, DISPUTES, L, "reconstruction-estimate")
 
 
-def point(p):
-    return {"kind": "point", "value": {"lon": p[0], "lat": p[1]}}
+RUNWAY = (160.012, -9.4265)
+T0 = L("07:24:30")
+Y, U = YAMAMOTO, UGAKI
+
+# (from, until, target, zoom, pitch, bearing, intent, entities it shows, options): the target
+# is a (lon, lat) point or an entity id; moves take 1.5 s of viewing unless `move` says.
+SHOTS = [
+    (T0, T0 + 1500, PEARL_HARBOR, 11.5, 35, 0,
+     "Pearl Harbor, where the codebreakers read the itinerary: the story starts with the "
+     "intercept.", [], {"move": 0}),
+    (T0 + 1500, T0 + 3500, PEARL_HARBOR, 1.9, 0, 0,
+     "Pull back to the whole Pacific: the reach of one decrypted message.", [], {"move": 2}),
+    (T0 + 3500, T0 + 6700, (162.0, -8.0), 1.7, 0, 0,
+     "Swing across the ocean to the Solomons.", [], {"move": 3.2}),
+    (T0 + 6700, T0 + 8200, (159.8, -9.3), 6.0, 0, 0,
+     "Down onto Guadalcanal and its fighter strip.", ["FIGHTER TWO"], {"move": 1.5}),
+    (T0 + 8200, T0 + 11_200, RUNWAY, 14.2, 45, 340,
+     "Down to Fighter Two, Mitchell's P-38 at the head of the line.",
+     ["MITCHELL", "FIGHTER TWO"], {"move": 3, "focus": "MITCHELL"}),
+    (T0 + 11_200, "07:25:00", RUNWAY, 14.2, 45, 340,
+     "Hold on the line of P-38s while the briefing finishes.", ["MITCHELL"],
+     {"move": 0, "orbit": -0.1, "focus": "MITCHELL"}),
+    ("07:25:00", "07:27:10", RUNWAY, 13.6, 50, 338,
+     "The take-off roll, Lanphier's attack section among the first away.", ["LANPHIER"],
+     {"orbit": -0.01, "focus": "LANPHIER"}),
+    ("07:27:10", "07:28:30", (160.006, -9.4265), 14.4, 50, 330,
+     "McLanahan's tyre blows on the roll: the attack section loses its first man.",
+     ["MCLANAHAN"], {"focus": "MCLANAHAN"}),
+    ("07:28:30", "07:31:00", (160.0, -9.385), 11.6, 35, 300,
+     "The formation gathers over the field.", ["LANPHIER"], {"focus": "LANPHIER"}),
+    ("07:31:00", "07:35:30", "MITCHELL", 10.4, 40, 280,
+     "Mitchell leads them out to sea.", ["MITCHELL"], {"focus": "MITCHELL"}),
+    # Moore heads home down the screen; turning the camera with him would spin the view.
+    ("07:35:30", "07:38:00", "MOORE", 10.8, 40, 280,
+     "Moore turns back with tanks that will not feed; Hine takes his place.", ["MOORE"],
+     {"focus": "MOORE"}),
+    ("07:38:00", "07:52:00", "MITCHELL", 8.3, 25, 280,
+     "Sixteen P-38s settle at wave-top height under radio silence.", ["MITCHELL"],
+     {"move": 2, "focus": "MITCHELL"}),
+    ("07:52:00", "08:04:30", (158.6, -8.95), 7.8, 20, 280,
+     "The long run west along the Solomons, below the islanders' lookouts.", ["MITCHELL"],
+     {"move": 2.5}),
+    ("08:04:30", "08:06:30", LAKUNAI, 13.8, 50, 150,
+     "Cut to Rabaul: Yamamoto boards T1-323 at Lakunai, and the target is on the map.",
+     [Y, "LAKUNAI"], {"move": 0, "focus": Y}),
+    ("08:06:30", "08:08:30", Y, 12.6, 45, 140,
+     "The two Bettys and their six Zeros take off.", [Y, U], {"move": 1.5, "focus": Y}),
+    ("08:08:30", "08:30:00", Y, 8.6, 30, 130,
+     "The admiral's formation climbs south-east toward Bougainville.", [Y, U],
+     {"move": 2.5, "focus": Y}),
+    ("08:30:00", "08:52:00", "MITCHELL", 8.5, 25, 300,
+     "Cut back to the hunters on their dog-legs, kept out of sight of land.", ["MITCHELL"],
+     {"move": 0, "focus": "MITCHELL"}),
+    ("08:52:00", "09:08:00", (156.3, -7.6), 6.4, 10, 0,
+     "Both formations on one map, converging on Bougainville's coast.", ["MITCHELL", Y],
+     {"move": 3}),
+    ("09:08:00", "09:22:00", "MITCHELL", 8.8, 30, 330,
+     "The P-38s' final leg toward the coast.", ["MITCHELL"],
+     {"move": 2.5, "focus": "MITCHELL"}),
+    ("09:22:00", "09:28:00", Y, 9.6, 40, 130,
+     "Cut to the Bettys, on schedule for Ballale.", [Y], {"move": 0, "focus": Y}),
+    ("09:28:00", "09:32:00", "MITCHELL", 10.8, 50, 40,
+     "Cut back to the P-38s: the cross-cutting quickens as they close.", ["MITCHELL"],
+     {"move": 0, "focus": "MITCHELL"}),
+    ("09:32:00", "09:34:00", "MITCHELL", 11.4, 45, 20,
+     "Turn toward the coast with Canning, the man who will see them first.",
+     ["MITCHELL", "CANNING"], {"move": 2, "focus": "CANNING"}),
+    ("09:34:00", "09:35:40", (155.39, -6.76), 12.6, 50, 30,
+     "The sighting: P-38s and bombers in one frame as the tanks drop and the climb begins.",
+     ["CANNING", Y], {"move": 2, "orbit": 0.12, "focus": "CANNING"}),
+    ("09:35:40", "09:36:40", (155.45, -6.765), 12.6, 55, 50,
+     "Lanphier turns into the diving Zeros as the bombers split.", ["LANPHIER", Y, U],
+     {"move": 2, "focus": "LANPHIER"}),
+    ("09:36:40", "09:37:50", "BARBER", 13.8, 55, 100,
+     "Behind Barber as he fires into T1-323.", ["BARBER", Y],
+     {"move": 1.5, "focus": "BARBER"}),
+    ("09:37:50", "09:38:10", CRASH_T1_323, 14.2, 55, 110,
+     "T1-323 goes into the jungle inland of Moila Point.", [Y],
+     {"move": 1.5, "focus": Y}),
+    ("09:38:10", "09:39:20", "HOLMES", 13.4, 55, 80,
+     "Holmes and Hine, back in the fight, catch T1-326 low over the water.", ["HOLMES", U],
+     {"move": 1.5, "focus": "HOLMES"}),
+    ("09:39:20", "09:39:40", DITCH_T1_326, 13.4, 55, 80,
+     "T1-326 ditches off Moila Point.", [U], {"move": 1.5, "focus": U}),
+    ("09:39:40", "09:40:20", (155.56, -6.82), 10.6, 30, 80,
+     "The fight at a glance: top cover overhead, both wrecks, the chase past Kahili.",
+     ["HOLMES", "HINE", "LANPHIER", "MITCHELL", Y, U], {"move": 1.5}),
+    ("09:40:20", "09:41:10", "HINE", 12.4, 50, 95,
+     "Find Hine as the fighters clash again past Ballale.", ["HINE"],
+     {"move": 1.5, "focus": "HINE"}),
+    ("09:41:10", "09:45:40", "HINE", 11.4, 40, 160,
+     "Stay with Hine, his engine smoking, until he is last seen south of Shortland.",
+     ["HINE"], {"move": 1.5, "focus": "HINE"}),
+    ("09:45:40", "09:52:00", "MITCHELL", 9.5, 35, 150,
+     "Mitchell calls the flight home.", ["MITCHELL"], {"move": 2, "focus": "MITCHELL"}),
+    ("09:52:00", DURATION, (157.5, -8.0), 1.8, 0, 0,
+     "Pull out over the Solomons as they return, while the briefing gives the outcome.", [],
+     {"move": 9}),
+]
 
 
-def entity(e):
-    return {"kind": "entity", "value": e}
+def ms(clock):
+    return clock if isinstance(clock, int) else L(clock)
 
 
-def cue(start, end, target, zoom, pitch, bearing, orbit=0.0, transition=0, focus=None):
-    c = {
-        "start_ms": start if isinstance(start, int) else L(start),
-        "end_ms": end if isinstance(end, int) else L(end),
-        "target": target, "zoom": zoom, "pitch": pitch, "bearing": bearing,
-        "orbit_deg_s": orbit, "transition_ms": transition,
-    }
-    if focus:
-        c["focus"] = focus
-    return c
+def pacing():
+    """The story's pacing in operation ms."""
+    return [(L(a), L(b), s) for a, b, s in PACING]
 
 
 def camera():
-    runway = (160.012, -9.4265)
-    t0 = L("07:24:30")
-    return [
-        cue(t0, t0 + 300, point(PEARL_HARBOR), 11.5, 35, 0),
-        cue(t0 + 300, t0 + 2300, point(PEARL_HARBOR), 1.9, 0, 0, transition=2000),
-        cue(t0 + 2300, t0 + 5500, point((162.0, -8.0)), 1.7, 0, 0, transition=3200),
-        cue(t0 + 5500, t0 + 7000, point((159.8, -9.3)), 6.0, 0, 0, transition=1500),
-        cue(t0 + 7000, t0 + 10_000, point(runway), 14.2, 45, 340, transition=3000,
-            focus="MITCHELL"),
-        cue(t0 + 10_000, "07:25:00", point(runway), 14.2, 45, 340, orbit=-0.1,
-            focus="MITCHELL"),
-        cue("07:25:00", "07:27:10", point(runway), 13.6, 50, 340 - 2.0, orbit=-0.01,
-            transition=8000, focus="LANPHIER"),
-        cue("07:27:10", "07:28:30", point((160.006, -9.4265)), 14.4, 50, 330, transition=6000,
-            focus="MCLANAHAN"),
-        cue("07:28:30", "07:31:00", point((160.0, -9.385)), 11.6, 35, 300, transition=40_000,
-            focus="LANPHIER"),
-        cue("07:31:00", "07:35:30", entity("MITCHELL"), 10.4, 40, 280, transition=40_000,
-            focus="MITCHELL"),
-        # Moore heads home down the screen; turning the camera with him would spin the view.
-        cue("07:35:30", "07:38:00", entity("MOORE"), 10.8, 40, 280, transition=40_000,
-            focus="MOORE"),
-        cue("07:38:00", "07:52:00", entity("MITCHELL"), 8.3, 25, 280, transition=120_000,
-            focus="MITCHELL"),
-        # The whole run west along the Solomons, wave-top below the islanders' lookouts.
-        cue("07:52:00", "08:04:30", point((158.6, -8.95)), 7.8, 20, 280, transition=180_000),
-        cue("08:04:30", "08:06:30", point(LAKUNAI), 13.8, 50, 150, focus=YAMAMOTO),
-        cue("08:06:30", "08:08:30", entity(YAMAMOTO), 12.6, 45, 140, transition=40_000,
-            focus=YAMAMOTO),
-        cue("08:08:30", "08:30:00", entity(YAMAMOTO), 8.6, 30, 130, transition=180_000,
-            focus=YAMAMOTO),
-        cue("08:30:00", "08:52:00", entity("MITCHELL"), 8.5, 25, 300, focus="MITCHELL"),
-        cue("08:52:00", "09:08:00", point((156.3, -7.6)), 6.4, 10, 0, transition=240_000),
-        cue("09:08:00", "09:22:00", entity("MITCHELL"), 8.8, 30, 330, transition=180_000,
-            focus="MITCHELL"),
-        cue("09:22:00", "09:28:00", entity(YAMAMOTO), 9.6, 40, 130, focus=YAMAMOTO),
-        cue("09:28:00", "09:32:00", entity("MITCHELL"), 10.8, 50, 40, focus="MITCHELL"),
-        cue("09:32:00", "09:34:00", entity("MITCHELL"), 11.4, 45, 20, transition=40_000,
-            focus="CANNING"),
-        cue("09:34:00", "09:35:40", point((155.39, -6.76)), 12.6, 50, 30, orbit=0.12,
-            transition=20_000, focus="CANNING"),
-        cue("09:35:40", "09:36:40", point((155.45, -6.765)), 12.6, 55, 50, transition=10_000,
-            focus="LANPHIER"),
-        cue("09:36:40", "09:37:50", entity("BARBER"), 13.8, 55, 100, transition=8000,
-            focus="BARBER"),
-        cue("09:37:50", "09:38:10", point(CRASH_T1_323), 14.2, 55, 110, transition=6000,
-            focus=YAMAMOTO),
-        cue("09:38:10", "09:39:20", entity("HOLMES"), 13.4, 55, 80, transition=8000,
-            focus="HOLMES"),
-        cue("09:39:20", "09:39:40", point(DITCH_T1_326), 13.4, 55, 80, transition=6000,
-            focus=UGAKI),
-        # The fight at a glance: top cover overhead, both wrecks, the chase past Kahili, Hine
-        # and Holmes heading for Shortland.
-        cue("09:39:40", "09:40:20", point((155.56, -6.82)), 10.6, 30, 80, transition=10_000),
-        cue("09:40:20", "09:41:10", entity("HINE"), 12.4, 50, 95, transition=12_000,
-            focus="HINE"),
-        cue("09:41:10", "09:45:40", entity("HINE"), 11.4, 40, 160, transition=10_000,
-            focus="HINE"),
-        cue("09:45:40", "09:52:00", entity("MITCHELL"), 9.5, 35, 150, transition=120_000,
-            focus="MITCHELL"),
-        cue("09:52:00", DURATION, point((157.5, -8.0)), 1.8, 0, 0, transition=600_000),
-    ]
+    """(camera cues, each shot's intent and the entities it shows, by start_ms)."""
+    pace = pacing()
+    cues, intents = [], {}
+    for start, end, target, zoom, pitch, bearing, intent, shows, opts in SHOTS:
+        a, b = ms(start), ms(end)
+        aim = ({"kind": "entity", "value": target} if isinstance(target, str)
+               else {"kind": "point", "value": {"lon": target[0], "lat": target[1]}})
+        move = after_viewing(pace, a, opts.get("move", 1.5)) - a
+        c = {"start_ms": a, "end_ms": b, "target": aim, "zoom": zoom, "pitch": pitch,
+             "bearing": bearing, "orbit_deg_s": opts.get("orbit", 0.0),
+             "transition_ms": min(move, b - a)}
+        if "focus" in opts:
+            c["focus"] = opts["focus"]
+        cues.append(c)
+        intents[str(a)] = {"intent": intent, "shows": shows}
+    return cues, intents
 
 
 def document(operation):
+    cues, intents = camera()
     return {
         "format": "sokoly-presentation",
         "version": 1,
@@ -228,6 +275,7 @@ def document(operation):
         "name": "Operation Vengeance",
         "operation": operation,
         "chapters": [{"title": t, "at_ms": L(at), "available_ms": L(at)} for t, at in CHAPTERS],
-        "camera_track": camera(),
-        "playback_track": [{"start_ms": L(a), "end_ms": L(b), "speed": s} for a, b, s in PACING],
+        "camera_track": cues,
+        "playback_track": [{"start_ms": a, "end_ms": b, "speed": s} for a, b, s in pacing()],
+        "extensions": {INTENTS: intents},
     }

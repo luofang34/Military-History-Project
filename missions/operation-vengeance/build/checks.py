@@ -59,7 +59,7 @@ def check_anchors(tracks):
 
 def check_camera_follow(hine_end):
     """Hine is tracked until the last shot that follows him ends."""
-    cues = [c for c in presentation.camera() if c.get("focus") == "HINE"]
+    cues = [c for c in presentation.camera()[0] if c.get("focus") == "HINE"]
     last = max(c["end_ms"] for c in cues)
     if hine_end < last:
         raise ValueError(f"Hine's track ends at {hine_end} ms, before his shot ends at {last}")

@@ -64,7 +64,7 @@
   "camera_track": [
     {
       "start_ms": 0,
-      "end_ms": 300,
+      "end_ms": 1500,
       "target": {
         "kind": "point",
         "value": {
@@ -79,8 +79,8 @@
       "transition_ms": 0
     },
     {
-      "start_ms": 300,
-      "end_ms": 2300,
+      "start_ms": 1500,
+      "end_ms": 3500,
       "target": {
         "kind": "point",
         "value": {
@@ -95,8 +95,8 @@
       "transition_ms": 2000
     },
     {
-      "start_ms": 2300,
-      "end_ms": 5500,
+      "start_ms": 3500,
+      "end_ms": 6700,
       "target": {
         "kind": "point",
         "value": {
@@ -111,8 +111,8 @@
       "transition_ms": 3200
     },
     {
-      "start_ms": 5500,
-      "end_ms": 7000,
+      "start_ms": 6700,
+      "end_ms": 8200,
       "target": {
         "kind": "point",
         "value": {
@@ -127,8 +127,8 @@
       "transition_ms": 1500
     },
     {
-      "start_ms": 7000,
-      "end_ms": 10000,
+      "start_ms": 8200,
+      "end_ms": 11200,
       "target": {
         "kind": "point",
         "value": {
@@ -144,7 +144,7 @@
       "focus": "MITCHELL"
     },
     {
-      "start_ms": 10000,
+      "start_ms": 11200,
       "end_ms": 30000,
       "target": {
         "kind": "point",
@@ -172,9 +172,9 @@
       },
       "zoom": 13.6,
       "pitch": 50,
-      "bearing": 338.0,
+      "bearing": 338,
       "orbit_deg_s": -0.01,
-      "transition_ms": 8000,
+      "transition_ms": 30000,
       "focus": "LANPHIER"
     },
     {
@@ -191,7 +191,7 @@
       "pitch": 50,
       "bearing": 330,
       "orbit_deg_s": 0.0,
-      "transition_ms": 6000,
+      "transition_ms": 30000,
       "focus": "MCLANAHAN"
     },
     {
@@ -208,7 +208,7 @@
       "pitch": 35,
       "bearing": 300,
       "orbit_deg_s": 0.0,
-      "transition_ms": 40000,
+      "transition_ms": 72000,
       "focus": "LANPHIER"
     },
     {
@@ -222,7 +222,7 @@
       "pitch": 40,
       "bearing": 280,
       "orbit_deg_s": 0.0,
-      "transition_ms": 40000,
+      "transition_ms": 96000,
       "focus": "MITCHELL"
     },
     {
@@ -236,7 +236,7 @@
       "pitch": 40,
       "bearing": 280,
       "orbit_deg_s": 0.0,
-      "transition_ms": 40000,
+      "transition_ms": 48000,
       "focus": "MOORE"
     },
     {
@@ -250,7 +250,7 @@
       "pitch": 25,
       "bearing": 280,
       "orbit_deg_s": 0.0,
-      "transition_ms": 120000,
+      "transition_ms": 128000,
       "focus": "MITCHELL"
     },
     {
@@ -267,7 +267,7 @@
       "pitch": 20,
       "bearing": 280,
       "orbit_deg_s": 0.0,
-      "transition_ms": 180000
+      "transition_ms": 160000
     },
     {
       "start_ms": 2400000,
@@ -297,7 +297,7 @@
       "pitch": 45,
       "bearing": 140,
       "orbit_deg_s": 0.0,
-      "transition_ms": 40000,
+      "transition_ms": 36000,
       "focus": "T1-323 YAMAMOTO"
     },
     {
@@ -311,7 +311,7 @@
       "pitch": 30,
       "bearing": 130,
       "orbit_deg_s": 0.0,
-      "transition_ms": 180000,
+      "transition_ms": 160000,
       "focus": "T1-323 YAMAMOTO"
     },
     {
@@ -342,7 +342,7 @@
       "pitch": 10,
       "bearing": 0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 240000
+      "transition_ms": 192000
     },
     {
       "start_ms": 6210000,
@@ -355,7 +355,7 @@
       "pitch": 30,
       "bearing": 330,
       "orbit_deg_s": 0.0,
-      "transition_ms": 180000,
+      "transition_ms": 160000,
       "focus": "MITCHELL"
     },
     {
@@ -397,7 +397,7 @@
       "pitch": 45,
       "bearing": 20,
       "orbit_deg_s": 0.0,
-      "transition_ms": 40000,
+      "transition_ms": 24000,
       "focus": "CANNING"
     },
     {
@@ -414,7 +414,7 @@
       "pitch": 50,
       "bearing": 30,
       "orbit_deg_s": 0.12,
-      "transition_ms": 20000,
+      "transition_ms": 12000,
       "focus": "CANNING"
     },
     {
@@ -431,7 +431,7 @@
       "pitch": 55,
       "bearing": 50,
       "orbit_deg_s": 0.0,
-      "transition_ms": 10000,
+      "transition_ms": 6000,
       "focus": "LANPHIER"
     },
     {
@@ -445,7 +445,7 @@
       "pitch": 55,
       "bearing": 100,
       "orbit_deg_s": 0.0,
-      "transition_ms": 8000,
+      "transition_ms": 4500,
       "focus": "BARBER"
     },
     {
@@ -462,7 +462,7 @@
       "pitch": 55,
       "bearing": 110,
       "orbit_deg_s": 0.0,
-      "transition_ms": 6000,
+      "transition_ms": 4500,
       "focus": "T1-323 YAMAMOTO"
     },
     {
@@ -476,7 +476,7 @@
       "pitch": 55,
       "bearing": 80,
       "orbit_deg_s": 0.0,
-      "transition_ms": 8000,
+      "transition_ms": 4500,
       "focus": "HOLMES"
     },
     {
@@ -493,7 +493,7 @@
       "pitch": 55,
       "bearing": 80,
       "orbit_deg_s": 0.0,
-      "transition_ms": 6000,
+      "transition_ms": 4500,
       "focus": "T1-326 UGAKI"
     },
     {
@@ -510,7 +510,7 @@
       "pitch": 30,
       "bearing": 80,
       "orbit_deg_s": 0.0,
-      "transition_ms": 10000
+      "transition_ms": 12000
     },
     {
       "start_ms": 8150000,
@@ -537,7 +537,7 @@
       "pitch": 40,
       "bearing": 160,
       "orbit_deg_s": 0.0,
-      "transition_ms": 10000,
+      "transition_ms": 12000,
       "focus": "HINE"
     },
     {
@@ -551,7 +551,7 @@
       "pitch": 35,
       "bearing": 150,
       "orbit_deg_s": 0.0,
-      "transition_ms": 120000,
+      "transition_ms": 128000,
       "focus": "MITCHELL"
     },
     {
@@ -568,7 +568,7 @@
       "pitch": 0,
       "bearing": 0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 600000
+      "transition_ms": 576000
     }
   ],
   "playback_track": [
@@ -657,5 +657,215 @@
       "end_ms": 9630000,
       "speed": 64
     }
-  ]
+  ],
+  "extensions": {
+    "shot_intents": {
+      "0": {
+        "intent": "Pearl Harbor, where the codebreakers read the itinerary: the story starts with the intercept.",
+        "shows": []
+      },
+      "1500": {
+        "intent": "Pull back to the whole Pacific: the reach of one decrypted message.",
+        "shows": []
+      },
+      "3500": {
+        "intent": "Swing across the ocean to the Solomons.",
+        "shows": []
+      },
+      "6700": {
+        "intent": "Down onto Guadalcanal and its fighter strip.",
+        "shows": [
+          "FIGHTER TWO"
+        ]
+      },
+      "8200": {
+        "intent": "Down to Fighter Two, Mitchell's P-38 at the head of the line.",
+        "shows": [
+          "MITCHELL",
+          "FIGHTER TWO"
+        ]
+      },
+      "11200": {
+        "intent": "Hold on the line of P-38s while the briefing finishes.",
+        "shows": [
+          "MITCHELL"
+        ]
+      },
+      "30000": {
+        "intent": "The take-off roll, Lanphier's attack section among the first away.",
+        "shows": [
+          "LANPHIER"
+        ]
+      },
+      "160000": {
+        "intent": "McLanahan's tyre blows on the roll: the attack section loses its first man.",
+        "shows": [
+          "MCLANAHAN"
+        ]
+      },
+      "240000": {
+        "intent": "The formation gathers over the field.",
+        "shows": [
+          "LANPHIER"
+        ]
+      },
+      "390000": {
+        "intent": "Mitchell leads them out to sea.",
+        "shows": [
+          "MITCHELL"
+        ]
+      },
+      "660000": {
+        "intent": "Moore turns back with tanks that will not feed; Hine takes his place.",
+        "shows": [
+          "MOORE"
+        ]
+      },
+      "810000": {
+        "intent": "Sixteen P-38s settle at wave-top height under radio silence.",
+        "shows": [
+          "MITCHELL"
+        ]
+      },
+      "1650000": {
+        "intent": "The long run west along the Solomons, below the islanders' lookouts.",
+        "shows": [
+          "MITCHELL"
+        ]
+      },
+      "2400000": {
+        "intent": "Cut to Rabaul: Yamamoto boards T1-323 at Lakunai, and the target is on the map.",
+        "shows": [
+          "T1-323 YAMAMOTO",
+          "LAKUNAI"
+        ]
+      },
+      "2520000": {
+        "intent": "The two Bettys and their six Zeros take off.",
+        "shows": [
+          "T1-323 YAMAMOTO",
+          "T1-326 UGAKI"
+        ]
+      },
+      "2640000": {
+        "intent": "The admiral's formation climbs south-east toward Bougainville.",
+        "shows": [
+          "T1-323 YAMAMOTO",
+          "T1-326 UGAKI"
+        ]
+      },
+      "3930000": {
+        "intent": "Cut back to the hunters on their dog-legs, kept out of sight of land.",
+        "shows": [
+          "MITCHELL"
+        ]
+      },
+      "5250000": {
+        "intent": "Both formations on one map, converging on Bougainville's coast.",
+        "shows": [
+          "MITCHELL",
+          "T1-323 YAMAMOTO"
+        ]
+      },
+      "6210000": {
+        "intent": "The P-38s' final leg toward the coast.",
+        "shows": [
+          "MITCHELL"
+        ]
+      },
+      "7050000": {
+        "intent": "Cut to the Bettys, on schedule for Ballale.",
+        "shows": [
+          "T1-323 YAMAMOTO"
+        ]
+      },
+      "7410000": {
+        "intent": "Cut back to the P-38s: the cross-cutting quickens as they close.",
+        "shows": [
+          "MITCHELL"
+        ]
+      },
+      "7650000": {
+        "intent": "Turn toward the coast with Canning, the man who will see them first.",
+        "shows": [
+          "MITCHELL",
+          "CANNING"
+        ]
+      },
+      "7770000": {
+        "intent": "The sighting: P-38s and bombers in one frame as the tanks drop and the climb begins.",
+        "shows": [
+          "CANNING",
+          "T1-323 YAMAMOTO"
+        ]
+      },
+      "7870000": {
+        "intent": "Lanphier turns into the diving Zeros as the bombers split.",
+        "shows": [
+          "LANPHIER",
+          "T1-323 YAMAMOTO",
+          "T1-326 UGAKI"
+        ]
+      },
+      "7930000": {
+        "intent": "Behind Barber as he fires into T1-323.",
+        "shows": [
+          "BARBER",
+          "T1-323 YAMAMOTO"
+        ]
+      },
+      "8000000": {
+        "intent": "T1-323 goes into the jungle inland of Moila Point.",
+        "shows": [
+          "T1-323 YAMAMOTO"
+        ]
+      },
+      "8020000": {
+        "intent": "Holmes and Hine, back in the fight, catch T1-326 low over the water.",
+        "shows": [
+          "HOLMES",
+          "T1-326 UGAKI"
+        ]
+      },
+      "8090000": {
+        "intent": "T1-326 ditches off Moila Point.",
+        "shows": [
+          "T1-326 UGAKI"
+        ]
+      },
+      "8110000": {
+        "intent": "The fight at a glance: top cover overhead, both wrecks, the chase past Kahili.",
+        "shows": [
+          "HOLMES",
+          "HINE",
+          "LANPHIER",
+          "MITCHELL",
+          "T1-323 YAMAMOTO",
+          "T1-326 UGAKI"
+        ]
+      },
+      "8150000": {
+        "intent": "Find Hine as the fighters clash again past Ballale.",
+        "shows": [
+          "HINE"
+        ]
+      },
+      "8200000": {
+        "intent": "Stay with Hine, his engine smoking, until he is last seen south of Shortland.",
+        "shows": [
+          "HINE"
+        ]
+      },
+      "8470000": {
+        "intent": "Mitchell calls the flight home.",
+        "shows": [
+          "MITCHELL"
+        ]
+      },
+      "8850000": {
+        "intent": "Pull out over the Solomons as they return, while the briefing gives the outcome.",
+        "shows": []
+      }
+    }
+  }
 }

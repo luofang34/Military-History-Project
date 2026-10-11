@@ -142,7 +142,7 @@
       "pitch": 40,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 4000
+      "transition_ms": 43055
     },
     {
       "start_ms": 420000,
@@ -155,7 +155,7 @@
       "pitch": 20,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 3000,
+      "transition_ms": 90000,
       "focus": "AJ-E"
     },
     {
@@ -172,7 +172,7 @@
       "pitch": 40,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 3000
+      "transition_ms": 15000
     },
     {
       "start_ms": 960000,
@@ -185,7 +185,7 @@
       "pitch": 30,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 3000,
+      "transition_ms": 90000,
       "focus": "AJ-G"
     },
     {
@@ -202,7 +202,7 @@
       "pitch": 40,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 3000
+      "transition_ms": 36000
     },
     {
       "start_ms": 1440000,
@@ -215,7 +215,7 @@
       "pitch": 30,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 3000,
+      "transition_ms": 90000,
       "focus": "AJ-A"
     },
     {
@@ -232,7 +232,7 @@
       "pitch": 40,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 3000
+      "transition_ms": 24000
     },
     {
       "start_ms": 2220000,
@@ -248,7 +248,7 @@
       "pitch": 0,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 20000
+      "transition_ms": 360000
     },
     {
       "start_ms": 5100000,
@@ -264,7 +264,7 @@
       "pitch": 25,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 15000
+      "transition_ms": 40000
     },
     {
       "start_ms": 5880000,
@@ -277,7 +277,7 @@
       "pitch": 20,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 30000,
+      "transition_ms": 360000,
       "focus": "AJ-G"
     },
     {
@@ -294,7 +294,7 @@
       "pitch": 40,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 10000
+      "transition_ms": 32000
     },
     {
       "start_ms": 8820000,
@@ -307,7 +307,7 @@
       "pitch": 25,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 20000,
+      "transition_ms": 240000,
       "focus": "AJ-G"
     },
     {
@@ -324,7 +324,7 @@
       "pitch": 35,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 8000
+      "transition_ms": 30000
     },
     {
       "start_ms": 10320000,
@@ -340,7 +340,7 @@
       "pitch": 35,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 15000
+      "transition_ms": 75000
     },
     {
       "start_ms": 10920000,
@@ -348,15 +348,15 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": 8.08015,
-          "lat": 51.47229
+          "lon": 8.07992,
+          "lat": 51.47248
         }
       },
-      "zoom": 12.57,
+      "zoom": 12.55,
       "pitch": 50,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 8000
+      "transition_ms": 33000
     },
     {
       "start_ms": 11160000,
@@ -364,31 +364,47 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": 8.05226,
-          "lat": 51.49329
+          "lon": 8.05231,
+          "lat": 51.49326
         }
       },
       "zoom": 11.31,
       "pitch": 45,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 6000
+      "transition_ms": 36000
     },
     {
       "start_ms": 11400000,
+      "end_ms": 11760000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 8.08,
+          "lat": 51.47242
+        }
+      },
+      "zoom": 12.56,
+      "pitch": 50,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 36000
+    },
+    {
+      "start_ms": 11760000,
       "end_ms": 11940000,
       "target": {
         "kind": "point",
         "value": {
-          "lon": 8.08015,
-          "lat": 51.47229
+          "lon": 8.05899,
+          "lat": 51.48979
         }
       },
-      "zoom": 12.57,
-      "pitch": 50,
+      "zoom": 13.27,
+      "pitch": 55,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 6000
+      "transition_ms": 36000
     },
     {
       "start_ms": 11940000,
@@ -396,15 +412,15 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": 7.96001,
-          "lat": 51.35659
+          "lon": 7.96005,
+          "lat": 51.35656
         }
       },
       "zoom": 13.86,
       "pitch": 50,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 4000
+      "transition_ms": 0
     },
     {
       "start_ms": 12120000,
@@ -412,15 +428,15 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": 8.08015,
-          "lat": 51.47229
+          "lon": 8.07973,
+          "lat": 51.47264
         }
       },
-      "zoom": 12.57,
+      "zoom": 12.54,
       "pitch": 50,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 4000
+      "transition_ms": 0
     },
     {
       "start_ms": 12300000,
@@ -436,7 +452,7 @@
       "pitch": 40,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 8000
+      "transition_ms": 30000
     },
     {
       "start_ms": 12690000,
@@ -449,7 +465,7 @@
       "pitch": 25,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 20000,
+      "transition_ms": 120000,
       "focus": "AJ-G"
     },
     {
@@ -466,7 +482,7 @@
       "pitch": 45,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 15000
+      "transition_ms": 80000
     },
     {
       "start_ms": 15120000,
@@ -474,15 +490,15 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": 9.05403,
-          "lat": 51.19293
+          "lon": 9.05404,
+          "lat": 51.19288
         }
       },
-      "zoom": 13.26,
+      "zoom": 13.25,
       "pitch": 50,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 6000
+      "transition_ms": 90000
     },
     {
       "start_ms": 15720000,
@@ -490,15 +506,15 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": 9.05403,
-          "lat": 51.19293
+          "lon": 9.05337,
+          "lat": 51.18747
         }
       },
-      "zoom": 13.26,
-      "pitch": 50,
+      "zoom": 14.18,
+      "pitch": 55,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 4000
+      "transition_ms": 90000
     },
     {
       "start_ms": 16140000,
@@ -514,7 +530,7 @@
       "pitch": 0,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 30000
+      "transition_ms": 180000
     },
     {
       "start_ms": 17940000,
@@ -530,7 +546,7 @@
       "pitch": 20,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 20000
+      "transition_ms": 40000
     },
     {
       "start_ms": 18780000,
@@ -543,7 +559,7 @@
       "pitch": 30,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 15000,
+      "transition_ms": 90000,
       "focus": "AJ-A"
     },
     {
@@ -560,7 +576,7 @@
       "pitch": 35,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 6000
+      "transition_ms": 18000
     },
     {
       "start_ms": 20100000,
@@ -573,7 +589,7 @@
       "pitch": 20,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 15000,
+      "transition_ms": 120000,
       "focus": "AJ-F"
     },
     {
@@ -582,15 +598,15 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": 7.96001,
-          "lat": 51.35659
+          "lon": 7.96002,
+          "lat": 51.35658
         }
       },
       "zoom": 13.86,
       "pitch": 50,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 8000
+      "transition_ms": 45000
     },
     {
       "start_ms": 21060000,
@@ -603,7 +619,7 @@
       "pitch": 30,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 10000,
+      "transition_ms": 90000,
       "focus": "AJ-O"
     },
     {
@@ -613,14 +629,14 @@
         "kind": "point",
         "value": {
           "lon": 7.40878,
-          "lat": 51.22627
+          "lat": 51.22631
         }
       },
       "zoom": 12.77,
       "pitch": 50,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 8000
+      "transition_ms": 45000
     },
     {
       "start_ms": 22440000,
@@ -636,7 +652,7 @@
       "pitch": 0,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 40000
+      "transition_ms": 720000
     },
     {
       "start_ms": 28800000,
@@ -649,7 +665,7 @@
       "pitch": 25,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 30000,
+      "transition_ms": 480000,
       "focus": "AJ-O"
     },
     {
@@ -666,7 +682,7 @@
       "pitch": 40,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 10000
+      "transition_ms": 30000
     }
   ],
   "playback_track": [
@@ -698,7 +714,7 @@
     {
       "start_ms": 1260000,
       "end_ms": 1440000,
-      "speed": 10
+      "speed": 24
     },
     {
       "start_ms": 1440000,
@@ -708,7 +724,7 @@
     {
       "start_ms": 1980000,
       "end_ms": 2220000,
-      "speed": 12
+      "speed": 16
     },
     {
       "start_ms": 2220000,
@@ -718,12 +734,12 @@
     {
       "start_ms": 5100000,
       "end_ms": 5880000,
-      "speed": 16
+      "speed": 20
     },
     {
       "start_ms": 5880000,
       "end_ms": 8460000,
-      "speed": 120
+      "speed": 180
     },
     {
       "start_ms": 8460000,
@@ -747,23 +763,128 @@
     },
     {
       "start_ms": 10920000,
-      "end_ms": 11400000,
+      "end_ms": 10950000,
+      "speed": 24
+    },
+    {
+      "start_ms": 10950000,
+      "end_ms": 10977000,
       "speed": 4
     },
     {
-      "start_ms": 11400000,
-      "end_ms": 11940000,
-      "speed": 6
+      "start_ms": 10977000,
+      "end_ms": 10990000,
+      "speed": 1.5
     },
     {
-      "start_ms": 11940000,
-      "end_ms": 12120000,
-      "speed": 8
+      "start_ms": 10990000,
+      "end_ms": 11000000,
+      "speed": 4
     },
     {
-      "start_ms": 12120000,
+      "start_ms": 11000000,
+      "end_ms": 11240000,
+      "speed": 24
+    },
+    {
+      "start_ms": 11240000,
+      "end_ms": 11267000,
+      "speed": 4
+    },
+    {
+      "start_ms": 11267000,
+      "end_ms": 11280000,
+      "speed": 1.5
+    },
+    {
+      "start_ms": 11280000,
+      "end_ms": 11290000,
+      "speed": 4
+    },
+    {
+      "start_ms": 11290000,
+      "end_ms": 11550000,
+      "speed": 24
+    },
+    {
+      "start_ms": 11550000,
+      "end_ms": 11577000,
+      "speed": 4
+    },
+    {
+      "start_ms": 11577000,
+      "end_ms": 11590000,
+      "speed": 1.5
+    },
+    {
+      "start_ms": 11590000,
+      "end_ms": 11600000,
+      "speed": 4
+    },
+    {
+      "start_ms": 11600000,
+      "end_ms": 11850000,
+      "speed": 24
+    },
+    {
+      "start_ms": 11850000,
+      "end_ms": 11877000,
+      "speed": 4
+    },
+    {
+      "start_ms": 11877000,
+      "end_ms": 11890000,
+      "speed": 1.5
+    },
+    {
+      "start_ms": 11890000,
+      "end_ms": 11900000,
+      "speed": 4
+    },
+    {
+      "start_ms": 11900000,
+      "end_ms": 12030000,
+      "speed": 24
+    },
+    {
+      "start_ms": 12030000,
+      "end_ms": 12057000,
+      "speed": 4
+    },
+    {
+      "start_ms": 12057000,
+      "end_ms": 12070000,
+      "speed": 1.5
+    },
+    {
+      "start_ms": 12070000,
+      "end_ms": 12080000,
+      "speed": 4
+    },
+    {
+      "start_ms": 12080000,
+      "end_ms": 12210000,
+      "speed": 24
+    },
+    {
+      "start_ms": 12210000,
+      "end_ms": 12237000,
+      "speed": 4
+    },
+    {
+      "start_ms": 12237000,
+      "end_ms": 12250000,
+      "speed": 1.5
+    },
+    {
+      "start_ms": 12250000,
+      "end_ms": 12260000,
+      "speed": 4
+    },
+    {
+      "start_ms": 12260000,
       "end_ms": 12300000,
-      "speed": 4
+      "speed": 24
     },
     {
       "start_ms": 12300000,
@@ -778,32 +899,97 @@
     {
       "start_ms": 13980000,
       "end_ms": 15120000,
-      "speed": 30
+      "speed": 40
     },
     {
       "start_ms": 15120000,
-      "end_ms": 16140000,
-      "speed": 6
+      "end_ms": 15210000,
+      "speed": 60
     },
     {
-      "start_ms": 16140000,
+      "start_ms": 15210000,
+      "end_ms": 15237000,
+      "speed": 4
+    },
+    {
+      "start_ms": 15237000,
+      "end_ms": 15250000,
+      "speed": 1.5
+    },
+    {
+      "start_ms": 15250000,
+      "end_ms": 15260000,
+      "speed": 4
+    },
+    {
+      "start_ms": 15260000,
+      "end_ms": 15572000,
+      "speed": 60
+    },
+    {
+      "start_ms": 15572000,
+      "end_ms": 15599000,
+      "speed": 4
+    },
+    {
+      "start_ms": 15599000,
+      "end_ms": 15612000,
+      "speed": 1.5
+    },
+    {
+      "start_ms": 15612000,
+      "end_ms": 15622000,
+      "speed": 4
+    },
+    {
+      "start_ms": 15622000,
+      "end_ms": 15990000,
+      "speed": 60
+    },
+    {
+      "start_ms": 15990000,
+      "end_ms": 16017000,
+      "speed": 4
+    },
+    {
+      "start_ms": 16017000,
+      "end_ms": 16030000,
+      "speed": 1.5
+    },
+    {
+      "start_ms": 16030000,
+      "end_ms": 16040000,
+      "speed": 4
+    },
+    {
+      "start_ms": 16040000,
       "end_ms": 17940000,
       "speed": 60
     },
     {
       "start_ms": 17940000,
       "end_ms": 18780000,
-      "speed": 16
+      "speed": 20
     },
     {
       "start_ms": 18780000,
       "end_ms": 19860000,
-      "speed": 40
+      "speed": 60
     },
     {
       "start_ms": 19860000,
+      "end_ms": 19960000,
+      "speed": 12
+    },
+    {
+      "start_ms": 19960000,
+      "end_ms": 20000000,
+      "speed": 4
+    },
+    {
+      "start_ms": 20000000,
       "end_ms": 20100000,
-      "speed": 8
+      "speed": 12
     },
     {
       "start_ms": 20100000,
@@ -812,8 +998,28 @@
     },
     {
       "start_ms": 20580000,
+      "end_ms": 20910000,
+      "speed": 30
+    },
+    {
+      "start_ms": 20910000,
+      "end_ms": 20937000,
+      "speed": 4
+    },
+    {
+      "start_ms": 20937000,
+      "end_ms": 20950000,
+      "speed": 1.5
+    },
+    {
+      "start_ms": 20950000,
+      "end_ms": 20960000,
+      "speed": 4
+    },
+    {
+      "start_ms": 20960000,
       "end_ms": 21060000,
-      "speed": 8
+      "speed": 30
     },
     {
       "start_ms": 21060000,
@@ -822,8 +1028,28 @@
     },
     {
       "start_ms": 21600000,
+      "end_ms": 22290000,
+      "speed": 30
+    },
+    {
+      "start_ms": 22290000,
+      "end_ms": 22317000,
+      "speed": 4
+    },
+    {
+      "start_ms": 22317000,
+      "end_ms": 22330000,
+      "speed": 1.5
+    },
+    {
+      "start_ms": 22330000,
+      "end_ms": 22340000,
+      "speed": 4
+    },
+    {
+      "start_ms": 22340000,
       "end_ms": 22440000,
-      "speed": 10
+      "speed": 30
     },
     {
       "start_ms": 22440000,
@@ -840,5 +1066,304 @@
       "end_ms": 32100000,
       "speed": 240
     }
-  ]
+  ],
+  "extensions": {
+    "shot_intents": {
+      "0": {
+        "intent": "Where and why: the base and the three target dams on one map while the briefing sets out the night's task.",
+        "shows": [
+          "SCAMPTON",
+          "MÖHNE",
+          "EDER",
+          "SORPE"
+        ]
+      },
+      "150000": {
+        "intent": "Fly in from the map to Scampton as the second wave leaves singly for the northern route.",
+        "shows": [
+          "SCAMPTON",
+          "AJ-E",
+          "AJ-W",
+          "AJ-K",
+          "AJ-H"
+        ]
+      },
+      "420000": {
+        "intent": "Ride out with Barlow, leading the second wave toward the coast.",
+        "shows": [
+          "AJ-E",
+          "AJ-W",
+          "AJ-K",
+          "AJ-H"
+        ]
+      },
+      "780000": {
+        "intent": "Gibson's vic takes off together: the leader whose calls will run the attack.",
+        "shows": [
+          "SCAMPTON",
+          "AJ-G",
+          "AJ-M",
+          "AJ-P"
+        ]
+      },
+      "960000": {
+        "intent": "Gibson's vic forms up and turns away: the formation the story follows to the Möhne.",
+        "shows": [
+          "AJ-G",
+          "AJ-M",
+          "AJ-P"
+        ]
+      },
+      "1260000": {
+        "intent": "Young's vic leaves eight minutes behind, briefly: the same field and the same drill.",
+        "shows": [
+          "SCAMPTON",
+          "AJ-A",
+          "AJ-J",
+          "AJ-L"
+        ]
+      },
+      "1440000": {
+        "intent": "Young's vic sets course after Gibson's.",
+        "shows": [
+          "AJ-A",
+          "AJ-J",
+          "AJ-L"
+        ]
+      },
+      "1980000": {
+        "intent": "The last vic leaves, and McCarthy sets off twenty minutes late in the spare aircraft.",
+        "shows": [
+          "SCAMPTON",
+          "AJ-Z",
+          "AJ-B",
+          "AJ-N",
+          "AJ-T"
+        ]
+      },
+      "2220000": {
+        "intent": "Pull out to both routes over the North Sea, timed to cross the enemy coast together: the second wave north for Vlieland, the first south for the Scheldt.",
+        "shows": [
+          "AJ-G",
+          "AJ-E",
+          "SCAMPTON"
+        ]
+      },
+      "5100000": {
+        "intent": "The second wave at Vlieland: within ten minutes three of its five are lost or turned back.",
+        "shows": [
+          "AJ-W",
+          "AJ-K",
+          "AJ-H",
+          "AJ-E"
+        ]
+      },
+      "5880000": {
+        "intent": "Back to the first wave, low across Holland toward the Rhine.",
+        "shows": [
+          "AJ-G",
+          "AJ-A",
+          "AJ-Z"
+        ]
+      },
+      "8460000": {
+        "intent": "Barlow's last minutes: the cables at Haldern.",
+        "shows": [
+          "AJ-E"
+        ]
+      },
+      "8820000": {
+        "intent": "The leading section through the searchlights and flak past Haltern, where Hopgood is hit.",
+        "shows": [
+          "AJ-G",
+          "AJ-A"
+        ]
+      },
+      "10020000": {
+        "intent": "Astell, lagging behind Maudslay's section, strikes cables near Marbeck.",
+        "shows": [
+          "AJ-B",
+          "AJ-Z",
+          "AJ-N"
+        ]
+      },
+      "10320000": {
+        "intent": "The first wave reaches the Möhne and settles into its circuits over the hills: the stage for the attacks.",
+        "shows": [
+          "MÖHNE",
+          "AJ-G",
+          "AJ-M",
+          "AJ-P",
+          "AJ-A",
+          "AJ-J",
+          "AJ-L"
+        ]
+      },
+      "10920000": {
+        "intent": "Down onto the run-in from the lake: Gibson's attack, and his mine bursting short.",
+        "shows": [
+          "MÖHNE",
+          "UPKEEP AJ-G"
+        ]
+      },
+      "11160000": {
+        "intent": "Widen to take in Ostönnen: Hopgood hit on the run, his mine over the parapet, his crash.",
+        "shows": [
+          "MÖHNE",
+          "UPKEEP AJ-M"
+        ]
+      },
+      "11400000": {
+        "intent": "Back on the run-in: Martin attacks with Gibson alongside drawing the flak, and his mine bursts short.",
+        "shows": [
+          "MÖHNE",
+          "UPKEEP AJ-P"
+        ]
+      },
+      "11760000": {
+        "intent": "Closer on the wall for Young: his mine meets it, and the dam still stands.",
+        "shows": [
+          "MÖHNE",
+          "UPKEEP AJ-A"
+        ]
+      },
+      "11940000": {
+        "intent": "Cut away to the Sorpe: McCarthy, alone of his wave, drops along the crest of the earth dam, and it holds.",
+        "shows": [
+          "SORPE",
+          "UPKEEP AJ-T"
+        ]
+      },
+      "12120000": {
+        "intent": "Cut back to the Möhne for Maltby's attack, the one that breaks it.",
+        "shows": [
+          "MÖHNE",
+          "UPKEEP AJ-J"
+        ]
+      },
+      "12300000": {
+        "intent": "Pull back from the breach as the flood runs down the valley toward Neheim and its labour camp.",
+        "shows": [
+          "MÖHNE",
+          "MÖHNE FLOOD"
+        ]
+      },
+      "12690000": {
+        "intent": "Gibson leads the rest east to the Eder while the flood keeps running.",
+        "shows": [
+          "AJ-G",
+          "AJ-L",
+          "AJ-Z",
+          "AJ-N",
+          "AJ-A"
+        ]
+      },
+      "13980000": {
+        "intent": "The Eder: castle, spit and hills that make its approach so hard, and Shannon's dummy runs.",
+        "shows": [
+          "EDER",
+          "AJ-L"
+        ]
+      },
+      "15120000": {
+        "intent": "The whole approach, castle to dam, for Shannon's release and Maudslay's late one.",
+        "shows": [
+          "EDER",
+          "UPKEEP AJ-L",
+          "UPKEEP AJ-Z"
+        ]
+      },
+      "15720000": {
+        "intent": "Tighter for Knight, the last mine: the dive past the spit, the turn onto the dam, the breach.",
+        "shows": [
+          "EDER",
+          "UPKEEP AJ-N"
+        ]
+      },
+      "16140000": {
+        "intent": "Pull out over Germany: both floods running, the survivors turning for home.",
+        "shows": [
+          "AJ-G",
+          "AJ-A",
+          "AJ-Z",
+          "AJ-N",
+          "AJ-L",
+          "MÖHNE FLOOD"
+        ]
+      },
+      "17940000": {
+        "intent": "The reserve is sent to the dams still standing, and more crews are lost on the way.",
+        "shows": [
+          "AJ-C",
+          "AJ-Z",
+          "AJ-O",
+          "AJ-Y",
+          "AJ-F"
+        ]
+      },
+      "18780000": {
+        "intent": "Young, nearly clear of Holland.",
+        "shows": [
+          "AJ-A"
+        ]
+      },
+      "19860000": {
+        "intent": "Young's end off Castricum.",
+        "shows": [
+          "AJ-A"
+        ]
+      },
+      "20100000": {
+        "intent": "Brown heads for the Sorpe as the valleys fill with mist; Anderson turns back.",
+        "shows": [
+          "AJ-F",
+          "SORPE",
+          "AJ-Y"
+        ]
+      },
+      "20580000": {
+        "intent": "Brown's attack on the Sorpe: incendiaries in the trees, the mine on the crest; the dam holds.",
+        "shows": [
+          "SORPE",
+          "UPKEEP AJ-F"
+        ]
+      },
+      "21060000": {
+        "intent": "Townsend searches for his dam in the mist.",
+        "shows": [
+          "AJ-O",
+          "ENNEPE"
+        ]
+      },
+      "21600000": {
+        "intent": "Townsend's runs and the mine that falls short.",
+        "shows": [
+          "ENNEPE",
+          "UPKEEP AJ-O"
+        ]
+      },
+      "22440000": {
+        "intent": "Pull out: the survivors cross the North Sea home into daylight, Townsend last.",
+        "shows": [
+          "AJ-O",
+          "AJ-F",
+          "AJ-Y",
+          "SCAMPTON"
+        ]
+      },
+      "28800000": {
+        "intent": "Townsend alone over the sea in daylight.",
+        "shows": [
+          "AJ-O"
+        ]
+      },
+      "31620000": {
+        "intent": "Townsend lands, the last one back, while the briefing gives the night's toll.",
+        "shows": [
+          "SCAMPTON",
+          "AJ-O"
+        ]
+      }
+    }
+  }
 }
