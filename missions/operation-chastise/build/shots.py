@@ -7,10 +7,11 @@ is for; tools/composition.py prints that beside what the viewer's frame report s
 from drops import chase_ms, releases, sequence
 from framer import Framer
 from sites import CRASH, DURATION, FIXED, HAMMERBERG, L, NEHEIM_CAMP, WALDECK
-from targets import ENNEPE_START, MOHNE_START, SORPE_START
+from targets import ENNEPE_START, MOHNE_START, SORPE_START, STEEPLE_START
 
 POINTS = {
     "MÖHNE RUN-IN": MOHNE_START, "SORPE RUN-IN": SORPE_START, "ENNEPE RUN-IN": ENNEPE_START,
+    "LANGSCHEID RUN-IN": STEEPLE_START,
     "WALDECK": WALDECK, "HAMMERBERG": HAMMERBERG, "NEHEIM": NEHEIM_CAMP,
     "OSTÖNNEN": CRASH["AJ-M"][0], "CASTRICUM": CRASH["AJ-A"][0], "HALDERN": CRASH["AJ-E"][0],
 }
@@ -74,9 +75,9 @@ SHOTS = [
     ("00:41", "00:44", ["MÖHNE", "UPKEEP AJ-A"],
      "Closer on the wall for Young: his mine meets it, and the dam still stands.",
      {"pitch": 55, "pad_km": 1.5}),
-    ("00:44", "00:47", ["SORPE", "SORPE RUN-IN", "UPKEEP AJ-T"],
-     "Cut away to the Sorpe: McCarthy, alone of his wave, drops along the crest of the earth "
-     "dam, and it holds.", {"pitch": 50, "pad_km": 1.0, "move": 0}),
+    ("00:44", "00:47", ["SORPE", "LANGSCHEID RUN-IN", "UPKEEP AJ-T"],
+     "Cut away to the Sorpe: McCarthy, alone of his wave, comes in over Langscheid's steeple "
+     "and drops along the crest of the earth dam, and it holds.", {"pitch": 50, "pad_km": 1.0, "move": 0}),
     ("00:47", "00:50", ["MÖHNE", "MÖHNE RUN-IN", "UPKEEP AJ-J"],
      "Cut back to the Möhne for Maltby's attack, the one that breaks it.",
      {"pitch": 50, "pad_km": 0.8, "move": 0}),

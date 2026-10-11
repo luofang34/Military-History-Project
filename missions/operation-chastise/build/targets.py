@@ -35,6 +35,16 @@ SORPE_SPEED = 180 * MPH
 SORPE_WATER = destination(SORPE, SORPE_AXIS + 90, 20)
 SORPE_RELEASE = destination(SORPE_WATER, SORPE_RUN + 180, 110)
 SORPE_START = destination(SORPE_RELEASE, SORPE_RUN + 180, 1500)
+# McCarthy's crew flew in over the steeple of St. Antonius, Langscheid (sorpe-geometry), which
+# stands 320 m to the lake side of the crest line, and turned onto the crest before the dam.
+STEEPLE = (7.95528, 51.35465)  # OpenStreetMap
+SORPE_NW_END = (7.964935, 51.353015)  # OpenStreetMap, the dam's outline
+# Onto the crest line, through the release, 150 m before the dam's north-west end, so the run
+# is straight along the whole crest.
+CREST_LINE_IN = destination(SORPE_RELEASE, SORPE_RUN + 180,
+                            distance_m(SORPE_NW_END, SORPE_RELEASE) + 150)
+STEEPLE_IN = bearing_deg(STEEPLE, CREST_LINE_IN)
+STEEPLE_START = destination(STEEPLE, STEEPLE_IN + 180, 400)
 
 # Ennepe: Townsend reported his run on 355° magnetic; the run here is perpendicular to the
 # crest, from the lake to the south.
@@ -169,14 +179,26 @@ def turn_toward(track, point, mps=72.0, bank_deg=30.0):
     turn(track, heading, need, radius * math.radians(abs(need)), mps, b.alt_m)
 
 
-def sorpe_run(plan, code, release_at, alt, radius=1300, exit_m=900):
+def sorpe_run(plan, code, release_at, alt, radius=1300, exit_m=900, steeple=False):
     """A run along the crest released at `release_at`, then a climbing turn to port
-    `exit_m` beyond the dam."""
+    `exit_m` beyond the dam; with `steeple`, flown in over Langscheid's church onto the
+    crest at its north-west end."""
     track = plan.tracks[code]
-    start_at = release_at - 1500 / SORPE_SPEED * 1000
-    circuit_to(track, SORPE_START, SORPE_RUN, radius, start_at, 250, mps=78)
+    if steeple:
+        legs = [STEEPLE, CREST_LINE_IN, SORPE_RELEASE]
+        lengths = [distance_m(STEEPLE_START, STEEPLE), distance_m(STEEPLE, CREST_LINE_IN),
+                   distance_m(CREST_LINE_IN, SORPE_RELEASE)]
+        start, heading = STEEPLE_START, STEEPLE_IN
+    else:
+        legs, lengths, start, heading = [SORPE_RELEASE], [1500.0], SORPE_START, SORPE_RUN
+    start_at = release_at - sum(lengths) / SORPE_SPEED * 1000
+    circuit_to(track, start, heading, radius, start_at, 250, mps=78)
     plan.phase(code, start_at - 1, "reconstruction-target", 400.0)
-    track.add(release_at, SORPE_RELEASE, alt)
+    at = start_at
+    for point, length in zip(legs, lengths):
+        at += length / SORPE_SPEED * 1000
+        track.add(release_at if point == SORPE_RELEASE else at, point,
+                  alt if point != STEEPLE else alt + 40)
     beyond = destination(SORPE, SORPE_RUN, exit_m)
     over = distance_m(SORPE_RELEASE, beyond)
     track.add(release_at + over / SORPE_SPEED * 1000, beyond, alt + 30)
@@ -184,11 +206,12 @@ def sorpe_run(plan, code, release_at, alt, radius=1300, exit_m=900):
     return SORPE_RELEASE
 
 
-def sorpe(plan, code, dummies, release, alt, radius=1300, exit_m=900):
+def sorpe(plan, code, dummies, release, alt, radius=1300, exit_m=900, steeple=False):
     """Dummy runs at `dummies` (clock times or operation ms), then the release."""
     for at in dummies:
-        sorpe_run(plan, code, at if isinstance(at, int) else T(at), alt, radius, exit_m)
-    rel = sorpe_run(plan, code, T(release), alt, radius, exit_m)
+        sorpe_run(plan, code, at if isinstance(at, int) else T(at), alt, radius, exit_m,
+                  steeple)
+    rel = sorpe_run(plan, code, T(release), alt, radius, exit_m, steeple)
     plan.drop(code, "SORPE", rel, SORPE_WATER, T(release), 0, spun=False)
 
 

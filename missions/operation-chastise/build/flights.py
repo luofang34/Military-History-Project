@@ -258,7 +258,8 @@ def build():
     # McCarthy drops on his tenth run (evidence: mccarthy-runs); Brown makes seven runs,
     # marks the mist with incendiaries, and drops on the eighth.
     targets.sorpe(plan, "AJ-T", [L(MCCARTHY_FIRST) + k * MCCARTHY_RUN_MS for k in range(9)],
-                  "00:46", 30 * 0.3048, radius=MCCARTHY_CIRCUIT_M, exit_m=MCCARTHY_EXIT_M)
+                  "00:46", 30 * 0.3048, radius=MCCARTHY_CIRCUIT_M, exit_m=MCCARTHY_EXIT_M,
+                  steeple=True)
     targets.sorpe(plan, "AJ-F", ["02:51", "02:54", "02:57", "03:00", "03:03", "03:06",
                                  "03:09"], "03:14", 60 * 0.3048)
     targets.ennepe(plan)
