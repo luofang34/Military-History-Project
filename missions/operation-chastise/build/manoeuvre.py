@@ -14,10 +14,14 @@ RUN_ALT_M = 60 * FT
 RUN_SPEED = 220 * MPH
 RELEASE_M = 425 * 0.9144  # midway through 400–450 yd
 CIRCUIT_ALT_M = 300.0
+# A Lancaster's low-level ground speeds with an Upkeep, which build checks hold every leg to.
+ENVELOPE_MPH = (120.0, 245.0)
 CIRCUIT_MPS = (55.0, 100.0)  # 125–225 mph round a holding circuit
 RUNWAY = 250.0  # Scampton's take-off and landing direction is not sourced
 THRESHOLD = destination(SCAMPTON, RUNWAY + 180, 600)
 FINAL = destination(THRESHOLD, RUNWAY + 180, 6000)
+# On the extended centreline, so the turn onto the approach is flown at cruising speed.
+APPROACH = destination(THRESHOLD, RUNWAY + 180, 10_000)
 
 
 def go(track, specs, kmh):
@@ -54,17 +58,61 @@ def circuit(start, heading, radius):
     return destination(start, heading - 90, radius)
 
 
-def circuit_to(track, start, heading, radius, t1, alt, mps=72.0, step=10_000):
+def tangent_entry(centre, radius, point):
+    """(bearing from `centre`, point on the circle) where a straight leg from `point` meets the
+    anticlockwise circle along its tangent, so joining it needs no turn; the nearest point
+    on the circle when `point` lies inside it."""
+    a0 = bearing_deg(centre, point)
+    d = distance_m(centre, point)
+    if d <= radius * 1.001:
+        return a0, destination(centre, a0, radius)
+    alpha = math.degrees(math.acos(radius / d))
+    best = None
+    for a in (a0 + alpha, a0 - alpha):
+        t = destination(centre, a, radius)
+        # Round an anticlockwise circle the bearing from the centre falls: heading = a - 90.
+        miss = abs((bearing_deg(point, t) - (a - 90) + 180) % 360 - 180)
+        if best is None or miss < best[0]:
+            best = (miss, a % 360, t)
+    return best[1], best[2]
+
+
+TURN_BANK_DEG = 45.0  # how hard a Lancaster turns to join its circuit
+
+
+def turn_onto(track, centre, radius, mps, alt, t1, gentle=30.0):
+    """Turns from the track's heading onto the tangent that joins the circle round `centre`,
+    the shorter way, so an aircraft that has just turned away does not reverse onto its
+    circuit at a point; only when the turn leaves at least half the time until `t1` for the
+    circuit itself."""
+    if len(track.waypoints) < 2:
+        return
+    a, b = track.waypoints[-2], track.waypoints[-1]
+    if distance_m(a.point, b.point) < 20 or b.alt_m < 1:
+        return
+    heading = bearing_deg(a.point, b.point)
+    _, entry = tangent_entry(centre, radius, b.point)
+    need = (bearing_deg(b.point, entry) - heading + 180) % 360 - 180
+    r = mps ** 2 / (9.81 * math.tan(math.radians(TURN_BANK_DEG)))
+    length = r * math.radians(abs(need))
+    if abs(need) < gentle or length / mps * 1000 > (t1 - b.at_ms) / 2:
+        return
+    turn(track, heading, need, length, mps, alt)
+
+
+def circuit_to(track, start, heading, radius, t1, alt, mps=72.0, step_deg=10.0, step=4000):
     """Joins a left-hand (anticlockwise) circuit, as B.976 orders for aircraft waiting their
-    turn, and leaves it tangentially at `start` on `heading` at `t1`. The lap count, then the
-    radius within ±30 %, is chosen to keep the speed round the circle nearest `mps` within
-    CIRCUIT_MPS; the build fails if none can."""
+    turn, along its tangent, and leaves it tangentially at `start` on `heading` at `t1`. The
+    lap count, then the radius within ±30 %, is chosen to keep the speed round the circle
+    nearest `mps` within CIRCUIT_MPS; the build fails if none can. The circle is drawn every
+    `step_deg` of turn, and at least every `step` ms, so it reads as a turn rather than a
+    polygon."""
+    turn_onto(track, circuit(start, heading, radius), radius, mps, alt, t1)
     last = track.waypoints[-1]
     options = []
     for r in (radius * f for f in (1.0, 1.15, 0.85, 1.3, 0.7)):
         centre = circuit(start, heading, r)
-        a0 = bearing_deg(centre, last.point)
-        entry = destination(centre, a0, r)
+        a0, entry = tangent_entry(centre, r, last.point)
         t0 = last.at_ms + max(distance_m(last.point, entry) / mps * 1000, 2000)
         seconds = (t1 - t0) / 1000
         if seconds <= 0:
@@ -81,7 +129,7 @@ def circuit_to(track, start, heading, radius, t1, alt, mps=72.0, step=10_000):
                          f"{start} by {t1} ms")
     _, _, centre, r, entry, t0, a0, sweep = min(options, key=lambda o: (o[1], o[0]))
     track.add(t0, entry, alt)
-    n = max(1, int((t1 - t0) // step))
+    n = max(1, math.ceil(sweep / step_deg), int((t1 - t0) // step))
     for i in range(1, n):
         track.add(t0 + (t1 - t0) * i / n, destination(centre, a0 - sweep * i / n, r), alt)
     track.add(t1, start, alt)
@@ -127,12 +175,25 @@ def attack_run(track, dam, heading, release_at, alt=RUN_ALT_M, release_m=RELEASE
     track.add(release_at, release, alt)
     over = destination(dam, heading, 150.0)
     track.add(release_at + ((release_m + 150.0) / v) * 1000, over, alt + 10)
-    out = destination(over, heading + climb_turn / 2, pull_up_m)
-    track.add(release_at + ((release_m + 150.0 + pull_up_m) / v) * 1000, out, 150.0)
+    turn(track, heading, climb_turn, pull_up_m, v, 150.0)
     return release
 
 
-def alongside(track, leader, release_at, side_m, ahead_m=120.0, before_s=25, after_s=12):
+def turn(track, heading, turn_deg, length_m, mps, alt_to, step_deg=6.0):
+    """Flies on from the track's end along an arc of `length_m` that turns `turn_deg` from
+    `heading` (negative to port), climbing evenly to `alt_to`: a pull-up turn drawn as a
+    turn, not a corner."""
+    last = track.waypoints[-1]
+    n = max(2, math.ceil(abs(turn_deg) / step_deg))
+    point, seg = last.point, length_m / n
+    for i in range(1, n + 1):
+        point = destination(point, heading + turn_deg * (i - 0.5) / n, seg)
+        alt = last.alt_m + (alt_to - last.alt_m) * i / n
+        track.add(last.at_ms + seg * i / mps * 1000, point, alt)
+    return track
+
+
+def alongside(track, leader, release_at, side_m, ahead_m=120.0, before_s=25, after_s=5):
     """Flies beside another aircraft's run, guns on the defences, as Gibson and Martin did for
     Young and Maltby. `side_m` is positive to the leader's starboard."""
     t = release_at - before_s * 1000

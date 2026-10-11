@@ -119,6 +119,27 @@ class Track:
             self.waypoints[first:last + 1] = cut
         return self
 
+    def fillet(self, bank_deg=30.0, min_turn=20.0, slow=0.08, step_deg=8.0, min_mps=0.0,
+               keep=()):
+        """Rounds each corner the path turns more than `min_turn` degrees at into an arc an
+        aircraft banked `bank_deg` could fly, as far as keeping both neighbouring legs within
+        `slow` of their speed, and above `min_mps`, allows, so the replay turns rather than
+        snapping onto its next heading. The arc is centred on the corner's time; waypoints at
+        the times in `keep`, points on the ground and the ends of the path stay where they
+        are."""
+        wps = self.waypoints
+        out = [wps[0]]
+        for a, v, b in zip(wps, wps[1:], wps[2:]):
+            arc = None if v.at_ms in keep else _corner(a, v, b, bank_deg, min_turn, slow,
+                                                        step_deg, min_mps)
+            if arc is None or arc[0].at_ms <= out[-1].at_ms or arc[-1].at_ms >= b.at_ms:
+                out.append(v)
+            else:
+                out.extend(arc)
+        out.append(wps[-1])
+        self.waypoints = out
+        return self
+
     def shifted(self, east_m, north_m):
         """A formation slot rotated with the instantaneous heading of this track."""
         out = Track()
@@ -129,6 +150,48 @@ class Track:
             n = -east_m * math.sin(h) + north_m * math.cos(h)
             out.add(wp.at_ms, offset(wp.point, e, n), wp.alt_m)
         return out
+
+
+def _corner(a, v, b, bank_deg, min_turn, slow, step_deg, min_mps):
+    """The waypoints of the arc that replaces corner `v` between `a` and `b` (see
+    Track.fillet), or None to keep the corner."""
+    l1, l2 = distance_m(a.point, v.point), distance_m(v.point, b.point)
+    if l1 < 20 or l2 < 20 or v.alt_m < 1 or v.at_ms <= a.at_ms or b.at_ms <= v.at_ms:
+        return None
+    h1, h2 = bearing_deg(a.point, v.point), bearing_deg(v.point, b.point)
+    theta = (h2 - h1 + 180) % 360 - 180
+    if abs(theta) < min_turn or abs(theta) > 170:
+        return None
+    half = math.radians(abs(theta)) / 2
+    v1, v2 = l1 / (v.at_ms - a.at_ms) * 1000, l2 / (b.at_ms - v.at_ms) * 1000
+    mps = (v1 + v2) / 2
+    # A leg can be trimmed at both its ends, so each corner spends half its headroom.
+    slow = min(slow, 1 - min_mps / min(v1, v2)) / 2
+    if slow <= 0:
+        return None
+    ratio = 2 * half / math.tan(half)  # arc length over the cut length d
+    # Cutting d off each leg shortens the path by d(2 - ratio); the legs absorb half each.
+    cap = min(slow * l / (1 - ratio / 2 + slow * ratio / 2) for l in (l1, l2))
+    d = min(mps ** 2 / (9.81 * math.tan(math.radians(bank_deg))) * math.tan(half), cap,
+            0.4 * min(l1, l2))
+    length = d * ratio
+    n = max(2, math.ceil(abs(theta) / step_deg))
+    # Each half of the arc keeps the speed of the leg it leaves or joins.
+    t_in = v.at_ms - length / 2 / v1 * 1000
+
+    def at(s):
+        if s <= length / 2:
+            return t_in + s / v1 * 1000
+        return v.at_ms + (s - length / 2) / v2 * 1000
+    alt_in = v.alt_m + (a.alt_m - v.alt_m) * d / l1
+    alt_out = v.alt_m + (b.alt_m - v.alt_m) * d / l2
+    point = destination(v.point, h1 + 180, d)
+    arc = [Waypoint(round(t_in), point, alt_in)]
+    for k in range(1, n + 1):
+        point = destination(point, h1 + theta * (k - 0.5) / n, length / n)
+        arc.append(Waypoint(round(at(length * k / n)), point,
+                            alt_in + (alt_out - alt_in) * k / n))
+    return arc
 
 
 class Emitter:

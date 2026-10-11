@@ -13,6 +13,8 @@
 - AJ-T turns at each point its navigator logged, within a kilometre of it at the logged
   time, and passes the two turns the replay does not time, the Haltern lakes and the
   Afsluitdijk, within two minutes of the log.
+- No airborne Lancaster changes heading by more than MAX_SNAP_DEG at a single waypoint: the
+  replay draws straight lines between fixes, so a turn must be flown as an arc.
 - The Möhne and Eder are reported destroyed and the Sorpe damaged, each only after a mine
   released at it has gone off.
 """
@@ -22,9 +24,9 @@ from crews import ORB_CREWS, PRISONERS
 from evidence import DISPUTES
 from flights import LOSS, MCCARTHY_HOME, MCCARTHY_OUT
 from sites import CRASH, DURATION, L, LANDED, MOHNE, EDER, ENNEPE, SORPE, TAKE_OFF
-from track import FT, MPH, distance_m
+from manoeuvre import ENVELOPE_MPH
+from track import FT, MPH, bearing_deg, distance_m
 
-ENVELOPE_MPH = (120.0, 245.0)
 DAMS = {"MÖHNE": MOHNE, "EDER": EDER, "SORPE": SORPE, "ENNEPE": ENNEPE}
 
 
@@ -105,6 +107,24 @@ def check_evidence():
     ledger.check(DISPUTES, L)
 
 
+MAX_SNAP_DEG = 25.0
+
+
+def check_turns(plan):
+    """Every airborne turn is spread over an arc of waypoints, none snapping by more than
+    MAX_SNAP_DEG."""
+    for code, track in plan.tracks.items():
+        wps = track.waypoints
+        for a, v, b in zip(wps, wps[1:], wps[2:]):
+            short = min(distance_m(a.point, v.point), distance_m(v.point, b.point)) < 20
+            if v.alt_m < 1 or short:
+                continue
+            snap = abs((bearing_deg(v.point, b.point) - bearing_deg(a.point, v.point) + 180)
+                       % 360 - 180)
+            if snap > MAX_SNAP_DEG:
+                raise ValueError(f"{code} snaps {snap:.0f}° onto a new heading at {v.at_ms} ms")
+
+
 # Turns on the AJ-T log the replay does not use as anchors: a check on the legs between.
 UNANCHORED = [(w.HALTERN_LAKES, "01:14"), (w.AFSLUITDIJK, "02:00:30")]
 
@@ -145,6 +165,7 @@ def all(plan):  # noqa: A001 - the module's one entry point, called as checks.al
     check_anchors(plan)
     check_damage(plan)
     check_mccarthy(plan)
+    check_turns(plan)
 
 
 def summary(plan):
