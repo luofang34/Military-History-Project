@@ -3,7 +3,8 @@
 
 Run from anywhere; writes this mission's operation.json and events.jsonl beside build/, and
 the story in presentations/default.json. The build fails if the closure stops matching the
-Biddle tape's range calls, or if any camera shot would lose one of its subjects.
+Biddle tape's range calls, if any camera shot would lose one of its subjects, or if an
+estimate in build/evidence.py falls outside its records without saying why.
 """
 import json
 import sys
@@ -16,7 +17,9 @@ sys.path.insert(0, str(HERE.parents[2] / "tools"))
 import camera  # noqa: E402
 import coast  # noqa: E402
 import geometry as g  # noqa: E402
+import ledger  # noqa: E402
 import story  # noqa: E402
+from evidence import DISPUTES  # noqa: E402
 from track import Emitter  # noqa: E402
 
 OP = "gulf-of-sidra-1981"
@@ -36,10 +39,12 @@ SOURCES = [
      **RECONSTRUCTED},
     {"id": "biddle-tape", "name": "USS Biddle CIC audio (relative times)", "zone": TRIPOLI},
     {"id": "upi-1981", "name": "UPI wire reports, 19-20 Aug 1981"},
-    {"id": "stanik-1996", "name": "Stanik, Naval Aviation News, 1996", "zone": TRIPOLI},
+    {"id": "stanik-1996", "name": "Stanik, \"Sudden Victory\", Naval Aviation News, 1996 "
+     "(The Aviation Geek Club reprint)", "zone": TRIPOLI},
     {"id": "baugher-thirdseries21", "name": "Joe Baugher, third-series serials"},
     {"id": "dvids-2022", "name": "DVIDS: Fast Eagles made history over the Gulf of Sidra"},
-    {"id": "cooper-acig", "name": "Tom Cooper, Libyan Air Wars and ACIG", "zone": TRIPOLI},
+    {"id": "cooper-acig", "name": "Tom Cooper, \"Libyan Wars 1980-89 Part 2\", ACIG, 2003",
+     "zone": TRIPOLI},
     {"id": "ratner-yale-1984", "name": "Ratner, Yale Journal of International Law, 1984"},
     {"id": "francioni-syracuse", "name": "Francioni, Syracuse Journal of International Law"},
     {"id": "natural-earth-10m", "name": "Natural Earth 10 m coastline"},
@@ -47,7 +52,14 @@ SOURCES = [
     {"id": "nimitz-cruise-book", "name": "USS Nimitz 1980-82 cruise book"},
     {"id": "sanders-2012", "name": "Sanders, 'Bait and Switch in Libya', Air & Space, 2012"},
     {"id": "sasser-biddle", "name": "Lt Mike Sasser, USS Biddle account"},
+    {"id": "upi-1981-08-20", "name": "UPI wire report, 20 Aug 1981"},
+    {"id": "cooper-libyan-air-wars",
+     "name": "Cooper, Grandolini and Delalande, Libyan Air Wars (extracts)", "zone": TRIPOLI},
+    {"id": "easternorbat", "name": "EasternOrbat: Ghardabiya Air Base"},
+    {"id": "reconstruction-estimate",
+     "name": "Replay estimates where sources disagree (build/evidence.py)"},
 ]
+NAMES = {s["id"]: s["name"] for s in SOURCES}
 
 
 def entity(id_, sidc, name, kind, parent=None, quantity=None):
@@ -68,13 +80,14 @@ ENTITIES = [
     entity(g.FE107, "SFAPMFF--------", "FE107 Muczynski / Anderson", "F-14A", "FAST EAGLE"),
     entity(g.SU_LEAD, "SHAPMFF--------", "Su-22 lead", "Su-22M3", "FITTER PAIR"),
     entity(g.SU_WING, "SHAPMFF--------", "Su-22 wingman", "Su-22M3", "FITTER PAIR"),
-    entity(g.AA2, "SHAPWMAA-------", "AA-2 Atoll", "AA-2"),
-    entity(g.AIM_102, "SFAPWMAA-------", "AIM-9L (102)", "AIM-9L"),
-    entity(g.AIM_107, "SFAPWMAA-------", "AIM-9L (107)", "AIM-9L"),
+    entity(g.AA2, "SHAPWMAA-------", "AA-2 Atoll", "AA-2", g.SU_LEAD),
+    entity(g.AIM_102, "SFAPWMAA-------", "AIM-9L (102)", "AIM-9L", g.FE102),
+    entity(g.AIM_107, "SFAPWMAA-------", "AIM-9L (107)", "AIM-9L", g.FE107),
     entity(g.NIMITZ, "SFSPCLCV-------", "USS Nimitz", "CVN-68"),
     entity(g.S3A, "SFAPMFS--------", "Diamond Cutter 702", "S-3A"),
-    entity(g.LOD_W, "SUGPUCI--------", "Line of Death, west", "32°30'N at the coast"),
-    entity(g.LOD_E, "SUGPUCI--------", "Line of Death, east", "32°30'N at the coast"),
+    # 2525 has no symbol for a claimed line; each end is a ground point with no unit icon.
+    entity(g.LOD_W, "SUGP-----------", "Line of Death, west", "32°30'N at the coast"),
+    entity(g.LOD_E, "SUGP-----------", "Line of Death, east", "32°30'N at the coast"),
 ]
 
 
@@ -143,6 +156,7 @@ def main():
     out = HERE.parent
     tracks = g.aircraft()
     g.check_ranges(tracks)
+    ledger.check(DISPUTES, story.clock)
     tracks[g.S3A] = g.s3a()
     s3a_shore, merge_shore = check_shore(tracks)
     missiles = g.missiles(tracks)
@@ -150,7 +164,7 @@ def main():
     shot_list = camera.shots({**tracks, **missiles}, fixed, story.t, DURATION)
     em = Emitter(OP)
     emit(em, tracks, missiles)
-    story.annotations(em)
+    story.annotations(em, NAMES)
     em.write(out / "events.jsonl")
     op = {
         "format": "sokoly-operation",
@@ -158,15 +172,16 @@ def main():
         "id": OP,
         "name": "Gulf of Sidra incident, 19 August 1981",
         "duration_ms": DURATION,
-        "time_origin": ("19 August 1981 07:00 Tripoli time (UTC+2), the Libyan clock of the "
-                        "launch report; US wire times are Pentagon times converted from Zulu"),
+        "time_origin": ("19 August 1981 07:00 Tripoli time (UTC+2), about when the Pentagon "
+                        "says the F-14s first picked up the Libyan jets; US wire times are "
+                        "Pentagon times converted"),
         "time": {
             "range": {"start": 0, "end": DURATION},
             "anchor": {
                 "at": 0,
                 "unix_ms": ANCHOR_MS,
-                "source": ("Libyan account: Su-22s sent at 7 AM; Biddle tape: contact at "
-                           "about 07:15; Pentagon: shootdowns 0520Z"),
+                "source": ("Pentagon via the Washington Post: contact about 7 a.m. Libyan "
+                           "time, shootdowns 7:20; Stanik: rejoin 0719"),
                 "source_scale": "utc",
                 "uncertainty_ms": 900_000,
                 "resolution_ms": 60_000,
@@ -187,6 +202,7 @@ def main():
     viewing = sum((c["end_ms"] - c["start_ms"]) / c["speed"] for c in doc["playback_track"])
     ranges = ", ".join(f"{g.separation_nm(tracks, g.FE102, g.SU_LEAD, g.s_ms(s)):.1f}"
                        for s, _ in g.RANGE_CALLS)
+    ledger.write_readme(out / "README.md", DISPUTES, NAMES, "gulf_of_sidra.py")
     print(f"{len(em.events)} events, {len(shot_list)} shots; viewing {viewing / 1000:.0f} s; "
           f"tape ranges {ranges} nm; S-3A >= {s3a_shore:.1f} nm and merge {merge_shore:.1f} nm "
           f"from shore")
