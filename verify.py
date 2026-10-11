@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Check presentation coverage that the App's loader does not enforce.
+"""Check what the App's loader does not enforce.
 
 Every second of each operation needs exactly one playback cue and one camera
 cue in its default presentation, and a cue that follows an entity must find a
-valid fix for its whole span; otherwise the authored camera stalls. The App
-itself validates the schema.
+valid fix for its whole span; otherwise the authored camera stalls. A map on
+which nothing moves may play for at most MAX_STILL_VIEWING_S. Reconstructed
+tracks must hand over between sources 1 ms apart, and the order of battle must
+resolve. The App itself validates the schema.
 """
 import bisect
 import json
@@ -73,6 +75,48 @@ def broken_parents(entities):
             at = parent[at]
 
 
+MAX_STILL_VIEWING_S = 6.0
+
+
+def still_stretches(events, presentation, duration, sources):
+    """Stretches of the operation in which nothing on the map moves, with their viewing time.
+    A still map holds the viewer for at most MAX_STILL_VIEWING_S; a briefing stays readable
+    after the action resumes. Motion is counted only where the App draws it: between two
+    fixes of one source that declares a motion model, within its max_gap_ms, while the
+    earlier fix still holds."""
+    model = {s["id"]: s.get("max_gap_ms") for s in sources if s.get("motion")}
+    fixes = defaultdict(list)
+    for e in events:
+        if e["payload"]["kind"] == "position":
+            fixes[e["entity"]].append(e)
+    moving = []
+    for track in fixes.values():
+        track.sort(key=lambda e: e["observed_ms"])
+        for a, b in zip(track, track[1:]):
+            pa, pb = a["payload"]["data"], b["payload"]["data"]
+            start, end = a["observed_ms"], b["observed_ms"]
+            source = a["source"]["id"]
+            gap = model.get(source)
+            holds = a["valid_until_ms"] is None or a["valid_until_ms"] >= end
+            if (pa is not None and pb is not None and source == b["source"]["id"]
+                    and source in model and (gap is None or end - start <= gap) and holds
+                    and pa["point"] != pb["point"] and end - start > 1):
+                moving.append((start, end))
+    moving.sort()
+    still, t = [], 0
+    for a, b in moving:
+        if a > t:
+            still.append((t, a))
+        t = max(t, b)
+    if t < duration:
+        still.append((t, duration))
+    pace = presentation["playback_track"]
+    for a, b in still:
+        viewing = sum(max(0, min(b, c["end_ms"]) - max(a, c["start_ms"])) / c["speed"]
+                      for c in pace) / 1000
+        yield a, b, viewing
+
+
 def check(mission):
     op = json.loads((mission / "operation.json").read_text())
     story = json.loads((mission / "presentations" / "default.json").read_text())
@@ -92,6 +136,9 @@ def check(mission):
     problems.extend(broken_parents(op["entities"]))
     for entity, fixes in joins_across_sources(events):
         problems.append(f"{entity}: fix at {fixes} joins a fix from another source")
+    for a, b, viewing in still_stretches(events, story, duration, op["sources"]):
+        if viewing > MAX_STILL_VIEWING_S:
+            problems.append(f"nothing moves from {a} to {b} ms but it plays for {viewing:.0f} s")
     for track in ("camera_track", "playback_track"):
         for c in story[track]:
             if not 0 <= c["start_ms"] < c["end_ms"] <= duration:

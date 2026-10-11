@@ -672,11 +672,11 @@
   "playback_track": [
     {
       "start_ms": 0,
-      "end_ms": 150000,
-      "speed": 6
+      "end_ms": 175000,
+      "speed": 36
     },
     {
-      "start_ms": 150000,
+      "start_ms": 175000,
       "end_ms": 420000,
       "speed": 10
     },
@@ -832,8 +832,13 @@
     },
     {
       "start_ms": 31620000,
-      "end_ms": 32100000,
+      "end_ms": 31840000,
       "speed": 20
+    },
+    {
+      "start_ms": 31840000,
+      "end_ms": 32100000,
+      "speed": 240
     }
   ]
 }
