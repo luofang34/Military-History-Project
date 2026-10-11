@@ -3,10 +3,11 @@
 Clock times are BDST (UTC+2), which German summer time matched that night. Briefings quote or
 paraphrase the sources named on each note; the README lists them.
 """
-from crews import crew_note, fate_note
+from crews import fate_note
+import ledger
 from evidence import DISPUTES
 from flights import LOSS
-from sites import DURATION, L, TAKE_OFF
+from sites import DURATION, L
 
 CHAPTERS = [
     ("Operation Chastise", "21:25"),
@@ -77,7 +78,7 @@ BRIEFINGS = [
     ("AJ-W", "22:50", "22:57", ORB,
      "About 22:54: light flak at Vlieland hits Munro's AJ-W and knocks out the intercom. "
      "Unable to direct his crew, he turns for home with his mine."),
-    ("AJ-K", "22:57", "22:59", DB,
+    ("AJ-K", "22:57", "23:03", DB,
      "22:57: Byers, off track over Texel and climbing to about 300 ft, is shot down by flak "
      "and falls into the Waddenzee west of Harlingen. All seven are killed; six have no known "
      "grave."),
@@ -89,7 +90,7 @@ BRIEFINGS = [
      "23:50: Barlow's AJ-E hits high-tension cables at Haldern, east of Rees, and crashes; "
      "all seven are killed. The mine does not explode, and German engineers examine it the "
      "next day."),
-    ("AJ-G", "23:52", "00:12", ORB,
+    ("AJ-G", "23:52", "00:13", ORB,
      "North-east of Haltern the leading section meets about twelve searchlights and light "
      "flak; Gibson reports it by W/T and Group relays the warning. Hopgood is hit about 20 "
      "minutes from the target, he and his front gunner wounded."),
@@ -181,30 +182,14 @@ def until(clock):
     return DURATION + 1 if clock == "06:20" else L(clock)
 
 
-def annotations(em, names):
-    """Briefings, crews and fates, then each disputed fact: every source's record as its own
-    reported note, and the replay's estimate as a separate reconstructed one. `names` maps
-    source ids to their names."""
+def annotations(em):
+    """Briefings and the crews lost, then each disputed fact's note for viewers. The ORB's
+    crew lists stay in build/crews.py; each aircraft's name already gives its captain."""
     for entity, start, end, source, text in BRIEFINGS:
         em.note(source, entity, L(start), until(end), text, "reported", [])
-    for code, at in TAKE_OFF.items():
-        em.note(ORB, code, L(at) - 60_000, L(at) + 180_000, crew_note(code), "reported", [])
     for code, at in LOSS.items():
-        em.note(DB, code, L(at), L(at) + 300_000, fate_note(code), "reported", [])
-    for key, d in DISPUTES.items():
-        for r in d.records:
-            text = f"Record · {d.title} · {names[r.source]}: {r.text()}"
-            start = L(r.at or d.when())
-            if r.latest:
-                em.note(r.source, d.entity, start, L(r.latest) + 1, text, "reported", [],
-                        occurrence={"kind": "uncertain", "earliest": start,
-                                    "latest": L(r.latest)})
-            else:
-                em.note(r.source, d.entity, start, start + 120_000, text, "reported", [])
-        at = L(d.when())
-        em.note(ESTIMATE, d.entity, at, at + 120_000,
-                f"Replay estimate · {d.title}: {d.estimate}. Basis: {d.basis} "
-                f"(build/evidence.py: {key})", "reconstructed", [])
+        em.note(DB, code, L(at), L(at) + 600_000, fate_note(code), "reported", [])
+    ledger.emit(em, DISPUTES, L, ESTIMATE)
 
 
 def document(operation, camera_track):

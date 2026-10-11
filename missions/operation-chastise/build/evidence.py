@@ -1,46 +1,10 @@
-"""Disputed facts: what each source records, kept apart from the replay's estimate.
-
-Each record is emitted as its own `reported` note under its own source. Its `says` is the
-source's exact words where `quote` is set, compared with the ORB transcript, Enemy Coast
-Ahead, Hinks et al. and the cited web pages; otherwise it paraphrases. A record whose content
-was relayed but could not be compared with the source (a scanned image, an unavailable page)
-has `checked` unset and is shown as unchecked. The replay's estimate is a separate
-`reconstructed` note with its basis. The flight plans read the estimates from here, so revising
+"""Operation Chastise's disputed facts, in the form tools/ledger.py describes: each source's
+record, compared with the ORB transcript, Enemy Coast Ahead, Hinks et al. and the cited web
+pages, and the replay's estimate. The flight plans read the estimates from here, so revising
 one is a one-line change and a rebuild.
 """
-from dataclasses import dataclass
-
-
-@dataclass(frozen=True)
-class Record:
-    source: str
-    says: str
-    at: str = None  # the clock time the record itself gives; None if it gives none
-    latest: str = None  # with a range, its end
-    quote: bool = False  # `says` is the source's exact words
-    label: str = None  # whose words or which part of the source, outside the quotation
-    checked: bool = True  # compared with the source itself
-
-    def text(self):
-        said = f"“{self.says}”" if self.quote else self.says
-        said = f"{self.label}: {said}" if self.label else said
-        return said if self.checked else f"Unchecked relay, not compared with the source: {said}"
-
-
-@dataclass(frozen=True)
-class Dispute:
-    title: str
-    entity: str
-    records: tuple
-    estimate: str  # what the replay uses
-    basis: str
-    at: str = None  # the estimate's clock time, when it is a time
-    outside: bool = False  # the estimate lies outside the records' times, as `basis` explains
-    shown: str = None  # when a dispute that is not about a time is shown
-
-    def when(self):
-        return self.at or self.shown
-
+import ledger
+from ledger import Dispute, Record
 
 ORB = "orb-617"
 DB = "dambustersblog"
@@ -157,7 +121,9 @@ DISPUTES = {
          Record("hinks-2010", "Sweetman (2002) makes a strong case that the fourth dam attacked "
                 "was the Bever Dam", quote=True)),
         "The Ennepe, as reported", "Townsend's own report; the dams' coordinates put the Bever "
-        "11 km south of the Ennepe, not north-west.", shown="03:37"),
+        "11 km south of the Ennepe, not north-west.", shown="03:37",
+        brief="Townsend reported attacking the Ennepe dam; post-war research suggests it was "
+        "the Bever dam nearby."),
     "martin-mine": Dispute(
         "Martin's mine", "AJ-P",
         (Record(ORB, "Mine burst about 20 yds. short.", "00:38", quote=True),
@@ -202,7 +168,4 @@ DISPUTES = {
 
 def time_of(key):
     """The estimate's clock time for a dispute that sets a time."""
-    at = DISPUTES[key].at
-    if at is None:
-        raise KeyError(f"dispute {key} does not estimate a time")
-    return at
+    return ledger.time_of(DISPUTES, key)
