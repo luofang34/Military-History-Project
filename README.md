@@ -30,7 +30,11 @@ the page's front matter sets `permalink: /<id>/` so it is served at `/<id>/`. Sh
 and event helpers are in `tools/`. Add the mission to `catalog.json`, then run
 `python3 verify.py`, which checks camera and pacing coverage within the operation, that a map
 on which nothing moves plays for at most 6 s, source handovers in reconstructed tracks, the
-order of battle, the catalog and public replay links.
+order of battle, the catalog and public replay links. With a Sokoly-App build that has
+`--frame-report` (named by `SOKOLY_APP`, or a release build in `../Sokoly-App`), it also checks
+the viewer's own projection of every shot: its focus stays in frame, and each briefing note
+can be read before it leaves the screen. `python3 tools/composition.py missions/<id>` prints
+what each shot shows, for framing a story.
 The Pages homepage renders this README.
 
 ## Licence
