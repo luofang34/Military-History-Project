@@ -463,10 +463,10 @@
     },
     {
       "id": "5 GROUP HQ",
-      "sidc": "SFGPI-----H----",
+      "sidc": "SFGPUCVF--A----",
       "camera": false,
       "name": "No. 5 Group HQ, St Vincents, Grantham",
-      "kind": "headquarters",
+      "kind": "group headquarters",
       "parent": "5 GROUP"
     },
     {
