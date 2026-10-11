@@ -47,6 +47,8 @@ def lead_route():
     lead = Track().add(L("07:31:00"), JOIN, 150)
     alts = [150] + [WAVE_TOP_M] * (len(pts) - 1)
     speed = constant_speed(lead, pts, L("07:31:00"), L("09:34:00"), alts)
+    # The flights' slots swing with the lead's heading; rounded turns keep them flying.
+    lead.round_corners(L("07:31:00"), L("09:34:00"))
     return lead, speed
 
 
@@ -74,6 +76,7 @@ def parked(i):
 
 
 ROLL_M = 1400
+ORBIT_MS = 80.0  # about 290 km/h round the join-up orbit
 ABORT_STOP_M = 700
 
 
@@ -84,7 +87,14 @@ def roll(track, threshold, start, end, accel, step=4_000):
         s = 0.5 * accel * ((at - start) / 1000) ** 2
         track.add(at, destination(threshold, RUNWAY_HEADING, s), 0)
         at += step
-    track.add(end, destination(threshold, RUNWAY_HEADING, 0.5 * accel * ((end - start) / 1000) ** 2), 0)
+    rolled = 0.5 * accel * ((end - start) / 1000) ** 2
+    track.add(end, destination(threshold, RUNWAY_HEADING, rolled), 0)
+
+
+def join_time(takeoff):
+    """When an aircraft takes its slot: 07:31, or on a later lap for the last ones off, who
+    need about three minutes from brake release to reach the orbit."""
+    return max(L("07:31:00"), takeoff + 200_000)
 
 
 def p38_departure(entity, slot_index, lead, abort_tire=False):
@@ -119,30 +129,52 @@ def p38_departure(entity, slot_index, lead, abort_tire=False):
     liftoff = destination(threshold, RUNWAY_HEADING, ROLL_M)
     climb = destination(liftoff, RUNWAY_HEADING - 20, 4500)
     t.add(takeoff + 75_000, climb, 300)
-    joined, alt = slot_point(lead, entity, L("07:31:00"))
+    joined_at = join_time(takeoff)
+    joined, alt = slot_point(lead, entity, joined_at)
     # Orbit backwards from the slot so every aircraft arrives at 07:31:00.
     centre = destination(JOIN, 180, 3500)
     radius = distance_m(centre, joined)
     angle0 = bearing_deg(centre, joined)
-    omega = 80.0 / max(radius, 1.0)  # ~290 km/h around the circle
-    t_entry = takeoff + 140_000
+    omega = ORBIT_MS / max(radius, 1.0)
+    climbed = takeoff + 75_000
+
+    def on_orbit(tt):
+        ang = angle0 + math.degrees(omega * (joined_at - tt) / 1000)
+        return destination(centre, ang, radius)
+
+    # A left turn off the climb-out, then join the orbit ahead of it where flying straight
+    # there takes the orbit's own speed, so no leg doubles back or is flown slower than the
+    # aircraft can fly.
+    heading = RUNWAY_HEADING - 110
+    turned = climbed + 30_000
+    turn = destination(climb, heading, ORBIT_MS * 30)
+    t.add(turned, turn, 375)
+
+    def mismatch(tt):
+        p = on_orbit(tt)
+        off = abs((bearing_deg(turn, p) - heading + 180) % 360 - 180)
+        speed = distance_m(turn, p) / ((tt - turned) / 1000)
+        return abs(speed - ORBIT_MS) + 2.0 * max(0.0, off - 60)
+
+    entry = min(range(turned + 20_000, joined_at - 15_000, 1000), key=mismatch)
+    tt = joined_at - 15_000
     samples = []
-    tt = L("07:31:00") - 15_000
-    while tt > t_entry:
-        ang = angle0 + math.degrees(omega * (L("07:31:00") - tt) / 1000)
-        samples.append((tt, destination(centre, ang, radius)))
+    while tt > entry:
+        samples.append((tt, on_orbit(tt)))
         tt -= 15_000
+    samples.append((entry, on_orbit(entry)))
     for tt, p in reversed(samples):
         t.add(tt, p, 450)
-    t.add(L("07:31:00"), joined, alt)
-    return t.round_corners(takeoff + 22_000, L("07:31:00")), takeoff
+    t.add(joined_at, joined, alt)
+    # Rounding the turns before the orbit would shorten their legs below flying speed.
+    return t.round_corners(entry, joined_at), takeoff
 
 
 def moore_return(track, lead):
     """Drop tanks would not feed; Moore turns back after join-up."""
     t = L("07:36:00")
     p, _ = slot_point(lead, "MOORE", t)
-    track.add(L("07:37:00"), destination(p, 120, 2500), 150)
+    track.add(L("07:37:00"), destination(p, 120, 3500), 150)
     track.add(L("07:42:30"), offset(FIGHTER_TWO, -6000, 1200), 200)
     touchdown = offset(FIGHTER_TWO, -900, 0)
     track.add(L("07:43:30"), touchdown, 0)
@@ -154,14 +186,15 @@ def p38_tracks():
     lead, speed = lead_route()
     tracks = {}
     for index, entity in enumerate(TAKEOFF_ORDER):
-        track, _ = p38_departure(entity, index, lead, abort_tire=entity == "MCLANAHAN")
+        track, takeoff = p38_departure(entity, index, lead, abort_tire=entity == "MCLANAHAN")
         if entity != "MCLANAHAN":
             end = L("07:36:00") if entity == "MOORE" else L("09:34:00")
-            in_formation(track, lead, entity, L("07:31:00") + 20_000, end)
+            in_formation(track, lead, entity, join_time(takeoff) + 20_000, end)
         if entity == "MOORE":
             moore_return(track, lead)
         tracks[entity] = track
-    assert set(tracks) == set(P38S)
+    if set(tracks) != set(P38S):
+        raise ValueError(f"P-38 tracks {sorted(set(tracks) ^ set(P38S))} do not match the roster")
     return tracks, lead, speed
 
 

@@ -4,7 +4,8 @@
 Run from anywhere; writes this mission's operation.json and events.jsonl beside build/,
 and the story in presentations/default.json. Fixed sites and anchor times are sourced; flight
 paths between anchors are reconstructions whose `bound_m` states the horizontal
-uncertainty.
+uncertainty. The build fails if an aircraft leaves its type's speeds, a wreck strays from
+its site, or an estimate in build/evidence.py falls outside its records without saying why.
 """
 import json
 import sys
@@ -13,12 +14,15 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parents[2] / "tools"))
+import checks  # noqa: E402
 import engagement  # noqa: E402
+import ledger  # noqa: E402
 import presentation  # noqa: E402
 import routes  # noqa: E402
 from track import Emitter  # noqa: E402
+from evidence import DISPUTES  # noqa: E402
 from sites import (OP, L, DURATION, BETTYS, ZEROS, YAMAMOTO, UGAKI,  # noqa: E402
-                   CRASH_T1_323, DITCH_T1_326, entities, unix_ms)
+                   CRASH_T1_323, DITCH_T1_326, FIXED, entities, unix_ms)
 
 
 # Times at which `evidence_for` changes source; each source's fixes join only to its own.
@@ -44,7 +48,33 @@ SOURCES = [
     {"id": "pacific-wrecks-t1-326", "name": "Pacific Wrecks: G4M1 T1-326"},
     {"id": "yanagiya-interview", "name": "Yanagiya Kenji interview", "zone": TOKYO},
     {"id": "ja-wikipedia-kaigun-ko-jiken", "name": "海軍甲事件 (ja.wikipedia)", "zone": TOKYO},
+    {"id": "ja-wikipedia-sugita", "name": "杉田庄一 (ja.wikipedia)", "zone": TOKYO},
+    {"id": "pacific-wrecks-hine", "name": "Pacific Wrecks: P-38G Hine"},
+    {"id": "pacific-wrecks-ballale", "name": "Pacific Wrecks: Ballale Airfield"},
+    {"id": "historynet-lehr-hine",
+     "name": "Dick Lehr, \"What Happened to Operation Vengeance Wingman Raymond K. Hine\", "
+     "HistoryNet"},
+    {"id": "jacar-204-kokutai-18-april",
+     "name": "第二〇四海軍航空隊 戦闘行動調書, 18 April 1943 (JACAR C08051654600)", "zone": TOKYO},
+    {"id": "yanagiya-yoshimura",
+     "name": "Yanagiya Kenji, interviewed in Yoshimura Akira, 戦史の証言者たち", "zone": TOKYO},
+    {"id": "wikipedia-operation-vengeance", "name": "Operation Vengeance (en.wikipedia)"},
+    {"id": "wikipedia-kukum", "name": "Kukum Field (en.wikipedia)"},
+    {"id": "wikipedia-lakunai", "name": "Lakunai Airfield (en.wikipedia)"},
+    {"id": "wikipedia-kahili", "name": "Kahili Airfield (en.wikipedia)"},
+    {"id": "decrypt-ntf131755", "name": "US Navy decrypt of JN-25 message NTF131755"},
+    {"id": "historynet-death-by-p38", "name": "HistoryNet, \"Death by P-38\""},
+    {"id": "warfare-history-network-ames",
+     "name": "Roger Ames, via Warfare History Network, \"Killing Yamamoto\""},
+    {"id": "afm-grant", "name": "Rebecca Grant, \"Magic and Lightning\", Air & Space Forces "
+     "Magazine"},
+    {"id": "afm-haulman", "name": "Daniel Haulman, \"The Man Who Shot Down Yamamoto\", "
+     "Air & Space Forces Magazine"},
+    {"id": "barber-v-widnall", "name": "Barber v. Widnall, 78 F.3d 1419 (9th Cir. 1996)"},
+    {"id": "reconstruction-estimate",
+     "name": "Replay estimates where sources disagree (build/evidence.py)"},
 ]
+NAMES = {s["id"]: s["name"] for s in SOURCES}
 
 
 def evidence_for(entity, t):
@@ -102,7 +132,7 @@ def endings(em, tracks):
         ("pacific-wrecks-t1-326", UGAKI, "09:39:20", "destroyed"),
         ("pacific-wrecks", "BARBER", "09:38:55", "damaged"),
         (REPORT_13FC, "LANPHIER", "09:38:40", "damaged"),
-        ("macr-599-609", "HINE", "09:40:00", "damaged"),
+        ("macr-599-609", "HINE", "09:41:36", "damaged"),
     ]:
         em.condition(source, entity, L(at), condition, "reported", [])
     hine_end = tracks["HINE"].end
@@ -135,8 +165,10 @@ def main():
         until = track.end if entity in (YAMAMOTO, UGAKI) else None
         emit_track(em, entity, track, final, until)
     hine_end = endings(em, tracks)
-    assert hine_end > L("09:41:10"), "the HINE camera cue must end while he is still tracked"
-    presentation.annotations(em)
+    checks.all(tracks, hine_end)
+    for id_, _, _, _, point, bound, source in FIXED:
+        em.fix(source, id_, 0, point, 0.0, bound, None, "reported", [], reference="site")
+    presentation.annotations(em, NAMES)
     em.write(out / "events.jsonl")
     op = {
         "format": "sokoly-operation",
@@ -176,9 +208,11 @@ def main():
     (out / "presentations").mkdir(exist_ok=True)
     (out / "presentations" / "default.json").write_text(
         json.dumps(story, indent=2, ensure_ascii=False) + "\n")
-    viewing = sum((c["end_ms"] - c["start_ms"]) / c["speed"] for c in story["playback_track"]) / 1000
+    viewing = sum((c["end_ms"] - c["start_ms"]) / c["speed"]
+                  for c in story["playback_track"]) / 1000
+    ledger.write_readme(out / "README.md", DISPUTES, NAMES, "vengeance.py")
     print(f"{len(em.events)} events; P-38 route {p38_speed * 3.6:.0f} km/h, "
-          f"Betty route {betty_kmh:.0f} km/h; viewing {viewing:.0f} s")
+          f"Betty route {betty_kmh:.0f} km/h; viewing {viewing:.0f} s; {checks.summary(tracks)}")
 
 
 if __name__ == "__main__":

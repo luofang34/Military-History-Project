@@ -16,7 +16,7 @@ def L(hms):
 
 DURATION = L("10:05:00")
 
-# (lon, lat). Sources: Wikipedia airfield articles, Pacific Wrecks site pages.
+# (lon, lat). Airfields as their Wikipedia articles give them, Ballale as Pacific Wrecks does.
 FIGHTER_TWO = (160.0108, -9.4261)
 LAKUNAI = (152.183, -4.217)
 KAHILI = (155.6836, -6.7301)
@@ -30,6 +30,21 @@ MOILA = (155.58679, -6.84710)
 DITCH_T1_326 = (155.586, -6.8567)
 
 FRIENDLY_FIGHTER = "SFAPMFF--------"
+HOSTILE_AIRCRAFT = "SHAPMF---------"
+FRIENDLY_AIRFIELD = "SFGPIBA---H----"
+HOSTILE_AIRFIELD = "SHGPIBA---H----"
+
+FIXED = [
+    # (id, sidc, name, kind, point, bound m, source)
+    ("FIGHTER TWO", FRIENDLY_AIRFIELD, "Fighter Two (Kukum Field), Guadalcanal", "airfield",
+     FIGHTER_TWO, 300.0, "wikipedia-kukum"),
+    ("LAKUNAI", HOSTILE_AIRFIELD, "Lakunai airfield, Rabaul", "airfield", LAKUNAI, 300.0,
+     "wikipedia-lakunai"),
+    ("KAHILI", HOSTILE_AIRFIELD, "Kahili (Buin) airfield", "airfield", KAHILI, 300.0,
+     "wikipedia-kahili"),
+    ("BALLALE", HOSTILE_AIRFIELD, "Ballale airfield", "airfield", BALLALE, 300.0,
+     "pacific-wrecks-ballale"),
+]
 HOSTILE_BOMBER = "SHAPMFB--------"
 HOSTILE_FIGHTER = "SHAPMFF--------"
 
@@ -67,18 +82,22 @@ NAMES = {
 # Declared formations as (id, name, symbol, members, parent); members are drawn as one
 # symbol when they overlap on screen, under the closest formation they share.
 FORMATIONS = [
-    ("COVER FLIGHT", "Mitchell's cover flight", FRIENDLY_FIGHTER, [], None),
+    # The mission went to the 339th Fighter Squadron, 347th Fighter Group (Wikipedia), and
+    # the two kōkūtai belonged to the 11th Air Fleet (Wikipedia's order of battle).
+    ("339TH FS", "339th Fighter Squadron, 347th Fighter Group", FRIENDLY_FIGHTER, [], None),
+    ("11TH AIR FLEET", "11th Air Fleet", HOSTILE_AIRCRAFT, [], None),
+    ("COVER FLIGHT", "Mitchell's cover flight", FRIENDLY_FIGHTER, [], "339TH FS"),
     ("MITCHELL FLIGHT", "Mitchell's flight", FRIENDLY_FIGHTER, MITCHELL_FLIGHT, "COVER FLIGHT"),
     ("KITTEL FLIGHT", "Kittel's flight", FRIENDLY_FIGHTER, KITTEL_FLIGHT, "COVER FLIGHT"),
     ("ANGLIN FLIGHT", "Anglin's flight", FRIENDLY_FIGHTER, ANGLIN_FLIGHT, "COVER FLIGHT"),
     # As briefed, before Moore and McLanahan dropped out and Holmes and Hine replaced them.
-    ("ATTACK SECTION", "Lanphier's attack section", FRIENDLY_FIGHTER, ABORTS, None),
+    ("ATTACK SECTION", "Lanphier's attack section", FRIENDLY_FIGHTER, ABORTS, "339TH FS"),
     ("LANPHIER ELEMENT", "Lanphier and Barber", FRIENDLY_FIGHTER, ["LANPHIER", "BARBER"],
      "ATTACK SECTION"),
     ("HOLMES ELEMENT", "Holmes and Hine", FRIENDLY_FIGHTER, ["HOLMES", "HINE"],
      "ATTACK SECTION"),
-    ("BETTYS", "705th Kōkūtai G4M1 pair", HOSTILE_BOMBER, BETTYS, None),
-    ("ESCORT", "204th Kōkūtai escort", HOSTILE_FIGHTER, [], None),
+    ("BETTYS", "705th Kōkūtai G4M1 pair", HOSTILE_BOMBER, BETTYS, "11TH AIR FLEET"),
+    ("ESCORT", "204th Kōkūtai escort", HOSTILE_FIGHTER, [], "11TH AIR FLEET"),
     ("ZERO SECTION 1", "Morisaki's section", HOSTILE_FIGHTER, ZERO_1, "ESCORT"),
     ("ZERO SECTION 2", "Hidaka's section", HOSTILE_FIGHTER, ZERO_2, "ESCORT"),
 ]
@@ -103,6 +122,8 @@ def entities():
         if up:
             row["parent"] = up
         out.append(row)
+    out += [{"id": id_, "sidc": sidc, "camera": False, "name": name, "kind": kind}
+            for id_, sidc, name, kind, *_ in FIXED]
     return out
 
 
