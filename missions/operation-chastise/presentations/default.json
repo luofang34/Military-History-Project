@@ -134,11 +134,11 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": -0.55044,
-          "lat": 53.30679
+          "lon": -0.55015,
+          "lat": 53.30559
         }
       },
-      "zoom": 11.13,
+      "zoom": 11.09,
       "pitch": 40,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
@@ -151,7 +151,7 @@
         "kind": "entity",
         "value": "AJ-E"
       },
-      "zoom": 10.31,
+      "zoom": 10.28,
       "pitch": 20,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
@@ -240,8 +240,8 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": 1.36645,
-          "lat": 52.99004
+          "lon": 1.3701,
+          "lat": 52.98121
         }
       },
       "zoom": 6.28,
@@ -256,11 +256,11 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": 4.7176,
-          "lat": 53.23087
+          "lon": 4.72028,
+          "lat": 53.23053
         }
       },
-      "zoom": 8.84,
+      "zoom": 8.85,
       "pitch": 25,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
@@ -286,11 +286,11 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": 6.4114,
-          "lat": 51.81799
+          "lon": 6.41307,
+          "lat": 51.8188
         }
       },
-      "zoom": 10.29,
+      "zoom": 10.23,
       "pitch": 40,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,

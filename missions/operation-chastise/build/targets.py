@@ -150,23 +150,27 @@ def eder(plan):
         circuit_to(plan.tracks[code], EDER_START, EDER_DIVE, radius, leave, 330)
 
 
-def sorpe_run(plan, code, release_at, alt):
+def sorpe_run(plan, code, release_at, alt, radius=1300, exit_m=900):
+    """A run along the crest released at `release_at`, then a climbing turn to port
+    `exit_m` beyond the dam."""
     track = plan.tracks[code]
     start_at = release_at - 1500 / SORPE_SPEED * 1000
-    circuit_to(track, SORPE_START, SORPE_RUN, 1300, start_at, 250, mps=78)
+    circuit_to(track, SORPE_START, SORPE_RUN, radius, start_at, 250, mps=78)
     plan.phase(code, start_at - 1, "reconstruction-target", 400.0)
     track.add(release_at, SORPE_RELEASE, alt)
-    beyond = destination(SORPE, SORPE_RUN, 900)
-    track.add(release_at + 1010 / SORPE_SPEED * 1000, beyond, alt + 30)
-    climb = destination(beyond, SORPE_RUN - 60, 900)
-    track.add(release_at + 1910 / SORPE_SPEED * 1000, climb, 220.0)
+    beyond = destination(SORPE, SORPE_RUN, exit_m)
+    over = distance_m(SORPE_RELEASE, beyond)
+    track.add(release_at + over / SORPE_SPEED * 1000, beyond, alt + 30)
+    climb = destination(beyond, SORPE_RUN - 60, exit_m)
+    track.add(release_at + (over + exit_m) / SORPE_SPEED * 1000, climb, 220.0)
     return SORPE_RELEASE
 
 
-def sorpe(plan, code, dummies, release, alt):
+def sorpe(plan, code, dummies, release, alt, radius=1300, exit_m=900):
+    """Dummy runs at `dummies` (clock times or operation ms), then the release."""
     for at in dummies:
-        sorpe_run(plan, code, T(at), alt)
-    rel = sorpe_run(plan, code, T(release), alt)
+        sorpe_run(plan, code, at if isinstance(at, int) else T(at), alt, radius, exit_m)
+    rel = sorpe_run(plan, code, T(release), alt, radius, exit_m)
     plan.drop(code, "SORPE", rel, SORPE_WATER, T(release), 0, spun=False)
 
 
