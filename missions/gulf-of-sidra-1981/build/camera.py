@@ -6,36 +6,19 @@ span, sampled every second. Framing works in screen space: with the camera pitch
 at altitude h is drawn about h·tan(pitch) above its ground point, so that offset counts too.
 The build fails if any subject would leave the frame.
 
-Scale is calibrated from the viewer: at zoom 12.5 the map is about 8 km wide, and the map area
-is about 0.8 as tall as it is wide.
+The viewer's scale and projection come from tools/framing.py.
 """
-import math
-
+import framing
+from framing import ASPECT, screen_km, width_km
 from geometry import (AA2, AIM_102, AIM_107, FE102, FE107, LOD_W, LOD_E, MISSILES, NIMITZ, S3A,
                       SU_LEAD, SU_WING, s_ms)
 
-WIDTH_KM_AT_12_5 = 8.0
-ASPECT = 0.8  # map height over width
 FILL = 0.30  # a subject may sit at most this fraction of the frame size from the centre
 MIN_ZOOM, MAX_ZOOM = 5.0, 12.0
 
 
-def width_km(zoom):
-    return WIDTH_KM_AT_12_5 * 2 ** (12.5 - zoom)
-
-
 def zoom_for(width):
-    z = 12.5 - math.log2(max(width, 2.0) / WIDTH_KM_AT_12_5)
-    return max(MIN_ZOOM, min(MAX_ZOOM, z))
-
-
-def screen_km(centre, point, alt_m, pitch):
-    """Where `point` at `alt_m` lands relative to a north-up frame centred on `centre`:
-    (km right, km up), counting the upward shift a pitched camera gives anything above ground."""
-    lat = (centre[1] + point[1]) / 2
-    x = (point[0] - centre[0]) * 111.2 * math.cos(math.radians(lat))
-    y = (point[1] - centre[1]) * 111.2 + alt_m / 1000 * math.tan(math.radians(pitch))
-    return x, y
+    return framing.zoom_for(width, MIN_ZOOM, MAX_ZOOM, 2.0)
 
 
 class Framer:

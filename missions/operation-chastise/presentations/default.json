@@ -1,0 +1,839 @@
+{
+  "format": "sokoly-presentation",
+  "version": 1,
+  "id": "default",
+  "name": "Operation Chastise",
+  "operation": "operation-chastise",
+  "chapters": [
+    {
+      "title": "Operation Chastise",
+      "at_ms": 0,
+      "available_ms": 0
+    },
+    {
+      "title": "Second wave airborne",
+      "at_ms": 180000,
+      "available_ms": 180000
+    },
+    {
+      "title": "First wave airborne",
+      "at_ms": 840000,
+      "available_ms": 840000
+    },
+    {
+      "title": "Vlieland",
+      "at_ms": 5100000,
+      "available_ms": 5100000
+    },
+    {
+      "title": "Barlow at Haldern",
+      "at_ms": 8460000,
+      "available_ms": 8460000
+    },
+    {
+      "title": "Astell at Marbeck",
+      "at_ms": 10020000,
+      "available_ms": 10020000
+    },
+    {
+      "title": "Holding over the Möhne",
+      "at_ms": 10320000,
+      "available_ms": 10320000
+    },
+    {
+      "title": "Gibson's attack",
+      "at_ms": 10920000,
+      "available_ms": 10920000
+    },
+    {
+      "title": "Hopgood",
+      "at_ms": 11160000,
+      "available_ms": 11160000
+    },
+    {
+      "title": "Martin and Young",
+      "at_ms": 11400000,
+      "available_ms": 11400000
+    },
+    {
+      "title": "McCarthy at the Sorpe",
+      "at_ms": 11940000,
+      "available_ms": 11940000
+    },
+    {
+      "title": "Maltby breaches the Möhne",
+      "at_ms": 12120000,
+      "available_ms": 12120000
+    },
+    {
+      "title": "The flood",
+      "at_ms": 12300000,
+      "available_ms": 12300000
+    },
+    {
+      "title": "To the Eder",
+      "at_ms": 12690000,
+      "available_ms": 12690000
+    },
+    {
+      "title": "Shannon and Maudslay",
+      "at_ms": 13980000,
+      "available_ms": 13980000
+    },
+    {
+      "title": "Knight breaches the Eder",
+      "at_ms": 15720000,
+      "available_ms": 15720000
+    },
+    {
+      "title": "The reserve is sent in",
+      "at_ms": 17940000,
+      "available_ms": 17940000
+    },
+    {
+      "title": "Young off Castricum",
+      "at_ms": 18780000,
+      "available_ms": 18780000
+    },
+    {
+      "title": "Brown at the Sorpe",
+      "at_ms": 20100000,
+      "available_ms": 20100000
+    },
+    {
+      "title": "Townsend at the Ennepe",
+      "at_ms": 21060000,
+      "available_ms": 21060000
+    },
+    {
+      "title": "Home in daylight",
+      "at_ms": 22440000,
+      "available_ms": 22440000
+    }
+  ],
+  "camera_track": [
+    {
+      "start_ms": 0,
+      "end_ms": 150000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 6.13385,
+          "lat": 51.83324
+        }
+      },
+      "zoom": 5.04,
+      "pitch": 0,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 150000,
+      "end_ms": 420000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -0.55044,
+          "lat": 53.30679
+        }
+      },
+      "zoom": 11.13,
+      "pitch": 40,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 4000
+    },
+    {
+      "start_ms": 420000,
+      "end_ms": 780000,
+      "target": {
+        "kind": "entity",
+        "value": "AJ-E"
+      },
+      "zoom": 10.31,
+      "pitch": 20,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 3000,
+      "focus": "AJ-E"
+    },
+    {
+      "start_ms": 780000,
+      "end_ms": 960000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -0.5616,
+          "lat": 53.30306
+        }
+      },
+      "zoom": 12.22,
+      "pitch": 40,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 3000
+    },
+    {
+      "start_ms": 960000,
+      "end_ms": 1260000,
+      "target": {
+        "kind": "entity",
+        "value": "AJ-G"
+      },
+      "zoom": 12.86,
+      "pitch": 30,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 3000,
+      "focus": "AJ-G"
+    },
+    {
+      "start_ms": 1260000,
+      "end_ms": 1440000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -0.56166,
+          "lat": 53.30309
+        }
+      },
+      "zoom": 12.22,
+      "pitch": 40,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 3000
+    },
+    {
+      "start_ms": 1440000,
+      "end_ms": 1980000,
+      "target": {
+        "kind": "entity",
+        "value": "AJ-A"
+      },
+      "zoom": 12.86,
+      "pitch": 30,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 3000,
+      "focus": "AJ-A"
+    },
+    {
+      "start_ms": 1980000,
+      "end_ms": 2220000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -0.55553,
+          "lat": 53.29971
+        }
+      },
+      "zoom": 11.48,
+      "pitch": 40,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 3000
+    },
+    {
+      "start_ms": 2220000,
+      "end_ms": 5100000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 1.36645,
+          "lat": 52.99004
+        }
+      },
+      "zoom": 6.28,
+      "pitch": 0,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 20000
+    },
+    {
+      "start_ms": 5100000,
+      "end_ms": 5880000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 4.7176,
+          "lat": 53.23087
+        }
+      },
+      "zoom": 8.84,
+      "pitch": 25,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 15000
+    },
+    {
+      "start_ms": 5880000,
+      "end_ms": 8460000,
+      "target": {
+        "kind": "entity",
+        "value": "AJ-G"
+      },
+      "zoom": 7.24,
+      "pitch": 20,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 30000,
+      "focus": "AJ-G"
+    },
+    {
+      "start_ms": 8460000,
+      "end_ms": 8820000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 6.4114,
+          "lat": 51.81799
+        }
+      },
+      "zoom": 10.29,
+      "pitch": 40,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 10000
+    },
+    {
+      "start_ms": 8820000,
+      "end_ms": 10020000,
+      "target": {
+        "kind": "entity",
+        "value": "AJ-G"
+      },
+      "zoom": 8.34,
+      "pitch": 25,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 20000,
+      "focus": "AJ-G"
+    },
+    {
+      "start_ms": 10020000,
+      "end_ms": 10320000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 6.82312,
+          "lat": 51.76448
+        }
+      },
+      "zoom": 10.3,
+      "pitch": 35,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 8000
+    },
+    {
+      "start_ms": 10320000,
+      "end_ms": 10920000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 8.01639,
+          "lat": 51.53193
+        }
+      },
+      "zoom": 8.84,
+      "pitch": 35,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 15000
+    },
+    {
+      "start_ms": 10920000,
+      "end_ms": 11160000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 8.08015,
+          "lat": 51.47229
+        }
+      },
+      "zoom": 12.57,
+      "pitch": 50,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 8000
+    },
+    {
+      "start_ms": 11160000,
+      "end_ms": 11400000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 8.05226,
+          "lat": 51.49329
+        }
+      },
+      "zoom": 11.31,
+      "pitch": 45,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 6000
+    },
+    {
+      "start_ms": 11400000,
+      "end_ms": 11940000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 8.08015,
+          "lat": 51.47229
+        }
+      },
+      "zoom": 12.57,
+      "pitch": 50,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 6000
+    },
+    {
+      "start_ms": 11940000,
+      "end_ms": 12120000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 7.96001,
+          "lat": 51.35659
+        }
+      },
+      "zoom": 13.86,
+      "pitch": 50,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 4000
+    },
+    {
+      "start_ms": 12120000,
+      "end_ms": 12300000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 8.08015,
+          "lat": 51.47229
+        }
+      },
+      "zoom": 12.57,
+      "pitch": 50,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 4000
+    },
+    {
+      "start_ms": 12300000,
+      "end_ms": 12690000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 8.0255,
+          "lat": 51.48132
+        }
+      },
+      "zoom": 11.91,
+      "pitch": 40,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 8000
+    },
+    {
+      "start_ms": 12690000,
+      "end_ms": 13980000,
+      "target": {
+        "kind": "entity",
+        "value": "AJ-G"
+      },
+      "zoom": 10.51,
+      "pitch": 25,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 20000,
+      "focus": "AJ-G"
+    },
+    {
+      "start_ms": 13980000,
+      "end_ms": 15120000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 9.06406,
+          "lat": 51.19759
+        }
+      },
+      "zoom": 11.58,
+      "pitch": 45,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 15000
+    },
+    {
+      "start_ms": 15120000,
+      "end_ms": 15720000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 9.05403,
+          "lat": 51.19293
+        }
+      },
+      "zoom": 13.26,
+      "pitch": 50,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 6000
+    },
+    {
+      "start_ms": 15720000,
+      "end_ms": 16140000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 9.05403,
+          "lat": 51.19293
+        }
+      },
+      "zoom": 13.26,
+      "pitch": 50,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 4000
+    },
+    {
+      "start_ms": 16140000,
+      "end_ms": 17940000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 8.03151,
+          "lat": 51.49581
+        }
+      },
+      "zoom": 7.59,
+      "pitch": 0,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 30000
+    },
+    {
+      "start_ms": 17940000,
+      "end_ms": 18780000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 6.77604,
+          "lat": 51.6953
+        }
+      },
+      "zoom": 7.24,
+      "pitch": 20,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 20000
+    },
+    {
+      "start_ms": 18780000,
+      "end_ms": 19860000,
+      "target": {
+        "kind": "entity",
+        "value": "AJ-A"
+      },
+      "zoom": 10.86,
+      "pitch": 30,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 15000,
+      "focus": "AJ-A"
+    },
+    {
+      "start_ms": 19860000,
+      "end_ms": 20100000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 4.6306,
+          "lat": 52.54017
+        }
+      },
+      "zoom": 10.75,
+      "pitch": 35,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 6000
+    },
+    {
+      "start_ms": 20100000,
+      "end_ms": 20580000,
+      "target": {
+        "kind": "entity",
+        "value": "AJ-F"
+      },
+      "zoom": 8.04,
+      "pitch": 20,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 15000,
+      "focus": "AJ-F"
+    },
+    {
+      "start_ms": 20580000,
+      "end_ms": 21060000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 7.96001,
+          "lat": 51.35659
+        }
+      },
+      "zoom": 13.86,
+      "pitch": 50,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 8000
+    },
+    {
+      "start_ms": 21060000,
+      "end_ms": 21600000,
+      "target": {
+        "kind": "entity",
+        "value": "AJ-O"
+      },
+      "zoom": 11.11,
+      "pitch": 30,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 10000,
+      "focus": "AJ-O"
+    },
+    {
+      "start_ms": 21600000,
+      "end_ms": 22440000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 7.40878,
+          "lat": 51.22627
+        }
+      },
+      "zoom": 12.77,
+      "pitch": 50,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 8000
+    },
+    {
+      "start_ms": 22440000,
+      "end_ms": 28800000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 2.86439,
+          "lat": 52.71789
+        }
+      },
+      "zoom": 5.58,
+      "pitch": 0,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 40000
+    },
+    {
+      "start_ms": 28800000,
+      "end_ms": 31620000,
+      "target": {
+        "kind": "entity",
+        "value": "AJ-O"
+      },
+      "zoom": 9.95,
+      "pitch": 25,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 30000,
+      "focus": "AJ-O"
+    },
+    {
+      "start_ms": 31620000,
+      "end_ms": 32100000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -0.53866,
+          "lat": 53.30946
+        }
+      },
+      "zoom": 10.67,
+      "pitch": 40,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 10000
+    }
+  ],
+  "playback_track": [
+    {
+      "start_ms": 0,
+      "end_ms": 150000,
+      "speed": 6
+    },
+    {
+      "start_ms": 150000,
+      "end_ms": 420000,
+      "speed": 10
+    },
+    {
+      "start_ms": 420000,
+      "end_ms": 780000,
+      "speed": 60
+    },
+    {
+      "start_ms": 780000,
+      "end_ms": 960000,
+      "speed": 10
+    },
+    {
+      "start_ms": 960000,
+      "end_ms": 1260000,
+      "speed": 60
+    },
+    {
+      "start_ms": 1260000,
+      "end_ms": 1440000,
+      "speed": 10
+    },
+    {
+      "start_ms": 1440000,
+      "end_ms": 1980000,
+      "speed": 60
+    },
+    {
+      "start_ms": 1980000,
+      "end_ms": 2220000,
+      "speed": 12
+    },
+    {
+      "start_ms": 2220000,
+      "end_ms": 5100000,
+      "speed": 120
+    },
+    {
+      "start_ms": 5100000,
+      "end_ms": 5880000,
+      "speed": 16
+    },
+    {
+      "start_ms": 5880000,
+      "end_ms": 8460000,
+      "speed": 120
+    },
+    {
+      "start_ms": 8460000,
+      "end_ms": 8820000,
+      "speed": 16
+    },
+    {
+      "start_ms": 8820000,
+      "end_ms": 10020000,
+      "speed": 120
+    },
+    {
+      "start_ms": 10020000,
+      "end_ms": 10320000,
+      "speed": 20
+    },
+    {
+      "start_ms": 10320000,
+      "end_ms": 10920000,
+      "speed": 30
+    },
+    {
+      "start_ms": 10920000,
+      "end_ms": 11400000,
+      "speed": 4
+    },
+    {
+      "start_ms": 11400000,
+      "end_ms": 11940000,
+      "speed": 6
+    },
+    {
+      "start_ms": 11940000,
+      "end_ms": 12120000,
+      "speed": 8
+    },
+    {
+      "start_ms": 12120000,
+      "end_ms": 12300000,
+      "speed": 4
+    },
+    {
+      "start_ms": 12300000,
+      "end_ms": 12690000,
+      "speed": 12
+    },
+    {
+      "start_ms": 12690000,
+      "end_ms": 13980000,
+      "speed": 60
+    },
+    {
+      "start_ms": 13980000,
+      "end_ms": 15120000,
+      "speed": 30
+    },
+    {
+      "start_ms": 15120000,
+      "end_ms": 16140000,
+      "speed": 6
+    },
+    {
+      "start_ms": 16140000,
+      "end_ms": 17940000,
+      "speed": 60
+    },
+    {
+      "start_ms": 17940000,
+      "end_ms": 18780000,
+      "speed": 16
+    },
+    {
+      "start_ms": 18780000,
+      "end_ms": 19860000,
+      "speed": 40
+    },
+    {
+      "start_ms": 19860000,
+      "end_ms": 20100000,
+      "speed": 8
+    },
+    {
+      "start_ms": 20100000,
+      "end_ms": 20580000,
+      "speed": 60
+    },
+    {
+      "start_ms": 20580000,
+      "end_ms": 21060000,
+      "speed": 8
+    },
+    {
+      "start_ms": 21060000,
+      "end_ms": 21600000,
+      "speed": 60
+    },
+    {
+      "start_ms": 21600000,
+      "end_ms": 22440000,
+      "speed": 10
+    },
+    {
+      "start_ms": 22440000,
+      "end_ms": 31620000,
+      "speed": 240
+    },
+    {
+      "start_ms": 31620000,
+      "end_ms": 32100000,
+      "speed": 20
+    }
+  ]
+}
