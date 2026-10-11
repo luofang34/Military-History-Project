@@ -89,7 +89,7 @@
       "pitch": 30,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 3000,
+      "transition_ms": 12000,
       "focus": "SU22-LEAD"
     },
     {
@@ -103,7 +103,7 @@
       "pitch": 20,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 6000,
+      "transition_ms": 30000,
       "focus": "DC702"
     },
     {
@@ -117,7 +117,7 @@
       "pitch": 30,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 8000,
+      "transition_ms": 64000,
       "focus": "SU22-LEAD"
     },
     {
@@ -131,12 +131,12 @@
       "pitch": 20,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 15000,
+      "transition_ms": 60000,
       "focus": "FE102"
     },
     {
       "start_ms": 660000,
-      "end_ms": 780000,
+      "end_ms": 870000,
       "target": {
         "kind": "entity",
         "value": "FE102"
@@ -145,26 +145,12 @@
       "pitch": 20,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 10000,
-      "focus": "FE102"
-    },
-    {
-      "start_ms": 780000,
-      "end_ms": 870000,
-      "target": {
-        "kind": "entity",
-        "value": "FE102"
-      },
-      "zoom": 7.24,
-      "pitch": 25,
-      "bearing": 0.0,
-      "orbit_deg_s": 0.0,
-      "transition_ms": 10000,
+      "transition_ms": 48000,
       "focus": "FE102"
     },
     {
       "start_ms": 870000,
-      "end_ms": 915000,
+      "end_ms": 954000,
       "target": {
         "kind": "entity",
         "value": "FE102"
@@ -173,21 +159,7 @@
       "pitch": 25,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 6000,
-      "focus": "FE102"
-    },
-    {
-      "start_ms": 915000,
-      "end_ms": 954000,
-      "target": {
-        "kind": "entity",
-        "value": "FE102"
-      },
-      "zoom": 8.34,
-      "pitch": 25,
-      "bearing": 0.0,
-      "orbit_deg_s": 0.0,
-      "transition_ms": 5000,
+      "transition_ms": 12000,
       "focus": "FE102"
     },
     {
@@ -201,7 +173,7 @@
       "pitch": 20,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 4000,
+      "transition_ms": 6000,
       "focus": "FE102"
     },
     {
@@ -211,11 +183,11 @@
         "kind": "entity",
         "value": "AA2-ATOLL"
       },
-      "zoom": 11.91,
-      "pitch": 15,
+      "zoom": 12.0,
+      "pitch": 8,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 1000,
+      "transition_ms": 500,
       "focus": "AA2-ATOLL"
     },
     {
@@ -229,7 +201,7 @@
       "pitch": 20,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 2000,
+      "transition_ms": 1875,
       "focus": "FE102"
     },
     {
@@ -253,11 +225,11 @@
         "kind": "entity",
         "value": "AIM9-102"
       },
-      "zoom": 11.91,
-      "pitch": 15,
+      "zoom": 12.0,
+      "pitch": 8,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 800,
+      "transition_ms": 500,
       "focus": "AIM9-102"
     },
     {
@@ -271,7 +243,7 @@
       "pitch": 15,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 1500,
+      "transition_ms": 1250,
       "focus": "SU22-WING"
     },
     {
@@ -285,7 +257,7 @@
       "pitch": 15,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 3000,
+      "transition_ms": 1875,
       "focus": "FE107"
     },
     {
@@ -296,10 +268,10 @@
         "value": "AIM9-107"
       },
       "zoom": 12.0,
-      "pitch": 15,
+      "pitch": 8,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 800,
+      "transition_ms": 500,
       "focus": "AIM9-107"
     },
     {
@@ -313,7 +285,7 @@
       "pitch": 15,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 1500,
+      "transition_ms": 1000,
       "focus": "SU22-LEAD"
     },
     {
@@ -343,7 +315,7 @@
       "pitch": 20,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 8000,
+      "transition_ms": 32000,
       "focus": "FE102"
     },
     {
@@ -360,7 +332,7 @@
       "pitch": 0,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
-      "transition_ms": 30000
+      "transition_ms": 72000
     }
   ],
   "playback_track": [
@@ -411,8 +383,13 @@
     },
     {
       "start_ms": 987000,
-      "end_ms": 1038000,
+      "end_ms": 1010000,
       "speed": 1.25
+    },
+    {
+      "start_ms": 1010000,
+      "end_ms": 1038000,
+      "speed": 2
     },
     {
       "start_ms": 1038000,
@@ -449,5 +426,161 @@
       "end_ms": 1500000,
       "speed": 24
     }
-  ]
+  ],
+  "extensions": {
+    "shot_intents": {
+      "0": {
+        "intent": "Where: the carrier, the claimed line across the gulf, and Ghurdabiya on the coast.",
+        "shows": [
+          "NIMITZ",
+          "LOD-WEST",
+          "LOD-EAST",
+          "SU22-LEAD"
+        ]
+      },
+      "20000": {
+        "intent": "Down to the two Fitters leaving Ghurdabiya: the threat, from the Libyan side.",
+        "shows": [
+          "SU22-LEAD",
+          "SU22-WING"
+        ]
+      },
+      "60000": {
+        "intent": "Cross to the S-3A off the coast as Nimitz calls \"Buster North\": the first American to run.",
+        "shows": [
+          "DC702",
+          "SU22-LEAD"
+        ]
+      },
+      "150000": {
+        "intent": "Back with the Fitters climbing out over the gulf: who is coming, and how fast.",
+        "shows": [
+          "SU22-LEAD",
+          "SU22-WING"
+        ]
+      },
+      "360000": {
+        "intent": "The Fast Eagles on their racetrack, with the Fitters on their way in: hunter and hunted in one frame.",
+        "shows": [
+          "FE102",
+          "FE107",
+          "SU22-LEAD"
+        ]
+      },
+      "660000": {
+        "intent": "Venlet's radar contact: the E-2C turns the section south and the gap starts to close.",
+        "shows": [
+          "FE102",
+          "SU22-LEAD"
+        ]
+      },
+      "870000": {
+        "intent": "The Biddle tape's range calls, twenty miles down to eight: the frame tightens as the pairs close head-on at a thousand knots.",
+        "shows": [
+          "FE102",
+          "FE107",
+          "SU22-LEAD",
+          "SU22-WING"
+        ]
+      },
+      "954000": {
+        "intent": "Tally-ho: the Fitters in welded wing, and Kleemann holding his nose on their leader.",
+        "shows": [
+          "FE102",
+          "FE107",
+          "SU22-LEAD",
+          "SU22-WING"
+        ]
+      },
+      "983000": {
+        "intent": "Ride the Atoll: fired head-on, it passes under 102.",
+        "shows": [
+          "AA2-ATOLL",
+          "SU22-LEAD",
+          "FE102",
+          "FE107"
+        ]
+      },
+      "987000": {
+        "intent": "Pull back to the four as they pass and the Libyans break apart.",
+        "shows": [
+          "FE102",
+          "FE107",
+          "SU22-LEAD",
+          "SU22-WING"
+        ]
+      },
+      "1010000": {
+        "intent": "Kleemann turns hard after the wingman and waits for him to clear the sun.",
+        "shows": [
+          "FE102",
+          "SU22-WING"
+        ]
+      },
+      "1038000": {
+        "intent": "Ride Kleemann's Sidewinder to the wingman's tailpipe.",
+        "shows": [
+          "AIM9-102",
+          "FE102",
+          "SU22-WING"
+        ]
+      },
+      "1041000": {
+        "intent": "Stay on the wingman as he goes down: the first kill.",
+        "shows": [
+          "SU22-WING",
+          "FE102"
+        ]
+      },
+      "1050000": {
+        "intent": "Cross to Muczynski behind the leader: \"Want me shoot my guy down?\"",
+        "shows": [
+          "FE107",
+          "SU22-LEAD"
+        ]
+      },
+      "1070000": {
+        "intent": "Ride Muczynski's one good Sidewinder to the leader.",
+        "shows": [
+          "AIM9-107",
+          "FE107",
+          "SU22-LEAD"
+        ]
+      },
+      "1073000": {
+        "intent": "Stay on the leader as his tail comes off, and the parachute that may not open.",
+        "shows": [
+          "SU22-LEAD",
+          "FE107"
+        ]
+      },
+      "1086000": {
+        "intent": "Pull back to the whole scene: two falling Fitters, two F-14s, and permission to defend themselves arriving after the kills.",
+        "shows": [
+          "FE102",
+          "FE107",
+          "SU22-LEAD",
+          "SU22-WING"
+        ]
+      },
+      "1140000": {
+        "intent": "The section rejoins and turns north for Nimitz.",
+        "shows": [
+          "FE102",
+          "FE107"
+        ]
+      },
+      "1260000": {
+        "intent": "Pull out to the whole gulf and the line again, as Libya searches for its pilots.",
+        "shows": [
+          "NIMITZ",
+          "LOD-WEST",
+          "LOD-EAST",
+          "SU22-LEAD",
+          "FE102",
+          "FE107"
+        ]
+      }
+    }
+  }
 }

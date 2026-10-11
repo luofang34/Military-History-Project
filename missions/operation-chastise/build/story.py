@@ -3,8 +3,10 @@
 Clock times are BDST (UTC+2), which German summer time matched that night. Briefings quote or
 paraphrase the sources named on each note; the README lists them.
 """
+from composition import INTENTS
 from crews import fate_note
 import ledger
+from pacing import with_beats
 from evidence import DISPUTES
 from flights import LOSS
 from sites import DURATION, L
@@ -33,21 +35,39 @@ CHAPTERS = [
     ("Home in daylight", "03:39"),
 ]
 
-# (from, until, speed): about twenty minutes of viewing. A still map plays fast; its briefing
-# stays up into the action that follows.
-PACING = [
+# (from, until, speed). A still map plays fast; its briefing stays up into the action that
+# follows. Repeated take-offs and long transits play fast, and the attacks play at ATTACK
+# except through each run, which `pacing` slows to RUN.
+BASE_PACING = [
     ("21:25", "21:27:55", 36), ("21:27:55", "21:32", 10), ("21:32", "21:38", 60),
-    ("21:38", "21:41", 10), ("21:41", "21:46", 60), ("21:46", "21:49", 10),
-    ("21:49", "21:58", 60), ("21:58", "22:02", 12), ("22:02", "22:50", 120),
-    ("22:50", "23:03", 16), ("23:03", "23:46", 120), ("23:46", "23:52", 16),
+    ("21:38", "21:41", 10), ("21:41", "21:46", 60), ("21:46", "21:49", 24),
+    ("21:49", "21:58", 60), ("21:58", "22:02", 16), ("22:02", "22:50", 120),
+    ("22:50", "23:03", 20), ("23:03", "23:46", 180), ("23:46", "23:52", 16),
     ("23:52", "00:12", 120), ("00:12", "00:17", 20), ("00:17", "00:27", 30),
-    ("00:27", "00:35", 4), ("00:35", "00:44", 6), ("00:44", "00:47", 8), ("00:47", "00:50", 4),
-    ("00:50", "00:56:30", 12), ("00:56:30", "01:18", 60), ("01:18", "01:37", 30),
-    ("01:37", "01:54", 6), ("01:54", "02:24", 60), ("02:24", "02:38", 16), ("02:38", "02:56", 40),
-    ("02:56", "03:00", 8), ("03:00", "03:08", 60), ("03:08", "03:16", 8), ("03:16", "03:25", 60),
-    ("03:25", "03:39", 10), ("03:39", "06:12", 240), ("06:12", "06:15:40", 20),
+    ("00:27", "00:50", 24), ("00:50", "00:56:30", 12), ("00:56:30", "01:18", 60),
+    ("01:18", "01:37", 40), ("01:37", "01:54", 60), ("01:54", "02:24", 60),
+    ("02:24", "02:38", 20), ("02:38", "02:56", 60), ("02:56", "03:00", 12),
+    ("03:00", "03:08", 60), ("03:08", "03:16", 30), ("03:16", "03:25", 60),
+    ("03:25", "03:39", 30), ("03:39", "06:12", 240), ("06:12", "06:15:40", 20),
     ("06:15:40", "06:20", 240),
 ]
+
+# Each run plays from its lead-in to the mine's burst, and the mine's bounces slower still;
+# Young's loss off Castricum likewise.
+RUN, MINE = 4, 1.5
+RUN_BEFORE_MS, RUN_AFTER_MS = 30_000, 20_000
+MINE_BEFORE_MS, MINE_AFTER_MS = 3_000, 10_000
+
+
+def pacing(releases):
+    """The story's pacing in operation ms, slowed through each attack run in `releases`."""
+    base = [(L(a), L(b), speed) for a, b, speed in BASE_PACING]
+    beats = [(r.at_ms - RUN_BEFORE_MS, r.at_ms + RUN_AFTER_MS, RUN) for r in releases]
+    beats += [(r.at_ms - MINE_BEFORE_MS, r.at_ms + MINE_AFTER_MS, MINE) for r in releases]
+    young = L(LOSS["AJ-A"])
+    beats.append((young - 20_000, young + 20_000, RUN))
+    return with_beats(base, beats)
+
 
 ORB = "orb-617"
 DB = "dambustersblog"
@@ -192,7 +212,7 @@ def annotations(em):
     ledger.emit(em, DISPUTES, L, ESTIMATE)
 
 
-def document(operation, camera_track):
+def document(operation, camera_track, intents, pace):
     return {
         "format": "sokoly-presentation",
         "version": 1,
@@ -201,6 +221,6 @@ def document(operation, camera_track):
         "operation": operation,
         "chapters": [{"title": t, "at_ms": L(at), "available_ms": L(at)} for t, at in CHAPTERS],
         "camera_track": camera_track,
-        "playback_track": [{"start_ms": L(a), "end_ms": L(b), "speed": s}
-                           for a, b, s in PACING],
+        "playback_track": [{"start_ms": a, "end_ms": b, "speed": s} for a, b, s in pace],
+        "extensions": {INTENTS: intents},
     }

@@ -161,7 +161,7 @@ def main():
     s3a_shore, merge_shore = check_shore(tracks)
     missiles = g.missiles(tracks)
     fixed = {e: p for e, p, *_ in g.statics(tracks)}
-    shot_list = camera.shots({**tracks, **missiles}, fixed, story.t, DURATION)
+    shot_list, intents = camera.shots({**tracks, **missiles}, fixed)
     em = Emitter(OP)
     emit(em, tracks, missiles)
     story.annotations(em, NAMES)
@@ -195,7 +195,7 @@ def main():
         "media_archive": None,
     }
     (out / "operation.json").write_text(json.dumps(op, indent=2, ensure_ascii=False) + "\n")
-    doc = story.document(OP, shot_list)
+    doc = story.document(OP, shot_list, intents)
     (out / "presentations").mkdir(exist_ok=True)
     (out / "presentations" / "default.json").write_text(
         json.dumps(doc, indent=2, ensure_ascii=False) + "\n")

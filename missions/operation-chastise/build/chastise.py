@@ -140,8 +140,9 @@ def main():
     (out / "operation.json").write_text(json.dumps(op, indent=2, ensure_ascii=False) + "\n")
     ledger.write_readme(out / "README.md", DISPUTES, {s["id"]: s["name"] for s in SOURCES},
                         "chastise.py")
-    shot_list = shots.shots(plan)
-    doc = story.document(OP, shot_list)
+    pace = story.pacing(plan.releases)
+    shot_list, intents = shots.shots(plan, pace)
+    doc = story.document(OP, shot_list, intents, pace)
     (out / "presentations").mkdir(exist_ok=True)
     (out / "presentations" / "default.json").write_text(
         json.dumps(doc, indent=2, ensure_ascii=False) + "\n")

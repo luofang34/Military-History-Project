@@ -5,11 +5,13 @@ Every second of each operation needs exactly one playback cue and one camera
 cue in its default presentation, and a cue that follows an entity must find a
 valid fix for its whole span; otherwise the authored camera stalls. A map on
 which nothing moves may play for at most MAX_STILL_VIEWING_S, every event must
-lie within the operation, and every source an event cites must be declared. With
-a viewer binary, its frame report must show each shot's focus in frame and every
-briefing note readable before it leaves the screen. Reconstructed
-tracks must hand over between sources 1 ms apart, and the order of battle must
-resolve. The App itself validates the schema.
+lie within the operation, and every source an event cites must be declared. Every shot
+states its intent and what it shows, plays long enough to register, arrives by a cut or a
+visible move, and holds no longer than a viewer stays with one picture. With a viewer
+binary, its frame report must show each shot's focus and promised entities in frame, and
+every briefing note readable before it leaves the screen. Reconstructed tracks must hand
+over between sources 1 ms apart, and the order of battle must resolve. The App itself
+validates the schema.
 """
 import bisect
 import json
@@ -122,6 +124,50 @@ def still_stretches(events, presentation, duration, sources):
         yield a, b, viewing
 
 
+MIN_SHOT_S = 1.5  # a shot shorter than this flashes past before it registers
+MIN_MOVE_S = 0.8  # a move between shots shorter than this jumps; make it a cut or a move
+MAX_HOLD_S = 45.0  # a settled shot held longer than this wants a new angle or a faster pace
+
+
+def shot_timing(story):
+    """Each shot's length, move and settled hold against MIN_SHOT_S, MIN_MOVE_S and
+    MAX_HOLD_S, in seconds of viewing."""
+    pace = story["playback_track"]
+    for c in story["camera_track"]:
+        start, end = c["start_ms"], c["end_ms"]
+        settles = start + c["transition_ms"]
+        move = composition_tool.viewing_between(pace, start, settles)
+        hold = composition_tool.viewing_between(pace, settles, end)
+        if move + hold < MIN_SHOT_S:
+            yield f"shot at {start} ms plays {move + hold:.1f} s, under {MIN_SHOT_S} s"
+        if 0 < move < MIN_MOVE_S:
+            yield f"shot at {start} ms moves in {move:.2f} s; cut or take {MIN_MOVE_S} s"
+        if hold > MAX_HOLD_S:
+            yield f"shot at {start} ms holds {hold:.0f} s, over {MAX_HOLD_S:.0f} s"
+
+
+def unstated_intents(story, entities):
+    """Every shot states what it is for and which declared entities it shows, under the
+    presentation's shot_intents extension keyed by its start_ms, and no intent names a shot
+    that does not exist. Only a shot held on a place may show no entity. The frame report
+    checks that each shot keeps the entities it names in frame."""
+    stated = composition_tool.intents(story)
+    targets = {str(c["start_ms"]): c["target"]["kind"] for c in story["camera_track"]}
+    starts = set(targets)
+    declared = {e["id"] for e in entities}
+    for start in sorted(starts, key=int):
+        promise = stated.get(start)
+        if not isinstance(promise, dict) or not str(promise.get("intent", "")).strip():
+            yield f"shot at {start} ms states no intent"
+        elif not promise.get("shows") and targets[start] == "entity":
+            yield f"shot at {start} ms follows an entity but names nothing it shows"
+        else:
+            for entity in sorted(set(promise["shows"]) - declared):
+                yield f"shot at {start} ms shows {entity}, which is not declared"
+    for start in sorted(set(stated) - starts, key=int):
+        yield f"intent for {start} ms names no shot"
+
+
 APP = None
 
 
@@ -167,6 +213,8 @@ def check(mission):
     for a, b in zip(story["camera_track"], story["camera_track"][1:]):
         if a["end_ms"] != b["start_ms"]:
             problems.append(f"camera gap or overlap at {a['end_ms']}")
+    problems.extend(unstated_intents(story, op["entities"]))
+    problems.extend(shot_timing(story))
     reading = None
     if APP:
         try:
@@ -176,7 +224,7 @@ def check(mission):
             print(f"{mission.name}: composition skipped, {error}", file=sys.stderr)
     viewing = sum((c["end_ms"] - c["start_ms"]) / c["speed"]
                   for c in story["playback_track"]) / 1000
-    for problem in problems[:20]:
+    for problem in problems[:40]:
         print(f"{mission.name}: {problem}", file=sys.stderr)
     print(f"{mission.name}: {len(events)} events, {len(op['entities'])} entities, "
           f"{len(story['camera_track'])} shots, viewing {viewing:.0f} s"
