@@ -130,11 +130,16 @@ MIN_MOVE_S = 0.8  # a move between shots shorter than this jumps; make it a cut 
 MAX_HOLD_S = 45.0  # a settled shot held longer than this wants a new angle or a faster pace
 
 
+MIN_REST_S = 0.5  # a move that settles for less than this before the next one stutters
+
+
 def shot_timing(story):
     """Each shot's length, move and settled hold against MIN_SHOT_S, MIN_MOVE_S and
-    MAX_HOLD_S, in seconds of viewing."""
+    MAX_HOLD_S, in seconds of viewing; and no move that eases to a stop only to start the
+    next, which reads as a stutter rather than one flight."""
     pace = story["playback_track"]
-    for c in story["camera_track"]:
+    cues = story["camera_track"]
+    for c, after in zip(cues, cues[1:] + [None]):
         start, end = c["start_ms"], c["end_ms"]
         settles = start + c["transition_ms"]
         move = composition_tool.viewing_between(pace, start, settles)
@@ -145,6 +150,9 @@ def shot_timing(story):
             yield f"shot at {start} ms moves in {move:.2f} s; cut or take {MIN_MOVE_S} s"
         if hold > MAX_HOLD_S:
             yield f"shot at {start} ms holds {hold:.0f} s, over {MAX_HOLD_S:.0f} s"
+        if move > 0 and hold < MIN_REST_S and after is not None and after["transition_ms"] > 0:
+            yield (f"shot at {start} ms rests {hold:.1f} s between two moves; fly them as one "
+                   f"move")
 
 
 def unstated_intents(story, entities):

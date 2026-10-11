@@ -147,15 +147,12 @@ SHOTS = [
     (T0, T0 + 1500, PEARL_HARBOR, 11.5, 35, 0,
      "Pearl Harbor, where the codebreakers read the itinerary: the story starts with the "
      "intercept.", [], {"move": 0}),
-    (T0 + 1500, T0 + 3500, PEARL_HARBOR, 1.9, 0, 0,
-     "Pull back to the whole Pacific: the reach of one decrypted message.", [], {"move": 2}),
-    (T0 + 3500, T0 + 6700, (162.0, -8.0), 1.7, 0, 0,
-     "Swing across the ocean to the Solomons.", [], {"move": 3.2}),
-    (T0 + 6700, T0 + 8200, (159.8, -9.3), 6.0, 0, 0,
-     "Down onto Guadalcanal and its fighter strip.", ["FIGHTER TWO"], {"move": 1.5}),
-    (T0 + 8200, T0 + 11_200, RUNWAY, 14.2, 45, 340,
-     "Down to Fighter Two, Mitchell's P-38 at the head of the line.",
-     ["MITCHELL", "FIGHTER TWO"], {"move": 3, "focus": "MITCHELL"}),
+    # One flight, not a chain of moves that each stop before the next: the camera path pulls
+    # out over the Pacific on its own for a jump this long.
+    (T0 + 1500, T0 + 11_200, RUNWAY, 14.2, 45, 340,
+     "Fly from Pearl Harbor across the Pacific to Fighter Two on Guadalcanal, where "
+     "Mitchell's P-38 waits at the head of the line.", ["MITCHELL", "FIGHTER TWO"],
+     {"move": 9.7, "focus": "MITCHELL"}),
     (T0 + 11_200, "07:25:00", RUNWAY, 14.2, 45, 340,
      "Hold on the line of P-38s while the briefing finishes.", ["MITCHELL"],
      {"move": 0, "orbit": -0.1, "focus": "MITCHELL"}),
