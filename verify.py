@@ -15,6 +15,7 @@ validates the schema.
 """
 import bisect
 import json
+import re
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -303,6 +304,29 @@ def replay_links_match_catalog():
     return not problems
 
 
+def agents_guide_holds():
+    """AGENTS.md names only files that exist, in the repository or in every mission, and
+    constants that exist, and Pages leaves the guide unpublished."""
+    guide = (root / "AGENTS.md").read_text()
+    missions = [m for m in (root / "missions").iterdir() if m.is_dir()]
+    problems = []
+    for name in re.findall(r"`([\w./-]+\.(?:py|json|md|yml))`", guide):
+        if not (root / name).exists() and not all((m / name).exists() for m in missions):
+            problems.append(f"AGENTS.md names {name}, which does not exist")
+    sources = (root / "verify.py").read_text() + (root / "tools" / "composition.py").read_text()
+    for constant in re.findall(r"`([A-Z][A-Z_]+)`", guide):
+        if not re.search(rf"^{constant} = ", sources, re.M):
+            problems.append(f"AGENTS.md names {constant}, which verify.py and "
+                            f"tools/composition.py do not define")
+    config = (root / "_config.yml").read_text()
+    for page in ("AGENTS.md", "CLAUDE.md"):
+        if not re.search(rf"^\s*- {re.escape(page)}$", config, re.M):
+            problems.append(f"_config.yml does not exclude {page} from Pages")
+    for problem in problems:
+        print(problem, file=sys.stderr)
+    return not problems
+
+
 if __name__ == "__main__":
     APP = composition_tool.app_binary()
     print(f"composition: {APP}" if APP else
@@ -310,4 +334,5 @@ if __name__ == "__main__":
     ok = all([check(m) for m in sorted((root / "missions").iterdir()) if m.is_dir()])
     ok = catalog_lists_every_mission() and ok
     ok = replay_links_match_catalog() and ok
+    ok = agents_guide_holds() and ok
     sys.exit(0 if ok else 1)
