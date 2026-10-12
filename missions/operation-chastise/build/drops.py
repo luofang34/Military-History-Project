@@ -12,6 +12,8 @@ AFTER_MS = 30_000  # orbiting the dam once the mine has gone
 # Close behind the attacker; the dam, far ahead and lifted by the ground it stands on, comes
 # into frame only on the mine's ride.
 CHASE_ZOOM, CHASE_PITCH = 15.6, 60
+# The mine's ride looks down on the wall: from lower, the crest hides the dam's own point.
+RIDE_ZOOM, RIDE_PITCH = 16.4, 45
 MIN_BACK_S = 3.0  # a pull-back shorter than this in viewing folds into the orbit
 # Knight's run turns onto the Eder late, past the Hammerberg spit; behind him any earlier,
 # the dam is not yet ahead.
@@ -65,8 +67,8 @@ def sequence(f, plan, code, base_end, base):
         orbit_end = base_end
     f.view(release - chase_ms(code), release, {"intent": chase, "shows": [attacker]},
            attacker, CHASE_ZOOM, CHASE_PITCH, heading, move=0, focus=attacker)
-    f.view(release, landed, {"intent": ride, "shows": [mine_id, dam]}, mine_id, 16.4, 60,
-           heading, move=0.8)
+    f.view(release, landed, {"intent": ride, "shows": [mine_id, dam]}, mine_id, RIDE_ZOOM,
+           RIDE_PITCH, heading, move=0.8)
     f.view(landed, orbit_end, {"intent": burst, "shows": [dam]}, dam, 15.4, 55, heading,
            orbit=1.5, move=1)
     if orbit_end < base_end:

@@ -380,7 +380,7 @@
         "value": "UPKEEP AJ-G"
       },
       "zoom": 16.4,
-      "pitch": 60,
+      "pitch": 45,
       "bearing": 323.0,
       "orbit_deg_s": 0.0,
       "transition_ms": 1200
@@ -519,7 +519,7 @@
         "value": "UPKEEP AJ-J"
       },
       "zoom": 16.4,
-      "pitch": 60,
+      "pitch": 45,
       "bearing": 323.0,
       "orbit_deg_s": 0.0,
       "transition_ms": 1200
@@ -674,7 +674,7 @@
         "value": "UPKEEP AJ-N"
       },
       "zoom": 16.4,
-      "pitch": 60,
+      "pitch": 45,
       "bearing": 124.0,
       "orbit_deg_s": 0.0,
       "transition_ms": 1200
