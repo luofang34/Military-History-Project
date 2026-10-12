@@ -2,7 +2,8 @@
 attack run with its Upkeep.
 
 The attack run follows B.976: 60 ft (spotlight altimeter) at 220 mph ground speed, releasing
-about 400–450 yards short of the dam. The mine's path is choreographed from the bounce counts
+about 400–450 yards short of the dam; it settles at 60 ft over the water, not over the land
+before it. The mine's path is choreographed from the bounce counts
 the crews reported; its timing is not sourced.
 """
 import math
@@ -158,20 +159,20 @@ def land(track, at_ms):
     return track
 
 
-def attack_run(track, dam, heading, release_at, alt=RUN_ALT_M, release_m=RELEASE_M,
+def attack_run(track, dam, heading, release_at, shore_m, alt=RUN_ALT_M, release_m=RELEASE_M,
                lead_in_m=4500.0, climb_turn=-60.0, pull_up_m=2500.0):
-    """The bombing run: established at 60 ft about 2 km out, release `release_m` short of the
-    dam at `release_at`, then over the crest and a climbing turn (`climb_turn`, negative to
-    port). Returns the release point."""
+    """The bombing run: down to 60 ft where it reaches the water, `shore_m` before the release
+    `release_m` short of the dam at `release_at`, then over the crest and a climbing turn
+    (`climb_turn`, negative to port). Returns the release point."""
     v = RUN_SPEED
     back = heading + 180
     release = destination(dam, back, release_m)
     start = destination(release, back, lead_in_m)
-    settled = destination(release, back, 2000.0)
+    settled = destination(release, back, shore_m)
     start_at = round(release_at - (lead_in_m / v) * 1000)
     if track.end < start_at:
         track.add(start_at, start, 90.0)
-    track.add(release_at - (2000.0 / v) * 1000, settled, alt)
+    track.add(release_at - (shore_m / v) * 1000, settled, alt)
     track.add(release_at, release, alt)
     over = destination(dam, heading, 150.0)
     track.add(release_at + ((release_m + 150.0) / v) * 1000, over, alt + 10)

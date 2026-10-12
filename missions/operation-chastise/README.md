@@ -108,6 +108,9 @@ and, on the map, folds overlapping members into one symbol under the formation t
   - **Möhne**: runs down the lake on 323°, perpendicular to the crest, toward its water face.
     - Each attacker waits in a left-hand circuit over the hills south of the lake (B.976
       orders left-hand circuits) that runs tangent into the run.
+    - The run comes down to 60 ft where it reaches the water past the Heversberg spit, about
+      1.4 km before the release. That is where the terrain model the viewer draws meets the
+      lake surface (`SHORE_M`, ±20 m).
     - Release is at 60 ft and 220 mph, 425 yards short. A climbing turn to port follows.
     - Gibson flies a dummy run, then draws the flak beside Martin, Young and Maltby. On
       Maltby's run he flies to starboard and Martin to port (dambustersblog). The sides on
@@ -119,7 +122,8 @@ and, on the map, folds overlapping members into one symbol under the formation t
     is dropped unspun on the water side of the crest. McCarthy comes in over the church
     steeple of St. Antonius, Langscheid, and onto the crest at its north-west end.
   - **Ennepe**: a run perpendicular to the crest from the lake to the south. Townsend reported
-    355° magnetic.
+    355° magnetic. It crosses the hills south of the lake above 60 ft and comes down to it at
+    the shore, about 360 m before the release.
   - Dummy-run counts:
     - Shannon: four before his release.
     - Maudslay and Knight: one each.

@@ -33,9 +33,9 @@ from targets import SORPE_RUN, STEEPLE
 from crews import ORB_CREWS, PRISONERS
 from evidence import DISPUTES, time_of
 from flights import LOSS, MCCARTHY_HOME, MCCARTHY_OUT, SHOT_DOWN
-from sites import (CRASH, DURATION, EDER, ENNEPE, L, LANDED, MOHNE, SORPE, TAKE_OFF, WABERN,
-                   entities)
-from manoeuvre import ENVELOPE_MPH
+from sites import (CRASH, DURATION, EDER, ENNEPE, L, LANDED, MOHNE, SHORE_M, SORPE, TAKE_OFF,
+                   WABERN, entities)
+from manoeuvre import ENVELOPE_MPH, RELEASE_M, RUN_ALT_M
 from track import FT, MPH, bearing_deg, distance_m
 
 DAMS = {"MÖHNE": MOHNE, "EDER": EDER, "SORPE": SORPE, "ENNEPE": ENNEPE}
@@ -84,6 +84,24 @@ def check_releases(plan):
         for a, b in zip(times, times[1:]):
             if b - a < 180_000:
                 raise ValueError(f"releases at the {dam} only {(b - a) / 1000:.0f} s apart")
+
+
+def check_shores(plan):
+    """Every spun run comes down to its 60 ft where it reaches the water (SHORE_M), not over
+    the land before it."""
+    for r in plan.releases:
+        if not r.spun:
+            continue
+        track = plan.tracks[r.code]
+        at = r.at_ms
+        while at > r.at_ms - 60_000 and track.at(at - 250)[1] <= RUN_ALT_M + 0.5:
+            at -= 250
+        out = distance_m(track.at(at)[0], r.point)
+        # A late release is nearer the dam, on the same line, so further from the water's edge.
+        shore = SHORE_M[r.target] + RELEASE_M - distance_m(r.point, DAMS[r.target])
+        if out > shore + 50:
+            raise ValueError(f"{r.code} is down at 60 ft {out:.0f} m before its release, over "
+                             f"the land before the {r.target}'s water")
 
 
 def check_anchors(plan):
@@ -226,6 +244,7 @@ def all(plan):  # noqa: A001 - the module's one entry point, called as checks.al
     check_crews()
     check_speeds(plan)
     check_releases(plan)
+    check_shores(plan)
     check_anchors(plan)
     check_damage(plan)
     check_mccarthy(plan)
