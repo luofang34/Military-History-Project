@@ -40,6 +40,10 @@ the key of the moment or dispute ([`tools/facts.py`](tools/facts.py)).
 
 ## Contributing
 
+The source is at [github.com/luofang34/Military-History-Project](https://github.com/luofang34/Military-History-Project).
+Corrections and sources are welcome as
+[issues](https://github.com/luofang34/Military-History-Project/issues), and changes as
+[pull requests](https://github.com/luofang34/Military-History-Project/pulls).
 [AGENTS.md](https://github.com/luofang34/Military-History-Project/blob/master/AGENTS.md)
 describes how a mission is built, sourced, shot and checked, for people and coding agents
 alike. `python3 verify.py` is the gate before every commit.
