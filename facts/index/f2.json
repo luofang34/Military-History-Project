@@ -5,5 +5,12 @@
   "view": "operation-vengeance",
   "view_s": 5250.0,
   "lead_s": 0.0
+ },
+ "f25484b3-8d9e-5f04-a8d5-7f9fc83ba800": {
+  "key": "operation-vengeance/moore-turns-back",
+  "file": "1943/04/17/z4-15-8.jsonl",
+  "view": "operation-vengeance",
+  "view_s": 690.0,
+  "lead_s": 5.0
  }
 }

@@ -5,5 +5,12 @@
   "view": "operation-vengeance",
   "view_s": 7770.0,
   "lead_s": 5.0
+ },
+ "0dcd7b3a-d031-513d-a962-a783fd6304c8": {
+  "key": "gulf-of-sidra-1981/wingman-down",
+  "file": "1981/08/19/z4-8-6.jsonl",
+  "view": "gulf-of-sidra-1981",
+  "view_s": 1041.0,
+  "lead_s": 5.0
  }
 }

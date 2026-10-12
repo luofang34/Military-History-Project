@@ -5,12 +5,12 @@
   428 km/h, A6M2 110–533 km/h. Legs on the ground are only held to the upper bound.
 - T1-323's last fix is its wreck and T1-326's its ditching, each where the sources put it.
 - Hine is still tracked until the camera stops following him.
-- Each timed estimate in build/evidence.py lies within its records' times, or is flagged as
+- Each timed estimate in build/evidence/ lies within its records' times, or is flagged as
   lying outside them with its reason.
 """
 import ledger
 import presentation
-from evidence import DISPUTES
+from evidence import DISPUTES, MOMENTS
 from sites import BETTYS, CRASH_T1_323, DITCH_T1_326, L, P38S, UGAKI, YAMAMOTO, ZEROS
 from track import distance_m
 
@@ -67,6 +67,7 @@ def check_camera_follow(hine_end):
 
 def all(tracks, hine_end):  # noqa: A001 - the module's one entry point, called as checks.all
     ledger.check(DISPUTES, L)
+    ledger.check_moments(MOMENTS, L)
     check_speeds(tracks)
     check_anchors(tracks)
     check_camera_follow(hine_end)

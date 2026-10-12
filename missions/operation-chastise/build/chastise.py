@@ -19,7 +19,7 @@ import drops  # noqa: E402
 import facts  # noqa: E402
 import ledger  # noqa: E402
 import photographs  # noqa: E402
-from evidence import DISPUTES  # noqa: E402
+from evidence import DISPUTES, MOMENTS  # noqa: E402
 import flights  # noqa: E402
 import shots  # noqa: E402
 import story  # noqa: E402
@@ -37,7 +37,7 @@ SOURCES = [
     {"id": "reconstruction-flood", "name": "Flood fronts through the sourced towns",
      **RECONSTRUCTED},
     {"id": "reconstruction-estimate",
-     "name": "Replay estimates where sources disagree (build/evidence.py)"},
+     "name": "Replay estimates where sources disagree (build/evidence/)"},
     *photographs.sources(),
     {"id": "orb-617", "name": "617 Squadron Operations Record Book, AIR 27/2128"},
     {"id": "nav-log-aj-t", "name": "AJ-T navigator's log (Dambusters Blog transcription)"},
@@ -150,8 +150,8 @@ def main():
     photographs.attach(op, out)
     (out / "operation.json").write_text(json.dumps(op, indent=2, ensure_ascii=False) + "\n")
     ledger.write_readme(out / "README.md", DISPUTES, {s["id"]: s["name"] for s in SOURCES},
-                        "chastise.py")
-    facts.write_mission(out, OP, DISPUTES, L)
+                        "chastise.py", MOMENTS)
+    facts.write_mission(out, OP, {**MOMENTS, **DISPUTES}, L)
     pace = story.pacing(plan.releases, drops.windows(plan), photographs.beats(out))
     shot_list, intents = shots.shots(plan, pace)
     checks.check_photographs(plan, out, shot_list, pace)

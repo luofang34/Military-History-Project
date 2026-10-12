@@ -32,12 +32,14 @@ shots were judged at sea level.
    front matter sets `permalink: /<id>/` and whose launch link opens the package on
    `history.sokoly.app` with `recorded-path`. Add it to `catalog.json`. Packages must not use
    Git LFS: Pages serves LFS pointers, not content.
-2. Evidence. Keep every source's account as recorded in `build/evidence.py`, using
-   `tools/ledger.py`; the ledger writes the README's dispute tables. Quote sources verbatim,
-   offensive words included, with at most a short critical note. Keep a reconstruction or an
-   estimate apart from the records, with its basis. Disputes stay in the code base; the
-   replay shows at most a one-line `brief` per dispute. A dispute's key is also its fact's
-   permanent key (see Facts and links): name it for what happened, never for its time.
+2. Evidence. Keep every source's account as recorded in `build/evidence/`, one module per
+   part of the story, using `tools/ledger.py`; the ledger writes the README's tables. Record
+   each key moment a viewer may want to link to (a take-off, an attack, a loss, a kill) as a
+   `Moment`, and each fact the sources disagree on as a `Dispute` with the replay's estimate
+   and its basis. Quote sources verbatim, offensive words included, with at most a short
+   critical note. Disputes stay in the code base; the replay shows at most a one-line `brief`
+   per dispute. A moment's or dispute's key is also its fact's permanent key (see Facts and
+   links): name it for what happened, never for its time.
 3. Story. The replay is for a general audience. Briefing notes say what is happening now, in
    a sentence or three, and must be readable in the viewing time they are on screen.
 4. Shots. List the camera as a table in which every shot has an intent (what the viewer
@@ -47,7 +49,7 @@ shots were judged at sea level.
 
 ## Facts and links
 
-Every dispute in a mission's `build/evidence.py` is also a fact of the shared layer in `facts/`,
+Every moment and dispute in a mission's `build/evidence/` is also a fact of the shared layer in `facts/`,
 built by `tools/facts.py` when the mission's generator runs. A fact's id is fixed by its key,
 `<mission>/<dispute key>`, so `https://history.sokoly.app/f/?id=<id>` keeps opening the moment it
 names however the view is regenerated. `facts/published.json` lists every id the layer has
