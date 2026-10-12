@@ -1,6 +1,6 @@
-"""The dam photographs, each shown from its solved camera just after the breach it records.
+"""The dam photographs, each shown from its solved camera once the floods have run.
 
-The photographs were taken after the raid; the story pauses on each while its brief says when
+The photographs were taken after the raid; the story ends on them while each brief says when
 and by whom. Each `media/<key>/replay.json` is the photo-pose pipeline's output: the
 photograph, its fitted camera and the drape of the photograph on the terrain. The viewer's
 photo tour plays a replay over its `duration_s` of operation time, so each window is that long
@@ -14,18 +14,19 @@ from sites import L
 MEDIA = "media"
 SPEED = 0.75
 
-# (key, dam, window start, source id, source name, brief). Consecutive windows at one dam
-# follow each other.
+# (key, dam, window start, source id, source name, brief). The photographs close the story,
+# after both floods have run their course, as the evidence the morning brought; their windows
+# follow each other to the end of the record.
 PHOTOS = [
-    ("moehne-fray", "MÖHNE", "00:50", "photo-fray",
+    ("moehne-fray", "MÖHNE", "06:19:33", "photo-fray",
      "Jerry Fray, No. 542 Squadron RAF: the Möhne breached, 17 May 1943 (public domain)",
      "Photographed the next morning, 17 May, from Flying Officer Jerry Fray's reconnaissance "
      "Spitfire: the Möhne breached, the lake pouring out through the gap."),
-    ("moehne-bundesarchiv", "MÖHNE", "00:50:09", "photo-schalber",
+    ("moehne-bundesarchiv", "MÖHNE", "06:19:42", "photo-schalber",
      "Bundesarchiv, Bild 101I-637-4192-20 / Schalber (CC BY-SA 3.0 DE)",
      "Photographed later in May 1943, from below the wall: the breach, and the rubble the "
      "water tore loose."),
-    ("eder-bundesarchiv", "EDER", "01:54", "photo-eder",
+    ("eder-bundesarchiv", "EDER", "06:19:51", "photo-eder",
      "Bundesarchiv, Bild 183-C0212-0043-012 (CC BY-SA 3.0 DE)",
      "Photographed later in May 1943: the Eder's broken wall, water still running through."),
 ]

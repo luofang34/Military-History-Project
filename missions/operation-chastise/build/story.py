@@ -33,6 +33,7 @@ CHAPTERS = [
     ("Brown at the Sorpe", "03:00"),
     ("Townsend at the Ennepe", "03:16"),
     ("Home in daylight", "03:39"),
+    ("Photographed afterwards", "06:19:33"),
 ]
 
 # (from, until, speed). A still map plays fast; its briefing stays up into the action that

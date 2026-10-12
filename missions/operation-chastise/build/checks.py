@@ -19,8 +19,8 @@
   at its sourced time.
 - The Möhne and Eder are reported destroyed and the Sorpe damaged, each only after a mine
   released at it has gone off; an aircraft shot down by flak is reported hit first.
-- Each dam photograph is shown only after its dam is reported destroyed, from a camera above
-  the ground, under one shot that selects the dam, at the photographs' pace throughout.
+- Each dam photograph is shown only after both flood fronts have run their course, from a
+  camera above the ground, under one shot that selects its dam, at the photographs' pace.
 """
 import ledger
 import photographs
@@ -196,9 +196,8 @@ def check_damage(plan):
 
 def check_photographs(plan, out, cues, pace):
     for key, dam, a, b in photographs.windows(out):
-        destroyed = min(at for _, e, at, c in plan.conditions if e == dam and c == "destroyed")
-        if a < destroyed:
-            raise ValueError(f"{key} is shown before the {dam} is reported destroyed")
+        if a < max(plan.flood.end, plan.eder_flood.end):
+            raise ValueError(f"{key} is shown before the floods have run their course")
         agl = photographs.replay(out, key)["reconstruction"]["review"]["camera_agl_m"]
         if agl < 1:
             raise ValueError(f"{key}'s camera is {agl:.1f} m above the ground")

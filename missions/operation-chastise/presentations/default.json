@@ -109,6 +109,11 @@
       "title": "Home in daylight",
       "at_ms": 22440000,
       "available_ms": 22440000
+    },
+    {
+      "title": "Photographed afterwards",
+      "at_ms": 32073000,
+      "available_ms": 32073000
     }
   ],
   "camera_track": [
@@ -542,46 +547,12 @@
     },
     {
       "start_ms": 12300000,
-      "end_ms": 12309000,
-      "target": {
-        "kind": "point",
-        "value": {
-          "lon": 8.05892,
-          "lat": 51.48985
-        }
-      },
-      "zoom": 14.18,
-      "pitch": 50,
-      "bearing": 0.0,
-      "orbit_deg_s": 0.0,
-      "transition_ms": 0,
-      "focus": "MÖHNE"
-    },
-    {
-      "start_ms": 12309000,
-      "end_ms": 12318000,
-      "target": {
-        "kind": "point",
-        "value": {
-          "lon": 8.05892,
-          "lat": 51.48985
-        }
-      },
-      "zoom": 14.18,
-      "pitch": 50,
-      "bearing": 0.0,
-      "orbit_deg_s": 0.0,
-      "transition_ms": 0,
-      "focus": "MÖHNE"
-    },
-    {
-      "start_ms": 12318000,
       "end_ms": 12690000,
       "target": {
         "kind": "point",
         "value": {
-          "lon": 8.02535,
-          "lat": 51.4814
+          "lon": 8.0255,
+          "lat": 51.48132
         }
       },
       "zoom": 11.91,
@@ -697,29 +668,12 @@
     },
     {
       "start_ms": 16140000,
-      "end_ms": 16149000,
-      "target": {
-        "kind": "point",
-        "value": {
-          "lon": 9.0586,
-          "lat": 51.1835
-        }
-      },
-      "zoom": 14.18,
-      "pitch": 50,
-      "bearing": 0.0,
-      "orbit_deg_s": 0.0,
-      "transition_ms": 0,
-      "focus": "EDER"
-    },
-    {
-      "start_ms": 16149000,
       "end_ms": 17940000,
       "target": {
         "kind": "point",
         "value": {
-          "lon": 8.1766,
-          "lat": 51.45081
+          "lon": 8.18047,
+          "lat": 51.44977
         }
       },
       "zoom": 7.41,
@@ -866,19 +820,70 @@
     },
     {
       "start_ms": 31620000,
-      "end_ms": 32100000,
+      "end_ms": 32073000,
       "target": {
         "kind": "point",
         "value": {
-          "lon": -0.53855,
-          "lat": 53.31043
+          "lon": -0.53765,
+          "lat": 53.31063
         }
       },
-      "zoom": 10.63,
+      "zoom": 10.64,
       "pitch": 40,
       "bearing": 0.0,
       "orbit_deg_s": 0.0,
       "transition_ms": 30000
+    },
+    {
+      "start_ms": 32073000,
+      "end_ms": 32082000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 8.05892,
+          "lat": 51.48985
+        }
+      },
+      "zoom": 14.18,
+      "pitch": 50,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 1125,
+      "focus": "MÖHNE"
+    },
+    {
+      "start_ms": 32082000,
+      "end_ms": 32091000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 8.05892,
+          "lat": 51.48985
+        }
+      },
+      "zoom": 14.18,
+      "pitch": 50,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 0,
+      "focus": "MÖHNE"
+    },
+    {
+      "start_ms": 32091000,
+      "end_ms": 32100000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 9.0586,
+          "lat": 51.1835
+        }
+      },
+      "zoom": 14.18,
+      "pitch": 50,
+      "bearing": 0.0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 0,
+      "focus": "EDER"
     }
   ],
   "playback_track": [
@@ -1084,11 +1089,6 @@
     },
     {
       "start_ms": 12300000,
-      "end_ms": 12318000,
-      "speed": 0.75
-    },
-    {
-      "start_ms": 12318000,
       "end_ms": 12690000,
       "speed": 12
     },
@@ -1164,16 +1164,6 @@
     },
     {
       "start_ms": 16055288,
-      "end_ms": 16140000,
-      "speed": 60
-    },
-    {
-      "start_ms": 16140000,
-      "end_ms": 16149000,
-      "speed": 0.75
-    },
-    {
-      "start_ms": 16149000,
       "end_ms": 17940000,
       "speed": 60
     },
@@ -1274,8 +1264,13 @@
     },
     {
       "start_ms": 31840000,
-      "end_ms": 32100000,
+      "end_ms": 32073000,
       "speed": 240
+    },
+    {
+      "start_ms": 32073000,
+      "end_ms": 32100000,
+      "speed": 0.75
     }
   ],
   "extensions": {
@@ -1495,18 +1490,6 @@
         ]
       },
       "12300000": {
-        "intent": "The breach as Fray photographed it from the air the next morning, shown from his camera.",
-        "shows": [
-          "MÖHNE"
-        ]
-      },
-      "12309000": {
-        "intent": "The breach from below the wall, as photographed later that month.",
-        "shows": [
-          "MÖHNE"
-        ]
-      },
-      "12318000": {
         "intent": "Pull back from the breach as the flood runs down the valley toward Neheim and its labour camp.",
         "shows": [
           "MÖHNE",
@@ -1564,12 +1547,6 @@
         ]
       },
       "16140000": {
-        "intent": "The Eder's breach as photographed later that month, shown from the camera.",
-        "shows": [
-          "EDER"
-        ]
-      },
-      "16149000": {
         "intent": "Pull out over Germany: both floods running, the survivors turning for home.",
         "shows": [
           "AJ-G",
@@ -1652,6 +1629,24 @@
         "shows": [
           "SCAMPTON",
           "AJ-O"
+        ]
+      },
+      "32073000": {
+        "intent": "The evidence afterwards: the Möhne's breach as Fray photographed it from the air the next morning, shown from his camera.",
+        "shows": [
+          "MÖHNE"
+        ]
+      },
+      "32082000": {
+        "intent": "The Möhne's breach from below the wall, as photographed later that month.",
+        "shows": [
+          "MÖHNE"
+        ]
+      },
+      "32091000": {
+        "intent": "The Eder's breach as photographed later that month, shown from the camera.",
+        "shows": [
+          "EDER"
         ]
       }
     }
