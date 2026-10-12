@@ -11,7 +11,7 @@ import math
 from evidence import time_of
 from manoeuvre import RELEASE_M, RUN_ALT_M, alongside, attack_run, circuit_to, go, turn
 from sites import (EDER, EDER_RUN, ENNEPE, HAMMERBERG, L, MOHNE, MOHNE_RUN, POWER_STATION,
-                   SORPE, SORPE_AXIS, WALDECK)
+                   SHORE_M, SORPE, SORPE_AXIS, WALDECK)
 from track import MPH, bearing_deg, destination, distance_m
 
 HOLD_ALT_M = 200.0
@@ -65,7 +65,9 @@ def mohne_run(plan, code, release_at, radius=3000, release_m=RELEASE_M, **kw):
     start_at = release_at - (lead_in / (220 * MPH)) * 1000
     circuit_to(track, MOHNE_START, MOHNE_RUN, radius, start_at - 1, HOLD_ALT_M)
     plan.phase(code, track.end - 1, "reconstruction-target", 400.0)
-    return attack_run(track, MOHNE, MOHNE_RUN, release_at, release_m=release_m,
+    # A late release keeps the run's line, so it reaches the water as far before the dam.
+    shore = SHORE_M["MÖHNE"] + RELEASE_M - release_m
+    return attack_run(track, MOHNE, MOHNE_RUN, release_at, shore, release_m=release_m,
                       lead_in_m=lead_in, **kw)
 
 
@@ -222,7 +224,7 @@ def ennepe_run(plan, release_at):
     start_at = release_at - 3000 / (220 * MPH) * 1000
     circuit_to(track, ENNEPE_START, ENNEPE_RUN, 2000, start_at, 250)
     plan.phase("AJ-O", start_at - 1, "reconstruction-target", 400.0)
-    return attack_run(track, ENNEPE, ENNEPE_RUN, release_at, lead_in_m=3000)
+    return attack_run(track, ENNEPE, ENNEPE_RUN, release_at, SHORE_M["ENNEPE"], lead_in_m=3000)
 
 
 def ennepe(plan):

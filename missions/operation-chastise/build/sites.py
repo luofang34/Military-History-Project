@@ -42,6 +42,12 @@ SORPE = (7.96872, 51.35181)
 SORPE_AXIS = 132.0
 ENNEPE = (7.4092, 51.2415)
 ENNEPE_AXIS = 91.0
+# How far before its release each spun run reaches the reservoir, where it settles at 60 ft:
+# where the Terrarium DEM the viewer draws comes within 3 m of the lake surface at the release,
+# sampled every 20 m along the run. An estimate from today's terrain model (±20 m); the
+# reservoirs were full in May 1943. Before it the Möhne's run crosses the Heversberg spit, the
+# Ennepe's the hills south of the lake.
+SHORE_M = {"MÖHNE": 1420.0, "EDER": 460.0, "ENNEPE": 360.0}
 BEVER = (7.37026, 51.14183)
 LISTER = (7.83772, 51.09413)
 DIEMEL = (8.72797, 51.37788)
