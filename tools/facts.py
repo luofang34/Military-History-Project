@@ -6,6 +6,9 @@ A fact is a dispute of a mission's build/evidence.py: what each source records, 
 the replay adopts. Its key, `<mission>/<dispute key>`, is written once and never carries the
 adopted time, which a later reading may revise; its id is the UUIDv5 of the key under NAMESPACE.
 A fact that must be renamed or merged keeps its old id in facts/aliases.json, old id to new.
+facts/published.json lists every id the layer has ever held; building the layer only adds to
+it, and the check fails while a listed id is neither a fact nor an alias of one, so a renamed
+key cannot silently break the links already shared.
 
 Each mission generator writes its facts to missions/<id>/facts.jsonl and rebuilds the layer:
 
@@ -119,6 +122,11 @@ def aliases():
     return json.loads(path.read_text()) if path.exists() else {}
 
 
+def published():
+    path = LAYER / "published.json"
+    return json.loads(path.read_text()) if path.exists() else []
+
+
 def every_fact(root=REPO):
     return [f for m in sorted((root / "missions").iterdir()) if m.is_dir()
             for f in view_facts(m)]
@@ -148,10 +156,15 @@ def build(root=REPO):
     return layer
 
 
-def write(layer):
-    """Replaces the layer's built files with `layer`, keeping aliases.json."""
+KEPT = ("aliases.json", "published.json")  # written by hand, or only ever added to
+
+
+def write(layer, root=REPO):
+    """Replaces the layer's built files with `layer`, keeping its aliases, and adds the ids
+    it holds to the published ones."""
+    ids = sorted(set(published()) | {f["id"] for f in every_fact(root)})
     for path in LAYER.rglob("*"):
-        if path.is_file() and path.name != "aliases.json":
+        if path.is_file() and path.name not in KEPT:
             path.unlink()
     for path in sorted(LAYER.rglob("*"), reverse=True):
         if path.is_dir() and not any(path.iterdir()):
@@ -159,6 +172,7 @@ def write(layer):
     for rel, text in layer.items():
         (LAYER / rel).parent.mkdir(parents=True, exist_ok=True)
         (LAYER / rel).write_text(text)
+    (LAYER / "published.json").write_text(json.dumps(ids, indent=1) + "\n")
 
 
 def check(root=REPO):
@@ -167,12 +181,18 @@ def check(root=REPO):
     problems = []
     layer = build(root)
     built = {str(p.relative_to(LAYER)): p.read_text() for p in LAYER.rglob("*")
-             if p.is_file() and p.name != "aliases.json"}
+             if p.is_file() and p.name not in KEPT}
     if built != layer:
         stale = sorted(set(built) ^ set(layer) | {k for k in layer if built.get(k) != layer[k]})
         problems.append(f"facts/ is not what the missions' facts build ({stale[:3]}); run "
                         f"python3 tools/facts.py")
     live = {f["id"] for f in every_fact(root)}
+    for unlisted in sorted(live - set(published())):
+        problems.append(f"fact {unlisted} is not in facts/published.json; run "
+                        f"python3 tools/facts.py")
+    for gone in sorted(set(published()) - live - set(aliases())):
+        problems.append(f"published fact {gone} is gone; restore its key, or add it to "
+                        f"facts/aliases.json with the fact it became")
     for old, new in aliases().items():
         seen = {old}
         while new not in live:

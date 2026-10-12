@@ -235,6 +235,8 @@ Other figures that vary between sources:
   https://britishdams.org/2010conf/papers/3-1.%20Hinks%20-%20The%20Dambusters%20Revisited.pdf
 - RAF Museum, "The Dams Raid" podcast transcript:
   https://www.rafmuseum.org.uk/documents/podcasts/transcripts/the_dams_raid.pdf
+- The London Gazette, Supplement 36030, 28 May 1943, p. 2361 (Gibson's Victoria Cross; the
+  DSOs for McCarthy, Maltby and Martin): https://www.thegazette.co.uk/London/issue/36030/supplement/2361
 - Wikipedia: Operation Chastise, RAF Scampton, St Vincents Hall —
   https://en.wikipedia.org/wiki/Operation_Chastise
 - Aviation Safety Network wikibase entries for the eight losses (via

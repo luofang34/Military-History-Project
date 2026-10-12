@@ -20,9 +20,11 @@ in a detached worktree of its own, not in a checkout another session is working 
     cargo build --release --locked -p sokoly-app --manifest-path ../Sokoly-App-main/Cargo.toml
     export SOKOLY_APP="$(cd ../Sokoly-App-main && pwd)/target/release/sokoly-app"
 
-`python3 verify.py` is the gate before every commit. Each mission's line must end
-"composition checked"; "composition skipped" means the binary lacks `--frame-report` and the
-shots were not checked.
+`tools/composition.py` uses that build unless `$SOKOLY_APP` names another, and refuses one older
+than its checkout. `python3 verify.py` is the gate before every commit. Each mission's line
+must end "composition checked"; "composition skipped" means the binary lacks `--frame-report`
+and the shots were not checked, and "terrain skipped" that it lacks `--terrain-tiles` and the
+shots were judged at sea level.
 
 ## Adding a mission
 
@@ -34,7 +36,8 @@ shots were not checked.
    `tools/ledger.py`; the ledger writes the README's dispute tables. Quote sources verbatim,
    offensive words included, with at most a short critical note. Keep a reconstruction or an
    estimate apart from the records, with its basis. Disputes stay in the code base; the
-   replay shows at most a one-line `brief` per dispute.
+   replay shows at most a one-line `brief` per dispute. A dispute's key is also its fact's
+   permanent key (see Facts and links): name it for what happened, never for its time.
 3. Story. The replay is for a general audience. Briefing notes say what is happening now, in
    a sentence or three, and must be readable in the viewing time they are on screen.
 4. Shots. List the camera as a table in which every shot has an intent (what the viewer
@@ -47,9 +50,11 @@ shots were not checked.
 Every dispute in a mission's `build/evidence.py` is also a fact of the shared layer in `facts/`,
 built by `tools/facts.py` when the mission's generator runs. A fact's id is fixed by its key,
 `<mission>/<dispute key>`, so `https://history.sokoly.app/f/?id=<id>` keeps opening the moment it
-names however the view is regenerated. Never rename a published dispute key: if a fact must be
-renamed or merged, add its old id to `facts/aliases.json`, old to new. `verify.py` fails when
-`facts/` is stale, when an alias does not resolve, or when a published id changes.
+names however the view is regenerated. `facts/published.json` lists every id the layer has
+held, and building the layer only adds to it. Never rename a published dispute key: if a fact
+must be renamed or merged, add its old id to `facts/aliases.json`, old to new. `verify.py`
+fails when `facts/` is stale, when an alias does not resolve, or when a published id is
+neither a fact nor an alias of one.
 
 ## Judging the story without screenshots
 
@@ -58,7 +63,9 @@ renamed or merged, add its old id to `facts/aliases.json`, old to new. `verify.p
 prints, from the viewer's own projection of every half second of viewing: viewing seconds per
 chapter, and for each shot its intent, length, whether it arrives by cut or move, the change
 in zoom and pitch, where its focus sits, whether each entity it promises is in frame, what
-moves on screen, the symbols drawn, and the briefing it carries. Read it as an editor would:
+moves on screen, the symbols drawn, the briefing it carries, how far the camera stands above
+the ground, and through a photograph's tour how long the photograph shows and how far the
+camera jumps when the story takes it back. Read it as an editor would:
 
 - Does each shot do what its intent says, and is that worth the time it takes?
 - Two shots in a row with the same subjects and framing are one shot: merge them, or give
@@ -80,6 +87,9 @@ The camera must stay above the ground, and no promised symbol may stand where no
 known. Wide shots are still projected at sea level; there the report flags how far ground
 could lift a symbol. Take a screenshot only for what the report cannot show: a crowded frame,
 or ground the report could not read.
+The report replays the authored cameras, not the viewer's own navigation state: after a change
+to how the viewer moves its camera, take screenshots of close shots, starting with `--at` on
+one, since the viewer then hands its startup camera to the story without a frame between.
 A screenshot taken with `--at` shows the story camera only once the viewer has handed it
 back; one whose bar still reads "Recorded path in 1s" is not the story's frame.
 
@@ -88,4 +98,5 @@ back; one whose bar still reads "Recorded path in 1s" is not the story's frame.
 Both repositories are GitButler workspaces: make commits and branches with `but`. Open one PR
 per issue. Merge stacked PRs in this repository with
 `gh api -X PUT repos/luofang34/Military-History-Project/pulls/<n>/merge-async -f merge_method=rebase`
-and poll the returned status.
+and poll the returned status. In Sokoly-App, merging a PR with `--delete-branch` closes every PR
+stacked on its branch; retarget those onto `main` before the base branch is deleted.
