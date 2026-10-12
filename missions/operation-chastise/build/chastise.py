@@ -46,6 +46,8 @@ SOURCES = [
     {"id": "asn", "name": "Aviation Safety Network wikibase"},
     {"id": "wikipedia-gibson", "name": "Guy Gibson (en.wikipedia)"},
     {"id": "order-b976", "name": "5 Group Operation Order B.976 (IBCC 10501, 33688)"},
+    {"id": "gazette-36030",
+     "name": "The London Gazette, Supplement 36030, 28 May 1943, p. 2361"},
     {"id": "gibson-eca", "name": "Guy Gibson, Enemy Coast Ahead (1946)"},
     {"id": "dambustersblog", "name": "Charles Foster, Dambusters Blog"},
     {"id": "lwl-moehne", "name": "LWL Westfälische Geschichte: Möhnekatastrophe"},
