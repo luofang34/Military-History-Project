@@ -16,6 +16,7 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parents[2] / "tools"))
 import checks  # noqa: E402
 import engagement  # noqa: E402
+import facts  # noqa: E402
 import ledger  # noqa: E402
 import presentation  # noqa: E402
 import routes  # noqa: E402
@@ -211,6 +212,7 @@ def main():
     viewing = sum((c["end_ms"] - c["start_ms"]) / c["speed"]
                   for c in story["playback_track"]) / 1000
     ledger.write_readme(out / "README.md", DISPUTES, NAMES, "vengeance.py")
+    facts.write_mission(out, OP, DISPUTES, L)
     print(f"{len(em.events)} events; P-38 route {p38_speed * 3.6:.0f} km/h, "
           f"Betty route {betty_kmh:.0f} km/h; viewing {viewing:.0f} s; {checks.summary(tracks)}")
 
