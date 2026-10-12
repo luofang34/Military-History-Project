@@ -6,6 +6,7 @@ is for; tools/composition.py prints that beside what the viewer's frame report s
 """
 from drops import chase_ms, releases, sequence
 from framer import Framer
+import photographs
 from sites import CRASH, DURATION, FIXED, HAMMERBERG, L, NEHEIM_CAMP, WALDECK
 from targets import ENNEPE_START, MOHNE_START, SORPE_START, STEEPLE_START
 
@@ -17,7 +18,11 @@ POINTS = {
 }
 
 
-# (from, until, subjects, intent, framing): moves last 1.5 s of viewing unless `move` says.
+# The story's view on a dam while its photograph is shown.
+PHOTO_ZOOM, PHOTO_PITCH = 16.0, 75
+
+# (from, until, subjects, intent, framing): moves last 1.5 s of viewing unless `move` says;
+# a `photo` shot hands the map to that photograph's window.
 SHOTS = [
     (0, "21:27:30", ["SCAMPTON", "MÖHNE", "EDER", "SORPE"],
      "Where and why: the base and the three target dams on one map while the briefing sets "
@@ -82,7 +87,14 @@ SHOTS = [
     ("00:47", "00:50", ["MÖHNE", "MÖHNE RUN-IN", "UPKEEP AJ-J"],
      "Cut back to the Möhne for Maltby's attack, the one that breaks it.",
      {"pitch": 50, "pad_km": 0.8, "move": 0}),
-    ("00:50", "00:56:30", ["MÖHNE", "MÖHNE FLOOD", "NEHEIM"],
+    ("00:50", "00:50:09", ["MÖHNE"],
+     "The damage as Fray photographed it from the air the next morning, laid over the "
+     "breach from his camera while the flood starts down the valley.",
+     {"photo": "moehne-fray"}),
+    ("00:50:09", "00:50:18", ["MÖHNE"],
+     "The breach from below the wall, as photographed later that month.",
+     {"photo": "moehne-bundesarchiv"}),
+    ("00:50:18", "00:56:30", ["MÖHNE", "MÖHNE FLOOD", "NEHEIM"],
      "Pull back from the breach as the flood runs down the valley toward Neheim and its "
      "labour camp.", {"pitch": 40, "pad_km": 1.0, "move": 2.5}),
     ("00:56:30", "01:18", ["AJ-G", "AJ-L", "AJ-Z", "AJ-N", "AJ-A"],
@@ -97,7 +109,10 @@ SHOTS = [
     ("01:47", "01:54", ["EDER", "HAMMERBERG", "UPKEEP AJ-N"],
      "Tighter for Knight, the last mine: the dive past the spit, the turn onto the dam, the "
      "breach.", {"pitch": 55, "pad_km": 0.8}),
-    ("01:54", "02:24", ["AJ-G", "AJ-A", "AJ-Z", "AJ-N", "AJ-L", "MÖHNE FLOOD", "EDER FLOOD"],
+    ("01:54", "01:54:09", ["EDER"],
+     "The Eder's breach as photographed later that month, laid over the dam from the camera.",
+     {"photo": "eder-bundesarchiv"}),
+    ("01:54:09", "02:24", ["AJ-G", "AJ-A", "AJ-Z", "AJ-N", "AJ-L", "MÖHNE FLOOD", "EDER FLOOD"],
      "Pull out over Germany: both floods running, the survivors turning for home.",
      {"move": 3}),
     ("02:24", "02:38", ["AJ-C", "AJ-Z", "AJ-O", "AJ-Y", "AJ-F"],
@@ -124,18 +139,9 @@ SHOTS = [
     ("05:25", "06:12", ["AJ-O"],
      "Townsend alone over the sea in daylight.",
      {"follow": "AJ-O", "pitch": 25, "pad_km": 15, "move": 2}),
-    ("06:12", "06:19:33", ["SCAMPTON", "AJ-O"],
+    ("06:12", DURATION, ["SCAMPTON", "AJ-O"],
      "Townsend lands, the last one back, while the briefing gives the night's toll.",
      {"pitch": 40, "pad_km": 2}),
-    ("06:19:33", "06:19:42", ["MÖHNE"],
-     "The evidence afterwards: the Möhne's breach as Fray photographed it from the air the "
-     "next morning, shown from his camera.", {"focus": "MÖHNE", "pitch": 50, "pad_km": 0.8}),
-    ("06:19:42", "06:19:51", ["MÖHNE"],
-     "The Möhne's breach from below the wall, as photographed later that month.",
-     {"focus": "MÖHNE", "pitch": 50, "pad_km": 0.8, "move": 0}),
-    ("06:19:51", DURATION, ["EDER"],
-     "The Eder's breach as photographed later that month, shown from the camera.",
-     {"focus": "EDER", "pitch": 50, "pad_km": 0.8, "move": 0}),
 ]
 
 
@@ -164,6 +170,13 @@ def shots(plan, pacing):
         code = next((c for c, (r, _) in drops.items() if a < r - chase_ms(c) and r < b), None)
         # A drop's own sequence shows its mine; the wide shot around it does not.
         shows = [n for n in subjects if n not in POINTS and n != f"UPKEEP {code}"]
+
+        if "photo" in framing:
+            # The viewer's overlay tour owns the map through the window; the story's own view
+            # looks the photograph's way, so the story carries on from about where it ends.
+            f.view(a, b, {"intent": intent, "shows": shows}, subjects[0], PHOTO_ZOOM, PHOTO_PITCH,
+                   round(photographs.heading(framing["photo"]), 1), move=0, focus=subjects[0])
+            continue
 
         def base(s, e, purpose, move=framing.get("move", 1.5)):
             f.shot(s, e, subjects, {"intent": purpose, "shows": shows},
