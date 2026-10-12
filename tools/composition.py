@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """What each shot of a mission's story shows, from the viewer's own frame report.
 
-Runs `sokoly-app --operation MISSION --frame-report` (the binary named by $SOKOLY_APP, or a
-release build beside this repository), which projects every entity with the viewer's globe
-projection every half second of viewing. For each camera cue it prints its stated intent, how
+Runs `sokoly-app --operation MISSION --frame-report` (the binary named by $SOKOLY_APP, or the
+release build in ../Sokoly-App-main, which must be newer than its checkout), which projects
+every entity with the viewer's globe projection every half second of viewing. For each camera cue it prints its stated intent, how
 long it plays and how it arrives, where the focus and each promised entity sit in the frame,
 what moves on screen, the symbols drawn (folded into formations as on screen), and how much
 briefing text appears against the viewing time there is to read it; with viewing seconds per
@@ -36,6 +36,15 @@ PANEL_CHARS = 900  # what the briefing panel shows at the default window size be
 REPO = Path(__file__).resolve().parents[1]
 
 
+# The detached origin/main worktree AGENTS.md has the viewer built in; a checkout another
+# session is changing would judge the shots by unreleased code.
+MAIN = REPO.parent / "Sokoly-App-main"
+
+
+class StaleBinary(Exception):
+    """The default viewer binary is older than the checkout it is built from."""
+
+
 def app_binary():
     """The viewer binary to report with, or None."""
     named = os.environ.get("SOKOLY_APP")
@@ -43,8 +52,14 @@ def app_binary():
         if not Path(named).is_file():
             raise FileNotFoundError(f"SOKOLY_APP names {named}, which is not a file")
         return Path(named)
-    built = REPO.parent / "Sokoly-App" / "target" / "release" / "sokoly-app"
-    return built if built.is_file() else None
+    built = MAIN / "target" / "release" / "sokoly-app"
+    if not built.is_file():
+        return None
+    checked_out = subprocess.run(["git", "-C", str(MAIN), "log", "-1", "--format=%ct"],
+                                 capture_output=True, text=True, check=True).stdout
+    if built.stat().st_mtime < int(checked_out):
+        raise StaleBinary(f"{built} is older than {MAIN}'s checkout; rebuild it (AGENTS.md)")
+    return built
 
 
 class NoReport(Exception):

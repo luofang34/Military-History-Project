@@ -342,7 +342,7 @@ def agents_guide_holds():
 if __name__ == "__main__":
     APP = composition_tool.app_binary()
     print(f"composition: {APP}" if APP else
-          "composition: skipped, no viewer binary (set SOKOLY_APP or build Sokoly-App --release)")
+          "composition: skipped, no viewer binary (set SOKOLY_APP or build ../Sokoly-App-main --release)")
     ok = all([check(m) for m in sorted((root / "missions").iterdir()) if m.is_dir()])
     ok = catalog_lists_every_mission() and ok
     ok = replay_links_match_catalog() and ok
