@@ -86,12 +86,13 @@ def broken_parents(entities):
 MAX_STILL_VIEWING_S = 6.0
 
 
-def still_stretches(events, presentation, duration, sources):
+def still_stretches(events, presentation, duration, sources, media=()):
     """Stretches of the operation in which nothing on the map moves, with their viewing time.
     A still map holds the viewer for at most MAX_STILL_VIEWING_S; a briefing stays readable
     after the action resumes. Motion is counted only where the App draws it: between two
     fixes of one source that declares a motion model, within its max_gap_ms, while the
-    earlier fix still holds."""
+    earlier fix still holds, and through each of `media`'s availability spans, where the App's
+    photo tour flies the camera."""
     model = {s["id"]: s.get("max_gap_ms") for s in sources if s.get("motion")}
     fixes = defaultdict(list)
     for e in events:
@@ -110,6 +111,7 @@ def still_stretches(events, presentation, duration, sources):
                     and source in model and (gap is None or end - start <= gap) and holds
                     and pa["point"] != pb["point"] and end - start > 1):
                 moving.append((start, end))
+    moving += [(a, b) for m in media for a, b in m["spans"]]
     moving.sort()
     still, t = [], 0
     for a, b in moving:
@@ -212,7 +214,8 @@ def check(mission):
         problems.append(f"events cite source {source}, which operation.json does not declare")
     for entity, fixes in joins_across_sources(events):
         problems.append(f"{entity}: fix at {fixes} joins a fix from another source")
-    for a, b, viewing in still_stretches(events, story, duration, op["sources"]):
+    for a, b, viewing in still_stretches(events, story, duration, op["sources"],
+                                     op.get("availability", [])):
         if viewing > MAX_STILL_VIEWING_S:
             problems.append(f"nothing moves from {a} to {b} ms but it plays for {viewing:.0f} s")
     for track in ("camera_track", "playback_track"):

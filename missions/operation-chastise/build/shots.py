@@ -82,13 +82,7 @@ SHOTS = [
     ("00:47", "00:50", ["MÖHNE", "MÖHNE RUN-IN", "UPKEEP AJ-J"],
      "Cut back to the Möhne for Maltby's attack, the one that breaks it.",
      {"pitch": 50, "pad_km": 0.8, "move": 0}),
-    ("00:50", "00:50:09", ["MÖHNE"],
-     "The breach as Fray photographed it from the air the next morning, shown from his "
-     "camera.", {"focus": "MÖHNE", "pitch": 50, "pad_km": 0.8, "move": 0}),
-    ("00:50:09", "00:50:18", ["MÖHNE"],
-     "The breach from below the wall, as photographed later that month.",
-     {"focus": "MÖHNE", "pitch": 50, "pad_km": 0.8, "move": 0}),
-    ("00:50:18", "00:56:30", ["MÖHNE", "MÖHNE FLOOD", "NEHEIM"],
+    ("00:50", "00:56:30", ["MÖHNE", "MÖHNE FLOOD", "NEHEIM"],
      "Pull back from the breach as the flood runs down the valley toward Neheim and its "
      "labour camp.", {"pitch": 40, "pad_km": 1.0, "move": 2.5}),
     ("00:56:30", "01:18", ["AJ-G", "AJ-L", "AJ-Z", "AJ-N", "AJ-A"],
@@ -103,10 +97,7 @@ SHOTS = [
     ("01:47", "01:54", ["EDER", "HAMMERBERG", "UPKEEP AJ-N"],
      "Tighter for Knight, the last mine: the dive past the spit, the turn onto the dam, the "
      "breach.", {"pitch": 55, "pad_km": 0.8}),
-    ("01:54", "01:54:09", ["EDER"],
-     "The Eder's breach as photographed later that month, shown from the camera.",
-     {"focus": "EDER", "pitch": 50, "pad_km": 0.8, "move": 0}),
-    ("01:54:09", "02:24", ["AJ-G", "AJ-A", "AJ-Z", "AJ-N", "AJ-L", "MÖHNE FLOOD", "EDER FLOOD"],
+    ("01:54", "02:24", ["AJ-G", "AJ-A", "AJ-Z", "AJ-N", "AJ-L", "MÖHNE FLOOD", "EDER FLOOD"],
      "Pull out over Germany: both floods running, the survivors turning for home.",
      {"move": 3}),
     ("02:24", "02:38", ["AJ-C", "AJ-Z", "AJ-O", "AJ-Y", "AJ-F"],
@@ -133,9 +124,18 @@ SHOTS = [
     ("05:25", "06:12", ["AJ-O"],
      "Townsend alone over the sea in daylight.",
      {"follow": "AJ-O", "pitch": 25, "pad_km": 15, "move": 2}),
-    ("06:12", DURATION, ["SCAMPTON", "AJ-O"],
+    ("06:12", "06:19:33", ["SCAMPTON", "AJ-O"],
      "Townsend lands, the last one back, while the briefing gives the night's toll.",
      {"pitch": 40, "pad_km": 2}),
+    ("06:19:33", "06:19:42", ["MÖHNE"],
+     "The evidence afterwards: the Möhne's breach as Fray photographed it from the air the "
+     "next morning, shown from his camera.", {"focus": "MÖHNE", "pitch": 50, "pad_km": 0.8}),
+    ("06:19:42", "06:19:51", ["MÖHNE"],
+     "The Möhne's breach from below the wall, as photographed later that month.",
+     {"focus": "MÖHNE", "pitch": 50, "pad_km": 0.8, "move": 0}),
+    ("06:19:51", DURATION, ["EDER"],
+     "The Eder's breach as photographed later that month, shown from the camera.",
+     {"focus": "EDER", "pitch": 50, "pad_km": 0.8, "move": 0}),
 ]
 
 
