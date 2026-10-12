@@ -144,7 +144,19 @@ and, on the map, folds overlapping members into one symbol under the formation t
     site;
   - any camera shot loses its subject (`build/framer.py` fits each shot's zoom to its
     subjects);
-  - an event cites a source that `operation.json` does not declare.
+  - an event cites a source that `operation.json` does not declare;
+  - a dam photograph is shown before its dam is reported destroyed, from a camera below the
+    ground, or without the shot and pace that hand the camera to it.
+
+## Photographs
+
+Three photographs taken after the raid follow the breaches they record: Fray's aerial view
+and a view from below the wall after Maltby breaks the Möhne, and a view of the Eder after
+Knight breaks it. `build/photographs.py` places each, and its brief says when it was taken.
+Each `media/<key>/replay.json` holds the photograph, its camera and the photograph draped on
+present-day terrain. The camera was fitted by hand to the dam's crest and towers on the
+terrain model, then refined against the crest edges in the photograph; automatic image
+matching does not confirm it. Each replay's `registration` states the camera and the residual.
 
 ## Conflicts carried
 
@@ -222,4 +234,11 @@ Other figures that vary between sources:
 - Arnsberg and Bezirksregierung Arnsberg on the Möhnewiesen camp:
   https://www.bra.nrw.de/presse/die-vergessenen-opfer-der-moehne-katastrophe
 - Dam crests and sites: © OpenStreetMap contributors (ODbL), read through Overpass and
-  Nominatim. No map data is bundled.
+  Nominatim.
+- Photographs: Flying Officer Jerry Fray, No. 542 Squadron RAF, 17 May 1943, public domain
+  (Wikimedia Commons, "Mohne Dam Breached.jpg"); Bundesarchiv, Bild 101I-637-4192-20 /
+  Schalber / CC BY-SA 3.0 DE; Bundesarchiv, Bild 183-C0212-0043-012 / CC BY-SA 3.0 DE. The
+  drapes, projections and renders derived from the Bundesarchiv photographs are
+  CC BY-SA 3.0 DE.
+- Imagery and terrain bundled under `media/`: Geobasis NRW DOP and DOM1 at the Möhne, HVBG
+  Hessen DOP20 and DGM1 at the Eder, all dl-de/zero-2-0.
