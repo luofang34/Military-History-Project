@@ -3,7 +3,9 @@
 
 Runs `sokoly-app --operation MISSION --frame-report` (the binary named by $SOKOLY_APP, or the
 release build in ../Sokoly-App-main, which must be newer than its checkout), which projects
-every entity with the viewer's globe projection every half second of viewing. For each camera cue it prints its stated intent, how
+every entity with the viewer's globe projection every half second of viewing. Close shots
+stand on the ground their frames draw: the report names the DEM tiles it lacked, which are
+fetched into TERRAIN_CACHE (outside the repository) before it runs once more. For each camera cue it prints its stated intent, how
 long it plays and how it arrives, where the focus and each promised entity sit in the frame,
 what moves on screen, the symbols drawn (folded into formations as on screen), and how much
 briefing text appears against the viewing time there is to read it; with viewing seconds per
@@ -12,8 +14,11 @@ chapter. Reading this is enough to judge a shot without a screenshot.
     python3 tools/composition.py missions/operation-vengeance
 
 Findings, also returned by `findings()` for verify.py:
-- framing: after its transition, a located focus leaves the frame or comes within EDGE of its
-  border (a focus with no position, such as an aircraft after it was last seen, is noted);
+- framing: after its transition, a located focus leaves the frame, comes within EDGE of its
+  border or is hidden by the ground (a focus with no position, such as an aircraft after it
+  was last seen, is noted);
+- ground: the camera's eye stands below the ground, or a promised entity stands where no DEM
+  is known even after the missing tiles were fetched;
 - promise: an entity the shot's intent says it shows never comes near the frame while the
   shot holds, or is inside it less than SHOWN of the time it is near;
 - reading: a briefing note leaves the screen before a viewer reading at READ_CPS, who reads
@@ -27,6 +32,7 @@ import os
 import subprocess
 import sys
 import tempfile
+import urllib.request
 from collections import defaultdict
 from pathlib import Path
 
@@ -34,6 +40,11 @@ EDGE = 0.03  # of the frame: a symbol's half-width at the default window size
 READ_CPS = 20.0  # characters per second of comfortable reading
 PANEL_CHARS = 900  # what the briefing panel shows at the default window size before scrolling
 REPO = Path(__file__).resolve().parents[1]
+# The bundled style's terrain source; tiles are cached outside the repository, which must not
+# carry them.
+TERRAIN_TILES = "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"
+TERRAIN_CACHE = Path(os.environ.get("SOKOLY_TERRAIN_CACHE",
+                                    Path.home() / ".cache" / "sokoly" / "terrarium"))
 
 
 # The detached origin/main worktree AGENTS.md has the viewer built in; a checkout another
@@ -70,17 +81,59 @@ class ReportFailed(Exception):
     """The viewer binary has the option but could not write the report."""
 
 
-def frame_report(mission, app):
+class NoTerrain(Exception):
+    """The viewer binary is a build without --terrain-tiles."""
+
+
+def report_once(mission, app, terrain=True):
     with tempfile.TemporaryDirectory() as tmp:
         out = Path(tmp) / "frames.json"
-        run = subprocess.run([str(app), "--operation", str(mission), "--frame-report", str(out)],
-                             capture_output=True, text=True)
+        args = [str(app), "--operation", str(mission), "--frame-report", str(out)]
+        if terrain:
+            args += ["--terrain-tiles", str(TERRAIN_CACHE)]
+        run = subprocess.run(args, capture_output=True, text=True)
         if run.returncode != 0:
             said = (run.stderr or run.stdout).strip().splitlines()[-1:]
             if any("unknown option --frame-report" in line for line in said):
                 raise NoReport(f"{app} has no --frame-report")
+            if any("unknown option --terrain-tiles" in line for line in said):
+                raise NoTerrain(f"{app} has no --terrain-tiles")
             raise ReportFailed(f"{app} failed on {mission.name}: {said}")
         return json.loads(out.read_text())
+
+
+def fetch_tiles(tiles):
+    """Saves each [z, x, y] DEM tile not yet in TERRAIN_CACHE; returns how many it saved."""
+    saved = 0
+    for z, x, y in tiles:
+        path = TERRAIN_CACHE / str(z) / str(x) / f"{y}.png"
+        if path.exists():
+            continue
+        path.parent.mkdir(parents=True, exist_ok=True)
+        request = urllib.request.Request(TERRAIN_TILES.format(z=z, x=x, y=y),
+                                         headers={"User-Agent": "sokoly-frame-report"})
+        with urllib.request.urlopen(request, timeout=30) as response:
+            data = response.read()
+        part = path.with_suffix(".part")
+        part.write_bytes(data)
+        part.replace(path)
+        saved += 1
+    return saved
+
+
+def frame_report(mission, app):
+    """The frame report, standing on every DEM tile it draws: a pass names the tiles it
+    lacked, which are fetched for the next; a lifted centre can draw a few more."""
+    try:
+        report = report_once(mission, app)
+    except NoTerrain as error:
+        print(f"{mission.name}: terrain skipped, {error}", file=sys.stderr)
+        return report_once(mission, app, terrain=False)
+    for _ in range(2):
+        if not fetch_tiles(report.get("terrain_missing", [])):
+            break
+        report = report_once(mission, app)
+    return report
 
 
 def clock(op):
@@ -151,9 +204,30 @@ def notes(events):
     return out
 
 
+def placed(seen):
+    """Where an entity is drawn: over the ground its frame draws where the report stood the
+    sample on terrain, else at sea level. None where it is not in front of the camera."""
+    sight = seen.get("sight")
+    if sight is None:
+        return seen["x"], seen["y"]
+    if sight["x"] is None or sight["y"] is None:
+        return None
+    return sight["x"], sight["y"]
+
+
+def inside(seen):
+    """Whether an entity is drawn within the frame, hidden or not."""
+    at = placed(seen)
+    return at is not None and 0 <= at[0] <= 1 and 0 <= at[1] <= 1
+
+
 def framed(seen):
-    """Whether a projected entity lies inside the frame, clear of its border."""
-    return EDGE <= seen["x"] <= 1 - EDGE and EDGE <= seen["y"] <= 1 - EDGE
+    """Whether an entity is drawn inside the frame, clear of its border, and not hidden by the
+    ground in front of it."""
+    if seen.get("sight", {}).get("visibility") in ("BehindTerrain", "BehindGlobe"):
+        return False
+    at = placed(seen)
+    return at is not None and EDGE <= at[0] <= 1 - EDGE and EDGE <= at[1] <= 1 - EDGE
 
 
 INTENTS = "shot_intents"  # presentation extension: what each shot is for, by its start_ms
@@ -180,11 +254,14 @@ def promise_lines(at, cue, settled, shows, names):
                             f"near the frame while it holds")
             continue
         share = sum(framed(e) for e in seen) / len(seen)
+        hidden = sum(e.get("sight", {}).get("visibility") == "BehindTerrain" for e in seen)
         lines.append(f"    shows {name}: in frame {100 * share:.0f}% of the {len(seen)} of "
-                     f"{len(settled)} samples it is near it")
+                     f"{len(settled)} samples it is near it"
+                     + (f", hidden by the ground in {hidden}" if hidden else ""))
         if share < SHOWN:
             problems.append(f"shot {at(cue['start_ms'])} promises {name}, in frame only "
-                            f"{100 * share:.0f}% of the time it is near it")
+                            f"{100 * share:.0f}% of the time it is near it"
+                            + (f", hidden by the ground in {hidden} samples" if hidden else ""))
     return lines, problems
 
 
@@ -212,12 +289,13 @@ def focus_lines(at, cue, settled, names):
         return [], []
     lines, problems = [], []
     where = [next((e for e in s["entities"] if e["id"] == focus), None) for s in settled]
-    placed = [(s, e) for s, e in zip(settled, where) if e]
-    if placed:
-        xs = [e["x"] for _, e in placed]
-        ys = [e["y"] for _, e in placed]
-        inside = [e for _, e in placed if framed(e)]
-        lines.append(f"    focus in frame {100 * len(inside) / len(placed):.0f}%  "
+    located = [e for e in where if e]
+    drawn = [placed(e) for e in located if placed(e)]
+    if drawn:
+        xs = [x for x, _ in drawn]
+        ys = [y for _, y in drawn]
+        inside = [e for e in located if framed(e)]
+        lines.append(f"    focus in frame {100 * len(inside) / len(located):.0f}%  "
                      f"x {min(xs):.2f}–{max(xs):.2f}  y {min(ys):.2f}–{max(ys):.2f}  "
                      f"travels {max(max(xs) - min(xs), max(ys) - min(ys)):.2f} of the frame")
     gone = next((s for s, e in zip(settled, where) if e is None), None)
@@ -226,8 +304,42 @@ def focus_lines(at, cue, settled, names):
     for s, e in zip(settled, where):
         if e and not framed(e):
             problems.append(f"{at(s['at_ms'])}: shot {at(cue['start_ms'])} loses its focus "
-                            f"{names.get(focus, focus)} (x {e['x']:.2f} y {e['y']:.2f})")
+                            f"{names.get(focus, focus)} ({where_drawn(e)})")
             break
+    return lines, problems
+
+
+def where_drawn(seen):
+    """Where an entity is drawn, or what keeps it out of sight."""
+    visibility = seen.get("sight", {}).get("visibility", "Visible")
+    at = placed(seen)
+    if at is None or visibility != "Visible":
+        return f"{visibility}" + (f" at x {at[0]:.2f} y {at[1]:.2f}" if at else "")
+    return f"x {at[0]:.2f} y {at[1]:.2f}"
+
+
+def ground_lines(at, cue, samples, shows, names):
+    """(lines, problems) for the ground under a shot: the camera's lowest clearance above it,
+    and promised entities where no DEM is known. The report reads terrain from MIN_ZOOM on."""
+    stood = [s for s in samples if s.get("terrain")]
+    if not stood:
+        return [], []
+    lines, problems = [], []
+    clear = [s["terrain"]["eye_clearance_m"] for s in stood
+             if s["terrain"]["eye_clearance_m"] is not None]
+    if clear:
+        lines.append(f"    ground: the eye stands at least {min(clear):.0f} m above it")
+    under = next((s for s in stood if (s["terrain"]["eye_clearance_m"] or 0) < 0), None)
+    if under:
+        problems.append(f"{at(under['at_ms'])}: shot {at(cue['start_ms'])} puts the camera "
+                        f"{-under['terrain']['eye_clearance_m']:.0f} m under the ground")
+    for entity in shows:
+        unknown = next((s for s in stood for e in s["entities"] if e["id"] == entity
+                        and e.get("sight", {}).get("visibility") == "TerrainUnknown"
+                        and inside(e)), None)
+        if unknown:
+            problems.append(f"{at(unknown['at_ms'])}: shot {at(cue['start_ms'])} promises "
+                            f"{names.get(entity, entity)} over ground with no DEM")
     return lines, problems
 
 
@@ -270,9 +382,10 @@ def summarise(mission, report):
             # A shot that is all move promises what it arrives at.
             kept, broken = promise_lines(at, cue, settled or samples[-1:],
                                          stated.get("shows", []), names)
-            lines.extend(shown + kept)
+            ground, buried = ground_lines(at, cue, samples, stated.get("shows", []), names)
+            lines.extend(shown + kept + ground)
             lines.extend(motion_lines(settled, cue.get("focus"), names))
-            problems.extend(lost + broken)
+            problems.extend(lost + broken + buried)
             lines.extend(content_lines(cue, samples, briefs))
             peak = max(s["briefing_chars"] for s in samples)
             if peak > PANEL_CHARS:
@@ -292,7 +405,7 @@ def motion_lines(settled, focus, names):
     for s in settled:
         for e in s["entities"]:
             if e["id"] != focus and framed(e):
-                paths[e["id"]].append((e["x"], e["y"]))
+                paths[e["id"]].append(placed(e))
     travel = {k: max(max(x for x, _ in p) - min(x for x, _ in p),
                      max(y for _, y in p) - min(y for _, y in p)) for k, p in paths.items()}
     if not travel:
@@ -304,7 +417,9 @@ def motion_lines(settled, focus, names):
 def content_lines(cue, samples, briefs):
     """What the shot draws, how far terrain could shift it, and the briefing it carries."""
     drawn = sorted({label for s in samples for _, label in s["drawn"]})
-    lift = max((e["lift"] for s in samples for e in s["entities"]), default=0.0)
+    # Samples stood on the ground already place their symbols on it.
+    lift = max((e["lift"] for s in samples if not s.get("terrain") for e in s["entities"]),
+               default=0.0)
     lines = [f"    drawn: {', '.join(drawn[:12])}{' …' if len(drawn) > 12 else ''}"]
     if lift > 0.05:
         lines.append(f"    terrain: 100 m of ground would lift symbols {lift:.2f} of the frame")
