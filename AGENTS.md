@@ -49,12 +49,13 @@ shots were judged at sea level.
 
 ## Facts and links
 
-Every moment and dispute in a mission's `build/evidence/` is also a fact of the shared layer in `facts/`,
-built by `tools/facts.py` when the mission's generator runs. A fact's id is fixed by its key,
-`<mission>/<dispute key>`, so `https://history.sokoly.app/f/?id=<id>` keeps opening the moment it
-names however the view is regenerated. `facts/published.json` lists every id the layer has
-held, and building the layer only adds to it. Never rename a published dispute key: if a fact
-must be renamed or merged, add its old id to `facts/aliases.json`, old to new. `verify.py`
+Every moment and dispute in a mission's `build/evidence/` is also a fact of the shared layer
+in `facts/`, built by `tools/facts.py` when the mission's generator runs. A fact's id is fixed
+by its key, `<mission>/<evidence key>` (the moment's or dispute's key), so
+`https://history.sokoly.app/f/?id=<id>` keeps opening the moment it names however the view is
+regenerated. `facts/published.json` lists every id the layer has held, and building the layer
+only adds to it. Never rename a published moment or dispute key: if a fact must be renamed or
+merged, add its old id to `facts/aliases.json`, old to new. `verify.py`
 fails when `facts/` is stale, when an alias does not resolve, or when a published id is
 neither a fact nor an alias of one.
 
@@ -65,9 +66,8 @@ neither a fact nor an alias of one.
 prints, from the viewer's own projection of every half second of viewing: viewing seconds per
 chapter, and for each shot its intent, length, whether it arrives by cut or move, the change
 in zoom and pitch, where its focus sits, whether each entity it promises is in frame, what
-moves on screen, the symbols drawn, the briefing it carries, how far the camera stands above
-the ground, and through a photograph's tour how long the photograph shows and how far the
-camera jumps when the story takes it back. Read it as an editor would:
+moves on screen, the symbols drawn, the briefing it carries and the camera's height above the
+ground. Read it as an editor would:
 
 - Does each shot do what its intent says, and is that worth the time it takes?
 - Two shots in a row with the same subjects and framing are one shot: merge them, or give
@@ -89,9 +89,8 @@ The camera must stay above the ground, and no promised symbol may stand where no
 known. Wide shots are still projected at sea level; there the report flags how far ground
 could lift a symbol. Take a screenshot only for what the report cannot show: a crowded frame,
 or ground the report could not read.
-The report replays the authored cameras, not the viewer's own navigation state: after a change
-to how the viewer moves its camera, take screenshots of close shots, starting with `--at` on
-one, since the viewer then hands its startup camera to the story without a frame between.
+The report replays the authored cameras, not the viewer's own navigation state: when the
+viewer's camera movement changes, take screenshots of close shots, starting with `--at` on one.
 A screenshot taken with `--at` shows the story camera only once the viewer has handed it
 back; one whose bar still reads "Recorded path in 1s" is not the story's frame.
 
