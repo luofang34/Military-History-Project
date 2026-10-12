@@ -1,9 +1,7 @@
 # Military History Project
 
-Reconstructions of historical military operations, each published as a replayable
-operation package. Every mission is a folder under `missions/` with its own README
-(method, anchors, conflicts and sources), its generator in `build/`, and the package
-files; [`catalog.json`](catalog.json) lists them.
+Replayable reconstructions of historical military operations. Each mission is published as an
+operation package and played in the Sokoly viewer at [sokoly.app](https://sokoly.app/).
 
 | Mission | Event | Open |
 | --- | --- | --- |
@@ -13,32 +11,38 @@ files; [`catalog.json`](catalog.json) lists them.
 
 ## Opening a mission
 
-[history.sokoly.app](https://history.sokoly.app/) hosts this project description.
-Each `/<mission-id>/` link launches its replay in [sokoly.app](https://sokoly.app/)
-with the story camera. Add `?at=SECONDS` to start elsewhere or `?paused` to open paused.
-The viewer URL is `https://sokoly.app/?operation=<package URL>&recorded-path`.
-Packages must not use Git LFS, since Pages serves LFS pointers rather than their content.
+`https://history.sokoly.app/<mission-id>/` launches a mission's replay with the story camera.
+Add `?at=SECONDS` to start elsewhere or `?paused` to open paused. The viewer URL behind it is
+`https://sokoly.app/?operation=<package URL>&recorded-path`.
+
+To play a mission in the native viewer, with the Sokoly-App checkout beside this one (or
+`$VIEWER_REPO` pointing at it): `./run operation-vengeance`, optionally with
+`--at SECONDS --paused`.
 
 ## Linking to a moment
 
-Every sourced fact, such as a release, a breach or a loss, has an id that never changes,
-so a link to it survives every regeneration of the replay that shows it.
-`https://history.sokoly.app/f/?id=<id>` opens that replay five seconds before the fact,
-for example [Maltby's attack on the Möhne](https://history.sokoly.app/f/?id=f1ba1cfd-69fb-5de4-9b6b-56a6c17e441c).
-A fact's id is the UUIDv5 of its key, `<mission>/<dispute key>` ([`tools/facts.py`](tools/facts.py)).
-The facts of all missions are filed in [`facts/`](facts) by UTC day and map tile, and
-`facts/index/` maps each id to the replay that shows it.
+Every key moment and dispute recorded in a mission's `build/evidence/` is a fact with a
+permanent id. `https://history.sokoly.app/f/?id=<id>` opens its replay just before it, for
+example [Maltby's attack on the Möhne](https://history.sokoly.app/f/?id=f1ba1cfd-69fb-5de4-9b6b-56a6c17e441c).
+The id is the UUIDv5 of the fact's key, `<mission>/<evidence key>`, where the evidence key is
+the key of the moment or dispute ([`tools/facts.py`](tools/facts.py)).
 
-To play one in the native viewer, with its checkout beside this one (or `VIEWER_REPO`
-pointing at it): `./run operation-vengeance`, optionally with `--at SECONDS --paused`.
+## Repository
 
-## Adding a mission
+- `missions/<id>/`: one mission: its generator in `build/` (sources in `build/evidence/`),
+  its README of method, anchors, disputes and sources, the package files, its launch page and
+  its `facts.jsonl`.
+- `facts/`: the shared fact layer of all missions, with the index the links resolve through.
+- `f/`: the link resolver.
+- `tools/`: helpers shared by the generators and checks.
+- `verify.py`: the checks every package must pass.
+- [`catalog.json`](catalog.json): the list of missions.
 
-[AGENTS.md](https://github.com/luofang34/Military-History-Project/blob/master/AGENTS.md) describes how a mission is built, sourced, shot and checked, for
-people and coding agents alike. `python3 verify.py` checks every package before it is
-published, including each shot of its story against the viewer's own projection.
+## Contributing
 
-The Pages homepage renders this README.
+[AGENTS.md](https://github.com/luofang34/Military-History-Project/blob/master/AGENTS.md)
+describes how a mission is built, sourced, shot and checked, for people and coding agents
+alike. `python3 verify.py` is the gate before every commit.
 
 ## Licence
 
