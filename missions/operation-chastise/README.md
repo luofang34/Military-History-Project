@@ -145,15 +145,18 @@ and, on the map, folds overlapping members into one symbol under the formation t
   - any camera shot loses its subject (`build/framer.py` fits each shot's zoom to its
     subjects);
   - an event cites a source that `operation.json` does not declare;
-  - a dam photograph is shown before both floods have run their course, from a camera below
-    the ground, or without the shot and pace that hand the camera to it.
+  - a dam photograph is shown before its dam's flood front is on the map, from a camera below
+    the ground, other than as an overlay, or without the shot and pace that hand the camera
+    to it.
 
 ## Photographs
 
-Three photographs taken after the raid close the story as its evidence, once both floods have
-run their course and the last Lancaster is down: Fray's aerial view of the Möhne, a view from
-below the Möhne's wall, and a view of the Eder. `build/photographs.py` places each, and its
-brief says when it was taken.
+Three photographs taken after the raid show the damage once each dam's flood is running:
+Fray's aerial view and a view from below the wall after Maltby breaks the Möhne, and a view
+of the Eder after Knight breaks it. The viewer flies from the story's view onto each
+photograph's camera, lays the photograph over the terrain half transparent, brings it to full
+opacity and fades it out, and the story carries on from that view. `build/photographs.py`
+places each, and its brief says when it was taken.
 Each `media/<key>/replay.json` holds the photograph, its camera and the photograph draped on
 present-day terrain. The camera was fitted by hand to the dam's crest and towers on the
 terrain model, then refined against the crest edges in the photograph; automatic image

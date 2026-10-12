@@ -19,9 +19,12 @@
   at its sourced time.
 - The Möhne and Eder are reported destroyed and the Sorpe damaged, each only after a mine
   released at it has gone off; an aircraft shot down by flak is reported hit first.
-- Each dam photograph is shown only after both flood fronts have run their course, from a
-  camera above the ground, under one shot that selects its dam, at the photographs' pace.
+- Each dam photograph is shown only once its dam's flood front is on the map, from a camera
+  above the ground, as an overlay under one shot that selects its dam, at the photographs'
+  pace.
 """
+import json
+
 import ledger
 import photographs
 import waypoints as w
@@ -195,9 +198,14 @@ def check_damage(plan):
 
 
 def check_photographs(plan, out, cues, pace):
+    debrief = json.loads((out / photographs.MEDIA / "debrief.json").read_text())
+    tours = {m["id"]: m.get("tour") for u in debrief["units"] for m in u["media"]}
     for key, dam, a, b in photographs.windows(out):
-        if a < max(plan.flood.end, plan.eder_flood.end):
-            raise ValueError(f"{key} is shown before the floods have run their course")
+        if tours.get(key) != "overlay":
+            raise ValueError(f"{key} is toured as {tours.get(key)}, not laid over the story")
+        flood = {"MÖHNE": plan.flood, "EDER": plan.eder_flood}[dam]
+        if a < flood.start:
+            raise ValueError(f"{key} is shown before the {dam}'s flood front is on the map")
         agl = photographs.replay(out, key)["reconstruction"]["review"]["camera_agl_m"]
         if agl < 1:
             raise ValueError(f"{key}'s camera is {agl:.1f} m above the ground")
