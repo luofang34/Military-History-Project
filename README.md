@@ -19,6 +19,16 @@ with the story camera. Add `?at=SECONDS` to start elsewhere or `?paused` to open
 The viewer URL is `https://sokoly.app/?operation=<package URL>&recorded-path`.
 Packages must not use Git LFS, since Pages serves LFS pointers rather than their content.
 
+## Linking to a moment
+
+Every sourced fact, such as a release, a breach or a loss, has an id that never changes,
+so a link to it survives every regeneration of the replay that shows it.
+`https://history.sokoly.app/f/?id=<id>` opens that replay five seconds before the fact,
+for example [Maltby's attack on the Möhne](https://history.sokoly.app/f/?id=f1ba1cfd-69fb-5de4-9b6b-56a6c17e441c).
+A fact's id is the UUIDv5 of its key, `<mission>/<dispute key>` ([`tools/facts.py`](tools/facts.py)).
+The facts of all missions are filed in [`facts/`](facts) by UTC day and map tile, and
+`facts/index/` maps each id to the replay that shows it.
+
 To play one in the native viewer, with its checkout beside this one (or `VIEWER_REPO`
 pointing at it): `./run operation-vengeance`, optionally with `--at SECONDS --paused`.
 
