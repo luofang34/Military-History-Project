@@ -2,8 +2,9 @@
 """The fact layer: every mission's sourced facts under ids that never change, filed by when and
 where they happened, so a link to a fact outlives every regeneration of the views that show it.
 
-A fact is a dispute of a mission's build/evidence.py: what each source records, and the reading
-the replay adopts. Its key, `<mission>/<dispute key>`, is written once and never carries the
+A fact is a key moment or a dispute of a mission's build/evidence/: what each source records,
+and for a dispute the reading the replay adopts. Its key, `<mission>/<evidence key>`, is written
+once and never carries the
 adopted time, which a later reading may revise; its id is the UUIDv5 of the key under NAMESPACE.
 A fact that must be renamed or merged keeps its old id in facts/aliases.json, old id to new.
 facts/published.json lists every id the layer has ever held; building the layer only adds to
@@ -39,33 +40,36 @@ TILE_ZOOM = 4  # 16 x 16 tiles, about 2,500 km across at mid latitudes
 BIN_BYTES = 4_000_000
 LEAD_S = 5.0  # seconds of operation time a link opens before its fact
 SHARD = 2  # hex digits of the id that name its index shard
+NEAR_MS = 300_000  # how close a moment's entity must have an event in its view
 
 
 def fact_id(key):
     return str(uuid.uuid5(NAMESPACE, key))
 
 
-def mission_facts(mission, disputes, clock):
-    """The facts of `mission`'s disputes, with operation times from `clock`."""
+def mission_facts(mission, entries, clock):
+    """The facts of `mission`'s moments and disputes, with operation times from `clock`."""
     def ms(at):
         return None if at is None else clock(at)
     return [{
         "key": f"{mission}/{key}",
+        "kind": "dispute" if hasattr(d, "estimate") else "moment",
         "entity": d.entity,
         "at_ms": ms(d.at),
-        "shown_ms": ms(d.shown),
+        "shown_ms": ms(getattr(d, "shown", None)),
         "title": d.title,
-        "reading": d.estimate,
-        "basis": d.basis,
+        "reading": getattr(d, "estimate", None),
+        "basis": getattr(d, "basis", None),
         "records": [{"source": r.source, "says": r.says, "at": r.at, "latest": r.latest,
                      "quote": r.quote, "label": r.label, "checked": r.checked}
                     for r in d.records],
-    } for key, d in disputes.items()]
+    } for key, d in entries.items()]
 
 
-def write_mission(out, mission, disputes, clock):
-    """Writes `mission`'s facts beside its package in `out`, then rebuilds the layer."""
-    lines = [json.dumps(f, ensure_ascii=False) for f in mission_facts(mission, disputes, clock)]
+def write_mission(out, mission, entries, clock):
+    """Writes the facts of `mission`'s moments and disputes beside its package in `out`, then
+    rebuilds the layer."""
+    lines = [json.dumps(f, ensure_ascii=False) for f in mission_facts(mission, entries, clock)]
     (out / "facts.jsonl").write_text("\n".join(lines) + "\n")
     write(build())
 
@@ -175,10 +179,34 @@ def write(layer, root=REPO):
     (LAYER / "published.json").write_text(json.dumps(ids, indent=1) + "\n")
 
 
+def unplayed(mission):
+    """Moments of `mission` whose entity the view lacks, or shows nothing of near the moment."""
+    path = mission / "facts.jsonl"
+    if not path.exists():
+        return []
+    op = json.loads((mission / "operation.json").read_text())
+    known = {e["id"] for e in op["entities"]}
+    times = {}
+    for line in (mission / "events.jsonl").read_text().splitlines():
+        e = json.loads(line)
+        times.setdefault(e["entity"], []).append(e["observed_ms"])
+    problems = []
+    for f in (json.loads(line) for line in path.read_text().splitlines() if line):
+        if f.get("kind") != "moment" or f["entity"] is None:
+            continue
+        if f["entity"] not in known:
+            problems.append(f"moment {f['key']} is about {f['entity']}, not in the view")
+        elif not any(abs(t - f["at_ms"]) <= NEAR_MS for t in times.get(f["entity"], [])):
+            problems.append(f"moment {f['key']}: the view shows nothing of {f['entity']} "
+                            f"within {NEAR_MS // 60_000} min of it")
+    return problems
+
+
 def check(root=REPO):
     """Problems with the layer: built files out of date, aliases that do not resolve, or a
     file too large to fetch."""
-    problems = []
+    problems = [p for m in sorted((root / "missions").iterdir()) if m.is_dir()
+                for p in unplayed(m)]
     layer = build(root)
     built = {str(p.relative_to(LAYER)): p.read_text() for p in LAYER.rglob("*")
              if p.is_file() and p.name not in KEPT}

@@ -8,7 +8,7 @@
 - Take-offs and landings fall on the ORB's minute and losses on their sourced minute, at the
   crash site.
 - The ORB's crew lists give the sourced totals: 133 flew, 53 killed, three captured.
-- Each timed estimate in build/evidence.py lies within its records' times, or is flagged as
+- Each timed estimate in build/evidence/ lies within its records' times, or is flagged as
   lying outside them with its reason.
 - AJ-T turns at each point its navigator logged, within a kilometre of it at the logged
   time, and passes the two turns the replay does not time, the Haltern lakes and the
@@ -31,7 +31,7 @@ import waypoints as w
 from shots import MAX_PHOTO_PITCH
 from targets import SORPE_RUN, STEEPLE
 from crews import ORB_CREWS, PRISONERS
-from evidence import DISPUTES, time_of
+from evidence import DISPUTES, MOMENTS, time_of
 from flights import LOSS, MCCARTHY_HOME, MCCARTHY_OUT, SHOT_DOWN
 from sites import (CRASH, DURATION, EDER, ENNEPE, L, LANDED, MOHNE, SHORE_M, SORPE, TAKE_OFF,
                    WABERN, entities)
@@ -134,6 +134,7 @@ def check_crews():
 def check_evidence():
     """A timed estimate lies within its records' times, or says why not."""
     ledger.check(DISPUTES, L)
+    ledger.check_moments(MOMENTS, L)
 
 
 MAX_SNAP_DEG = 25.0

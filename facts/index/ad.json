@@ -5,5 +5,12 @@
   "view": "gulf-of-sidra-1981",
   "view_s": 660.0,
   "lead_s": 5.0
+ },
+ "ad48893c-1f57-51c2-926f-f5a9cec719cf": {
+  "key": "operation-chastise/munro-hit",
+  "file": "1943/05/16/z4-8-5.jsonl",
+  "view": "operation-chastise",
+  "view_s": 5340.0,
+  "lead_s": 5.0
  }
 }

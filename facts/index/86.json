@@ -5,5 +5,12 @@
   "view": "operation-chastise",
   "view_s": 12060.0,
   "lead_s": 0.0
+ },
+ "8685ffa3-6b0e-5bbb-8c5e-985cd0be0333": {
+  "key": "operation-chastise/gibson-landing",
+  "file": "1943/05/17/z4-7-5.jsonl",
+  "view": "operation-chastise",
+  "view_s": 24600.0,
+  "lead_s": 5.0
  }
 }

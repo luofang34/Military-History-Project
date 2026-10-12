@@ -59,7 +59,7 @@
     },
     {
       "id": "reconstruction-estimate",
-      "name": "Replay estimates where sources disagree (build/evidence.py)"
+      "name": "Replay estimates where sources disagree (build/evidence/)"
     },
     {
       "id": "photo-fray",

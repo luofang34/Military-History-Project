@@ -4,7 +4,7 @@
 Run from anywhere; writes this mission's operation.json and events.jsonl beside build/, and
 the story in presentations/default.json. The build fails if the closure stops matching the
 Biddle tape's range calls, if any camera shot would lose one of its subjects, or if an
-estimate in build/evidence.py falls outside its records without saying why.
+estimate in build/evidence/ falls outside its records without saying why.
 """
 import json
 import sys
@@ -20,7 +20,7 @@ import geometry as g  # noqa: E402
 import facts  # noqa: E402
 import ledger  # noqa: E402
 import story  # noqa: E402
-from evidence import DISPUTES  # noqa: E402
+from evidence import DISPUTES, MOMENTS  # noqa: E402
 from track import Emitter  # noqa: E402
 
 OP = "gulf-of-sidra-1981"
@@ -58,7 +58,7 @@ SOURCES = [
      "name": "Cooper, Grandolini and Delalande, Libyan Air Wars (extracts)", "zone": TRIPOLI},
     {"id": "easternorbat", "name": "EasternOrbat: Ghardabiya Air Base"},
     {"id": "reconstruction-estimate",
-     "name": "Replay estimates where sources disagree (build/evidence.py)"},
+     "name": "Replay estimates where sources disagree (build/evidence/)"},
 ]
 NAMES = {s["id"]: s["name"] for s in SOURCES}
 
@@ -158,6 +158,7 @@ def main():
     tracks = g.aircraft()
     g.check_ranges(tracks)
     ledger.check(DISPUTES, story.clock)
+    ledger.check_moments(MOMENTS, story.clock)
     tracks[g.S3A] = g.s3a()
     s3a_shore, merge_shore = check_shore(tracks)
     missiles = g.missiles(tracks)
@@ -203,8 +204,8 @@ def main():
     viewing = sum((c["end_ms"] - c["start_ms"]) / c["speed"] for c in doc["playback_track"])
     ranges = ", ".join(f"{g.separation_nm(tracks, g.FE102, g.SU_LEAD, g.s_ms(s)):.1f}"
                        for s, _ in g.RANGE_CALLS)
-    ledger.write_readme(out / "README.md", DISPUTES, NAMES, "gulf_of_sidra.py")
-    facts.write_mission(out, OP, DISPUTES, story.clock)
+    ledger.write_readme(out / "README.md", DISPUTES, NAMES, "gulf_of_sidra.py", MOMENTS)
+    facts.write_mission(out, OP, {**MOMENTS, **DISPUTES}, story.clock)
     print(f"{len(em.events)} events, {len(shot_list)} shots; viewing {viewing / 1000:.0f} s; "
           f"tape ranges {ranges} nm; S-3A >= {s3a_shore:.1f} nm and merge {merge_shore:.1f} nm "
           f"from shore")

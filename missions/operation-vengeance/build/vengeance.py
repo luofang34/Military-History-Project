@@ -5,7 +5,7 @@ Run from anywhere; writes this mission's operation.json and events.jsonl beside 
 and the story in presentations/default.json. Fixed sites and anchor times are sourced; flight
 paths between anchors are reconstructions whose `bound_m` states the horizontal
 uncertainty. The build fails if an aircraft leaves its type's speeds, a wreck strays from
-its site, or an estimate in build/evidence.py falls outside its records without saying why.
+its site, or an estimate in build/evidence/ falls outside its records without saying why.
 """
 import json
 import sys
@@ -21,7 +21,7 @@ import ledger  # noqa: E402
 import presentation  # noqa: E402
 import routes  # noqa: E402
 from track import Emitter  # noqa: E402
-from evidence import DISPUTES  # noqa: E402
+from evidence import DISPUTES, MOMENTS  # noqa: E402
 from sites import (OP, L, DURATION, BETTYS, ZEROS, YAMAMOTO, UGAKI,  # noqa: E402
                    CRASH_T1_323, DITCH_T1_326, FIXED, entities, unix_ms)
 
@@ -73,7 +73,7 @@ SOURCES = [
      "Air & Space Forces Magazine"},
     {"id": "barber-v-widnall", "name": "Barber v. Widnall, 78 F.3d 1419 (9th Cir. 1996)"},
     {"id": "reconstruction-estimate",
-     "name": "Replay estimates where sources disagree (build/evidence.py)"},
+     "name": "Replay estimates where sources disagree (build/evidence/)"},
 ]
 NAMES = {s["id"]: s["name"] for s in SOURCES}
 
@@ -211,8 +211,8 @@ def main():
         json.dumps(story, indent=2, ensure_ascii=False) + "\n")
     viewing = sum((c["end_ms"] - c["start_ms"]) / c["speed"]
                   for c in story["playback_track"]) / 1000
-    ledger.write_readme(out / "README.md", DISPUTES, NAMES, "vengeance.py")
-    facts.write_mission(out, OP, DISPUTES, L)
+    ledger.write_readme(out / "README.md", DISPUTES, NAMES, "vengeance.py", MOMENTS)
+    facts.write_mission(out, OP, {**MOMENTS, **DISPUTES}, L)
     print(f"{len(em.events)} events; P-38 route {p38_speed * 3.6:.0f} km/h, "
           f"Betty route {betty_kmh:.0f} km/h; viewing {viewing:.0f} s; {checks.summary(tracks)}")
 
