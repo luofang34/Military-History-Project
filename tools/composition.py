@@ -7,9 +7,10 @@ every entity with the viewer's globe projection every half second of viewing. Cl
 stand on the ground their frames draw: the report names the DEM tiles it lacked, which are
 fetched into TERRAIN_CACHE (outside the repository) before it runs once more. For each camera cue it prints its stated intent, how
 long it plays and how it arrives, where the focus and each promised entity sit in the frame,
-what moves on screen, the symbols drawn (folded into formations as on screen), and how much
-briefing text appears against the viewing time there is to read it; with viewing seconds per
-chapter. Reading this is enough to judge a shot without a screenshot.
+what moves on screen, the symbols drawn (folded into formations as on screen), how much
+briefing text appears against the viewing time there is to read it, and for a photograph's
+tour how long the photograph shows opaque and how far the camera jumps when the story takes
+the map back; with viewing seconds per chapter. Reading this is enough to judge a shot without a screenshot.
 
     python3 tools/composition.py missions/operation-vengeance
 
@@ -387,6 +388,8 @@ def summarise(mission, report):
             lines.extend(motion_lines(settled, cue.get("focus"), names))
             problems.extend(lost + broken + buried)
             lines.extend(content_lines(cue, samples, briefs))
+            lines.extend(photo_lines(cue, samples, report.get("photo_handoffs", []),
+                                     report["step_viewing_s"]))
             peak = max(s["briefing_chars"] for s in samples)
             if peak > PANEL_CHARS:
                 reading.append(f"{at(cue['start_ms'])}: {peak} characters of briefing on "
@@ -426,6 +429,23 @@ def content_lines(cue, samples, briefs):
     new = sum(c for a, _, c in briefs if cue["start_ms"] <= a < cue["end_ms"])
     peak = max(s["briefing_chars"] for s in samples)
     lines.append(f"    briefing: {new} new characters, up to {peak} on screen")
+    return lines
+
+
+def photo_lines(cue, samples, handoffs, step):
+    """The photograph a tour lays over the shot: how long it shows opaque, and how far the
+    camera jumps when the story takes the map back at its end."""
+    toured = [s for s in samples if s.get("photo")]
+    if not toured:
+        return []
+    label = toured[0]["photo"]["photo"]
+    opaque = sum(s["photo"]["opacity"] >= 0.95 for s in toured) * step
+    lines = [f"    photograph: {label}, opaque for {opaque:.1f} s of {len(toured) * step:.1f} s "
+             f"toured, through a {toured[-1]['photo']['field_of_view_deg']:.0f}° lens"]
+    for h in handoffs:
+        if cue["start_ms"] < h["end_ms"] <= cue["end_ms"]:
+            lines.append(f"    handoff to the story: the eye jumps {h['eye_jump_m']:.0f} m and "
+                         f"the look turns {h['look_jump_deg']:.0f}°")
     return lines
 
 
