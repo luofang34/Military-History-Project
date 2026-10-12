@@ -28,6 +28,7 @@ import json
 import ledger
 import photographs
 import waypoints as w
+from shots import MAX_PHOTO_PITCH
 from targets import SORPE_RUN, STEEPLE
 from crews import ORB_CREWS, PRISONERS
 from evidence import DISPUTES, time_of
@@ -209,9 +210,13 @@ def check_photographs(plan, out, cues, pace):
         agl = photographs.replay(out, key)["reconstruction"]["review"]["camera_agl_m"]
         if agl < 1:
             raise ValueError(f"{key}'s camera is {agl:.1f} m above the ground")
-        if not any(c["start_ms"] == a and c["end_ms"] == b and c.get("focus") == dam
-                   for c in cues):
+        shot = next((c for c in cues if c["start_ms"] == a and c["end_ms"] == b
+                     and c.get("focus") == dam), None)
+        if shot is None:
             raise ValueError(f"no shot selects the {dam} for exactly {key}'s window")
+        if shot["pitch"] > MAX_PHOTO_PITCH:
+            raise ValueError(f"{key}'s story view is pitched {shot['pitch']}°, so steep the "
+                             f"valley sides hide the dam")
         if any(s != photographs.SPEED for c, d, s in pace if c < b and a < d):
             raise ValueError(f"{key}'s window is not paced at {photographs.SPEED}×")
 

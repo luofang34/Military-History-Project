@@ -550,8 +550,8 @@
           "lat": 51.48985
         }
       },
-      "zoom": 16.0,
-      "pitch": 75,
+      "zoom": 15.5,
+      "pitch": 55,
       "bearing": 164.0,
       "orbit_deg_s": 0.0,
       "transition_ms": 0,
@@ -567,8 +567,8 @@
           "lat": 51.48985
         }
       },
-      "zoom": 16.0,
-      "pitch": 75,
+      "zoom": 15.5,
+      "pitch": 55,
       "bearing": 76.8,
       "orbit_deg_s": 0.0,
       "transition_ms": 0,
@@ -705,8 +705,8 @@
           "lat": 51.1835
         }
       },
-      "zoom": 16.0,
-      "pitch": 75,
+      "zoom": 15.5,
+      "pitch": 55,
       "bearing": 244.4,
       "orbit_deg_s": 0.0,
       "transition_ms": 0,

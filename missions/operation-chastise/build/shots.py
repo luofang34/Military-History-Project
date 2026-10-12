@@ -18,8 +18,10 @@ POINTS = {
 }
 
 
-# The story's view on a dam while its photograph is shown.
-PHOTO_ZOOM, PHOTO_PITCH = 16.0, 75
+# The story's view on a dam while its photograph is shown, and where the story carries on
+# from; at most MAX_PHOTO_PITCH, beyond which the valley sides hide the Eder's wall.
+PHOTO_ZOOM, PHOTO_PITCH = 15.5, 55
+MAX_PHOTO_PITCH = 60
 
 # (from, until, subjects, intent, framing): moves last 1.5 s of viewing unless `move` says;
 # a `photo` shot hands the map to that photograph's window.
