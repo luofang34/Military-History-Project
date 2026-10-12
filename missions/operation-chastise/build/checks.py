@@ -19,8 +19,11 @@
   at its sourced time.
 - The Möhne and Eder are reported destroyed and the Sorpe damaged, each only after a mine
   released at it has gone off; an aircraft shot down by flak is reported hit first.
+- Each dam photograph is shown only after its dam is reported destroyed, from a camera above
+  the ground, under one shot that selects the dam, at the photographs' pace throughout.
 """
 import ledger
+import photographs
 import waypoints as w
 from targets import SORPE_RUN, STEEPLE
 from crews import ORB_CREWS, PRISONERS
@@ -189,6 +192,21 @@ def check_damage(plan):
             raise ValueError(f"{dam} is never reported {state}")
         if min(reported) < min(bursts):
             raise ValueError(f"{dam} is reported {state} before any mine at it goes off")
+
+
+def check_photographs(plan, out, cues, pace):
+    for key, dam, a, b in photographs.windows(out):
+        destroyed = min(at for _, e, at, c in plan.conditions if e == dam and c == "destroyed")
+        if a < destroyed:
+            raise ValueError(f"{key} is shown before the {dam} is reported destroyed")
+        agl = photographs.replay(out, key)["reconstruction"]["review"]["camera_agl_m"]
+        if agl < 1:
+            raise ValueError(f"{key}'s camera is {agl:.1f} m above the ground")
+        if not any(c["start_ms"] == a and c["end_ms"] == b and c.get("focus") == dam
+                   for c in cues):
+            raise ValueError(f"no shot selects the {dam} for exactly {key}'s window")
+        if any(s != photographs.SPEED for c, d, s in pace if c < b and a < d):
+            raise ValueError(f"{key}'s window is not paced at {photographs.SPEED}×")
 
 
 def all(plan):  # noqa: A001 - the module's one entry point, called as checks.all

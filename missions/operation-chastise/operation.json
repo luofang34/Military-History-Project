@@ -62,6 +62,18 @@
       "name": "Replay estimates where sources disagree (build/evidence.py)"
     },
     {
+      "id": "photo-fray",
+      "name": "Jerry Fray, No. 542 Squadron RAF: the Möhne breached, 17 May 1943 (public domain)"
+    },
+    {
+      "id": "photo-schalber",
+      "name": "Bundesarchiv, Bild 101I-637-4192-20 / Schalber (CC BY-SA 3.0 DE)"
+    },
+    {
+      "id": "photo-eder",
+      "name": "Bundesarchiv, Bild 183-C0212-0043-012 (CC BY-SA 3.0 DE)"
+    },
+    {
       "id": "orb-617",
       "name": "617 Squadron Operations Record Book, AIR 27/2128"
     },
@@ -476,14 +488,14 @@
     {
       "id": "MÖHNE",
       "sidc": "SHGPIUED--H----",
-      "camera": false,
+      "camera": true,
       "name": "Möhne dam (target X)",
       "kind": "masonry gravity dam"
     },
     {
       "id": "EDER",
       "sidc": "SHGPIUED--H----",
-      "camera": false,
+      "camera": true,
       "name": "Eder dam (target Y)",
       "kind": "masonry gravity dam"
     },
@@ -552,5 +564,183 @@
       "kind": "flood front"
     }
   ],
-  "media_archive": null
+  "media_archive": "media/debrief.json",
+  "assets": [
+    {
+      "id": "media/eder-bundesarchiv/basemap.png",
+      "path": "media/eder-bundesarchiv/basemap.png",
+      "media_type": "image/png",
+      "bytes": 5783181,
+      "sha256": "c5dcac7511d77ef63082777bc37c38abc54d911f184e450fd92fd2fabbf27798",
+      "source": "Dam photographs: credit and method in each replay's registration"
+    },
+    {
+      "id": "media/eder-bundesarchiv/eder-bundesarchiv.jpg",
+      "path": "media/eder-bundesarchiv/eder-bundesarchiv.jpg",
+      "media_type": "image/jpeg",
+      "bytes": 50629,
+      "sha256": "97f92fdf104d272e61632e4a4604b3d13b44a280f7ec8643bc3cbd4933e90e6b",
+      "source": "Dam photographs: credit and method in each replay's registration"
+    },
+    {
+      "id": "media/eder-bundesarchiv/photo.png",
+      "path": "media/eder-bundesarchiv/photo.png",
+      "media_type": "image/png",
+      "bytes": 412707,
+      "sha256": "f2a8da87e1d2bfbb5ccc0053c85b7fb15a29c68ab181876e9bdcc3e6e68f7fe5",
+      "source": "Dam photographs: credit and method in each replay's registration"
+    },
+    {
+      "id": "media/eder-bundesarchiv/projection.png",
+      "path": "media/eder-bundesarchiv/projection.png",
+      "media_type": "image/png",
+      "bytes": 903449,
+      "sha256": "de58e4535f64a2c8608fbc8dde003eb70879d44c62de105da05e47fcf8aa360a",
+      "source": "Dam photographs: credit and method in each replay's registration"
+    },
+    {
+      "id": "media/eder-bundesarchiv/reference.png",
+      "path": "media/eder-bundesarchiv/reference.png",
+      "media_type": "image/png",
+      "bytes": 361263,
+      "sha256": "a9927c1fb2cc9bd2e69273ae78f994eb370aa444188e0542a21576dc0a1f651a",
+      "source": "Dam photographs: credit and method in each replay's registration"
+    },
+    {
+      "id": "media/eder-bundesarchiv/replay.json",
+      "path": "media/eder-bundesarchiv/replay.json",
+      "media_type": "application/json",
+      "bytes": 17151,
+      "sha256": "416cc6328b6712cb707b62ec2ff1ed82faf2ba71d2ffde325561097aa1c95b31",
+      "source": "Dam photographs: credit and method in each replay's registration"
+    },
+    {
+      "id": "media/moehne-bundesarchiv/basemap.png",
+      "path": "media/moehne-bundesarchiv/basemap.png",
+      "media_type": "image/png",
+      "bytes": 4343357,
+      "sha256": "f7f339a7a723549214ad98ecc73c3ff560e14051e79bfd9a4765b5626945de57",
+      "source": "Dam photographs: credit and method in each replay's registration"
+    },
+    {
+      "id": "media/moehne-bundesarchiv/moehne-bundesarchiv.jpg",
+      "path": "media/moehne-bundesarchiv/moehne-bundesarchiv.jpg",
+      "media_type": "image/jpeg",
+      "bytes": 270130,
+      "sha256": "62f6459e65f9fa225c12ac762e3616b991b0a646b899d27d93dbc4cf5dbd9a27",
+      "source": "Dam photographs: credit and method in each replay's registration"
+    },
+    {
+      "id": "media/moehne-bundesarchiv/photo.png",
+      "path": "media/moehne-bundesarchiv/photo.png",
+      "media_type": "image/png",
+      "bytes": 364749,
+      "sha256": "9eba380308fca061109dc83a6f2baa15764388fd00bda06d7c33a8998f7d4270",
+      "source": "Dam photographs: credit and method in each replay's registration"
+    },
+    {
+      "id": "media/moehne-bundesarchiv/projection.png",
+      "path": "media/moehne-bundesarchiv/projection.png",
+      "media_type": "image/png",
+      "bytes": 264771,
+      "sha256": "b8b52ff8ab9f3da1ec2bceda867d4fd86ce8374a6af426d4678e635a58a1be86",
+      "source": "Dam photographs: credit and method in each replay's registration"
+    },
+    {
+      "id": "media/moehne-bundesarchiv/reference.png",
+      "path": "media/moehne-bundesarchiv/reference.png",
+      "media_type": "image/png",
+      "bytes": 149653,
+      "sha256": "8dc14ab676570d63055609111489a615c1bb4a0b3d2021ac19ac5a7e5dc8dc04",
+      "source": "Dam photographs: credit and method in each replay's registration"
+    },
+    {
+      "id": "media/moehne-bundesarchiv/replay.json",
+      "path": "media/moehne-bundesarchiv/replay.json",
+      "media_type": "application/json",
+      "bytes": 5095,
+      "sha256": "b4d46445c170802e8692339d84e1d093633e349457cc51ae6e9cde41344835a0",
+      "source": "Dam photographs: credit and method in each replay's registration"
+    },
+    {
+      "id": "media/moehne-fray/basemap.png",
+      "path": "media/moehne-fray/basemap.png",
+      "media_type": "image/png",
+      "bytes": 6370699,
+      "sha256": "a4a8da60d752ac7a027c3c17fb80fe0d299d73b2a3f9d8b18a7e0901f916eb32",
+      "source": "Dam photographs: credit and method in each replay's registration"
+    },
+    {
+      "id": "media/moehne-fray/moehne-fray.jpg",
+      "path": "media/moehne-fray/moehne-fray.jpg",
+      "media_type": "image/jpeg",
+      "bytes": 77759,
+      "sha256": "70600b89b503ee4d65ba9215d42289dd42336f80ae9d48013dc8bbce7bf3efe4",
+      "source": "Dam photographs: credit and method in each replay's registration"
+    },
+    {
+      "id": "media/moehne-fray/photo.png",
+      "path": "media/moehne-fray/photo.png",
+      "media_type": "image/png",
+      "bytes": 825399,
+      "sha256": "d08eff28a73d2be2bc9c6a12b6ac48f7e7314bc8d408bdcdf2d3b88274815606",
+      "source": "Dam photographs: credit and method in each replay's registration"
+    },
+    {
+      "id": "media/moehne-fray/projection.png",
+      "path": "media/moehne-fray/projection.png",
+      "media_type": "image/png",
+      "bytes": 1925660,
+      "sha256": "8390c1bbe2ebaf292a746bbff80b2b1d4dfd513f7a2020c63bcca177cd48ca0e",
+      "source": "Dam photographs: credit and method in each replay's registration"
+    },
+    {
+      "id": "media/moehne-fray/reference.png",
+      "path": "media/moehne-fray/reference.png",
+      "media_type": "image/png",
+      "bytes": 356093,
+      "sha256": "24c1cdaed4a97cba369ceeb1b5e9bf20d6a965400cdfa99db5cca21ba70a457a",
+      "source": "Dam photographs: credit and method in each replay's registration"
+    },
+    {
+      "id": "media/moehne-fray/replay.json",
+      "path": "media/moehne-fray/replay.json",
+      "media_type": "application/json",
+      "bytes": 32598,
+      "sha256": "6fb9fe8a432dd11eec2f7b5bfd1a7091b878ffb643032f1c277f488ba46f3ae1",
+      "source": "Dam photographs: credit and method in each replay's registration"
+    }
+  ],
+  "availability": [
+    {
+      "source": "photo-fray",
+      "entity": "MÖHNE",
+      "spans": [
+        [
+          12300000,
+          12309000
+        ]
+      ]
+    },
+    {
+      "source": "photo-schalber",
+      "entity": "MÖHNE",
+      "spans": [
+        [
+          12309000,
+          12318000
+        ]
+      ]
+    },
+    {
+      "source": "photo-eder",
+      "entity": "EDER",
+      "spans": [
+        [
+          16140000,
+          16149000
+        ]
+      ]
+    }
+  ]
 }

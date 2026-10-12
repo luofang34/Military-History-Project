@@ -11,13 +11,13 @@
      "id": "moehne-fray",
      "label": "Möhne dam from the air, 17 May 1943",
      "replay": "moehne-fray/replay.json",
-     "start_s": 0.0
+     "start_s": 12300.0
     },
     {
      "id": "moehne-bundesarchiv",
      "label": "Möhne dam from below the breach, May 1943",
      "replay": "moehne-bundesarchiv/replay.json",
-     "start_s": 9.0
+     "start_s": 12309.0
     }
    ]
   },
@@ -29,7 +29,7 @@
      "id": "eder-bundesarchiv",
      "label": "Eder dam after the breach, May 1943",
      "replay": "eder-bundesarchiv/replay.json",
-     "start_s": 18.0
+     "start_s": 16140.0
     }
    ]
   }

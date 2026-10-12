@@ -17,6 +17,7 @@ sys.path.insert(0, str(HERE.parents[2] / "tools"))
 import checks  # noqa: E402
 import drops  # noqa: E402
 import ledger  # noqa: E402
+import photographs  # noqa: E402
 from evidence import DISPUTES  # noqa: E402
 import flights  # noqa: E402
 import shots  # noqa: E402
@@ -36,6 +37,7 @@ SOURCES = [
      **RECONSTRUCTED},
     {"id": "reconstruction-estimate",
      "name": "Replay estimates where sources disagree (build/evidence.py)"},
+    *photographs.sources(),
     {"id": "orb-617", "name": "617 Squadron Operations Record Book, AIR 27/2128"},
     {"id": "nav-log-aj-t", "name": "AJ-T navigator's log (Dambusters Blog transcription)"},
     {"id": "geschichtskreis-wabern",
@@ -105,6 +107,7 @@ def main():
     for source, entity, at, condition in plan.conditions:
         em.condition(source, entity, at, condition, "reported", [])
     story.annotations(em)
+    photographs.annotate(em, out)
     undeclared = {e["source"]["id"] for e in em.events} - {s["id"] for s in SOURCES}
     if undeclared:
         raise ValueError(f"events cite undeclared sources: {sorted(undeclared)}")
@@ -140,13 +143,14 @@ def main():
         "captured_availability": False,
         "sources": SOURCES,
         "entities": entities(plan.mine_owners),
-        "media_archive": None,
     }
+    photographs.attach(op, out)
     (out / "operation.json").write_text(json.dumps(op, indent=2, ensure_ascii=False) + "\n")
     ledger.write_readme(out / "README.md", DISPUTES, {s["id"]: s["name"] for s in SOURCES},
                         "chastise.py")
-    pace = story.pacing(plan.releases, drops.windows(plan))
+    pace = story.pacing(plan.releases, drops.windows(plan), photographs.beats(out))
     shot_list, intents = shots.shots(plan, pace)
+    checks.check_photographs(plan, out, shot_list, pace)
     doc = story.document(OP, shot_list, intents, pace)
     (out / "presentations").mkdir(exist_ok=True)
     (out / "presentations" / "default.json").write_text(

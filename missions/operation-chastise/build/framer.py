@@ -38,9 +38,11 @@ class Framer:
     def where(self, name, at):
         return (self.fixed[name], 0.0) if name in self.fixed else self.tracks[name].at(at)
 
-    def shot(self, start, end, subjects, intent, follow=None, pitch=0, pad_km=0.0, move=1.5):
+    def shot(self, start, end, subjects, intent, follow=None, pitch=0, pad_km=0.0, move=1.5,
+             focus=None):
         """A shot from `start` to `end` ms, arriving from the previous shot in `move` seconds of
-        viewing (0 cuts); `intent` is its {"intent", "shows"} promise for the frame report."""
+        viewing (0 cuts); `intent` is its {"intent", "shows"} promise for the frame report.
+        The viewer selects `focus`, or else the entity followed."""
         if end <= start:
             raise ValueError(f"shot {start}–{end} ms is empty")
         if self.shots and self.shots[-1]["end_ms"] != start:
@@ -73,8 +75,8 @@ class Framer:
                "pitch": pitch, "bearing": 0.0, "orbit_deg_s": 0.0,
                "transition_ms": min(after_viewing(self.pacing, start, move) - start,
                                     (end - start) // 2)}
-        if follow:
-            cue["focus"] = follow
+        if focus or follow:
+            cue["focus"] = focus or follow
         self.shots.append(cue)
         self.intents[str(start)] = intent
         return cue
