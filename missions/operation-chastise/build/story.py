@@ -77,6 +77,7 @@ ORB = "orb-617"
 DB = "dambustersblog"
 ECA = "gibson-eca"
 B976 = "order-b976"
+GAZETTE = "gazette-36030"
 ESTIMATE = "reconstruction-estimate"
 
 # (entity or None, from, until, source, text)
@@ -198,7 +199,13 @@ BRIEFINGS = [
      "Gibson lands at 04:15. Townsend, the last back, crosses Holland in daylight and lands "
      "at 06:15. Of 133 aircrew, 53 are killed and three captured; eight Lancasters are lost. "
      "The floods kill at least 1,650 people, more than 1,000 of them forced labourers and "
-     "prisoners of war. Gibson is awarded the Victoria Cross."),
+     "prisoners of war."),
+    ("AJ-G", "03:39", "06:20", GAZETTE,
+     "Gibson is awarded the Victoria Cross, the raid's only one. Its citation: after his own "
+     "attack \u201che circled very low for 30 minutes, drawing the enemy fire on himself in "
+     "order to leave as free a run as possible to the following aircraft\u201d, and at the Eder "
+     "\u201conce more drew on himself the enemy fire\u201d, though the Eder had no guns. "
+     "Maltby, Martin and McCarthy receive the DSO."),
 ]
 
 
