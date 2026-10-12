@@ -42,6 +42,15 @@ shots were not checked.
    presentation's `shot_intents` extension. Pace the story with `tools/pacing.py`, slowing
    only through the moments that matter (`with_beats`), and give moves in seconds of viewing.
 
+## Facts and links
+
+Every dispute in a mission's `build/evidence.py` is also a fact of the shared layer in `facts/`,
+built by `tools/facts.py` when the mission's generator runs. A fact's id is fixed by its key,
+`<mission>/<dispute key>`, so `https://history.sokoly.app/f/?id=<id>` keeps opening the moment it
+names however the view is regenerated. Never rename a published dispute key: if a fact must be
+renamed or merged, add its old id to `facts/aliases.json`, old to new. `verify.py` fails when
+`facts/` is stale, when an alias does not resolve, or when a published id changes.
+
 ## Judging the story without screenshots
 
     python3 tools/composition.py missions/<id>

@@ -25,6 +25,7 @@ from urllib.parse import parse_qs, urljoin, urlsplit
 root = Path(__file__).resolve().parent
 sys.path.insert(0, str(root / "tools"))
 import composition as composition_tool  # noqa: E402
+import facts  # noqa: E402
 
 
 def fixes_by_entity(events):
@@ -339,6 +340,23 @@ def agents_guide_holds():
     return not problems
 
 
+# A published link: the namespace and the key format must keep giving it, whatever else changes.
+PINNED_FACT = ("operation-chastise/maltby-release", "f1ba1cfd-69fb-5de4-9b6b-56a6c17e441c")
+
+
+def facts_hold():
+    """The fact layer is what the missions' facts build, its aliases resolve, its files fit a
+    fetch, and an id once published still names its fact."""
+    problems = facts.check()
+    key, published = PINNED_FACT
+    if facts.fact_id(key) != published:
+        problems.append(f"{key} now has the id {facts.fact_id(key)}, not its published "
+                        f"{published}")
+    for problem in problems:
+        print(problem, file=sys.stderr)
+    return not problems
+
+
 if __name__ == "__main__":
     APP = composition_tool.app_binary()
     print(f"composition: {APP}" if APP else
@@ -347,4 +365,5 @@ if __name__ == "__main__":
     ok = catalog_lists_every_mission() and ok
     ok = replay_links_match_catalog() and ok
     ok = agents_guide_holds() and ok
+    ok = facts_hold() and ok
     sys.exit(0 if ok else 1)

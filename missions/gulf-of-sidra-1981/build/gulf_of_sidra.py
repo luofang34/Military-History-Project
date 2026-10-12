@@ -17,6 +17,7 @@ sys.path.insert(0, str(HERE.parents[2] / "tools"))
 import camera  # noqa: E402
 import coast  # noqa: E402
 import geometry as g  # noqa: E402
+import facts  # noqa: E402
 import ledger  # noqa: E402
 import story  # noqa: E402
 from evidence import DISPUTES  # noqa: E402
@@ -203,6 +204,7 @@ def main():
     ranges = ", ".join(f"{g.separation_nm(tracks, g.FE102, g.SU_LEAD, g.s_ms(s)):.1f}"
                        for s, _ in g.RANGE_CALLS)
     ledger.write_readme(out / "README.md", DISPUTES, NAMES, "gulf_of_sidra.py")
+    facts.write_mission(out, OP, DISPUTES, story.clock)
     print(f"{len(em.events)} events, {len(shot_list)} shots; viewing {viewing / 1000:.0f} s; "
           f"tape ranges {ranges} nm; S-3A >= {s3a_shore:.1f} nm and merge {merge_shore:.1f} nm "
           f"from shore")

@@ -1,0 +1,16 @@
+{
+ "cb382acc-36c5-5f86-9669-b71faf365575": {
+  "key": "operation-chastise/mccarthy-arrival",
+  "file": "1943/05/16/z4-8-5.jsonl",
+  "view": "operation-chastise",
+  "view_s": 11100.0,
+  "lead_s": 5.0
+ },
+ "cba8859a-3ba1-58a7-a659-5dee4889aa28": {
+  "key": "operation-chastise/ottley-loss",
+  "file": "1943/05/17/z4-8-5.jsonl",
+  "view": "operation-chastise",
+  "view_s": 18600.0,
+  "lead_s": 5.0
+ }
+}

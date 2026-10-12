@@ -1,0 +1,49 @@
+---
+layout: null
+permalink: /f/
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fact · Military History Project</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { font: 16px/1.5 system-ui, sans-serif; margin: 2rem 16px; max-width: 40rem; }
+  </style>
+</head>
+<body>
+  <p id="status">Finding the fact…</p>
+  <script>
+    // Links name a fact by its id (tools/facts.py); the index says which view shows it and
+    // when, so a link survives every regeneration of that view.
+    const VIEWER = "https://sokoly.app/";
+    const status = document.getElementById("status");
+    const id = (new URLSearchParams(location.search).get("id") || "").toLowerCase();
+    async function entry(id, hops) {
+      if (!/^[0-9a-f-]{36}$/.test(id)) return null;
+      const shard = await fetch(`/facts/index/${id.slice(0, 2)}.json`);
+      if (!shard.ok) return null;
+      const found = (await shard.json())[id];
+      if (found && found.alias && hops < 8) return entry(found.alias, hops + 1);
+      return found || null;
+    }
+    entry(id, 0).then((fact) => {
+      if (!fact) {
+        status.textContent = "No fact has this id.";
+        return;
+      }
+      if (fact.view_s === null) {
+        location.replace(`/${fact.view}/`);
+        return;
+      }
+      const at = Math.max(0, fact.view_s - fact.lead_s);
+      const operation = encodeURIComponent(`${location.origin}/missions/${fact.view}`);
+      location.replace(`${VIEWER}?operation=${operation}&at=${at}&recorded-path`);
+    }).catch(() => {
+      status.textContent = "The fact index could not be read.";
+    });
+  </script>
+</body>
+</html>

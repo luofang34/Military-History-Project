@@ -16,13 +16,14 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parents[2] / "tools"))
 import checks  # noqa: E402
 import drops  # noqa: E402
+import facts  # noqa: E402
 import ledger  # noqa: E402
 import photographs  # noqa: E402
 from evidence import DISPUTES  # noqa: E402
 import flights  # noqa: E402
 import shots  # noqa: E402
 import story  # noqa: E402
-from sites import CRASH, DURATION, FIXED, OP, entities, unix_ms  # noqa: E402
+from sites import CRASH, DURATION, FIXED, OP, L, entities, unix_ms  # noqa: E402
 from track import Emitter  # noqa: E402
 
 RECONSTRUCTED = {"motion": "great_circle", "max_gap_ms": DURATION}
@@ -148,6 +149,7 @@ def main():
     (out / "operation.json").write_text(json.dumps(op, indent=2, ensure_ascii=False) + "\n")
     ledger.write_readme(out / "README.md", DISPUTES, {s["id"]: s["name"] for s in SOURCES},
                         "chastise.py")
+    facts.write_mission(out, OP, DISPUTES, L)
     pace = story.pacing(plan.releases, drops.windows(plan), photographs.beats(out))
     shot_list, intents = shots.shots(plan, pace)
     checks.check_photographs(plan, out, shot_list, pace)
