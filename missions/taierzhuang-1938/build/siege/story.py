@@ -37,6 +37,7 @@ JIANG = "jiang-2017"
 ZHWIKI = "zhwiki-taierzhuang"
 KRZ_TZZ = "krzzjn-three-days"
 NX = "nx-31div"
+PAPER = "thepaper-squads"
 
 # (entity or None, from, until, source, text)
 BRIEFINGS = [
@@ -136,6 +137,10 @@ BRIEFINGS = [
      "The Type 96 company's two modern 15 cm howitzers search the villages east of the town."),
     ("EAST FORCE", "30 17:20", "30 17:33", J63,
      "17:30: a Chinese night attack forms east of Mengzhuang; the heavy guns break it up."),
+    ("SQUAD", "30 19:30", "30 21:00", PAPER,
+     "20:00: 57 volunteers of the 31st Division, wearing Japanese helmets, creep up on the "
+     "Japanese in the north-west corner with grenades and pistols. They take five dugouts and "
+     "a few houses."),
     ("TRAIN", "31 00:00", "31 00:30", J63,
      "In the night a Chinese armoured train comes into the station from south of the canal."),
     ("TRAIN", "31 06:20", "31 06:40", J63, "06:20: the Japanese guns are ordered onto it."),

@@ -30,3 +30,4 @@ NX_31DIV = "nx-31div"  # 《第三十一师台儿庄战役战斗详报》, quote
 ZAOZHUANG_HISTORY = "zaozhuang-party-history"  # 中共枣庄地方史, vol. 1
 KRZ_TZZ = "krzzjn-three-days"  # 「1938年台儿庄抗战生死三日全纪实」
 HUANGPU = "huangpu-2018"  # 《黄埔》 2018/3
+THEPAPER = "thepaper-squads"  # 澎湃「台儿庄战役期间究竟派出了多少支敢死队？」

@@ -12,7 +12,7 @@ from .assault import GUNS_FROM
 from .routes import Mover
 from .sites import (BEILUO, BIANZHUANG, CANGLANGMIAO, GUANZHUANG, HANSHAN, MENG_E, MENG_NW,
                     MENG_S, NW_CORNER, SANLI_N, SANLI_NE, SANLI_S, SANLIZHUANG, SFH_POSITION,
-                    SOUTH_STATION, STATION, STATION_SOUTH, TOWN, TOWN_EAST, XIONGSHAN,
+                    SOUTH_STATION, STATION, STATION_SOUTH, TOWN, TOWN_EAST, TOWN_WEST, XIONGSHAN,
                     TYPE96_POS, ZHAISHAN, ZHAOCUN, EAST_REAR)
 
 T0 = "30 01:30"
@@ -57,6 +57,8 @@ def troops(t):
         .to(SANLI_N, "30 03:30").to(WEST_OF_RAILWAY, "30 04:30").hold("30 06:00")
     at(t, "EAST FORCE", EAST_REAR).hold("30 17:00").to(MENG_E, "30 17:25") \
         .hold("30 17:40").to(EAST_REAR, "30 18:30").hold("1 19:05")
+    t["SQUAD"] = Mover(TOWN_WEST, "30 19:30").to((117.7345, 34.5612), "30 20:00") \
+        .to((117.7340, 34.5620), "30 21:30").to(TOWN_WEST, "30 23:00")  # dugout by dugout
     at(t, "TRAIN", SOUTH_STATION, "31 00:00").to(STATION, "31 00:30").hold("31 06:22") \
         .to(SOUTH_STATION, "31 06:40").hold("1 19:05")
 
@@ -64,7 +66,7 @@ def troops(t):
 CONDITIONS = [
     ("EAST GUNS", "30 06:06", "damaged"), ("HEAVY 3", "31 15:46:45", "damaged"),
 ]
-ENDS = {"NIGHT ATTACK": "30 06:00", "HEAVY ARTY": "30 01:30"}
+ENDS = {"NIGHT ATTACK": "30 06:00", "HEAVY ARTY": "30 01:30", "SQUAD": "30 23:00"}
 
 
 def plan():
