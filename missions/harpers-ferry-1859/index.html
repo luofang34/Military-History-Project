@@ -1,0 +1,27 @@
+---
+layout: null
+permalink: /harpers-ferry-1859/
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Harpers Ferry 1859 · Military History Project</title>
+</head>
+<body>
+  <p>Opening John Brown's raid on Harpers Ferry in sokoly.app…</p>
+  <p><a id="launch" href="https://sokoly.app/?operation=https%3A%2F%2Fhistory.sokoly.app%2Fmissions%2Fharpers-ferry-1859&amp;recorded-path">Open the replay</a></p>
+  <p><a href="../">About the Military History Project</a></p>
+  <script>
+    const link = document.getElementById("launch");
+    const target = new URL(link.href);
+    const options = new URLSearchParams(window.location.search);
+    for (const key of ["at", "paused"]) {
+      if (options.has(key)) target.searchParams.set(key, options.get(key));
+    }
+    link.href = target.href;
+    window.location.replace(target.href);
+  </script>
+</body>
+</html>

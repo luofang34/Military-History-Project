@@ -12,5 +12,12 @@
   "view": "operation-chastise",
   "view_s": 18600.0,
   "lead_s": 5.0
+ },
+ "cbfb9274-c7e9-55ee-9510-31c01d4c7481": {
+  "key": "harpers-ferry-1859/flags-of-truce",
+  "file": "1859/10/17/z4-4-6.jsonl",
+  "view": "harpers-ferry-1859",
+  "view_s": 79320.0,
+  "lead_s": 5.0
  }
 }

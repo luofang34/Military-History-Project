@@ -5,5 +5,12 @@
   "view": "gulf-of-sidra-1981",
   "view_s": 1070.0,
   "lead_s": 5.0
+ },
+ "7d6fff28-600d-516d-9dee-c1149ae7e5dd": {
+  "key": "harpers-ferry-1859/leeman-killed",
+  "file": "1859/10/17/z4-4-6.jsonl",
+  "view": "harpers-ferry-1859",
+  "view_s": 81000.0,
+  "lead_s": 5.0
  }
 }

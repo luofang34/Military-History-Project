@@ -24,6 +24,13 @@
       "summary": "617 Squadron's Upkeep attacks on the Möhne, Eder and Sorpe dams, 16/17 May 1943",
       "package": "missions/operation-chastise",
       "open": "?recorded-path"
+    },
+    {
+      "id": "harpers-ferry-1859",
+      "name": "John Brown's raid on Harpers Ferry",
+      "summary": "The Provisional Army of the United States of America seizes the federal armory, 16–18 October 1859",
+      "package": "missions/harpers-ferry-1859",
+      "open": "?recorded-path"
     }
   ]
 }

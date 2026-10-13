@@ -12,5 +12,12 @@
   "view": "operation-vengeance",
   "view_s": 690.0,
   "lead_s": 5.0
+ },
+ "f2d94365-1c22-550e-bc47-26fc7539b8a1": {
+  "key": "harpers-ferry-1859/troop-train-at-monocacy",
+  "file": "1859/10/18/z4-4-6.jsonl",
+  "view": "harpers-ferry-1859",
+  "view_s": 106800.0,
+  "lead_s": 5.0
  }
 }
