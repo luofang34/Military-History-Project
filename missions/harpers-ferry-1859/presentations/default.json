@@ -1,0 +1,1008 @@
+{
+  "format": "sokoly-presentation",
+  "version": 1,
+  "id": "default",
+  "name": "John Brown's raid on Harpers Ferry",
+  "operation": "harpers-ferry-1859",
+  "chapters": [
+    {
+      "title": "Sunday at the Kennedy farm",
+      "at_ms": 0,
+      "available_ms": 0
+    },
+    {
+      "title": "\"Men, get on your arms\"",
+      "at_ms": 19800000,
+      "available_ms": 19800000
+    },
+    {
+      "title": "Wires cut, the bridge and the armory taken",
+      "at_ms": 28080000,
+      "available_ms": 28080000
+    },
+    {
+      "title": "Hostages from the country",
+      "at_ms": 33000000,
+      "available_ms": 33000000
+    },
+    {
+      "title": "The express and Heyward Shepherd",
+      "at_ms": 39000000,
+      "available_ms": 39000000
+    },
+    {
+      "title": "The train goes east with the news",
+      "at_ms": 55200000,
+      "available_ms": 55200000
+    },
+    {
+      "title": "The railroad raises the alarm",
+      "at_ms": 59580000,
+      "available_ms": 59580000
+    },
+    {
+      "title": "The militia take the bridge",
+      "at_ms": 72600000,
+      "available_ms": 72600000
+    },
+    {
+      "title": "The engine house",
+      "at_ms": 78600000,
+      "available_ms": 78600000
+    },
+    {
+      "title": "Beckham, the rifle works, the watch-house",
+      "at_ms": 86700000,
+      "available_ms": 86700000
+    },
+    {
+      "title": "Troops by rail",
+      "at_ms": 98400000,
+      "available_ms": 98400000
+    },
+    {
+      "title": "Lee and the marines",
+      "at_ms": 115800000,
+      "available_ms": 115800000
+    },
+    {
+      "title": "The storming of the engine house",
+      "at_ms": 145590000,
+      "available_ms": 145590000
+    }
+  ],
+  "camera_track": [
+    {
+      "start_ms": 0,
+      "end_ms": 19800000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.71556,
+          "lat": 39.37972
+        }
+      },
+      "zoom": 16.0,
+      "pitch": 40,
+      "bearing": 200,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 19800000,
+      "end_ms": 25200000,
+      "target": {
+        "kind": "entity",
+        "value": "BROWN"
+      },
+      "zoom": 14.6,
+      "pitch": 40,
+      "bearing": 200,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 300000,
+      "focus": "BROWN"
+    },
+    {
+      "start_ms": 25200000,
+      "end_ms": 28080000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.733,
+          "lat": 39.342
+        }
+      },
+      "zoom": 13.2,
+      "pitch": 30,
+      "bearing": 180,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 500000
+    },
+    {
+      "start_ms": 28080000,
+      "end_ms": 28620000,
+      "target": {
+        "kind": "entity",
+        "value": "TIDD"
+      },
+      "zoom": 15.6,
+      "pitch": 35,
+      "bearing": 20,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 67500,
+      "focus": "TIDD"
+    },
+    {
+      "start_ms": 28620000,
+      "end_ms": 29700000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.7273,
+          "lat": 39.32355
+        }
+      },
+      "zoom": 16.4,
+      "pitch": 45,
+      "bearing": 260,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 67500
+    },
+    {
+      "start_ms": 29700000,
+      "end_ms": 33000000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.732,
+          "lat": 39.3236
+        }
+      },
+      "zoom": 15.3,
+      "pitch": 40,
+      "bearing": 300,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 90000
+    },
+    {
+      "start_ms": 33000000,
+      "end_ms": 39000000,
+      "target": {
+        "kind": "entity",
+        "value": "STEVENS"
+      },
+      "zoom": 14.2,
+      "pitch": 40,
+      "bearing": 270,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 720000,
+      "focus": "STEVENS"
+    },
+    {
+      "start_ms": 39000000,
+      "end_ms": 39840000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.7335,
+          "lat": 39.325
+        }
+      },
+      "zoom": 15.1,
+      "pitch": 40,
+      "bearing": 300,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 39840000,
+      "end_ms": 43200000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.812222,
+          "lat": 39.315278
+        }
+      },
+      "zoom": 16.0,
+      "pitch": 40,
+      "bearing": 250,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 43200000,
+      "end_ms": 44400000,
+      "target": {
+        "kind": "entity",
+        "value": "STEVENS"
+      },
+      "zoom": 15.0,
+      "pitch": 40,
+      "bearing": 90,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 360000,
+      "focus": "STEVENS"
+    },
+    {
+      "start_ms": 44400000,
+      "end_ms": 46500000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.7557,
+          "lat": 39.3163
+        }
+      },
+      "zoom": 16.0,
+      "pitch": 40,
+      "bearing": 90,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 46500000,
+      "end_ms": 49200000,
+      "target": {
+        "kind": "entity",
+        "value": "STEVENS"
+      },
+      "zoom": 15.2,
+      "pitch": 40,
+      "bearing": 100,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 360000,
+      "focus": "STEVENS"
+    },
+    {
+      "start_ms": 49200000,
+      "end_ms": 55200000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.732,
+          "lat": 39.3236
+        }
+      },
+      "zoom": 15.3,
+      "pitch": 40,
+      "bearing": 300,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 1800000
+    },
+    {
+      "start_ms": 55200000,
+      "end_ms": 56700000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.7273,
+          "lat": 39.32355
+        }
+      },
+      "zoom": 16.4,
+      "pitch": 45,
+      "bearing": 280,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 60000
+    },
+    {
+      "start_ms": 56700000,
+      "end_ms": 59580000,
+      "target": {
+        "kind": "entity",
+        "value": "EXPRESS"
+      },
+      "zoom": 12.6,
+      "pitch": 30,
+      "bearing": 100,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 300000,
+      "focus": "EXPRESS"
+    },
+    {
+      "start_ms": 59580000,
+      "end_ms": 60120000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.39065,
+          "lat": 39.37188
+        }
+      },
+      "zoom": 14.0,
+      "pitch": 40,
+      "bearing": 90,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 60120000,
+      "end_ms": 66300000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.15,
+          "lat": 39.33
+        }
+      },
+      "zoom": 9.0,
+      "pitch": 20,
+      "bearing": 0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 900000
+    },
+    {
+      "start_ms": 66300000,
+      "end_ms": 67320000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -76.61955,
+          "lat": 39.28346
+        }
+      },
+      "zoom": 15.0,
+      "pitch": 40,
+      "bearing": 0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 720000
+    },
+    {
+      "start_ms": 67320000,
+      "end_ms": 71700000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.732,
+          "lat": 39.3236
+        }
+      },
+      "zoom": 15.3,
+      "pitch": 40,
+      "bearing": 300,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 71700000,
+      "end_ms": 72600000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -76.61955,
+          "lat": 39.28346
+        }
+      },
+      "zoom": 15.0,
+      "pitch": 40,
+      "bearing": 0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 72600000,
+      "end_ms": 76800000,
+      "target": {
+        "kind": "entity",
+        "value": "JEFFERSON GUARDS"
+      },
+      "zoom": 14.0,
+      "pitch": 35,
+      "bearing": 20,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 0,
+      "focus": "JEFFERSON GUARDS"
+    },
+    {
+      "start_ms": 76800000,
+      "end_ms": 78600000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.7273,
+          "lat": 39.32355
+        }
+      },
+      "zoom": 16.2,
+      "pitch": 45,
+      "bearing": 280,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 90000
+    },
+    {
+      "start_ms": 78600000,
+      "end_ms": 81120000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.729889,
+          "lat": 39.323456
+        }
+      },
+      "zoom": 16.8,
+      "pitch": 45,
+      "bearing": 300,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 90000
+    },
+    {
+      "start_ms": 81120000,
+      "end_ms": 86700000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.732,
+          "lat": 39.3236
+        }
+      },
+      "zoom": 15.3,
+      "pitch": 40,
+      "bearing": 300,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 4800000
+    },
+    {
+      "start_ms": 86700000,
+      "end_ms": 88080000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.729889,
+          "lat": 39.323456
+        }
+      },
+      "zoom": 16.8,
+      "pitch": 45,
+      "bearing": 300,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 75000
+    },
+    {
+      "start_ms": 88080000,
+      "end_ms": 90000000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.7347,
+          "lat": 39.323
+        }
+      },
+      "zoom": 15.4,
+      "pitch": 40,
+      "bearing": 300,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 75000
+    },
+    {
+      "start_ms": 90000000,
+      "end_ms": 97080000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.729889,
+          "lat": 39.323456
+        }
+      },
+      "zoom": 16.4,
+      "pitch": 45,
+      "bearing": 300,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 450000
+    },
+    {
+      "start_ms": 97080000,
+      "end_ms": 98400000,
+      "target": {
+        "kind": "entity",
+        "value": "HAZLETT"
+      },
+      "zoom": 15.8,
+      "pitch": 40,
+      "bearing": 300,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 225000,
+      "focus": "HAZLETT"
+    },
+    {
+      "start_ms": 98400000,
+      "end_ms": 105300000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.3,
+          "lat": 39.2
+        }
+      },
+      "zoom": 9.4,
+      "pitch": 20,
+      "bearing": 0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 900000
+    },
+    {
+      "start_ms": 105300000,
+      "end_ms": 116040000,
+      "target": {
+        "kind": "entity",
+        "value": "MARINES"
+      },
+      "zoom": 11.6,
+      "pitch": 30,
+      "bearing": 290,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 1440000,
+      "focus": "MARINES"
+    },
+    {
+      "start_ms": 116040000,
+      "end_ms": 120300000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.718,
+          "lat": 39.3262
+        }
+      },
+      "zoom": 14.3,
+      "pitch": 40,
+      "bearing": 290,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 300000
+    },
+    {
+      "start_ms": 120300000,
+      "end_ms": 145590000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.729889,
+          "lat": 39.323456
+        }
+      },
+      "zoom": 16.0,
+      "pitch": 40,
+      "bearing": 300,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 8192000
+    },
+    {
+      "start_ms": 145590000,
+      "end_ms": 145830000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.729889,
+          "lat": 39.323456
+        }
+      },
+      "zoom": 17.4,
+      "pitch": 45,
+      "bearing": 300,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 37500
+    },
+    {
+      "start_ms": 145830000,
+      "end_ms": 146160000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.729889,
+          "lat": 39.323456
+        }
+      },
+      "zoom": 17.6,
+      "pitch": 45,
+      "bearing": 300,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 18000
+    },
+    {
+      "start_ms": 146160000,
+      "end_ms": 148500000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": -77.724,
+          "lat": 39.3515
+        }
+      },
+      "zoom": 12.1,
+      "pitch": 20,
+      "bearing": 200,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 480000
+    }
+  ],
+  "playback_track": [
+    {
+      "start_ms": 0,
+      "end_ms": 19800000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 19800000,
+      "end_ms": 27900000,
+      "speed": 200
+    },
+    {
+      "start_ms": 27900000,
+      "end_ms": 30000000,
+      "speed": 45
+    },
+    {
+      "start_ms": 30000000,
+      "end_ms": 33000000,
+      "speed": 120
+    },
+    {
+      "start_ms": 33000000,
+      "end_ms": 39000000,
+      "speed": 360
+    },
+    {
+      "start_ms": 39000000,
+      "end_ms": 39840000,
+      "speed": 25
+    },
+    {
+      "start_ms": 39840000,
+      "end_ms": 43200000,
+      "speed": 180
+    },
+    {
+      "start_ms": 43200000,
+      "end_ms": 48900000,
+      "speed": 240
+    },
+    {
+      "start_ms": 48900000,
+      "end_ms": 51900000,
+      "speed": 900
+    },
+    {
+      "start_ms": 51900000,
+      "end_ms": 55200000,
+      "speed": 300
+    },
+    {
+      "start_ms": 55200000,
+      "end_ms": 56700000,
+      "speed": 40
+    },
+    {
+      "start_ms": 56700000,
+      "end_ms": 59100000,
+      "speed": 150
+    },
+    {
+      "start_ms": 59100000,
+      "end_ms": 60120000,
+      "speed": 40
+    },
+    {
+      "start_ms": 60120000,
+      "end_ms": 72600000,
+      "speed": 360
+    },
+    {
+      "start_ms": 72600000,
+      "end_ms": 76800000,
+      "speed": 200
+    },
+    {
+      "start_ms": 76800000,
+      "end_ms": 81120000,
+      "speed": 60
+    },
+    {
+      "start_ms": 81120000,
+      "end_ms": 86400000,
+      "speed": 2400
+    },
+    {
+      "start_ms": 86400000,
+      "end_ms": 90000000,
+      "speed": 50
+    },
+    {
+      "start_ms": 90000000,
+      "end_ms": 96600000,
+      "speed": 300
+    },
+    {
+      "start_ms": 96600000,
+      "end_ms": 98400000,
+      "speed": 150
+    },
+    {
+      "start_ms": 98400000,
+      "end_ms": 100800000,
+      "speed": 360
+    },
+    {
+      "start_ms": 100800000,
+      "end_ms": 115800000,
+      "speed": 720
+    },
+    {
+      "start_ms": 115800000,
+      "end_ms": 120300000,
+      "speed": 150
+    },
+    {
+      "start_ms": 120300000,
+      "end_ms": 145590000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 145590000,
+      "end_ms": 145830000,
+      "speed": 25
+    },
+    {
+      "start_ms": 145830000,
+      "end_ms": 146160000,
+      "speed": 12
+    },
+    {
+      "start_ms": 146160000,
+      "end_ms": 148500000,
+      "speed": 120
+    }
+  ],
+  "extensions": {
+    "shot_intents": {
+      "0": {
+        "intent": "The Kennedy farm on Sunday: the Provisional Army's headquarters, five miles from the Ferry.",
+        "shows": [
+          "KENNEDY FARM",
+          "BROWN"
+        ]
+      },
+      "19800000": {
+        "intent": "The march leaves the farm: Brown's wagon, Cook and Tidd ahead, the men in pairs behind.",
+        "shows": [
+          "BROWN",
+          "TIDD"
+        ]
+      },
+      "25200000": {
+        "intent": "Where they are going: down the river road to the bridge into Harpers Ferry.",
+        "shows": [
+          "BROWN",
+          "B&O BRIDGE"
+        ]
+      },
+      "28080000": {
+        "intent": "Cook and Tidd cut the telegraph east, where the road meets the railroad at the bridge.",
+        "shows": [
+          "TIDD",
+          "WIRE EAST"
+        ]
+      },
+      "28620000": {
+        "intent": "Over the covered bridge on the line of its surviving piers: the watchman taken, the column into town.",
+        "shows": [
+          "KAGI",
+          "BROWN",
+          "B&O BRIDGE"
+        ]
+      },
+      "29700000": {
+        "intent": "The town taken without a shot: armory gate, arsenal, Shenandoah bridge, rifle works, and the line west cut.",
+        "shows": [
+          "BROWN",
+          "HAZLETT",
+          "OLIVER",
+          "KAGI",
+          "WIRE WEST"
+        ]
+      },
+      "33000000": {
+        "intent": "Stevens's party out the Charlestown pike toward Beall-Air.",
+        "shows": [
+          "STEVENS"
+        ]
+      },
+      "39000000": {
+        "intent": "Cut to the bridge: the express arrives and backs off, and Heyward Shepherd is shot.",
+        "shows": [
+          "EXPRESS",
+          "STATION",
+          "WATSON"
+        ]
+      },
+      "39840000": {
+        "intent": "Cut to Beall-Air: Washington taken from his bed, with his slaves and his weapons.",
+        "shows": [
+          "STEVENS",
+          "BEALL-AIR"
+        ]
+      },
+      "43200000": {
+        "intent": "Back along the pike with the carriage, the wagon and the prisoners.",
+        "shows": [
+          "STEVENS"
+        ]
+      },
+      "44400000": {
+        "intent": "Allstadt's house on the pike: the second hostage.",
+        "shows": [
+          "STEVENS",
+          "ALLSTADT HOUSE"
+        ]
+      },
+      "46500000": {
+        "intent": "The hostages are brought into the armory.",
+        "shows": [
+          "STEVENS"
+        ]
+      },
+      "49200000": {
+        "intent": "The town before dawn: the train still held, the wagon off to Maryland for the arms.",
+        "shows": [
+          "EXPRESS",
+          "BROWN"
+        ]
+      },
+      "55200000": {
+        "intent": "Brown walks the express over the bridge.",
+        "shows": [
+          "BROWN",
+          "EXPRESS"
+        ]
+      },
+      "56700000": {
+        "intent": "Stay with the express as it runs east down the Potomac with the news, all the way to Monocacy.",
+        "shows": [
+          "EXPRESS"
+        ]
+      },
+      "59580000": {
+        "intent": "Monocacy: the first telegraph east, and Phelps's dispatch.",
+        "shows": [
+          "EXPRESS",
+          "MONOCACY"
+        ]
+      },
+      "60120000": {
+        "intent": "The line from the Ferry to Baltimore: the train and the news travel east.",
+        "shows": [
+          "EXPRESS",
+          "CAMDEN STATION"
+        ]
+      },
+      "66300000": {
+        "intent": "Baltimore: the railroad doubts the dispatch.",
+        "shows": [
+          "CAMDEN STATION"
+        ]
+      },
+      "67320000": {
+        "intent": "Morning in the town: the raiders hold their posts as the militia gather.",
+        "shows": [
+          "CITIZENS",
+          "BROWN",
+          "OLIVER"
+        ]
+      },
+      "71700000": {
+        "intent": "Baltimore: Garrett raises the alarm in Washington and Richmond.",
+        "shows": [
+          "CAMDEN STATION"
+        ]
+      },
+      "72600000": {
+        "intent": "The Jefferson Guards' way round to the Maryland bank.",
+        "shows": [
+          "JEFFERSON GUARDS"
+        ]
+      },
+      "76800000": {
+        "intent": "The Guards take the bridge; Newby falls; Brown withdraws into the engine house.",
+        "shows": [
+          "JEFFERSON GUARDS",
+          "NEWBY",
+          "ENGINE HOUSE"
+        ]
+      },
+      "78600000": {
+        "intent": "Flags of truce at the engine house, and Leeman's run for the river.",
+        "shows": [
+          "WATSON",
+          "STEVENS",
+          "LEEMAN"
+        ]
+      },
+      "81120000": {
+        "intent": "Afternoon: the ring closes round the armory.",
+        "shows": [
+          "CITIZENS",
+          "BOTTS COMPANY",
+          "JEFFERSON GUARDS"
+        ]
+      },
+      "86700000": {
+        "intent": "Beckham shot near the water station; Thompson killed on the bridge.",
+        "shows": [
+          "E COPPOC",
+          "ENGINE HOUSE",
+          "W THOMPSON"
+        ]
+      },
+      "88080000": {
+        "intent": "Two fights at once: the Martinsburg company at the watch-house, citizens at the rifle works.",
+        "shows": [
+          "MARTINSBURG COMPANY",
+          "KAGI",
+          "IRWIN PARTY"
+        ]
+      },
+      "90000000": {
+        "intent": "The siege of the engine house into the evening.",
+        "shows": [
+          "BROWN",
+          "ENGINE HOUSE"
+        ]
+      },
+      "97080000": {
+        "intent": "Hazlett and Anderson slip away at dusk.",
+        "shows": [
+          "HAZLETT",
+          "O ANDERSON"
+        ]
+      },
+      "98400000": {
+        "intent": "Troops by rail: the marines from Washington and the militia from Baltimore.",
+        "shows": [
+          "MARINES",
+          "BALTIMORE MILITIA"
+        ]
+      },
+      "105300000": {
+        "intent": "The troop train west, with Lee following in his special.",
+        "shows": [
+          "MARINES"
+        ]
+      },
+      "116040000": {
+        "intent": "Sandy Hook: Lee arrives and sends the marines over the bridge.",
+        "shows": [
+          "MARINES",
+          "LEE",
+          "B&O BRIDGE"
+        ]
+      },
+      "120300000": {
+        "intent": "Night round the engine house.",
+        "shows": [
+          "MARINES",
+          "ENGINE HOUSE"
+        ]
+      },
+      "145590000": {
+        "intent": "Stuart carries the summons to the door.",
+        "shows": [
+          "STUART",
+          "ENGINE HOUSE"
+        ]
+      },
+      "145830000": {
+        "intent": "The storming party breaks in, and Brown is cut down.",
+        "shows": [
+          "STORMING PARTY",
+          "BROWN"
+        ]
+      },
+      "146160000": {
+        "intent": "Pull back over the road from the farm to the Ferry as the story is told out.",
+        "shows": [
+          "ENGINE HOUSE",
+          "KENNEDY FARM"
+        ]
+      }
+    }
+  }
+}

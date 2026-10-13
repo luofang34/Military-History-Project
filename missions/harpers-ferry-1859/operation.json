@@ -1,0 +1,606 @@
+{
+  "format": "sokoly-operation",
+  "version": 4,
+  "id": "harpers-ferry-1859",
+  "name": "John Brown's raid on Harpers Ferry",
+  "duration_ms": 148500000,
+  "time_origin": "16 October 1859 14:30 Harpers Ferry local mean time (UTC−5:10:55), Sunday afternoon at the Kennedy farm, when Brown gave his orders; records' times are as each writer's town kept them",
+  "time": {
+    "range": {
+      "start": 0,
+      "end": 148500000
+    },
+    "anchor": {
+      "at": 0,
+      "unix_ms": -3477874745000,
+      "source": "Anderson (1861): the eleven orders on the afternoon of Sunday 16 October, the march at eight that evening",
+      "source_scale": "utc",
+      "uncertainty_ms": 600000,
+      "resolution_ms": 60000,
+      "original_calendar": "1859-10-16 Harpers Ferry local mean time"
+    },
+    "zone": {
+      "kind": "fixed",
+      "seconds": -18655,
+      "source": "Harpers Ferry local mean time, 77°43′47″ W; towns kept their own time in 1859"
+    }
+  },
+  "captured_availability": false,
+  "sources": [
+    {
+      "id": "reconstruction-raiders",
+      "name": "The raiders' moves, reconstructed",
+      "motion": "great_circle",
+      "max_gap_ms": 148500000,
+      "zone": {
+        "kind": "fixed",
+        "seconds": -18655,
+        "source": "Harpers Ferry local mean time, 77°43′47″ W; towns kept their own time in 1859"
+      }
+    },
+    {
+      "id": "reconstruction-opponents",
+      "name": "The militia's and the marines' moves, reconstructed",
+      "motion": "great_circle",
+      "max_gap_ms": 148500000,
+      "zone": {
+        "kind": "fixed",
+        "seconds": -18655,
+        "source": "Harpers Ferry local mean time, 77°43′47″ W; towns kept their own time in 1859"
+      }
+    },
+    {
+      "id": "reconstruction-railroad",
+      "name": "Trains on the B&O, reconstructed",
+      "motion": "great_circle",
+      "max_gap_ms": 148500000,
+      "zone": {
+        "kind": "fixed",
+        "seconds": -18655,
+        "source": "Harpers Ferry local mean time, 77°43′47″ W; towns kept their own time in 1859"
+      }
+    },
+    {
+      "id": "reconstruction-estimate",
+      "name": "Replay estimates where sources disagree (build/evidence/)",
+      "zone": {
+        "kind": "fixed",
+        "seconds": -18655,
+        "source": "Harpers Ferry local mean time, 77°43′47″ W; towns kept their own time in 1859"
+      }
+    },
+    {
+      "id": "anderson-1861",
+      "name": "Osborne P. Anderson, A Voice from Harper's Ferry (1861)"
+    },
+    {
+      "id": "mason-report",
+      "name": "Senate Select Committee (Mason) Report on the Harper's Ferry Invasion (1860), with its testimony"
+    },
+    {
+      "id": "lee-report",
+      "name": "R. E. Lee to the Adjutant General, 19 October 1859 (Mason Report, Appendix 1)"
+    },
+    {
+      "id": "greene-1885",
+      "name": "Israel Green, \"The Capture of John Brown\", North American Review (1885)"
+    },
+    {
+      "id": "daingerfield-1885",
+      "name": "John E. P. Daingerfield, \"John Brown at Harper's Ferry\", Century (1885)"
+    },
+    {
+      "id": "villard-1910",
+      "name": "Oswald Garrison Villard, John Brown 1800–1859 (1910)"
+    },
+    {
+      "id": "hinton-1894",
+      "name": "Richard J. Hinton, John Brown and His Men (1894), with Cook's confession"
+    },
+    {
+      "id": "dewitt-1859",
+      "name": "The Life, Trial and Execution of Captain John Brown (De Witt, 1859), with Phelps's testimony at the trial"
+    },
+    {
+      "id": "drew-1860",
+      "name": "Thomas Drew, The John Brown Invasion (1860), reprinting the Baltimore papers"
+    },
+    {
+      "id": "shepherdstown-register",
+      "name": "Shepherdstown Register, 22 October 1859"
+    },
+    {
+      "id": "hungerford-1928",
+      "name": "Edward Hungerford, The Story of the Baltimore & Ohio Railroad (1928)"
+    },
+    {
+      "id": "doc-y",
+      "name": "Correspondence relating to the Insurrection at Harper's Ferry (Maryland Senate Document Y, 1860): the B&O's telegrams",
+      "zone": {
+        "kind": "fixed",
+        "seconds": -18655,
+        "source": "Harpers Ferry local mean time, 77°43′47″ W; towns kept their own time in 1859"
+      }
+    },
+    {
+      "id": "bo-annual-report-1859",
+      "name": "Thirty-third Annual Report of the Baltimore and Ohio Railroad (1859)"
+    },
+    {
+      "id": "douglass-life",
+      "name": "Frederick Douglass, Life and Times of Frederick Douglass"
+    },
+    {
+      "id": "nps-raid",
+      "name": "National Park Service, \"John Brown's Raid\" (timeline)"
+    },
+    {
+      "id": "nps-history-series",
+      "name": "National Park Service History Series, John Brown's Raid (1973)"
+    },
+    {
+      "id": "wikipedia-raid",
+      "name": "John Brown's raid on Harpers Ferry (en.wikipedia)"
+    },
+    {
+      "id": "hmdb-151957",
+      "name": "\"In Memoriam\" plaque at the Kennedy Farm (HMdb 151957)"
+    },
+    {
+      "id": "nhl-kennedy-farm",
+      "name": "National Historic Landmark nomination, Kennedy Farm (1973)"
+    },
+    {
+      "id": "nrhp",
+      "name": "National Register of Historic Places: Beall-Air; Allstadt House"
+    },
+    {
+      "id": "osm",
+      "name": "OpenStreetMap: the ruins and sites of 1859"
+    }
+  ],
+  "entities": [
+    {
+      "id": "BROWN",
+      "sidc": "10032700711101010000",
+      "camera": false,
+      "name": "John Brown, Commander-in-Chief, 59",
+      "kind": "person",
+      "parent": "ARMORY PARTY"
+    },
+    {
+      "id": "KAGI",
+      "sidc": "10032700001101010000",
+      "camera": false,
+      "name": "John Henry Kagi, Adjutant General, 24",
+      "kind": "person",
+      "parent": "RIFLE WORKS PARTY"
+    },
+    {
+      "id": "STEVENS",
+      "sidc": "10032700001101010000",
+      "camera": false,
+      "name": "Aaron D. Stevens, Captain, 28",
+      "kind": "person",
+      "parent": "STEVENS PARTY"
+    },
+    {
+      "id": "WATSON",
+      "sidc": "10032700001101010000",
+      "camera": false,
+      "name": "Watson Brown, Captain, 20",
+      "kind": "person",
+      "parent": "BRIDGE GUARDS"
+    },
+    {
+      "id": "TAYLOR",
+      "sidc": "10032700001101010000",
+      "camera": false,
+      "name": "Stewart Taylor, 22",
+      "kind": "person",
+      "parent": "BRIDGE GUARDS"
+    },
+    {
+      "id": "OLIVER",
+      "sidc": "10032700001101010000",
+      "camera": false,
+      "name": "Oliver Brown, Captain, 19",
+      "kind": "person",
+      "parent": "BRIDGE GUARDS"
+    },
+    {
+      "id": "W THOMPSON",
+      "sidc": "10032700001101010000",
+      "camera": false,
+      "name": "William Thompson, Captain, 26",
+      "kind": "person",
+      "parent": "BRIDGE GUARDS"
+    },
+    {
+      "id": "J ANDERSON",
+      "sidc": "10032700001101010000",
+      "camera": false,
+      "name": "Jeremiah G. Anderson, Lieutenant, 26",
+      "kind": "person",
+      "parent": "ARMORY PARTY"
+    },
+    {
+      "id": "D THOMPSON",
+      "sidc": "10032700001101010000",
+      "camera": false,
+      "name": "Dauphin Thompson, 21",
+      "kind": "person",
+      "parent": "ARMORY PARTY"
+    },
+    {
+      "id": "HAZLETT",
+      "sidc": "10032700001101010000",
+      "camera": false,
+      "name": "Albert Hazlett, Lieutenant, 22",
+      "kind": "person",
+      "parent": "ARMORY PARTY"
+    },
+    {
+      "id": "E COPPOC",
+      "sidc": "10032700001101010000",
+      "camera": false,
+      "name": "Edwin Coppoc, 24",
+      "kind": "person",
+      "parent": "ARMORY PARTY"
+    },
+    {
+      "id": "COPELAND",
+      "sidc": "10032700001101010000",
+      "camera": false,
+      "name": "John A. Copeland Jr., 25",
+      "kind": "person",
+      "parent": "RIFLE WORKS PARTY"
+    },
+    {
+      "id": "COOK",
+      "sidc": "10032700001101010000",
+      "camera": false,
+      "name": "John E. Cook, Captain, 29",
+      "kind": "person",
+      "parent": "STEVENS PARTY"
+    },
+    {
+      "id": "TIDD",
+      "sidc": "10032700001101010000",
+      "camera": false,
+      "name": "Charles P. Tidd, Captain, 25",
+      "kind": "person",
+      "parent": "STEVENS PARTY"
+    },
+    {
+      "id": "O ANDERSON",
+      "sidc": "10032700001101010000",
+      "camera": false,
+      "name": "Osborne P. Anderson, 29",
+      "kind": "person",
+      "parent": "STEVENS PARTY"
+    },
+    {
+      "id": "GREEN",
+      "sidc": "10032700001101010000",
+      "camera": false,
+      "name": "Shields Green, 23",
+      "kind": "person",
+      "parent": "STEVENS PARTY"
+    },
+    {
+      "id": "LEARY",
+      "sidc": "10032700001101010000",
+      "camera": false,
+      "name": "Lewis S. Leary, 24",
+      "kind": "person",
+      "parent": "STEVENS PARTY"
+    },
+    {
+      "id": "NEWBY",
+      "sidc": "10032700001101010000",
+      "camera": false,
+      "name": "Dangerfield Newby, 44",
+      "kind": "person",
+      "parent": "ARMORY PARTY"
+    },
+    {
+      "id": "LEEMAN",
+      "sidc": "10032700001101010000",
+      "camera": false,
+      "name": "William H. Leeman, 20",
+      "kind": "person",
+      "parent": "ARMORY PARTY"
+    },
+    {
+      "id": "OWEN",
+      "sidc": "10032700001101010000",
+      "camera": false,
+      "name": "Owen Brown, Captain, 34",
+      "kind": "person",
+      "parent": "REAR GUARD"
+    },
+    {
+      "id": "B COPPOC",
+      "sidc": "10032700001101010000",
+      "camera": false,
+      "name": "Barclay Coppoc, 20",
+      "kind": "person",
+      "parent": "REAR GUARD"
+    },
+    {
+      "id": "MERIAM",
+      "sidc": "10032700001101010000",
+      "camera": false,
+      "name": "Francis J. Meriam, 21",
+      "kind": "person",
+      "parent": "REAR GUARD"
+    },
+    {
+      "id": "CITIZENS",
+      "sidc": "SHGPUCI--------",
+      "camera": false,
+      "name": "Armed citizens of Harpers Ferry",
+      "kind": "citizens"
+    },
+    {
+      "id": "JEFFERSON GUARDS",
+      "sidc": "SHGPUCI----E---",
+      "camera": false,
+      "name": "Jefferson Guards, Charlestown (Capt. J. W. Rowan)",
+      "kind": "company",
+      "parent": "VIRGINIA MILITIA"
+    },
+    {
+      "id": "BOTTS COMPANY",
+      "sidc": "SHGPUCI----E---",
+      "camera": false,
+      "name": "Charlestown citizens' company (Capt. Botts)",
+      "kind": "company",
+      "parent": "VIRGINIA MILITIA"
+    },
+    {
+      "id": "IRWIN PARTY",
+      "sidc": "SHGPUCI--------",
+      "camera": false,
+      "name": "Starry's party under Irwin",
+      "kind": "citizens"
+    },
+    {
+      "id": "MARTINSBURG COMPANY",
+      "sidc": "SHGPUCI----E---",
+      "camera": false,
+      "name": "Martinsburg company, B&O men (Capt. E. G. Alburtis)",
+      "kind": "company",
+      "parent": "VIRGINIA MILITIA"
+    },
+    {
+      "id": "FREDERICK MILITIA",
+      "sidc": "SHGPUCI----E---",
+      "camera": false,
+      "name": "Three Frederick companies (Col. Shriver)",
+      "kind": "company",
+      "parent": "MARYLAND MILITIA"
+    },
+    {
+      "id": "BALTIMORE MILITIA",
+      "sidc": "SHGPUCI----E---",
+      "camera": false,
+      "name": "Five Baltimore companies (Gen. Charles C. Edgerton)",
+      "kind": "company",
+      "parent": "MARYLAND MILITIA"
+    },
+    {
+      "id": "MARINES",
+      "sidc": "SHGPUCI----E---",
+      "camera": false,
+      "name": "U.S. Marines from the Washington Navy Yard (Lt. Israel Greene)",
+      "kind": "company",
+      "parent": "US FORCES"
+    },
+    {
+      "id": "STORMING PARTY",
+      "sidc": "SHGPUCI----B---",
+      "camera": false,
+      "name": "Greene's storming party of twelve marines",
+      "kind": "party",
+      "parent": "US FORCES"
+    },
+    {
+      "id": "LEE",
+      "sidc": "10062700711101010000",
+      "camera": false,
+      "name": "Bvt. Col. Robert E. Lee, commanding",
+      "kind": "officer",
+      "parent": "US FORCES"
+    },
+    {
+      "id": "STUART",
+      "sidc": "10062700001101010000",
+      "camera": false,
+      "name": "Lt. J. E. B. Stuart, Lee's aide",
+      "kind": "officer",
+      "parent": "US FORCES"
+    },
+    {
+      "id": "PROVISIONAL ARMY",
+      "sidc": "SFGPUCI----D---",
+      "camera": false,
+      "name": "Provisional Army of the United States of America",
+      "kind": "formation",
+      "quantity": 22
+    },
+    {
+      "id": "ARMORY PARTY",
+      "sidc": "SFGPUCI----A---",
+      "camera": false,
+      "name": "Brown's party at the armory",
+      "kind": "formation",
+      "quantity": 7,
+      "parent": "PROVISIONAL ARMY"
+    },
+    {
+      "id": "BRIDGE GUARDS",
+      "sidc": "SFGPUCI----A---",
+      "camera": false,
+      "name": "The bridge guards",
+      "kind": "formation",
+      "quantity": 4,
+      "parent": "PROVISIONAL ARMY"
+    },
+    {
+      "id": "RIFLE WORKS PARTY",
+      "sidc": "SFGPUCI----A---",
+      "camera": false,
+      "name": "Kagi's party at the rifle works",
+      "kind": "formation",
+      "quantity": 2,
+      "parent": "PROVISIONAL ARMY"
+    },
+    {
+      "id": "STEVENS PARTY",
+      "sidc": "SFGPUCI----A---",
+      "camera": false,
+      "name": "Stevens's party in the country",
+      "kind": "formation",
+      "quantity": 6,
+      "parent": "PROVISIONAL ARMY"
+    },
+    {
+      "id": "REAR GUARD",
+      "sidc": "SFGPUCI----A---",
+      "camera": false,
+      "name": "Owen Brown's rear guard",
+      "kind": "formation",
+      "quantity": 3,
+      "parent": "PROVISIONAL ARMY"
+    },
+    {
+      "id": "VIRGINIA MILITIA",
+      "sidc": "SHGPUCI----F---",
+      "camera": false,
+      "name": "Virginia militia and volunteers",
+      "kind": "formation"
+    },
+    {
+      "id": "MARYLAND MILITIA",
+      "sidc": "SHGPUCI----F---",
+      "camera": false,
+      "name": "Maryland militia",
+      "kind": "formation"
+    },
+    {
+      "id": "US FORCES",
+      "sidc": "SHGPUCI---A----",
+      "camera": false,
+      "name": "United States forces",
+      "kind": "formation"
+    },
+    {
+      "id": "EXPRESS",
+      "sidc": "SNGPEVT--------",
+      "camera": false,
+      "name": "B&O express, Wheeling to Baltimore (conductor A. J. Phelps)",
+      "kind": "train"
+    },
+    {
+      "id": "WIRE EAST",
+      "sidc": "SNGPIUT---H----",
+      "camera": false,
+      "name": "Telegraph east, along the B&O on the Maryland side",
+      "kind": "telegraph"
+    },
+    {
+      "id": "WIRE WEST",
+      "sidc": "SNGPIUT---H----",
+      "camera": false,
+      "name": "Telegraph west, along the B&O on the Virginia side",
+      "kind": "telegraph"
+    },
+    {
+      "id": "KENNEDY FARM",
+      "sidc": "SFGPIB----H----",
+      "camera": false,
+      "name": "Kennedy farm, the Provisional Army's headquarters",
+      "kind": "site"
+    },
+    {
+      "id": "SCHOOLHOUSE",
+      "sidc": "SFGPIB----H----",
+      "camera": false,
+      "name": "Schoolhouse, the arms depot of 17 October (site estimated)",
+      "kind": "site"
+    },
+    {
+      "id": "ENGINE HOUSE",
+      "sidc": "SNGPIB----H----",
+      "camera": false,
+      "name": "Armory fire-engine house and watch-house (original site)",
+      "kind": "site"
+    },
+    {
+      "id": "ARSENAL",
+      "sidc": "SNGPIB----H----",
+      "camera": false,
+      "name": "U.S. Arsenal",
+      "kind": "site"
+    },
+    {
+      "id": "RIFLE WORKS",
+      "sidc": "SNGPIB----H----",
+      "camera": false,
+      "name": "Hall's rifle works, U.S. Rifle Factory",
+      "kind": "site"
+    },
+    {
+      "id": "STATION",
+      "sidc": "SNGPIB----H----",
+      "camera": false,
+      "name": "B&O station and Wager House (site)",
+      "kind": "site"
+    },
+    {
+      "id": "B&O BRIDGE",
+      "sidc": "SNGPIB----H----",
+      "camera": false,
+      "name": "B&O covered bridge over the Potomac (1859 line)",
+      "kind": "site"
+    },
+    {
+      "id": "SHENANDOAH BRIDGE",
+      "sidc": "SNGPIB----H----",
+      "camera": false,
+      "name": "Shenandoah bridge (1859 crossing)",
+      "kind": "site"
+    },
+    {
+      "id": "BEALL-AIR",
+      "sidc": "SNGPIB----H----",
+      "camera": false,
+      "name": "Beall-Air, Col. Lewis W. Washington's house",
+      "kind": "site"
+    },
+    {
+      "id": "ALLSTADT HOUSE",
+      "sidc": "SNGPIB----H----",
+      "camera": false,
+      "name": "John H. Allstadt's house",
+      "kind": "site"
+    },
+    {
+      "id": "MONOCACY",
+      "sidc": "SNGPIB----H----",
+      "camera": false,
+      "name": "Monocacy station, the first open telegraph east",
+      "kind": "site"
+    },
+    {
+      "id": "CAMDEN STATION",
+      "sidc": "SNGPIB----H----",
+      "camera": false,
+      "name": "Camden Station, the B&O's offices in Baltimore",
+      "kind": "site"
+    }
+  ],
+  "media_archive": null
+}
