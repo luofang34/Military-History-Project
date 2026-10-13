@@ -1,4 +1,4 @@
-"""The sources the Tengxian evidence cites, by their ids in operation.json."""
+"""The sources the evidence cites, by their ids in operation.json."""
 
 REPORT = "jacar-10i-report-11"  # 歩兵第十聯隊 滕縣附近戦闘詳報 第十一號
 ORDERS = "jacar-seya-orders"  # 瀬谷支隊命令, 別紙
@@ -18,3 +18,15 @@ RMZXW_2020 = "rmzxw-2020"
 RMZXW_2025 = "rmzxw-2025"
 JIANG_ZICHEN = "jiang-zichen-2017"
 DECREE = "nationalist-decree-1938"
+J63 = "jacar-63i-taierzhuang"  # 歩兵第63聯隊 台児荘攻略戦闘詳報
+J10 = "jacar-10i-report-13"  # 歩兵第10聯隊 臺兒庄附近戦闘詳報 第13号
+SAS = "jacar-sas-report"  # 臨SAS戦詳第一號, the Type 96 company's report
+OHASHI = "jacar-ohashi"  # 大橋武夫, the China Garrison 15 cm artillery history
+JIANG_17 = "jiang-2017"  # 姜克實「台児庄作戦の概観」
+ENWIKI = "enwiki-taierzhuang"
+JAWIKI = "jawiki-taierzhuang"
+ZHWIKI_TZZ = "zhwiki-taierzhuang"  # 台兒莊戰役, quoting the Academia Historica telegrams
+NX_31DIV = "nx-31div"  # 《第三十一师台儿庄战役战斗详报》, quoted at second hand
+ZAOZHUANG_HISTORY = "zaozhuang-party-history"  # 中共枣庄地方史, vol. 1
+KRZ_TZZ = "krzzjn-three-days"  # 「1938年台儿庄抗战生死三日全纪实」
+HUANGPU = "huangpu-2018"  # 《黄埔》 2018/3

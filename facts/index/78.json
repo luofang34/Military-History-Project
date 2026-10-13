@@ -6,11 +6,14 @@
   "view_s": 12060.0,
   "lead_s": 5.0
  },
- "78f6afdb-6373-5c75-a761-6acbb2d3ce42": {
-  "key": "taierzhuang-1938-guns/sfh-position",
-  "file": "1938/03/29/z4-13-6.jsonl",
-  "view": "taierzhuang-1938-guns",
-  "view_s": 1200.0,
+ "78056e5e-5970-5749-9012-280c3fcdbc72": {
+  "key": "taierzhuang-1938/chinese-gun-count",
+  "file": "1938/03/28/z4-13-6.jsonl",
+  "view": "taierzhuang-1938",
+  "view_s": 1224000.0,
   "lead_s": 0.0
+ },
+ "78f6afdb-6373-5c75-a761-6acbb2d3ce42": {
+  "alias": "9896c28b-1210-5d28-bff4-a14e74d8a376"
  }
 }
