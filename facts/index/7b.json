@@ -1,0 +1,16 @@
+{
+ "7b73e2ac-52ca-5610-aef5-69168de1ccd1": {
+  "key": "taierzhuang-1938/superior-enemy-artillery",
+  "file": "1938/03/31/z4-13-6.jsonl",
+  "view": "taierzhuang-1938",
+  "view_s": 1544400.0,
+  "lead_s": 5.0
+ },
+ "7bd373e9-e3ff-5745-9f44-72aa97321864": {
+  "key": "taierzhuang-1938/afternoon-bombardments",
+  "file": "1938/04/01/z4-13-6.jsonl",
+  "view": "taierzhuang-1938",
+  "view_s": 1575000.0,
+  "lead_s": 5.0
+ }
+}

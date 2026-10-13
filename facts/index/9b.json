@@ -5,5 +5,12 @@
   "view": "operation-vengeance",
   "view_s": 2730.0,
   "lead_s": 0.0
+ },
+ "9be844fd-f219-5440-896e-9a23a8b15acf": {
+  "key": "taierzhuang-1938/first-contact-at-kangzhuang",
+  "file": "1938/03/23/z4-13-6.jsonl",
+  "view": "taierzhuang-1938",
+  "view_s": 795600.0,
+  "lead_s": 5.0
  }
 }

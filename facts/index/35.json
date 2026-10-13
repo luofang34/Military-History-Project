@@ -1,9 +1,12 @@
 {
+ "3594db0b-bb2e-52d9-8d14-935b029e6fff": {
+  "key": "taierzhuang-1938/duel-on-27-march",
+  "file": "1938/03/27/z4-13-6.jsonl",
+  "view": "taierzhuang-1938",
+  "view_s": 1171800.0,
+  "lead_s": 0.0
+ },
  "35a4dfce-666f-51b5-8ee4-e9cfd92fe720": {
-  "key": "taierzhuang-1938-guns/first-15cm-class-rounds",
-  "file": "1938/03/31/z4-13-6.jsonl",
-  "view": "taierzhuang-1938-guns",
-  "view_s": 137760.0,
-  "lead_s": 5.0
+  "alias": "05ece6b1-c145-5252-9a87-3e9710c30680"
  }
 }
