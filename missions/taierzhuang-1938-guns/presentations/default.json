@@ -1,0 +1,939 @@
+{
+  "format": "sokoly-presentation",
+  "version": 1,
+  "id": "default",
+  "name": "Battle of Taierzhuang, II: the guns at the canal",
+  "operation": "taierzhuang-1938-guns",
+  "chapters": [
+    {
+      "title": "Two guns beyond reach",
+      "at_ms": 0,
+      "available_ms": 0
+    },
+    {
+      "title": "Night attacks on the gun line",
+      "at_ms": 3000000,
+      "available_ms": 3000000
+    },
+    {
+      "title": "Counter-battery, 30 March",
+      "at_ms": 16200000,
+      "available_ms": 16200000
+    },
+    {
+      "title": "The concentrations of 31 March",
+      "at_ms": 111600000,
+      "available_ms": 111600000
+    },
+    {
+      "title": "The first 15 cm rounds",
+      "at_ms": 136800000,
+      "available_ms": 136800000
+    },
+    {
+      "title": "1 April: the guns that could not be found",
+      "at_ms": 185400000,
+      "available_ms": 185400000
+    }
+  ],
+  "camera_track": [
+    {
+      "start_ms": 0,
+      "end_ms": 3000000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 117.735,
+          "lat": 34.525
+        }
+      },
+      "zoom": 11.0,
+      "pitch": 30,
+      "bearing": 0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 3000000,
+      "end_ms": 12600000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 117.723,
+          "lat": 34.578
+        }
+      },
+      "zoom": 14.6,
+      "pitch": 40,
+      "bearing": 200,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 333333
+    },
+    {
+      "start_ms": 12600000,
+      "end_ms": 28800000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 117.754,
+          "lat": 34.568
+        }
+      },
+      "zoom": 14.5,
+      "pitch": 40,
+      "bearing": 120,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 3590871
+    },
+    {
+      "start_ms": 28800000,
+      "end_ms": 54000000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 117.745,
+          "lat": 34.585
+        }
+      },
+      "zoom": 13.3,
+      "pitch": 35,
+      "bearing": 90,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 2399648
+    },
+    {
+      "start_ms": 54000000,
+      "end_ms": 81000000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 117.758,
+          "lat": 34.567
+        }
+      },
+      "zoom": 14.6,
+      "pitch": 40,
+      "bearing": 120,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 3598480
+    },
+    {
+      "start_ms": 81000000,
+      "end_ms": 111600000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 117.72,
+          "lat": 34.551
+        }
+      },
+      "zoom": 14.2,
+      "pitch": 40,
+      "bearing": 180,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 626086
+    },
+    {
+      "start_ms": 111600000,
+      "end_ms": 121200000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 117.733,
+          "lat": 34.57
+        }
+      },
+      "zoom": 13.4,
+      "pitch": 35,
+      "bearing": 180,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 1203343
+    },
+    {
+      "start_ms": 121200000,
+      "end_ms": 123000000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 117.733,
+          "lat": 34.545
+        }
+      },
+      "zoom": 11.8,
+      "pitch": 30,
+      "bearing": 0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 236364
+    },
+    {
+      "start_ms": 123000000,
+      "end_ms": 134400000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 117.733,
+          "lat": 34.57
+        }
+      },
+      "zoom": 13.2,
+      "pitch": 35,
+      "bearing": 200,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 2402372
+    },
+    {
+      "start_ms": 134400000,
+      "end_ms": 136800000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 117.7622,
+          "lat": 34.5605
+        }
+      },
+      "zoom": 14.0,
+      "pitch": 40,
+      "bearing": 90,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 903268
+    },
+    {
+      "start_ms": 136800000,
+      "end_ms": 138900000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 117.735,
+          "lat": 34.525
+        }
+      },
+      "zoom": 11.0,
+      "pitch": 30,
+      "bearing": 0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 943785
+    },
+    {
+      "start_ms": 138900000,
+      "end_ms": 151200000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 117.733,
+          "lat": 34.545
+        }
+      },
+      "zoom": 12.0,
+      "pitch": 30,
+      "bearing": 0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 609505
+    },
+    {
+      "start_ms": 151200000,
+      "end_ms": 185400000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 117.734,
+          "lat": 34.5625
+        }
+      },
+      "zoom": 15.0,
+      "pitch": 40,
+      "bearing": 200,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 1796576
+    },
+    {
+      "start_ms": 185400000,
+      "end_ms": 199800000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 117.72,
+          "lat": 34.61
+        }
+      },
+      "zoom": 12.3,
+      "pitch": 30,
+      "bearing": 180,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 903647
+    },
+    {
+      "start_ms": 199800000,
+      "end_ms": 216000000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 117.735,
+          "lat": 34.525
+        }
+      },
+      "zoom": 11.0,
+      "pitch": 30,
+      "bearing": 0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 1784539
+    },
+    {
+      "start_ms": 216000000,
+      "end_ms": 228600000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 117.735,
+          "lat": 34.525
+        }
+      },
+      "zoom": 11.2,
+      "pitch": 30,
+      "bearing": 20,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 3612455
+    },
+    {
+      "start_ms": 228600000,
+      "end_ms": 236100000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 117.735,
+          "lat": 34.525
+        }
+      },
+      "zoom": 10.8,
+      "pitch": 25,
+      "bearing": 0,
+      "orbit_deg_s": 0.0,
+      "transition_ms": 1510766
+    }
+  ],
+  "playback_track": [
+    {
+      "start_ms": 0,
+      "end_ms": 1200000,
+      "speed": 88.23529411764706
+    },
+    {
+      "start_ms": 1200000,
+      "end_ms": 2400000,
+      "speed": 115.38461538461539
+    },
+    {
+      "start_ms": 2400000,
+      "end_ms": 3900000,
+      "speed": 166.66666666666666
+    },
+    {
+      "start_ms": 3900000,
+      "end_ms": 6000000,
+      "speed": 265.82278481012656
+    },
+    {
+      "start_ms": 6000000,
+      "end_ms": 7080000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 7080000,
+      "end_ms": 9000000,
+      "speed": 263.013698630137
+    },
+    {
+      "start_ms": 9000000,
+      "end_ms": 16181867,
+      "speed": 4096
+    },
+    {
+      "start_ms": 16181867,
+      "end_ms": 16195000,
+      "speed": 8.0
+    },
+    {
+      "start_ms": 16195000,
+      "end_ms": 16208127,
+      "speed": 3.28175
+    },
+    {
+      "start_ms": 16208127,
+      "end_ms": 16212193,
+      "speed": 8.0
+    },
+    {
+      "start_ms": 16212193,
+      "end_ms": 16375000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 16375000,
+      "end_ms": 16388127,
+      "speed": 3.28175
+    },
+    {
+      "start_ms": 16388127,
+      "end_ms": 31190400,
+      "speed": 4096
+    },
+    {
+      "start_ms": 31190400,
+      "end_ms": 31195000,
+      "speed": 8.0
+    },
+    {
+      "start_ms": 31195000,
+      "end_ms": 31217100,
+      "speed": 5.525
+    },
+    {
+      "start_ms": 31217100,
+      "end_ms": 40195000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 40195000,
+      "end_ms": 40221005,
+      "speed": 6.50125
+    },
+    {
+      "start_ms": 40221005,
+      "end_ms": 45295000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 45295000,
+      "end_ms": 45321005,
+      "speed": 6.50125
+    },
+    {
+      "start_ms": 45321005,
+      "end_ms": 57591200,
+      "speed": 4096
+    },
+    {
+      "start_ms": 57591200,
+      "end_ms": 57595000,
+      "speed": 8.0
+    },
+    {
+      "start_ms": 57595000,
+      "end_ms": 57616476,
+      "speed": 5.369
+    },
+    {
+      "start_ms": 57616476,
+      "end_ms": 81000000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 81000000,
+      "end_ms": 82800000,
+      "speed": 313.04347826086956
+    },
+    {
+      "start_ms": 82800000,
+      "end_ms": 103800000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 103800000,
+      "end_ms": 105000000,
+      "speed": 320.0
+    },
+    {
+      "start_ms": 105000000,
+      "end_ms": 112794667,
+      "speed": 4096
+    },
+    {
+      "start_ms": 112794667,
+      "end_ms": 112795000,
+      "speed": 8.0
+    },
+    {
+      "start_ms": 112795000,
+      "end_ms": 112815024,
+      "speed": 5.006
+    },
+    {
+      "start_ms": 112815024,
+      "end_ms": 121421600,
+      "speed": 4096
+    },
+    {
+      "start_ms": 121421600,
+      "end_ms": 121435000,
+      "speed": 8.0
+    },
+    {
+      "start_ms": 121435000,
+      "end_ms": 121455147,
+      "speed": 5.03675
+    },
+    {
+      "start_ms": 121455147,
+      "end_ms": 121459347,
+      "speed": 8.0
+    },
+    {
+      "start_ms": 121459347,
+      "end_ms": 121465000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 121465000,
+      "end_ms": 121479928,
+      "speed": 3.732
+    },
+    {
+      "start_ms": 121479928,
+      "end_ms": 121667734,
+      "speed": 4096
+    },
+    {
+      "start_ms": 121667734,
+      "end_ms": 121719145,
+      "speed": 8.0
+    },
+    {
+      "start_ms": 121719145,
+      "end_ms": 121735000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 121735000,
+      "end_ms": 121774586,
+      "speed": 9.8965
+    },
+    {
+      "start_ms": 121774586,
+      "end_ms": 121975000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 121975000,
+      "end_ms": 121997836,
+      "speed": 5.709
+    },
+    {
+      "start_ms": 121997836,
+      "end_ms": 125395000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 125395000,
+      "end_ms": 125415838,
+      "speed": 5.2095
+    },
+    {
+      "start_ms": 125415838,
+      "end_ms": 129595000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 129595000,
+      "end_ms": 129615147,
+      "speed": 5.03675
+    },
+    {
+      "start_ms": 129615147,
+      "end_ms": 133795000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 133795000,
+      "end_ms": 133815838,
+      "speed": 5.2095
+    },
+    {
+      "start_ms": 133815838,
+      "end_ms": 135291734,
+      "speed": 4096
+    },
+    {
+      "start_ms": 135291734,
+      "end_ms": 135295000,
+      "speed": 8.0
+    },
+    {
+      "start_ms": 135295000,
+      "end_ms": 135319070,
+      "speed": 6.0175
+    },
+    {
+      "start_ms": 135319070,
+      "end_ms": 137729601,
+      "speed": 4096
+    },
+    {
+      "start_ms": 137729601,
+      "end_ms": 137800000,
+      "speed": 8.0
+    },
+    {
+      "start_ms": 137800000,
+      "end_ms": 137860000,
+      "speed": 7.361963190184048
+    },
+    {
+      "start_ms": 137860000,
+      "end_ms": 139494667,
+      "speed": 4096
+    },
+    {
+      "start_ms": 139494667,
+      "end_ms": 139532656,
+      "speed": 8.0
+    },
+    {
+      "start_ms": 139532656,
+      "end_ms": 139534990,
+      "speed": 9.9975
+    },
+    {
+      "start_ms": 139534990,
+      "end_ms": 141595000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 141595000,
+      "end_ms": 141621131,
+      "speed": 6.53275
+    },
+    {
+      "start_ms": 141621131,
+      "end_ms": 145180800,
+      "speed": 4096
+    },
+    {
+      "start_ms": 145180800,
+      "end_ms": 145195000,
+      "speed": 8.0
+    },
+    {
+      "start_ms": 145195000,
+      "end_ms": 145215147,
+      "speed": 5.03675
+    },
+    {
+      "start_ms": 145215147,
+      "end_ms": 145219747,
+      "speed": 8.0
+    },
+    {
+      "start_ms": 145219747,
+      "end_ms": 152985067,
+      "speed": 4096
+    },
+    {
+      "start_ms": 152985067,
+      "end_ms": 152995000,
+      "speed": 8.0
+    },
+    {
+      "start_ms": 152995000,
+      "end_ms": 153014553,
+      "speed": 4.88825
+    },
+    {
+      "start_ms": 153014553,
+      "end_ms": 153017019,
+      "speed": 8.0
+    },
+    {
+      "start_ms": 153017019,
+      "end_ms": 171000000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 171000000,
+      "end_ms": 174600000,
+      "speed": 373.0569948186528
+    },
+    {
+      "start_ms": 174600000,
+      "end_ms": 186295000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 186295000,
+      "end_ms": 186314416,
+      "speed": 4.854
+    },
+    {
+      "start_ms": 186314416,
+      "end_ms": 187795000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 187795000,
+      "end_ms": 187814416,
+      "speed": 4.854
+    },
+    {
+      "start_ms": 187814416,
+      "end_ms": 188995000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 188995000,
+      "end_ms": 189007422,
+      "speed": 3.1055
+    },
+    {
+      "start_ms": 189007422,
+      "end_ms": 196195000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 196195000,
+      "end_ms": 196238562,
+      "speed": 10.8905
+    },
+    {
+      "start_ms": 196238562,
+      "end_ms": 197995000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 197995000,
+      "end_ms": 198013602,
+      "speed": 4.6505
+    },
+    {
+      "start_ms": 198013602,
+      "end_ms": 201572000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 201572000,
+      "end_ms": 201666214,
+      "speed": 8.0
+    },
+    {
+      "start_ms": 201666214,
+      "end_ms": 203395000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 203395000,
+      "end_ms": 203414841,
+      "speed": 4.96025
+    },
+    {
+      "start_ms": 203414841,
+      "end_ms": 214195000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 214195000,
+      "end_ms": 214252844,
+      "speed": 14.461
+    },
+    {
+      "start_ms": 214252844,
+      "end_ms": 219595000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 219595000,
+      "end_ms": 219657214,
+      "speed": 15.5535
+    },
+    {
+      "start_ms": 219657214,
+      "end_ms": 224995000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 224995000,
+      "end_ms": 225052844,
+      "speed": 14.461
+    },
+    {
+      "start_ms": 225052844,
+      "end_ms": 230094667,
+      "speed": 4096
+    },
+    {
+      "start_ms": 230094667,
+      "end_ms": 230095000,
+      "speed": 8.0
+    },
+    {
+      "start_ms": 230095000,
+      "end_ms": 230119317,
+      "speed": 6.07925
+    },
+    {
+      "start_ms": 230119317,
+      "end_ms": 230395000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 230395000,
+      "end_ms": 230457214,
+      "speed": 15.5535
+    },
+    {
+      "start_ms": 230457214,
+      "end_ms": 232795000,
+      "speed": 4096
+    },
+    {
+      "start_ms": 232795000,
+      "end_ms": 232813602,
+      "speed": 4.6505
+    },
+    {
+      "start_ms": 232813602,
+      "end_ms": 235768534,
+      "speed": 4096
+    },
+    {
+      "start_ms": 235768534,
+      "end_ms": 235795000,
+      "speed": 8.0
+    },
+    {
+      "start_ms": 235795000,
+      "end_ms": 235817836,
+      "speed": 5.709
+    },
+    {
+      "start_ms": 235817836,
+      "end_ms": 235828569,
+      "speed": 8.0
+    },
+    {
+      "start_ms": 235828569,
+      "end_ms": 236100000,
+      "speed": 4096
+    }
+  ],
+  "extensions": {
+    "shot_intents": {
+      "0": {
+        "intent": "Both banks and each battery's reach: the Chinese 15 cm fan covers the Japanese guns; no Japanese fan reaches it.",
+        "shows": [
+          "SFH",
+          "TYPE 96",
+          "TAIERZHUANG"
+        ]
+      },
+      "3000000": {
+        "intent": "The night attack from the station on the reserve and the heavy guns.",
+        "shows": [
+          "NIGHT ATTACK",
+          "HEAVY 2",
+          "63 REGT III"
+        ]
+      },
+      "12600000": {
+        "intent": "The duel with the Chinese guns towards Zhaocun.",
+        "shows": [
+          "EAST GUNS",
+          "FIELD I"
+        ]
+      },
+      "28800000": {
+        "intent": "The Type 96 searches the villages east of the town.",
+        "shows": [
+          "TYPE 96"
+        ]
+      },
+      "54000000": {
+        "intent": "A night attack forms east of Mengzhuang and is broken up.",
+        "shows": [
+          "EAST FORCE"
+        ]
+      },
+      "81000000": {
+        "intent": "The armoured train's night run into the station, and the guns on it at dawn.",
+        "shows": [
+          "TRAIN",
+          "STATION"
+        ]
+      },
+      "111600000": {
+        "intent": "The Japanese gun line and the town it fires on.",
+        "shows": [
+          "TYPE 96",
+          "TAIERZHUANG"
+        ]
+      },
+      "121200000": {
+        "intent": "The first concentration on the town, and the Chinese reply from the hills.",
+        "shows": [
+          "TAIERZHUANG",
+          "XIONGSHAN GUNS",
+          "TYPE 96"
+        ]
+      },
+      "123000000": {
+        "intent": "Closer again for the second, third and fourth concentrations, from the heavy guns at Sanlizhuang.",
+        "shows": [
+          "HEAVY 3",
+          "TAIERZHUANG"
+        ]
+      },
+      "134400000": {
+        "intent": "A Chinese battery at Canglangmiao, found and fired on.",
+        "shows": [
+          "EAST GUNS"
+        ]
+      },
+      "136800000": {
+        "intent": "The first 15 cm-class rounds, from beyond the Japanese reach onto the 3rd Heavy Company.",
+        "shows": [
+          "SFH",
+          "HEAVY 3"
+        ]
+      },
+      "138900000": {
+        "intent": "The Type 96 hunts the batteries at Hanshan and Bianzhuang.",
+        "shows": [
+          "HANSHAN GUNS",
+          "TYPE 96"
+        ]
+      },
+      "151200000": {
+        "intent": "The 11th Company leaves the north-west corner under the heavy guns' cover.",
+        "shows": [
+          "11 COY",
+          "TAIERZHUANG"
+        ]
+      },
+      "185400000": {
+        "intent": "Morning, 1 April: the observation post moves up; the 10th's field guns come forward.",
+        "shows": [
+          "FIELD 10I",
+          "OP"
+        ]
+      },
+      "199800000": {
+        "intent": "The 15 cm rounds fall on Liujiahu and Sanlizhuang from guns no one can find.",
+        "shows": [
+          "SFH",
+          "LIUJIAHU"
+        ]
+      },
+      "216000000": {
+        "intent": "The afternoon's bombardments at fixed intervals.",
+        "shows": [
+          "SFH",
+          "LIUJIAHU"
+        ]
+      },
+      "228600000": {
+        "intent": "Pull back over both banks: two guns the Japanese never reached.",
+        "shows": [
+          "SFH",
+          "TYPE 96",
+          "TAIERZHUANG"
+        ]
+      }
+    }
+  }
+}

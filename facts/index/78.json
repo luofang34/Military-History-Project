@@ -5,5 +5,12 @@
   "view": "operation-chastise",
   "view_s": 12060.0,
   "lead_s": 5.0
+ },
+ "78f6afdb-6373-5c75-a761-6acbb2d3ce42": {
+  "key": "taierzhuang-1938-guns/sfh-position",
+  "file": "1938/03/29/z4-13-6.jsonl",
+  "view": "taierzhuang-1938-guns",
+  "view_s": 1200.0,
+  "lead_s": 0.0
  }
 }

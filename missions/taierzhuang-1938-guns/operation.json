@@ -1,0 +1,374 @@
+{
+  "format": "sokoly-operation",
+  "version": 4,
+  "id": "taierzhuang-1938-guns",
+  "name": "Battle of Taierzhuang, II: the guns at the canal",
+  "duration_ms": 236100000,
+  "time_origin": "30 March 1938 01:30 UTC+8, as the Chinese night attack sets out from the station; the Japanese reports are kept on this clock",
+  "time": {
+    "range": {
+      "start": 0,
+      "end": 236100000
+    },
+    "anchor": {
+      "at": 0,
+      "unix_ms": -1002263400000,
+      "source": "the 63rd Infantry's and the Type 96 company's reports, whose entries are timed on UTC+8",
+      "source_scale": "utc",
+      "uncertainty_ms": 600000,
+      "resolution_ms": 60000,
+      "original_calendar": "1938-03-30 UTC+8"
+    },
+    "zone": {
+      "kind": "fixed",
+      "seconds": 28800,
+      "source": "China's coastal standard time, UTC+8, which the Japanese reports name (「時刻ハ西部標準時トス」)"
+    }
+  },
+  "captured_availability": false,
+  "sources": [
+    {
+      "id": "reconstruction-chinese",
+      "name": "Chinese units' moves, reconstructed",
+      "motion": "great_circle",
+      "max_gap_ms": 236100000,
+      "zone": {
+        "kind": "fixed",
+        "seconds": 28800,
+        "source": "China's coastal standard time, UTC+8, which the Japanese reports name (「時刻ハ西部標準時トス」)"
+      }
+    },
+    {
+      "id": "reconstruction-japanese",
+      "name": "Japanese units' moves, reconstructed",
+      "motion": "great_circle",
+      "max_gap_ms": 236100000,
+      "zone": {
+        "kind": "fixed",
+        "seconds": 28800,
+        "source": "China's coastal standard time, UTC+8, which the Japanese reports name (「時刻ハ西部標準時トス」)"
+      }
+    },
+    {
+      "id": "reconstruction-fire",
+      "name": "Fire missions, from the Japanese reports' times",
+      "motion": "great_circle",
+      "max_gap_ms": 236100000,
+      "zone": {
+        "kind": "fixed",
+        "seconds": 28800,
+        "source": "China's coastal standard time, UTC+8, which the Japanese reports name (「時刻ハ西部標準時トス」)"
+      }
+    },
+    {
+      "id": "reconstruction-guns",
+      "name": "Batteries' range fans, reconstructed",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 28800,
+        "source": "China's coastal standard time, UTC+8, which the Japanese reports name (「時刻ハ西部標準時トス」)"
+      }
+    },
+    {
+      "id": "reconstruction-railway",
+      "name": "The Taierzhuang branch railway of 1938",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 28800,
+        "source": "China's coastal standard time, UTC+8, which the Japanese reports name (「時刻ハ西部標準時トス」)"
+      }
+    },
+    {
+      "id": "reconstruction-estimate",
+      "name": "Replay estimates where sources disagree (build/evidence/)",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 28800,
+        "source": "China's coastal standard time, UTC+8, which the Japanese reports name (「時刻ハ西部標準時トス」)"
+      }
+    },
+    {
+      "id": "jacar-63i-taierzhuang",
+      "name": "歩兵第六十三聯隊 台児庄攻略戦闘詳報 (JACAR C11111252700–C11111254100)",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 28800,
+        "source": "China's coastal standard time, UTC+8, which the Japanese reports name (「時刻ハ西部標準時トス」)"
+      }
+    },
+    {
+      "id": "jacar-10i-report-13",
+      "name": "歩兵第十聯隊 臺兒庄附近戦闘詳報 第十三號 (JACAR C11111171800–C11111172200)",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 28800,
+        "source": "China's coastal standard time, UTC+8, which the Japanese reports name (「時刻ハ西部標準時トス」)"
+      }
+    },
+    {
+      "id": "jacar-sas-report",
+      "name": "臨SAS戦詳第一號 臺兒庄附近ノ戰鬪詳報, 第二軍臨時野戰重砲兵中隊 (JACAR C11111730100–C11111731000)",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 28800,
+        "source": "China's coastal standard time, UTC+8, which the Japanese reports name (「時刻ハ西部標準時トス」)"
+      }
+    },
+    {
+      "id": "jacar-ohashi",
+      "name": "大橋武夫「支那事変初期 北支における十五榴部隊を中心とする砲兵戦史資料」 (JACAR C11111729600, C11111729700)",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 28800,
+        "source": "China's coastal standard time, UTC+8, which the Japanese reports name (「時刻ハ西部標準時トス」)"
+      }
+    },
+    {
+      "id": "jiang-2017",
+      "name": "姜克實「台児庄作戦の概観」, 岡山大学大学院社会文化科学研究科紀要 43 (2017)"
+    },
+    {
+      "id": "senshi-sosho-89",
+      "name": "戦史叢書 89 『支那事変陸軍作戦〈2〉』 (1976)"
+    },
+    {
+      "id": "krzzjn-sfh18",
+      "name": "萨沙「国军的雷神之锤——抗战中的sFH18 150毫米榴弹炮」, 抗日战争纪念网 (2018)"
+    },
+    {
+      "id": "zhwiki-sfh18",
+      "name": "SFH 18榴彈砲 (zh.wikipedia)"
+    },
+    {
+      "id": "enwiki-taierzhuang",
+      "name": "Battle of Taierzhuang (en.wikipedia)"
+    },
+    {
+      "id": "jawiki-taierzhuang",
+      "name": "台児荘の戦い (ja.wikipedia)"
+    },
+    {
+      "id": "zhwiki-taierzhuang-site",
+      "name": "台儿庄大战旧址 (zh.wikipedia)"
+    },
+    {
+      "id": "osm",
+      "name": "OpenStreetMap"
+    }
+  ],
+  "entities": [
+    {
+      "id": "CHINESE ARTY",
+      "sidc": "SFGPUCF----G---",
+      "camera": false,
+      "name": "Chinese artillery south of the canal",
+      "kind": "formation"
+    },
+    {
+      "id": "SFH",
+      "sidc": "SFGPUCF----E---",
+      "camera": false,
+      "name": "10th Artillery Regiment, 15 cm sFH 18/32L (two guns)",
+      "kind": "battery",
+      "parent": "CHINESE ARTY"
+    },
+    {
+      "id": "ZHAISHAN GUNS",
+      "sidc": "SFGPUCF----E---",
+      "camera": false,
+      "name": "Field guns at Zhaishan",
+      "kind": "battery",
+      "parent": "CHINESE ARTY"
+    },
+    {
+      "id": "HANSHAN GUNS",
+      "sidc": "SFGPUCF----E---",
+      "camera": false,
+      "name": "Field guns at Hanshan",
+      "kind": "battery",
+      "parent": "CHINESE ARTY"
+    },
+    {
+      "id": "XIONGSHAN GUNS",
+      "sidc": "SFGPUCF----E---",
+      "camera": false,
+      "name": "Field guns at the north foot of Xiongshan",
+      "kind": "battery",
+      "parent": "CHINESE ARTY"
+    },
+    {
+      "id": "STATION GUNS",
+      "sidc": "SFGPUCF----E---",
+      "camera": false,
+      "name": "Guns on the south bank south-west of the station",
+      "kind": "battery",
+      "parent": "CHINESE ARTY"
+    },
+    {
+      "id": "EAST GUNS",
+      "sidc": "SFGPUCF----E---",
+      "camera": false,
+      "name": "Chinese guns east of the Japanese line",
+      "kind": "battery",
+      "parent": "CHINESE ARTY"
+    },
+    {
+      "id": "31 DIV",
+      "sidc": "SFGPUCI----I---",
+      "camera": false,
+      "name": "31st Division in the town (Chi Fengcheng)",
+      "kind": "unit"
+    },
+    {
+      "id": "EAST FORCE",
+      "sidc": "SFGPUCI----G---",
+      "camera": false,
+      "name": "Chinese troops east of Mengzhuang",
+      "kind": "unit"
+    },
+    {
+      "id": "NIGHT ATTACK",
+      "sidc": "SFGPUCI----F---",
+      "camera": false,
+      "name": "About 1,000 Chinese from the station",
+      "kind": "unit"
+    },
+    {
+      "id": "TRAIN",
+      "sidc": "SFGPEVT--------",
+      "camera": false,
+      "name": "Chinese armoured train",
+      "kind": "train"
+    },
+    {
+      "id": "CN 15CM ROUNDS",
+      "sidc": "SFGPEWH--------",
+      "camera": false,
+      "name": "15 cm rounds, Chinese",
+      "kind": "rounds",
+      "parent": "CHINESE ARTY"
+    },
+    {
+      "id": "CN ROUNDS",
+      "sidc": "SFGPEWH--------",
+      "camera": false,
+      "name": "Field-gun rounds, Chinese",
+      "kind": "rounds",
+      "parent": "CHINESE ARTY"
+    },
+    {
+      "id": "JAPANESE ARTY",
+      "sidc": "SHGPUCF----G---",
+      "camera": false,
+      "name": "Seya Detachment artillery (Col. Kinoshita)",
+      "kind": "formation"
+    },
+    {
+      "id": "TYPE 96",
+      "sidc": "SHGPUCF----E---",
+      "camera": false,
+      "name": "China Garrison Type 96 15 cm company (two guns)",
+      "kind": "battery",
+      "parent": "JAPANESE ARTY"
+    },
+    {
+      "id": "HEAVY 3",
+      "sidc": "SHGPUCF----E---",
+      "camera": false,
+      "name": "3rd Company, 2nd Field Heavy Artillery (Type 4 15 cm)",
+      "kind": "battery",
+      "parent": "JAPANESE ARTY"
+    },
+    {
+      "id": "HEAVY 2",
+      "sidc": "SHGPUCF----E---",
+      "camera": false,
+      "name": "2nd Company, 2nd Field Heavy Artillery (Type 4 15 cm)",
+      "kind": "battery",
+      "parent": "JAPANESE ARTY"
+    },
+    {
+      "id": "FIELD I",
+      "sidc": "SHGPUCF----F---",
+      "camera": false,
+      "name": "I Battalion, 10th Field Artillery (Type 38)",
+      "kind": "battery",
+      "parent": "JAPANESE ARTY"
+    },
+    {
+      "id": "FIELD 10I",
+      "sidc": "SHGPUCF----F---",
+      "camera": false,
+      "name": "II and IV Battalions, 10th Field Artillery (Type 38)",
+      "kind": "battery",
+      "parent": "JAPANESE ARTY"
+    },
+    {
+      "id": "OP",
+      "sidc": "SHGPUUS----D---",
+      "camera": false,
+      "name": "Observation party of the Type 96 company",
+      "kind": "unit",
+      "parent": "JAPANESE ARTY"
+    },
+    {
+      "id": "63 REGT II",
+      "sidc": "SHGPUCI----F---",
+      "camera": false,
+      "name": "II Battalion, 63rd Infantry, in the town",
+      "kind": "unit"
+    },
+    {
+      "id": "63 REGT III",
+      "sidc": "SHGPUCI----F---",
+      "camera": false,
+      "name": "III Battalion, 63rd Infantry, reserve south of Sanlizhuang",
+      "kind": "unit"
+    },
+    {
+      "id": "11 COY",
+      "sidc": "SHGPUCI----E---",
+      "camera": false,
+      "name": "11th Company, 63rd Infantry, at the north-west corner",
+      "kind": "unit"
+    },
+    {
+      "id": "JP 15CM ROUNDS",
+      "sidc": "SHGPEWH--------",
+      "camera": false,
+      "name": "15 cm rounds, Japanese",
+      "kind": "rounds",
+      "parent": "JAPANESE ARTY"
+    },
+    {
+      "id": "JP ROUNDS",
+      "sidc": "SHGPEWH--------",
+      "camera": false,
+      "name": "Field-gun rounds, Japanese",
+      "kind": "rounds",
+      "parent": "JAPANESE ARTY"
+    },
+    {
+      "id": "TAIERZHUANG",
+      "sidc": "SFGPIB----H----",
+      "camera": false,
+      "name": "Taierzhuang, the walled town (1938)",
+      "kind": "site"
+    },
+    {
+      "id": "STATION",
+      "sidc": "SNGPIB----H----",
+      "camera": false,
+      "name": "Taierzhuang station (1938 site)",
+      "kind": "site"
+    },
+    {
+      "id": "LIUJIAHU",
+      "sidc": "SHGPIB----H----",
+      "camera": false,
+      "name": "Liujiahu, the Japanese artillery's command post",
+      "kind": "site"
+    }
+  ],
+  "media_archive": null
+}
