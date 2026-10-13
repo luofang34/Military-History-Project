@@ -13,6 +13,7 @@ STATION_VIEW = (117.7200, 34.5510)
 TOWN_AND_GUNS = (117.7330, 34.5700)
 SOUTH_HILLS = (117.7330, 34.5450)
 NORTH_WEST = (117.7200, 34.6100)
+GUN_PARK = (117.7270, 34.5850)  # between Liujiahu and Sanlizhuang
 
 # (from, until, target, zoom, pitch, bearing, intent, entities it shows, options)
 SHOTS = [
@@ -57,8 +58,9 @@ SHOTS = [
     ("1 09:00", "1 13:30", BOTH_BANKS, 11.0, 30, 0,
      "The 15 cm rounds fall on Liujiahu and Sanlizhuang from guns no one can find.",
      ["SFH", "LIUJIAHU"], {"move": 2}),
-    ("1 13:30", "1 17:00", BOTH_BANKS, 11.2, 30, 20,
-     "The afternoon's bombardments at fixed intervals.", ["SFH", "LIUJIAHU"], {"move": 2}),
+    ("1 13:30", "1 17:00", GUN_PARK, 13.8, 45, 160,
+     "Close on the Japanese gun line, looking south the way the rounds come: the afternoon's "
+     "bombardments land at fixed intervals.", ["LIUJIAHU", "HEAVY 3"], {"move": 2}),
     ("1 17:00", "1 19:05", BOTH_BANKS, 10.8, 25, 0,
      "Pull back over both banks: two guns the Japanese never reached.",
      ["SFH", "TYPE 96", "TAIERZHUANG"], {"move": 3}),

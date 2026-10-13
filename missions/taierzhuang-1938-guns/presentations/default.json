@@ -283,13 +283,13 @@
       "target": {
         "kind": "point",
         "value": {
-          "lon": 117.735,
-          "lat": 34.525
+          "lon": 117.727,
+          "lat": 34.585
         }
       },
-      "zoom": 11.2,
-      "pitch": 30,
-      "bearing": 20,
+      "zoom": 13.8,
+      "pitch": 45,
+      "bearing": 160,
       "orbit_deg_s": 0.0,
       "transition_ms": 3612455
     },
@@ -920,10 +920,10 @@
         ]
       },
       "216000000": {
-        "intent": "The afternoon's bombardments at fixed intervals.",
+        "intent": "Close on the Japanese gun line, looking south the way the rounds come: the afternoon's bombardments land at fixed intervals.",
         "shows": [
-          "SFH",
-          "LIUJIAHU"
+          "LIUJIAHU",
+          "HEAVY 3"
         ]
       },
       "228600000": {
