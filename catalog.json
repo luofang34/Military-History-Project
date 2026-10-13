@@ -38,6 +38,13 @@
       "summary": "The Sichuan troops' defence of Tengxian and Wang Mingzhang's death, 14–18 March 1938",
       "package": "missions/taierzhuang-1938",
       "open": "?recorded-path"
+    },
+    {
+      "id": "taierzhuang-1938-guns",
+      "name": "Battle of Taierzhuang, II: the guns at the canal",
+      "summary": "Two Chinese 15 cm sFH 18 howitzers against the Japanese artillery north of the Grand Canal, 30 March – 1 April 1938",
+      "package": "missions/taierzhuang-1938-guns",
+      "open": "?recorded-path"
     }
   ]
 }
