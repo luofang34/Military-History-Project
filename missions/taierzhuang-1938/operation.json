@@ -1,0 +1,423 @@
+{
+  "format": "sokoly-operation",
+  "version": 4,
+  "id": "taierzhuang-1938",
+  "name": "Battle of Taierzhuang, I: Tengxian",
+  "duration_ms": 383400000,
+  "time_origin": "14 March 1938 04:00 UTC+8, when the Japanese 10th Infantry set out from Tangcun; Japanese and Chinese records are read on this clock",
+  "time": {
+    "range": {
+      "start": 0,
+      "end": 383400000
+    },
+    "anchor": {
+      "at": 0,
+      "unix_ms": -1003636800000,
+      "source": "krzzjn, from the 10th and 63rd Infantry's reports: the right column left Tangcun at 04:00 on 14 March",
+      "source_scale": "utc",
+      "uncertainty_ms": 3600000,
+      "resolution_ms": 60000,
+      "original_calendar": "1938-03-14 UTC+8"
+    },
+    "zone": {
+      "kind": "fixed",
+      "seconds": 28800,
+      "source": "China's coastal standard time, UTC+8; the Japanese 10th Infantry's report is read on it (build/evidence/, japanese-clock)"
+    }
+  },
+  "captured_availability": false,
+  "sources": [
+    {
+      "id": "reconstruction-chinese",
+      "name": "Chinese units' moves, reconstructed",
+      "motion": "great_circle",
+      "max_gap_ms": 383400000,
+      "zone": {
+        "kind": "fixed",
+        "seconds": 28800,
+        "source": "China's coastal standard time, UTC+8; the Japanese 10th Infantry's report is read on it (build/evidence/, japanese-clock)"
+      }
+    },
+    {
+      "id": "reconstruction-japanese",
+      "name": "Japanese units' moves, reconstructed",
+      "motion": "great_circle",
+      "max_gap_ms": 383400000,
+      "zone": {
+        "kind": "fixed",
+        "seconds": 28800,
+        "source": "China's coastal standard time, UTC+8; the Japanese 10th Infantry's report is read on it (build/evidence/, japanese-clock)"
+      }
+    },
+    {
+      "id": "reconstruction-guns",
+      "name": "Japanese batteries' range fans, reconstructed",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 28800,
+        "source": "China's coastal standard time, UTC+8; the Japanese 10th Infantry's report is read on it (build/evidence/, japanese-clock)"
+      }
+    },
+    {
+      "id": "reconstruction-railway",
+      "name": "The Tianjin–Pukou railway of 1938",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 28800,
+        "source": "China's coastal standard time, UTC+8; the Japanese 10th Infantry's report is read on it (build/evidence/, japanese-clock)"
+      }
+    },
+    {
+      "id": "reconstruction-estimate",
+      "name": "Replay estimates where sources disagree (build/evidence/)",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 28800,
+        "source": "China's coastal standard time, UTC+8; the Japanese 10th Infantry's report is read on it (build/evidence/, japanese-clock)"
+      }
+    },
+    {
+      "id": "jacar-10i-report-11",
+      "name": "歩兵第十聯隊 滕縣附近戦闘詳報 第十一號 (JACAR C11111170200)",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 28800,
+        "source": "China's coastal standard time, UTC+8; the Japanese 10th Infantry's report is read on it (build/evidence/, japanese-clock)"
+      }
+    },
+    {
+      "id": "jacar-seya-orders",
+      "name": "瀬谷支隊命令, 別紙 (JACAR C11111170300)",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 28800,
+        "source": "China's coastal standard time, UTC+8; the Japanese 10th Infantry's report is read on it (build/evidence/, japanese-clock)"
+      }
+    },
+    {
+      "id": "jacar-10i-casualties",
+      "name": "歩兵第十聯隊死傷表, 3月15日–18日 (JACAR C11111170700)"
+    },
+    {
+      "id": "jiang-2015",
+      "name": "姜克實「日本軍の史料から見る滕県作戦の実記録」, 文化共生学研究 14 (2015)"
+    },
+    {
+      "id": "jiang-withdrawal",
+      "name": "姜克實「坂本、瀬谷支隊の台児庄撤退の経緯 ─1938年4月」, 岡山大学文学部紀要 64"
+    },
+    {
+      "id": "senshi-sosho-89",
+      "name": "戦史叢書 89 『支那事変陸軍作戦〈2〉』 (1976)"
+    },
+    {
+      "id": "krzzjn-jiehe",
+      "name": "「滕县作战之界河附近的战斗 3月14-15日」, 抗日战争纪念网 (2018)"
+    },
+    {
+      "id": "krzzjn-sfh18",
+      "name": "萨沙「国军的雷神之锤——抗战中的sFH18 150毫米榴弹炮」, 抗日战争纪念网 (2018)"
+    },
+    {
+      "id": "zhwiki-tengxian",
+      "name": "滕县保卫战 (zh.wikipedia)"
+    },
+    {
+      "id": "zhwiki-wang-mingzhang",
+      "name": "王銘章 (zh.wikipedia)"
+    },
+    {
+      "id": "zhwiki-sfh18",
+      "name": "SFH 18榴彈砲 (zh.wikipedia)"
+    },
+    {
+      "id": "tengxian-gazetteer",
+      "name": "《滕县志》 (中华书局, 1990)"
+    },
+    {
+      "id": "xuecheng-gazetteer",
+      "name": "《薛城区志》"
+    },
+    {
+      "id": "rmzxw-2020",
+      "name": "郑学富, 人民政协网 (2020)"
+    },
+    {
+      "id": "rmzxw-2025",
+      "name": "蔡永飞「滕县保卫战中的张宣武」, 人民政协网 (2025)"
+    },
+    {
+      "id": "qq-yang-jintao",
+      "name": "杨津涛「中、日战报为何差距四十倍？」, 腾讯 (2019)"
+    },
+    {
+      "id": "nationalist-decree-1938",
+      "name": "國民政府 褒揚令, 6 April 1938"
+    },
+    {
+      "id": "osm",
+      "name": "OpenStreetMap"
+    }
+  ],
+  "entities": [
+    {
+      "id": "22 GROUP ARMY",
+      "sidc": "SFGPUCI---AL---",
+      "camera": false,
+      "name": "22nd Group Army (Sun Zhen)",
+      "kind": "formation"
+    },
+    {
+      "id": "41 ARMY",
+      "sidc": "SFGPUCI----J---",
+      "camera": false,
+      "name": "41st Army",
+      "kind": "formation",
+      "parent": "22 GROUP ARMY"
+    },
+    {
+      "id": "45 ARMY",
+      "sidc": "SFGPUCI----J---",
+      "camera": false,
+      "name": "45th Army (Chen Dingxun)",
+      "kind": "formation",
+      "parent": "22 GROUP ARMY"
+    },
+    {
+      "id": "122 DIV",
+      "sidc": "SFGPUCI----I---",
+      "camera": false,
+      "name": "122nd Division",
+      "kind": "formation",
+      "parent": "41 ARMY"
+    },
+    {
+      "id": "124 DIV",
+      "sidc": "SFGPUCI----I---",
+      "camera": false,
+      "name": "124th Division",
+      "kind": "formation",
+      "parent": "41 ARMY"
+    },
+    {
+      "id": "WANG",
+      "sidc": "10032700711101010000",
+      "camera": false,
+      "name": "Wang Mingzhang, 122nd Division",
+      "kind": "person",
+      "parent": "122 DIV"
+    },
+    {
+      "id": "ZHANG",
+      "sidc": "10032700001101010000",
+      "camera": false,
+      "name": "Zhang Xuanwu, 727th Regiment, city defence",
+      "kind": "person",
+      "parent": "122 DIV"
+    },
+    {
+      "id": "727 REGT",
+      "sidc": "SFGPUCI----G---",
+      "camera": false,
+      "name": "727th Regiment (Zhang Xuanwu)",
+      "kind": "unit",
+      "parent": "122 DIV"
+    },
+    {
+      "id": "731 REGT",
+      "sidc": "SFGPUCI----G---",
+      "camera": false,
+      "name": "731st Regiment (Wang Wenzhen)",
+      "kind": "unit",
+      "parent": "122 DIV"
+    },
+    {
+      "id": "YAN BN",
+      "sidc": "SFGPUCI----F---",
+      "camera": false,
+      "name": "1st Battalion, 731st Regiment (Yan Yi)",
+      "kind": "unit",
+      "parent": "122 DIV"
+    },
+    {
+      "id": "SPECIAL BN",
+      "sidc": "SFGPUCI----F---",
+      "camera": false,
+      "name": "41st Army Special Service Battalion",
+      "kind": "unit",
+      "parent": "41 ARMY"
+    },
+    {
+      "id": "370 BDE",
+      "sidc": "SFGPUCI----H---",
+      "camera": false,
+      "name": "370th Brigade (Lü Kang)",
+      "kind": "unit",
+      "parent": "124 DIV"
+    },
+    {
+      "id": "740 REGT",
+      "sidc": "SFGPUCI----G---",
+      "camera": false,
+      "name": "740th Regiment (Wang Lin)",
+      "kind": "unit",
+      "parent": "124 DIV"
+    },
+    {
+      "id": "372 BDE",
+      "sidc": "SFGPUCI----H---",
+      "camera": false,
+      "name": "372nd Brigade (Zeng Suyuan)",
+      "kind": "unit",
+      "parent": "124 DIV"
+    },
+    {
+      "id": "125 DIV",
+      "sidc": "SFGPUCI----I---",
+      "camera": false,
+      "name": "125th Division",
+      "kind": "unit",
+      "parent": "45 ARMY"
+    },
+    {
+      "id": "379 BDE",
+      "sidc": "SFGPUCI----H---",
+      "camera": false,
+      "name": "379th Brigade, 127th Division",
+      "kind": "unit",
+      "parent": "45 ARMY"
+    },
+    {
+      "id": "381 BDE",
+      "sidc": "SFGPUCI----H---",
+      "camera": false,
+      "name": "381st Brigade, 127th Division",
+      "kind": "unit",
+      "parent": "45 ARMY"
+    },
+    {
+      "id": "ARMOURED TRAIN",
+      "sidc": "SFGPEVT--------",
+      "camera": false,
+      "name": "Chinese armoured train, 75 mm",
+      "kind": "train",
+      "parent": "22 GROUP ARMY"
+    },
+    {
+      "id": "SEYA",
+      "sidc": "SHGPUCI---AH---",
+      "camera": false,
+      "name": "Seya Detachment (Maj. Gen. Seya)",
+      "kind": "unit"
+    },
+    {
+      "id": "10 REGT",
+      "sidc": "SHGPUCI----G---",
+      "camera": false,
+      "name": "10th Infantry Regiment (Col. Akashiba)",
+      "kind": "formation",
+      "parent": "SEYA"
+    },
+    {
+      "id": "10 REGT I",
+      "sidc": "SHGPUCI----F---",
+      "camera": false,
+      "name": "I Battalion, 10th Infantry",
+      "kind": "unit",
+      "parent": "10 REGT"
+    },
+    {
+      "id": "10 REGT III",
+      "sidc": "SHGPUCI----F---",
+      "camera": false,
+      "name": "III Battalion, 10th Infantry",
+      "kind": "unit",
+      "parent": "10 REGT"
+    },
+    {
+      "id": "10 REGT II",
+      "sidc": "SHGPUCI----F---",
+      "camera": false,
+      "name": "II Battalion group, 10th Infantry",
+      "kind": "unit",
+      "parent": "10 REGT"
+    },
+    {
+      "id": "63 REGT",
+      "sidc": "SHGPUCI----G---",
+      "camera": false,
+      "name": "63rd Infantry Regiment (Col. Fukuei)",
+      "kind": "unit",
+      "parent": "SEYA"
+    },
+    {
+      "id": "ARMOUR",
+      "sidc": "SHGPUCA----E---",
+      "camera": false,
+      "name": "Independent Light Armoured Car Companies 10 and 12",
+      "kind": "unit",
+      "parent": "SEYA"
+    },
+    {
+      "id": "CENTRE COLUMN",
+      "sidc": "SHGPUCI----F---",
+      "camera": false,
+      "name": "Centre column (Kinoshita's artillery group)",
+      "kind": "unit",
+      "parent": "SEYA"
+    },
+    {
+      "id": "FIELD ARTY",
+      "sidc": "SHGPUCF----F---",
+      "camera": false,
+      "name": "I Battalion, 10th Field Artillery (Type 38, 8 guns)",
+      "kind": "unit",
+      "parent": "SEYA"
+    },
+    {
+      "id": "HEAVY ARTY",
+      "sidc": "SHGPUCF----F---",
+      "camera": false,
+      "name": "I Battalion, 2nd Field Heavy Artillery (12 guns)",
+      "kind": "unit",
+      "parent": "SEYA"
+    },
+    {
+      "id": "GARRISON ARTY",
+      "sidc": "SHGPUCF----E---",
+      "camera": false,
+      "name": "China Garrison heavy artillery (Type 96 15 cm)",
+      "kind": "unit",
+      "parent": "SEYA"
+    },
+    {
+      "id": "TENGXIAN",
+      "sidc": "SFGPIB----H----",
+      "camera": false,
+      "name": "Tengxian, the walled city",
+      "kind": "site"
+    },
+    {
+      "id": "STATION",
+      "sidc": "SNGPIB----H----",
+      "camera": false,
+      "name": "Tengxian station (1938 site)",
+      "kind": "site"
+    },
+    {
+      "id": "PAGODA",
+      "sidc": "SNGPIB----H----",
+      "camera": false,
+      "name": "Longquan pagoda, the Japanese observation post",
+      "kind": "site"
+    },
+    {
+      "id": "LINCHENG",
+      "sidc": "SFGPIB----H----",
+      "camera": false,
+      "name": "Lincheng, 22nd Group Army headquarters",
+      "kind": "site"
+    }
+  ],
+  "media_archive": null
+}

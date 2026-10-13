@@ -275,6 +275,12 @@ class Emitter:
                 break
             t = nxt
 
+    def graphic(self, source, at, id_, definition, provenance="reconstructed"):
+        """A tactical graphic from `at`: `definition` is a milgraphics stored definition whose
+        `id` is `id_`, or None to remove the graphic."""
+        return self._event(source, None, at, at, None, provenance, [],
+                           {"kind": "graphic", "data": {"id": id_, "definition": definition}})
+
     def write(self, path):
         self.events.sort(key=lambda e: (e["observed_ms"], e["source"]["sequence"]))
         with open(path, "w", encoding="utf-8") as out:
