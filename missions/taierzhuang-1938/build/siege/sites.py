@@ -115,6 +115,8 @@ CHINESE = [
      None),
     ("TRAIN", "Chinese armoured train", "SFGPEVT--------", "train", None),
     ("WEST FORCE", "Chinese troops west of the railway", unit("F", "regiment"), "unit", None),
+    ("SQUAD", "Dare-to-die squad of the 31st Division (Shi Shangbin, 57 men)",
+     unit("F", "platoon"), "unit", "31 DIV"),
     ("185 REGT", "185th Regiment, 31st Division, forward at Beiluo", unit("F", "regiment"),
      "unit", "31 DIV"),
     ("20 ARMY CORPS", "20th Army Corps (Tang Enbo)", unit("F", "division"), "formation", None),

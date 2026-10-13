@@ -1,7 +1,7 @@
 """The fire the reports record, 30 March – 1 April, and when the 15 cm guns first fired."""
 from ledger import Dispute, Moment, Record
 
-from .names import ENWIKI, J10, J63, JAWIKI, KRZ_SFH, SAS, SOSHO
+from .names import ENWIKI, J10, J63, JAWIKI, KRZ_SFH, SAS, SOSHO, THEPAPER
 
 MOMENTS = {
     "night-attack-from-the-station": Moment(
@@ -16,6 +16,12 @@ MOMENTS = {
         "Chinese guns from Zhaocun on the field-gun position", "EAST GUNS", "30 06:00",
         (Record(J63, "野砲陣地ハ午前六時頃趙村方向ヨリ敵砲兵ノ集中射撃ヲ受ケ不尠損傷ヲ受ケタルモ直ニ其二門ヲ破壊"
                 "シ他ノ二門ヲ敗退セシメ", "30 06:00", quote=True),)),
+    "dare-to-die-squad": Moment(
+        "The first dare-to-die squad attacks the north-west corner", "SQUAD", "30 20:00",
+        (Record(THEPAPER, "当圈定57名，各悬奖洋30元，由时营长(时尚彬)率领。当天晚上8点，57名敢死队员佩带日军钢盔"
+                "“潜形挺进”、“以炸弹手枪纵火冲杀”对西北角的日军发起进攻", "30 20:00", quote=True,
+                label="from the 31st Division's battle report"),
+         Record(THEPAPER, "夺取敌掩蔽部五，房舍数幢", quote=True, label="what it took"))),
     "train-in-the-station": Moment(
         "The guns fire on a Chinese train in the station", "TRAIN", "31 06:20",
         (Record(J63, "先ツ午前六時二十分砲兵隊ヲシテ臺兒庄停車場ニ現出セシ敵列車ニ對スル砲撃ヲ命シ", "31 06:20",

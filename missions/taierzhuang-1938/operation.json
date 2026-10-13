@@ -253,6 +253,15 @@
       }
     },
     {
+      "id": "thepaper-squads",
+      "name": "「台儿庄战役期间究竟派出了多少支敢死队？」, 澎湃 (2018), from the Chinese units' battle reports",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 28800,
+        "source": "China's coastal standard time, UTC+8; the Japanese reports are read on it (build/evidence/, japanese-clock)"
+      }
+    },
+    {
       "id": "osm",
       "name": "OpenStreetMap"
     }
@@ -605,6 +614,14 @@
       "camera": false,
       "name": "Chinese troops west of the railway",
       "kind": "unit"
+    },
+    {
+      "id": "SQUAD",
+      "sidc": "SFGPUCI----D---",
+      "camera": false,
+      "name": "Dare-to-die squad of the 31st Division (Shi Shangbin, 57 men)",
+      "kind": "unit",
+      "parent": "31 DIV"
     },
     {
       "id": "185 REGT",

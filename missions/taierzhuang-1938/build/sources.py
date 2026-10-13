@@ -63,5 +63,7 @@ SOURCES = [
     {"id": "krzzjn-three-days", "name": "「1938年台儿庄抗战生死三日全纪实」, 抗日战争纪念网",
      "zone": CLOCK},
     {"id": "huangpu-2018", "name": "《黄埔》 2018年第3期", "zone": CLOCK},
+    {"id": "thepaper-squads", "name": "「台儿庄战役期间究竟派出了多少支敢死队？」, 澎湃 (2018), from "
+     "the Chinese units' battle reports", "zone": CLOCK},
     {"id": "osm", "name": "OpenStreetMap"},
 ]
