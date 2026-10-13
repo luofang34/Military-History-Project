@@ -31,6 +31,13 @@
       "summary": "The Provisional Army of the United States of America seizes the federal armory, 16–18 October 1859",
       "package": "missions/harpers-ferry-1859",
       "open": "?recorded-path"
+    },
+    {
+      "id": "taierzhuang-1938",
+      "name": "Battle of Taierzhuang, I: Tengxian",
+      "summary": "The Sichuan troops' defence of Tengxian and Wang Mingzhang's death, 14–18 March 1938",
+      "package": "missions/taierzhuang-1938",
+      "open": "?recorded-path"
     }
   ]
 }

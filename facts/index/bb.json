@@ -1,0 +1,16 @@
+{
+ "bb7ea87c-e088-539e-b329-98049cdeeb08": {
+  "key": "taierzhuang-1938/east-wall-and-north-gate-taken",
+  "file": "1938/03/17/z4-13-6.jsonl",
+  "view": "taierzhuang-1938",
+  "view_s": 322800.0,
+  "lead_s": 5.0
+ },
+ "bbf056af-f083-5ed9-866b-e7a5896ae735": {
+  "key": "taierzhuang-1938/breaching-fire",
+  "file": "1938/03/17/z4-13-6.jsonl",
+  "view": "taierzhuang-1938",
+  "view_s": 275400.0,
+  "lead_s": 5.0
+ }
+}

@@ -12,5 +12,12 @@
   "view": "operation-chastise",
   "view_s": 24600.0,
   "lead_s": 5.0
+ },
+ "86d2a780-e0ca-5443-a0a2-9c02a602458e": {
+  "key": "taierzhuang-1938/chinese-heavy-guns",
+  "file": "1938/03/16/global.jsonl",
+  "view": "taierzhuang-1938",
+  "view_s": 203100.0,
+  "lead_s": 0.0
  }
 }
