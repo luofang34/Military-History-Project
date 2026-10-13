@@ -43,12 +43,13 @@ ESCAPE_HILL = (-77.7390, 39.3270)
 POTOMAC_VA = (-77.7430, 39.3300)
 POTOMAC_MD = (-77.7425, 39.3320)
 
-# Behind Brown's wagon, the men walked "in couples, at some distance apart" (Anderson, order 3):
-# seconds behind the wagon, with Cook and Tidd ahead and Kagi and Stevens leading the rest.
-COLUMN = {"TIDD": -240, "COOK": -240, "KAGI": -60, "STEVENS": -60, "BROWN": 0,
-          "WATSON": 30, "TAYLOR": 30, "OLIVER": 60, "W THOMPSON": 60, "J ANDERSON": 90,
-          "D THOMPSON": 90, "HAZLETT": 120, "E COPPOC": 120, "COPELAND": 150, "LEARY": 150,
-          "O ANDERSON": 180, "GREEN": 180, "NEWBY": 210, "LEEMAN": 210}
+# Behind Brown's wagon, the men walked "in couples, at some distance apart" (Anderson, order 3),
+# close enough to read as one column; Cook and Tidd walked ahead as scouts. Seconds behind the
+# wagon.
+COLUMN = {"TIDD": -240, "COOK": -240, "KAGI": -10, "STEVENS": -10, "BROWN": 0,
+          "WATSON": 4, "TAYLOR": 4, "OLIVER": 8, "W THOMPSON": 8, "J ANDERSON": 12,
+          "D THOMPSON": 12, "HAZLETT": 16, "E COPPOC": 16, "COPELAND": 20, "LEARY": 20,
+          "O ANDERSON": 24, "GREEN": 24, "NEWBY": 28, "LEEMAN": 28}
 REAR_GUARD = ["OWEN", "B COPPOC", "MERIAM"]
 
 

@@ -21,7 +21,8 @@ its generator, `build/`. Regenerate with `python3 build/harpers_ferry.py`, then 
   "Local" clock follows today's zone boundaries, whose 1859 rule for this place is New York local
   mean time, about fifteen minutes ahead of Harpers Ferry's; each source declares the Harpers
   Ferry clock, on which its events are shown.
-- **Names.** The friendly force is the Provisional Army of the United States of America. Its
+- **Names.** The friendly force is the Provisional Army of the United States of America, on the
+  map "Provisional US Army". Its
   ranks and posts are those of Anderson's eleven orders of Sunday afternoon: Brown
   Commander-in-Chief, Kagi Adjutant General, and the captains and lieutenants as the orders call
   them; each man is placed under the post the orders gave him. Ages are those of the "In Memoriam" plaque at the Kennedy farm.

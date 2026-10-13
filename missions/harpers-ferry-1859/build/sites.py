@@ -112,7 +112,8 @@ ARMY = "PROVISIONAL ARMY"
 # him on Sunday afternoon (Anderson's orders); Newby and Leeman, whom the orders do not name, with
 # Brown. The Potomac-bridge pair follows the orders; see the potomac-bridge-guard dispute.
 FORMATIONS = [
-    (ARMY, "Provisional Army of the United States of America", FRIENDLY_PLATOON, [], None),
+    # Shortened on the map, where a folded column reads "Provisional US Army ×17".
+    (ARMY, "Provisional US Army", FRIENDLY_PLATOON, [], None),
     ("ARMORY PARTY", "Brown's party at the armory", FRIENDLY_TEAM,
      ["BROWN", "J ANDERSON", "D THOMPSON", "HAZLETT", "E COPPOC", "NEWBY", "LEEMAN"], ARMY),
     ("BRIDGE GUARDS", "The bridge guards", FRIENDLY_TEAM,
@@ -120,7 +121,9 @@ FORMATIONS = [
     ("RIFLE WORKS PARTY", "Kagi's party at the rifle works", FRIENDLY_TEAM,
      ["KAGI", "COPELAND"], ARMY),
     ("STEVENS PARTY", "Stevens's party in the country", FRIENDLY_TEAM,
-     ["STEVENS", "TIDD", "COOK", "O ANDERSON", "GREEN", "LEARY"], ARMY),
+     ["STEVENS", "O ANDERSON", "GREEN", "LEARY"], ARMY),
+    # Ahead of the march to cut the wires (order 4), then with Stevens.
+    ("COOK AND TIDD", "Cook and Tidd", FRIENDLY_TEAM, ["COOK", "TIDD"], "STEVENS PARTY"),
     ("REAR GUARD", "Owen Brown's rear guard", FRIENDLY_TEAM, ["OWEN", "B COPPOC", "MERIAM"],
      ARMY),
     ("VIRGINIA MILITIA", "Virginia militia and volunteers", HOSTILE_BATTALION, [], None),

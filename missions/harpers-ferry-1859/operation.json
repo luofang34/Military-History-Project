@@ -262,7 +262,7 @@
       "camera": false,
       "name": "John E. Cook, Captain, 29",
       "kind": "person",
-      "parent": "STEVENS PARTY"
+      "parent": "COOK AND TIDD"
     },
     {
       "id": "TIDD",
@@ -270,7 +270,7 @@
       "camera": false,
       "name": "Charles P. Tidd, Captain, 25",
       "kind": "person",
-      "parent": "STEVENS PARTY"
+      "parent": "COOK AND TIDD"
     },
     {
       "id": "O ANDERSON",
@@ -426,7 +426,7 @@
       "id": "PROVISIONAL ARMY",
       "sidc": "SFGPUCI----D---",
       "camera": false,
-      "name": "Provisional Army of the United States of America",
+      "name": "Provisional US Army",
       "kind": "formation",
       "quantity": 22
     },
@@ -465,6 +465,15 @@
       "kind": "formation",
       "quantity": 6,
       "parent": "PROVISIONAL ARMY"
+    },
+    {
+      "id": "COOK AND TIDD",
+      "sidc": "SFGPUCI----A---",
+      "camera": false,
+      "name": "Cook and Tidd",
+      "kind": "formation",
+      "quantity": 2,
+      "parent": "STEVENS PARTY"
     },
     {
       "id": "REAR GUARD",
