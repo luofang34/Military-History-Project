@@ -1,0 +1,21 @@
+{
+ "format": "package-content",
+ "version": 1,
+ "files": {
+  "operation.json": {
+   "size": 22275,
+   "sha256": "ba23acaa55978da53ebaeb87c920ee9f5d8bd5c08a3790e2f41392b49789a825",
+   "cid": "bafkreif2eowkuvmxrwst5oxlq7esb3u7lwf5lqekg6iof5atsk2jpcnieu"
+  },
+  "events.jsonl": {
+   "size": 410497,
+   "sha256": "4b7aeb95346550f595a6190fe33d24455884ebd0f9f0b028e2294a109f93ff72",
+   "cid": "bafybeielo2zrqtt6qqo5obmhs7tmjjmmeax6rz6icbz46tapgvvmgcvgo4"
+  },
+  "presentations/default.json": {
+   "size": 47479,
+   "sha256": "7d5ecd39eedbdb6ab320ccc2ca966c795d710cdf91819ad59429e9a8c8e2d096",
+   "cid": "bafkreid5l3gtt3w33nvlgigmylfjm3dzlvyqzx4rqgnnlfbj5gumrywqsy"
+  }
+ }
+}
