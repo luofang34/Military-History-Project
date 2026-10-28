@@ -94,6 +94,15 @@ viewer's camera movement changes, take screenshots of close shots, starting with
 A screenshot taken with `--at` shows the story camera only once the viewer has handed it
 back; one whose bar still reads "Recorded path in 1s" is not the story's frame.
 
+## IPFS
+
+Each mission's `content.json` lists the length, SHA-256 and IPFS CID of every file the viewer
+fetches of it; the viewer checks each file against it, whichever gateway or server served it.
+`python3 tools/content.py` writes it after a generator runs, and `verify.py` fails while it is
+stale. `python3 tools/ipfs.py` adds the packages, laid out as the site serves them, to the
+local IPFS node and prints the DNSLink record that lets
+`?operation=ipns://history.sokoly.app/missions/<id>` open them from IPFS first.
+
 ## Git
 
 Both repositories are GitButler workspaces: make commits and branches with `but`. Open one PR

@@ -25,6 +25,7 @@ from urllib.parse import parse_qs, urljoin, urlsplit
 root = Path(__file__).resolve().parent
 sys.path.insert(0, str(root / "tools"))
 import composition as composition_tool  # noqa: E402
+import content  # noqa: E402
 import facts  # noqa: E402
 
 
@@ -340,6 +341,25 @@ def agents_guide_holds():
     return not problems
 
 
+# CIDs kubo gave these bytes with `ipfs add --cid-version=1 --raw-leaves`: one raw leaf, and
+# 40 leaves under a dag-pb node. A manifest's CIDs are only of use if they match what kubo pins.
+KUBO_CIDS = [(b"", "bafkreihdwdcefgh4dqkjv67uzcmw7ojee6xedzdetojuzjevtenxquvyku"),
+             (bytes(range(256)) * 40000,
+              "bafybeieezc2bcq3wszfmj2bwar4zr3q3lnalpezqefjmwlhooiqepo3ety")]
+
+
+def content_holds():
+    """Every mission's content.json is what its files give, with the CIDs kubo gives them."""
+    problems = content.check()
+    for data, expected in KUBO_CIDS:
+        if content.cid(data) != expected:
+            problems.append(f"tools/content.py gives {len(data)} bytes the CID "
+                            f"{content.cid(data)}, kubo {expected}")
+    for problem in problems:
+        print(problem, file=sys.stderr)
+    return not problems
+
+
 # A published link: the namespace and the key format must keep giving it, whatever else changes.
 PINNED_FACT = ("operation-chastise/maltby-release", "f1ba1cfd-69fb-5de4-9b6b-56a6c17e441c")
 
@@ -366,4 +386,5 @@ if __name__ == "__main__":
     ok = replay_links_match_catalog() and ok
     ok = agents_guide_holds() and ok
     ok = facts_hold() and ok
+    ok = content_holds() and ok
     sys.exit(0 if ok else 1)
