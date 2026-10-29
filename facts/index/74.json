@@ -1,4 +1,11 @@
 {
+ "7412fe4c-64d1-5a82-8e0d-2d86d085eff6": {
+  "key": "shangri-la/watson-attack",
+  "file": "1942/04/18/z4-14-6.jsonl",
+  "view": "shangri-la",
+  "view_s": 23400.0,
+  "lead_s": 5.0
+ },
  "741d8dc0-b318-576a-980e-b6500a513bf4": {
   "key": "taierzhuang-1938/mopping-up-complete",
   "file": "1938/03/18/z4-13-6.jsonl",
@@ -11,6 +18,13 @@
   "file": "1943/05/16/z4-8-5.jsonl",
   "view": "operation-chastise",
   "view_s": 12840.0,
+  "lead_s": 0.0
+ },
+ "748d7677-a921-539c-8b35-5c1668939825": {
+  "key": "shangri-la/chinese-airfield-preparations",
+  "file": "1942/04/18/global.jsonl",
+  "view": "shangri-la",
+  "view_s": 45600.0,
   "lead_s": 0.0
  }
 }

@@ -1,0 +1,679 @@
+{
+  "format": "sokoly-presentation",
+  "version": 1,
+  "id": "default",
+  "name": "Shangri-La",
+  "operation": "shangri-la",
+  "chapters": [
+    {
+      "title": "A one-way mission",
+      "at_ms": 0,
+      "available_ms": 0
+    },
+    {
+      "title": "Launch early",
+      "at_ms": 1800000,
+      "available_ms": 1800000
+    },
+    {
+      "title": "Across the Pacific",
+      "at_ms": 7020000,
+      "available_ms": 7020000
+    },
+    {
+      "title": "Japan under attack",
+      "at_ms": 21300000,
+      "available_ms": 21300000
+    },
+    {
+      "title": "China or the Soviet Union",
+      "at_ms": 30120000,
+      "available_ms": 30120000
+    },
+    {
+      "title": "The human cost",
+      "at_ms": 48000000,
+      "available_ms": 48000000
+    }
+  ],
+  "camera_track": [
+    {
+      "start_ms": 0,
+      "end_ms": 480000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 146.5,
+          "lat": 35.5
+        }
+      },
+      "zoom": 4.5,
+      "pitch": 0,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 480000,
+      "end_ms": 1800000,
+      "target": {
+        "kind": "entity",
+        "value": "HORNET"
+      },
+      "zoom": 10.0,
+      "pitch": 25,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 220000
+    },
+    {
+      "start_ms": 1800000,
+      "end_ms": 3000000,
+      "target": {
+        "kind": "entity",
+        "value": "HORNET"
+      },
+      "zoom": 11.0,
+      "pitch": 35,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 150000
+    },
+    {
+      "start_ms": 3000000,
+      "end_ms": 3060000,
+      "target": {
+        "kind": "entity",
+        "value": "B25-01"
+      },
+      "zoom": 11.5,
+      "pitch": 25,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 3060000,
+      "end_ms": 6540000,
+      "target": {
+        "kind": "entity",
+        "value": "HORNET"
+      },
+      "zoom": 8.8,
+      "pitch": 10,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 580000
+    },
+    {
+      "start_ms": 6540000,
+      "end_ms": 7020000,
+      "target": {
+        "kind": "entity",
+        "value": "B25-16"
+      },
+      "zoom": 9.2,
+      "pitch": 20,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 7020000,
+      "end_ms": 19200000,
+      "target": {
+        "kind": "entity",
+        "value": "B25-01"
+      },
+      "zoom": 5.3,
+      "pitch": 0,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 3480000
+    },
+    {
+      "start_ms": 19200000,
+      "end_ms": 21300000,
+      "target": {
+        "kind": "entity",
+        "value": "B25-01"
+      },
+      "zoom": 8.3,
+      "pitch": 15,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 450000
+    },
+    {
+      "start_ms": 21300000,
+      "end_ms": 21720000,
+      "target": {
+        "kind": "entity",
+        "value": "B25-01"
+      },
+      "zoom": 10.3,
+      "pitch": 25,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 46666
+    },
+    {
+      "start_ms": 21720000,
+      "end_ms": 22140000,
+      "target": {
+        "kind": "entity",
+        "value": "B25-04"
+      },
+      "zoom": 9.8,
+      "pitch": 20,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 22140000,
+      "end_ms": 23700000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 139.8,
+          "lat": 35.65
+        }
+      },
+      "zoom": 8.6,
+      "pitch": 0,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 23700000,
+      "end_ms": 25320000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 139.95,
+          "lat": 35.55
+        }
+      },
+      "zoom": 8.8,
+      "pitch": 10,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 180000
+    },
+    {
+      "start_ms": 25320000,
+      "end_ms": 26280000,
+      "target": {
+        "kind": "entity",
+        "value": "B25-13"
+      },
+      "zoom": 10.3,
+      "pitch": 25,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 26280000,
+      "end_ms": 27960000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 136.05,
+          "lat": 34.9
+        }
+      },
+      "zoom": 7.0,
+      "pitch": 0,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 27960000,
+      "end_ms": 28680000,
+      "target": {
+        "kind": "entity",
+        "value": "B25-14"
+      },
+      "zoom": 10.2,
+      "pitch": 20,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 28680000,
+      "end_ms": 30120000,
+      "target": {
+        "kind": "entity",
+        "value": "B25-15"
+      },
+      "zoom": 9.7,
+      "pitch": 20,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 30120000,
+      "end_ms": 34800000,
+      "target": {
+        "kind": "entity",
+        "value": "B25-01"
+      },
+      "zoom": 6.4,
+      "pitch": 0,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 877500
+    },
+    {
+      "start_ms": 34800000,
+      "end_ms": 43500000,
+      "target": {
+        "kind": "entity",
+        "value": "B25-08"
+      },
+      "zoom": 6.4,
+      "pitch": 0,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 43500000,
+      "end_ms": 48000000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 121.0,
+          "lat": 29.6
+        }
+      },
+      "zoom": 7.0,
+      "pitch": 0,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 48000000,
+      "end_ms": 50100000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 120.2,
+          "lat": 29.5
+        }
+      },
+      "zoom": 6.8,
+      "pitch": 0,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 210000
+    },
+    {
+      "start_ms": 50100000,
+      "end_ms": 53280000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 120.4,
+          "lat": 28.7
+        }
+      },
+      "zoom": 7.0,
+      "pitch": 0,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 318000
+    },
+    {
+      "start_ms": 53280000,
+      "end_ms": 55860000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 118.6,
+          "lat": 28.7
+        }
+      },
+      "zoom": 7.3,
+      "pitch": 0,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 0
+    },
+    {
+      "start_ms": 55860000,
+      "end_ms": 56100000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 118.8,
+          "lat": 28.8
+        }
+      },
+      "zoom": 6.5,
+      "pitch": 0,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 31304
+    },
+    {
+      "start_ms": 56100000,
+      "end_ms": 56400000,
+      "target": {
+        "kind": "point",
+        "value": {
+          "lon": 130.0,
+          "lat": 33.0
+        }
+      },
+      "zoom": 4.0,
+      "pitch": 0,
+      "bearing": 0,
+      "orbit_deg_s": 0,
+      "transition_ms": 60000
+    }
+  ],
+  "playback_track": [
+    {
+      "start_ms": 0,
+      "end_ms": 480000,
+      "speed": 26.666666666666668
+    },
+    {
+      "start_ms": 480000,
+      "end_ms": 1800000,
+      "speed": 73.33333333333333
+    },
+    {
+      "start_ms": 1800000,
+      "end_ms": 3000000,
+      "speed": 75.0
+    },
+    {
+      "start_ms": 3000000,
+      "end_ms": 3060000,
+      "speed": 5
+    },
+    {
+      "start_ms": 3060000,
+      "end_ms": 6540000,
+      "speed": 193.33333333333334
+    },
+    {
+      "start_ms": 6540000,
+      "end_ms": 7020000,
+      "speed": 48.0
+    },
+    {
+      "start_ms": 7020000,
+      "end_ms": 19200000,
+      "speed": 870.0
+    },
+    {
+      "start_ms": 19200000,
+      "end_ms": 21300000,
+      "speed": 150.0
+    },
+    {
+      "start_ms": 21300000,
+      "end_ms": 21480000,
+      "speed": 23.333333333333332
+    },
+    {
+      "start_ms": 21480000,
+      "end_ms": 21720000,
+      "speed": 12
+    },
+    {
+      "start_ms": 21720000,
+      "end_ms": 22140000,
+      "speed": 30.0
+    },
+    {
+      "start_ms": 22140000,
+      "end_ms": 23700000,
+      "speed": 78.0
+    },
+    {
+      "start_ms": 23700000,
+      "end_ms": 25320000,
+      "speed": 90.0
+    },
+    {
+      "start_ms": 25320000,
+      "end_ms": 25680000,
+      "speed": 53.333333333333336
+    },
+    {
+      "start_ms": 25680000,
+      "end_ms": 25980000,
+      "speed": 14
+    },
+    {
+      "start_ms": 25980000,
+      "end_ms": 26280000,
+      "speed": 53.333333333333336
+    },
+    {
+      "start_ms": 26280000,
+      "end_ms": 27960000,
+      "speed": 140.0
+    },
+    {
+      "start_ms": 27960000,
+      "end_ms": 28680000,
+      "speed": 45.0
+    },
+    {
+      "start_ms": 28680000,
+      "end_ms": 30120000,
+      "speed": 80.0
+    },
+    {
+      "start_ms": 30120000,
+      "end_ms": 34800000,
+      "speed": 292.5
+    },
+    {
+      "start_ms": 34800000,
+      "end_ms": 43500000,
+      "speed": 483.3333333333333
+    },
+    {
+      "start_ms": 43500000,
+      "end_ms": 48000000,
+      "speed": 250.0
+    },
+    {
+      "start_ms": 48000000,
+      "end_ms": 50100000,
+      "speed": 105.0
+    },
+    {
+      "start_ms": 50100000,
+      "end_ms": 53280000,
+      "speed": 159.0
+    },
+    {
+      "start_ms": 53280000,
+      "end_ms": 55860000,
+      "speed": 129.0
+    },
+    {
+      "start_ms": 55860000,
+      "end_ms": 56100000,
+      "speed": 10.434782608695652
+    },
+    {
+      "start_ms": 56100000,
+      "end_ms": 56400000,
+      "speed": 15.0
+    }
+  ],
+  "extensions": {
+    "shot_intents": {
+      "0": {
+        "intent": "Establish the carrier force far east of Japan before discovery.",
+        "shows": [
+          "HORNET",
+          "TOKYO"
+        ]
+      },
+      "480000": {
+        "intent": "Close on the ships as a Japanese picket forces the decision to launch.",
+        "shows": [
+          "HORNET",
+          "ENTERPRISE",
+          "NASHVILLE"
+        ]
+      },
+      "1800000": {
+        "intent": "Hold on Hornet while the crews prepare and the carrier turns into wind.",
+        "shows": [
+          "HORNET"
+        ]
+      },
+      "3000000": {
+        "intent": "Follow Doolittle off the deck and into the open Pacific.",
+        "shows": [
+          "B25-01",
+          "HORNET"
+        ]
+      },
+      "3060000": {
+        "intent": "Pull back to the departure stream as the other crews launch separately.",
+        "shows": [
+          "HORNET"
+        ]
+      },
+      "6540000": {
+        "intent": "Show Farrow, the last bomber, clearing the retiring carriers.",
+        "shows": [
+          "B25-16",
+          "HORNET"
+        ]
+      },
+      "7020000": {
+        "intent": "Open the scale of the ocean crossing without holding the quiet transit.",
+        "shows": [
+          "B25-01"
+        ]
+      },
+      "19200000": {
+        "intent": "Follow the lead aircraft to landfall north of its intended course.",
+        "shows": [
+          "B25-01"
+        ]
+      },
+      "21300000": {
+        "intent": "Tighten on the lead bombing pass over Tokyo.",
+        "shows": [
+          "B25-01"
+        ]
+      },
+      "21720000": {
+        "intent": "Cut to Holstrom offshore: a crew unable to complete its attack.",
+        "shows": [
+          "B25-04"
+        ]
+      },
+      "22140000": {
+        "intent": "Re-establish the dispersed attacks around Tokyo, not a massed bomber formation.",
+        "shows": [
+          "TOKYO"
+        ]
+      },
+      "23700000": {
+        "intent": "Shift southeast to Greening and Bower’s reported industrial targets.",
+        "shows": [
+          "YOKOHAMA"
+        ]
+      },
+      "25320000": {
+        "intent": "Cut to the documented Yokosuka pass and follow McElroy out.",
+        "shows": [
+          "B25-13"
+        ]
+      },
+      "26280000": {
+        "intent": "Cut west to the aircraft assigned beyond the Tokyo region.",
+        "shows": [
+          "NAGOYA",
+          "KOBE"
+        ]
+      },
+      "27960000": {
+        "intent": "Follow Hilger across his Nagoya target area at the reported attack time.",
+        "shows": [
+          "B25-14"
+        ]
+      },
+      "28680000": {
+        "intent": "Cut to Smith at Kobe, completing the western attacks.",
+        "shows": [
+          "B25-15"
+        ]
+      },
+      "30120000": {
+        "intent": "Pull out along the southwest escape route toward the East China Sea.",
+        "shows": [
+          "B25-01"
+        ]
+      },
+      "34800000": {
+        "intent": "Cut north to York’s separate flight to Soviet territory.",
+        "shows": [
+          "B25-08"
+        ]
+      },
+      "43500000": {
+        "intent": "Return to the Chinese coast as the weather closes in.",
+        "shows": [
+          "NINGBO",
+          "QUZHOU"
+        ]
+      },
+      "48000000": {
+        "intent": "Show the coastal and inland separation as Lawson, Hoover and Doolittle come down.",
+        "shows": [
+          "NINGBO",
+          "QUZHOU"
+        ]
+      },
+      "50100000": {
+        "intent": "Widen across the recovery region to place the losses in China.",
+        "shows": [
+          "QUZHOU",
+          "NINGBO"
+        ]
+      },
+      "53280000": {
+        "intent": "Resolve the final aircraft losses across Zhejiang and Jiangxi.",
+        "shows": [
+          "QUZHOU",
+          "SHANGRAO"
+        ]
+      },
+      "55860000": {
+        "intent": "Hold the region for the later human consequences, explicitly outside the raid-day clock.",
+        "shows": [
+          "QUZHOU"
+        ]
+      },
+      "56100000": {
+        "intent": "End at regional scale, connecting the secret launch, American morale and the cost in China.",
+        "shows": [
+          "TOKYO",
+          "QUZHOU"
+        ]
+      }
+    }
+  }
+}

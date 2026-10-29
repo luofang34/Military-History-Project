@@ -5,5 +5,12 @@
   "view": "gulf-of-sidra-1981",
   "view_s": 1109.0,
   "lead_s": 0.0
+ },
+ "08ab5740-73bc-5deb-aa1b-a7cc5323dadb": {
+  "key": "shangri-la/launch-position",
+  "file": "1942/04/17/z4-14-6.jsonl",
+  "view": "shangri-la",
+  "view_s": 1800.0,
+  "lead_s": 0.0
  }
 }

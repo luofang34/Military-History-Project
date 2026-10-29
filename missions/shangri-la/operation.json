@@ -1,0 +1,412 @@
+{
+  "format": "sokoly-operation",
+  "version": 4,
+  "id": "shangri-la",
+  "name": "Shangri-La",
+  "duration_ms": 56400000,
+  "time_origin": "18 April 1942, 06:30 Japan / 07:30 ship time (UTC+10). All tracks reconstructed.",
+  "time": {
+    "range": {
+      "start": 0,
+      "end": 56400000
+    },
+    "zone": {
+      "kind": "fixed",
+      "seconds": 32400,
+      "source": "Japan standard time, UTC+9; naval zone minus ten is UTC+10"
+    },
+    "anchor": {
+      "at": 0,
+      "unix_ms": -874377000000,
+      "source": "Enterprise action report: zone minus ten",
+      "source_scale": "utc",
+      "uncertainty_ms": 300000,
+      "resolution_ms": 60000,
+      "original_calendar": "1942-04-18 07:30 naval zone minus ten (UTC+10)"
+    }
+  },
+  "captured_availability": false,
+  "sources": [
+    {
+      "id": "doolittle",
+      "name": "Doolittle, report of 5 June 1942, aircraft accounts",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 36000,
+        "source": "Enterprise action report: zone minus ten, UTC+10"
+      }
+    },
+    {
+      "id": "doolittle-personal",
+      "name": "Doolittle and Potter, personal and navigation reports, 4 May 1942",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 36000,
+        "source": "Enterprise action report: zone minus ten, UTC+10"
+      }
+    },
+    {
+      "id": "gray",
+      "name": "Gray, mission report, 2 May 1942",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 36000,
+        "source": "Enterprise action report: zone minus ten, UTC+10"
+      }
+    },
+    {
+      "id": "joyce",
+      "name": "Joyce, mission and personal reports, May 1942",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 36000,
+        "source": "Enterprise action report: zone minus ten, UTC+10"
+      }
+    },
+    {
+      "id": "greening",
+      "name": "Greening, mission report, 2 May 1942",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 36000,
+        "source": "Enterprise action report: zone minus ten, UTC+10"
+      }
+    },
+    {
+      "id": "bower",
+      "name": "Bower, mission report, 2 May 1942",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 36000,
+        "source": "Enterprise action report: zone minus ten, UTC+10"
+      }
+    },
+    {
+      "id": "mcelroy",
+      "name": "McElroy, personal report, 4 May 1942",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 36000,
+        "source": "Enterprise action report: zone minus ten, UTC+10"
+      }
+    },
+    {
+      "id": "hilger",
+      "name": "Hilger, mission and personal reports, 5 May 1942",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 36000,
+        "source": "Enterprise action report: zone minus ten, UTC+10"
+      }
+    },
+    {
+      "id": "hilger-personal",
+      "name": "Hilger, report of airplane 40-2297",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 36000,
+        "source": "Enterprise action report: zone minus ten, UTC+10"
+      }
+    },
+    {
+      "id": "hornet",
+      "name": "Mitscher, Hornet action report, 28 April 1942",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 36000,
+        "source": "Enterprise action report: zone minus ten, UTC+10"
+      }
+    },
+    {
+      "id": "enterprise",
+      "name": "Murray, Enterprise action report, 23 April 1942",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 36000,
+        "source": "Enterprise action report: zone minus ten, UTC+10"
+      }
+    },
+    {
+      "id": "aaf-summary",
+      "name": "AAF Intelligence Summary No. 20, 5 October 1942",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 36000,
+        "source": "Enterprise action report: zone minus ten, UTC+10"
+      }
+    },
+    {
+      "id": "crews",
+      "name": "Children of the Doolittle Raiders, sixteen crew roster",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 36000,
+        "source": "Enterprise action report: zone minus ten, UTC+10"
+      }
+    },
+    {
+      "id": "aaf-history",
+      "name": "Craven and Cate, The Army Air Forces in World War II, vol. I, chapter 12, pp. 438–444",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 36000,
+        "source": "Enterprise action report: zone minus ten, UTC+10"
+      }
+    },
+    {
+      "id": "fdr",
+      "name": "Roosevelt, press conference, 21 April 1942",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 36000,
+        "source": "Enterprise action report: zone minus ten, UTC+10"
+      }
+    },
+    {
+      "id": "nhhc",
+      "name": "Samuel Cox, NHHC H-004-4: Doolittle Raid",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 36000,
+        "source": "Enterprise action report: zone minus ten, UTC+10"
+      }
+    },
+    {
+      "id": "scott",
+      "name": "James M. Scott, Chinese reprisals, Smithsonian, 15 April 2015",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 36000,
+        "source": "Enterprise action report: zone minus ten, UTC+10"
+      }
+    },
+    {
+      "id": "afmc",
+      "name": "AFMC, The Doolittle Raiders: Remembering the Mission, 2023",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 36000,
+        "source": "Enterprise action report: zone minus ten, UTC+10"
+      }
+    },
+    {
+      "id": "wikipedia",
+      "name": "Doolittle Raid, Wikipedia (research starting point)",
+      "zone": {
+        "kind": "fixed",
+        "seconds": 36000,
+        "source": "Enterprise action report: zone minus ten, UTC+10"
+      }
+    },
+    {
+      "id": "reconstruction",
+      "name": "Approximate routes and regional anchors; see mission method",
+      "motion": "great_circle",
+      "max_gap_ms": 56400000,
+      "zone": {
+        "kind": "fixed",
+        "seconds": 36000,
+        "source": "Enterprise action report: zone minus ten, UTC+10"
+      }
+    }
+  ],
+  "entities": [
+    {
+      "id": "B25-01",
+      "name": "01 Doolittle · 40-2344",
+      "sidc": "SFAPMFB--------",
+      "kind": "B-25B",
+      "camera": false
+    },
+    {
+      "id": "B25-02",
+      "name": "02 Hoover · 40-2292",
+      "sidc": "SFAPMFB--------",
+      "kind": "B-25B",
+      "camera": false
+    },
+    {
+      "id": "B25-03",
+      "name": "03 Gray · 40-2270",
+      "sidc": "SFAPMFB--------",
+      "kind": "B-25B",
+      "camera": false
+    },
+    {
+      "id": "B25-04",
+      "name": "04 Holstrom · 40-2282",
+      "sidc": "SFAPMFB--------",
+      "kind": "B-25B",
+      "camera": false
+    },
+    {
+      "id": "B25-05",
+      "name": "05 Jones · 40-2283",
+      "sidc": "SFAPMFB--------",
+      "kind": "B-25B",
+      "camera": false
+    },
+    {
+      "id": "B25-06",
+      "name": "06 Hallmark · 40-2298",
+      "sidc": "SFAPMFB--------",
+      "kind": "B-25B",
+      "camera": false
+    },
+    {
+      "id": "B25-07",
+      "name": "07 Lawson · 40-2261",
+      "sidc": "SFAPMFB--------",
+      "kind": "B-25B",
+      "camera": false
+    },
+    {
+      "id": "B25-08",
+      "name": "08 York · 40-2242",
+      "sidc": "SFAPMFB--------",
+      "kind": "B-25B",
+      "camera": false
+    },
+    {
+      "id": "B25-09",
+      "name": "09 Watson · 40-2303",
+      "sidc": "SFAPMFB--------",
+      "kind": "B-25B",
+      "camera": false
+    },
+    {
+      "id": "B25-10",
+      "name": "10 Joyce · 40-2250",
+      "sidc": "SFAPMFB--------",
+      "kind": "B-25B",
+      "camera": false
+    },
+    {
+      "id": "B25-11",
+      "name": "11 Greening · 40-2249",
+      "sidc": "SFAPMFB--------",
+      "kind": "B-25B",
+      "camera": false
+    },
+    {
+      "id": "B25-12",
+      "name": "12 Bower · 40-2278",
+      "sidc": "SFAPMFB--------",
+      "kind": "B-25B",
+      "camera": false
+    },
+    {
+      "id": "B25-13",
+      "name": "13 McElroy · 40-2247",
+      "sidc": "SFAPMFB--------",
+      "kind": "B-25B",
+      "camera": false
+    },
+    {
+      "id": "B25-14",
+      "name": "14 Hilger · 40-2297",
+      "sidc": "SFAPMFB--------",
+      "kind": "B-25B",
+      "camera": false
+    },
+    {
+      "id": "B25-15",
+      "name": "15 Smith · 40-2267",
+      "sidc": "SFAPMFB--------",
+      "kind": "B-25B",
+      "camera": false
+    },
+    {
+      "id": "B25-16",
+      "name": "16 Farrow · 40-2268",
+      "sidc": "SFAPMFB--------",
+      "kind": "B-25B",
+      "camera": false
+    },
+    {
+      "id": "HORNET",
+      "name": "USS Hornet (CV-8)",
+      "sidc": "SFSPCLCV-------",
+      "kind": "aircraft carrier",
+      "camera": false
+    },
+    {
+      "id": "ENTERPRISE",
+      "name": "USS Enterprise (CV-6)",
+      "sidc": "SFSPCLCV-------",
+      "kind": "aircraft carrier",
+      "camera": false
+    },
+    {
+      "id": "NASHVILLE",
+      "name": "USS Nashville (CL-43)",
+      "sidc": "SFSPCLCC-------",
+      "kind": "cruiser",
+      "camera": false
+    },
+    {
+      "id": "TOKYO",
+      "name": "Tokyo",
+      "sidc": "SUGP-----------",
+      "kind": "geographic reference",
+      "camera": false
+    },
+    {
+      "id": "YOKOHAMA",
+      "name": "Yokohama",
+      "sidc": "SUGP-----------",
+      "kind": "geographic reference",
+      "camera": false
+    },
+    {
+      "id": "YOKOSUKA",
+      "name": "Yokosuka",
+      "sidc": "SUGP-----------",
+      "kind": "geographic reference",
+      "camera": false
+    },
+    {
+      "id": "NAGOYA",
+      "name": "Nagoya",
+      "sidc": "SUGP-----------",
+      "kind": "geographic reference",
+      "camera": false
+    },
+    {
+      "id": "KOBE",
+      "name": "Kobe",
+      "sidc": "SUGP-----------",
+      "kind": "geographic reference",
+      "camera": false
+    },
+    {
+      "id": "QUZHOU",
+      "name": "Quzhou",
+      "sidc": "SUGP-----------",
+      "kind": "geographic reference",
+      "camera": false
+    },
+    {
+      "id": "NINGBO",
+      "name": "Ningbo",
+      "sidc": "SUGP-----------",
+      "kind": "geographic reference",
+      "camera": false
+    },
+    {
+      "id": "SHANGRAO",
+      "name": "Shangrao",
+      "sidc": "SUGP-----------",
+      "kind": "geographic reference",
+      "camera": false
+    },
+    {
+      "id": "SOVIET AIRFIELD",
+      "name": "Vladivostok region",
+      "sidc": "SUGP-----------",
+      "kind": "geographic reference",
+      "camera": false
+    }
+  ],
+  "media_archive": null
+}

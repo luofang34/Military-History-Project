@@ -5,5 +5,12 @@
   "view": "operation-chastise",
   "view_s": 18660.0,
   "lead_s": 5.0
+ },
+ "42eade3a-bae5-5122-8e3c-da581b170b51": {
+  "key": "shangri-la/hallmark-launch",
+  "file": "1942/04/17/z4-14-6.jsonl",
+  "view": "shangri-la",
+  "view_s": 4200.0,
+  "lead_s": 5.0
  }
 }

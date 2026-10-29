@@ -1,5 +1,12 @@
 {
  "44c3a9ca-a41d-572e-93ba-2ee67e3f6ccd": {
   "alias": "b99093bf-0e0f-54a1-993c-998f9e20ac48"
+ },
+ "44efab74-9b47-55a9-969a-ceffd8b0e4ef": {
+  "key": "shangri-la/jones-attack",
+  "file": "1942/04/18/z4-14-6.jsonl",
+  "view": "shangri-la",
+  "view_s": 22500.0,
+  "lead_s": 5.0
  }
 }

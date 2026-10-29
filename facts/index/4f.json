@@ -1,5 +1,12 @@
 {
  "4f3c26cd-bc56-5f87-bb6e-12e145f36ff3": {
   "alias": "7699e57e-795d-5786-9d90-b79bdf6df369"
+ },
+ "4f41d274-8b3d-5437-9f86-91eba4cc256e": {
+  "key": "shangri-la/smith-attack",
+  "file": "1942/04/18/z4-14-6.jsonl",
+  "view": "shangri-la",
+  "view_s": 29700.0,
+  "lead_s": 5.0
  }
 }
