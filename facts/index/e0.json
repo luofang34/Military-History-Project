@@ -5,5 +5,12 @@
   "view": "harpers-ferry-1859",
   "view_s": 66600.0,
   "lead_s": 5.0
+ },
+ "e09bb5b2-c4e4-5379-bb11-4b04b8bda4da": {
+  "key": "shangri-la/joyce-attack",
+  "file": "1942/04/18/z4-14-6.jsonl",
+  "view": "shangri-la",
+  "view_s": 23400.0,
+  "lead_s": 5.0
  }
 }

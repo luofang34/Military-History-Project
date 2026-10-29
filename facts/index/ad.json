@@ -12,5 +12,12 @@
   "view": "operation-chastise",
   "view_s": 5340.0,
   "lead_s": 5.0
+ },
+ "ad505dd1-7d68-53e1-9fc3-3a5a3c7ef9b8": {
+  "key": "shangri-la/smith-launch",
+  "file": "1942/04/17/z4-14-6.jsonl",
+  "view": "shangri-la",
+  "view_s": 6300.0,
+  "lead_s": 5.0
  }
 }

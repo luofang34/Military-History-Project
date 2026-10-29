@@ -38,6 +38,13 @@
       "summary": "The fall of Tengxian and Wang Mingzhang's death, the road to the Grand Canal, and the battle for Taierzhuang and its guns, 14 March – 1 April 1938",
       "package": "missions/taierzhuang-1938",
       "open": "?recorded-path"
+    },
+    {
+      "id": "shangri-la",
+      "name": "Shangri-La",
+      "summary": "The Doolittle Raid: sixteen crews, the attacks on Japan, escape and consequences, 18 April 1942",
+      "package": "missions/shangri-la",
+      "open": "?recorded-path"
     }
   ]
 }

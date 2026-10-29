@@ -1,4 +1,18 @@
 {
+ "c379ebea-dd53-5411-abde-6800e1e9ee07": {
+  "key": "shangri-la/hoover-recovery",
+  "file": "1942/04/18/z4-13-6.jsonl",
+  "view": "shangri-la",
+  "view_s": 49200.0,
+  "lead_s": 5.0
+ },
+ "c3c3c3a8-b27b-52eb-9345-87c4c5bb3aeb": {
+  "key": "shangri-la/greening-attack",
+  "file": "1942/04/18/z4-14-6.jsonl",
+  "view": "shangri-la",
+  "view_s": 24000.0,
+  "lead_s": 5.0
+ },
  "c3eb3948-6313-5781-b32a-d3ff96f91778": {
   "key": "gulf-of-sidra-1981/carrier",
   "file": "1981/08/19/z4-8-6.jsonl",

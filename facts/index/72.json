@@ -1,0 +1,16 @@
+{
+ "725b262e-08cb-5bbb-9d7a-8cfed49ee5aa": {
+  "key": "shangri-la/damage-assessment",
+  "file": "1942/04/18/global.jsonl",
+  "view": "shangri-la",
+  "view_s": 29700.0,
+  "lead_s": 0.0
+ },
+ "72a2e2db-6238-581f-92f8-00a13af96887": {
+  "key": "shangri-la/greening-target",
+  "file": "1942/04/18/z4-14-6.jsonl",
+  "view": "shangri-la",
+  "view_s": 24000.0,
+  "lead_s": 0.0
+ }
+}

@@ -1,0 +1,16 @@
+{
+ "3d4adfe3-2148-5e5f-a335-d1bec5fa76aa": {
+  "key": "shangri-la/farrow-loss-location",
+  "file": "1942/04/18/z4-13-6.jsonl",
+  "view": "shangri-la",
+  "view_s": 55800.0,
+  "lead_s": 0.0
+ },
+ "3d7ff051-6cca-5c74-b3a2-f560e210810d": {
+  "key": "shangri-la/gray-launch",
+  "file": "1942/04/17/z4-14-6.jsonl",
+  "view": "shangri-la",
+  "view_s": 3600.0,
+  "lead_s": 5.0
+ }
+}
