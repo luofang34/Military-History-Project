@@ -28,7 +28,8 @@ def entities():
                  ('HORNET', 'USS Hornet (CV-8)', 'SFSPCLCV-------', 'aircraft carrier'),
                  ('ENTERPRISE', 'USS Enterprise (CV-6)', 'SFSPCLCV-------', 'aircraft carrier'),
                  ('NASHVILLE', 'USS Nashville (CL-43)', 'SFSPCLCC-------', 'cruiser')]]
-    places = [{'id': key, 'name': key.title(), 'sidc': 'SUGP-----------',
+    places = [{'id': key, 'name': 'Vladivostok region' if key == 'SOVIET AIRFIELD' else key.title(),
+               'sidc': 'SUGP-----------',
                'kind': 'geographic reference', 'camera': False} for key in SITES]
     return aircraft + ships + places
 
@@ -46,7 +47,8 @@ def emit_tracks(em, tracks):
         if crew and crew.number != 8:
             em.gap('reconstruction', entity, track.end + 1, None, 'reconstructed', [])
     for entity, point in SITES.items():
-        em.fix('reconstruction', entity, 0, point, 0, 15_000, None, 'reconstructed', [], reference='site')
+        bound = 80_000 if entity == 'SOVIET AIRFIELD' else 15_000
+        em.fix('reconstruction', entity, 0, point, 0, bound, None, 'reconstructed', [], reference='site')
 
 
 def write_readme(out):

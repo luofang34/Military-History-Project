@@ -19,7 +19,7 @@ DISPUTES = {
         Record('doolittle', 'Initial information placed Hallmark near Nanchang/Poyang and explicitly warned it was unreliable.'),
         Record('crews', 'Crew 6 ditched; three captured.'),
         Record('wikipedia', 'Hallmark’s bomber ditched off Wenzhou. Dieter and Fitzmaurice drowned.')),
-        'Wenzhou coastal area, 60 km bound',
+        'Wenzhou coastal area, 80 km bound',
         'Use the later coastal account; do not map the unconfirmed Poyang report as a crash site.', shown='22:00'),
     'farrow-loss-location': Dispute('Confused early reports of Farrow’s fate', 'B25-16', (
         Record('doolittle', 'Places Farrow near Shipu and warns that accounts of his and Hallmark’s crews may be confused.'),

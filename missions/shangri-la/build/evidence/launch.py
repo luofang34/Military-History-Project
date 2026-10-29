@@ -60,8 +60,10 @@ for crew in CREWS[1:-1]:
         records = (record, Record(source, says, at))
         if crew.number == 14:
             records += (Record('hilger-personal', 'Take-off made at 09:15.', '09:15'),)
+        basis = 'Use the compiled aircraft sequence consistently. Preserve conflicting individual timings in the ledger.'
+        if crew.number == 10:
+            basis += ' Joyce’s 08:05 would precede the lead aircraft and is unusable as a sequence anchor.'
         DISPUTES[key] = Dispute(f'{crew.pilot} launches', crew.id, records, crew.launch + ' ship time',
-            'Use the compiled aircraft sequence consistently. Individual timings are not silently corrected; '
-            'Joyce’s 08:05 would precede the lead aircraft and is unusable as a sequence anchor.', at=crew.launch)
+                               basis, at=crew.launch)
     else:
         MOMENTS[key] = Moment(f'{crew.pilot} launches', crew.id, crew.launch, (record,))

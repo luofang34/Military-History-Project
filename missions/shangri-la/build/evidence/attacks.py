@@ -27,7 +27,7 @@ DISPUTES = {
     'watson-target': Dispute('Watson’s target identification', 'B25-09', (
         Record('aaf-summary', 'Tokyo Gas and Electric; the same target was also reported as a tank and truck factory.'),),
         'Tokyo industrial district, not an identified building',
-        'The summary itself records competing identifications. Use a 15 km bound.', shown='14:00'),
+        'The summary itself records competing identifications. Use a 40 km bound.', shown='14:00'),
 }
 for crew in CREWS:
     if crew.number in (1, 13, 14):
